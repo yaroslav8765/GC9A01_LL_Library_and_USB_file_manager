@@ -122,30 +122,11 @@
 int main(void)
 {
   /* USER CODE BEGIN 1 */
-	strcpy(Members[0].text, "File 1");
-	strcpy(Members[1].text, "File 2");
-	strcpy(Members[2].text, "File 3");
-	strcpy(Members[3].text, "File 4");
-	strcpy(Members[4].text, "File 5");
-	strcpy(Members[5].text, "File 6");
-	strcpy(Members[6].text, "File 7");
-	strcpy(Members[7].text, "File 8");
-	Members[0].number = 1;
-	Members[1].number = 2;
-	Members[2].number = 3;
-	Members[3].number = 4;
-	Members[4].number = 5;
-	Members[5].number = 6;
-	Members[6].number = 7;
-	Members[7].number = 8;
-	Members[0].state = unactive;
-	Members[1].state = unactive;
-	Members[2].state = unactive;
-	Members[3].state = unactive;
-	Members[4].state = unactive;
-	Members[5].state = unactive;
-	Members[6].state = unactive;
-	Members[7].state = unactive;
+	for(int i = AMOUNT_OF_MENU_MEMBERS; i >= 0; i--){
+	strcpy(Members[i].text, "File ");
+	Members[i].number = i + 1;
+	Members[i].state = unactive;
+	}
 	Members[current_active_menu_member].state = active;
   /* USER CODE END 1 */
 
@@ -656,7 +637,8 @@ void DOWN_button_handrel(){
 	
 void view_menu_DOWN_button_handler(){
 	if(USB_Storage_state == connected){
-		if(current_active_menu_member<7){
+		enable_menu_member_animation = 1;
+		if(current_active_menu_member<AMOUNT_OF_MENU_MEMBERS - 1){
 			current_active_menu_member++;
 			if(current_active_menu_member !=0){
 				Members[current_active_menu_member-1].state = unactive;
@@ -665,10 +647,10 @@ void view_menu_DOWN_button_handler(){
 			Members[current_active_menu_member].state = active;
 			refresh_menu_member(Members[current_active_menu_member],current_active_menu_member);
 		}else{
-			if(amount_of_files>=((current_page)*8)+1){
+			if(amount_of_files>=((current_page)*AMOUNT_OF_MENU_MEMBERS)+1){
 				current_active_menu_member = 0;
 				Members[current_active_menu_member].state = active;
-				Members[7].state = unactive;
+				Members[AMOUNT_OF_MENU_MEMBERS - 1].state = unactive;
 				current_page ++;
 				Mount_USB();
 				Scan_USB(path, Members,current_page);
@@ -682,6 +664,7 @@ void view_menu_DOWN_button_handler(){
 
 void view_menu_UP_button_handler(){
 	if(USB_Storage_state == connected){
+		enable_menu_member_animation = 1;
 		if (current_active_menu_member > 0) {
 			current_active_menu_member--;
 			Members[current_active_menu_member + 1].state = unactive;
@@ -692,7 +675,7 @@ void view_menu_UP_button_handler(){
 		} else {
 			if (current_page > 1) {
         current_page--;
-				current_active_menu_member = 7;
+				current_active_menu_member = AMOUNT_OF_MENU_MEMBERS - 1;
         Members[current_active_menu_member].state = active;
 				Members[0].state = unactive;
 			  Mount_USB();

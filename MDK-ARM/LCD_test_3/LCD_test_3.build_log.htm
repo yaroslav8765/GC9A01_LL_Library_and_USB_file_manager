@@ -27,7 +27,7 @@ Project File Date:  11/09/2024
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 3 (build 300)', folder: 'C:\Keil_v5\ARM\ARMCC\Bin'
 Build target 'LCD_test_3'
-compiling File_Handling.c...
+compiling GC9A01.c...
 ../Core/Inc/GC9A01.h(170): warning:  #1-D: last line of file ends without a newline
   void menu_active_member_running_text_animation(struct MenuMember Members[8], uint8_t pos);
 ../Core/Inc/main.h(74): warning:  #1295-D: Deprecated declaration LEFT_button_handrel - give arg types
@@ -64,11 +64,11 @@ compiling File_Handling.c...
   void view_image_RIGHT_button_handler();
 ../Core/Inc/main.h(94): warning:  #1295-D: Deprecated declaration check_for_USB_storage_connection - give arg types
   void check_for_USB_storage_connection();
-../Core/Inc/cg9a01.h(74): warning:  #47-D: incompatible redefinition of macro "RAINBOW_YELLOW" (declared at line 74 of "../Core/Inc/GC9A01.h")
-  #define RAINBOW_YELLOW   0xFFE0
-..\Core\Src\File_Handling.c: 19 warnings, 0 errors
+..\Core\Src\GC9A01.c(790): warning:  #940-D: missing return statement at end of non-void function "get_active_menu_member"
+  }
+..\Core\Src\GC9A01.c: 19 warnings, 0 errors
 linking...
-Program Size: Code=40302 RO-data=8634 RW-data=40588 ZI-data=11036  
+Program Size: Code=40170 RO-data=8634 RW-data=40588 ZI-data=11036  
 FromELF: creating hex file...
 "LCD_test_3\LCD_test_3.axf" - 0 Error(s), 19 Warning(s).
 
@@ -93,7 +93,7 @@ Package Vendor: Keil
 
    * Component: ARM::CMSIS:CORE@6.1.0
       Include file:  CMSIS/Core/Include/tz_context.h
-Build Time Elapsed:  00:00:02
+Build Time Elapsed:  00:00:01
 </pre>
 </body>
 </html>

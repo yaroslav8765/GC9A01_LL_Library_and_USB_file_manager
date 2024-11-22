@@ -119,7 +119,7 @@ FRESULT Scan_USB (char* pat, struct MenuMember *member, uint8_t page)
             fresult = f_readdir(&dir, &USBHfno); 
             if (fresult != FR_OK || USBHfno.fname[0] == 0) break; 
             
-            if (file_num >= page * 8 && file_num < (page + 1) * 8)
+            if (file_num >= page * AMOUNT_OF_MENU_MEMBERS && file_num < (page + 1) * AMOUNT_OF_MENU_MEMBERS)
             {
                 if (USBHfno.fattrib & AM_DIR) 
                 {
@@ -132,15 +132,15 @@ FRESULT Scan_USB (char* pat, struct MenuMember *member, uint8_t page)
                 }
                 
            
-                strcpy(member[file_num - (page * 8)].text, buf);
-                member[file_num - (page * 8)].number = file_num + 1;
+                strcpy(member[file_num - (page * AMOUNT_OF_MENU_MEMBERS)].text, buf);
+                member[file_num - (page * AMOUNT_OF_MENU_MEMBERS)].number = file_num + 1;
             }
             file_num++;
         }
         f_closedir(&dir);
     }
 
-    for (uint8_t i = file_num - (page * 8); i < 8; i++)
+    for (uint8_t i = file_num - (page * AMOUNT_OF_MENU_MEMBERS); i < AMOUNT_OF_MENU_MEMBERS; i++)
     {
         strcpy(member[i].text, "empty");
         member[i].number = 0;

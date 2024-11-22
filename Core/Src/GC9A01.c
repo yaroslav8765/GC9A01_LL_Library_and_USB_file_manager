@@ -715,8 +715,8 @@ void ShowMenu(struct MenuMember Members[8],uint8_t page_num){
 	GC9A01_SetFont(default_font);
 	
 	sprintf(page, "%d", 	page_num);	
-	GC9A01_String(70,20,"Page");
-	GC9A01_String(70+5*lcdprop.pFont->Width,20, page);	
+	GC9A01_String((LCD_W/2)-(3*lcdprop.pFont->Width),20,"Page");
+	GC9A01_String((LCD_W/2)+(lcdprop.pFont->Width),20, page);	
 	
 	for(int i = 0; i<AMOUNT_OF_MENU_MEMBERS;i++){
 		if(Members[i].state == active){ 
