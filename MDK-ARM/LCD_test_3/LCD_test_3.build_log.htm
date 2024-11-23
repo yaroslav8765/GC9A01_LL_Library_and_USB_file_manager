@@ -27,7 +27,7 @@ Project File Date:  11/09/2024
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 3 (build 300)', folder: 'C:\Keil_v5\ARM\ARMCC\Bin'
 Build target 'LCD_test_3'
-compiling main.c...
+compiling File_Handling.c...
 ../Core/Inc/main.h(74): warning:  #1295-D: Deprecated declaration LEFT_button_handrel - give arg types
   void LEFT_button_handrel();
 ../Core/Inc/main.h(75): warning:  #1295-D: Deprecated declaration RIGHT_button_handrel - give arg types
@@ -62,11 +62,11 @@ compiling main.c...
   void view_image_RIGHT_button_handler();
 ../Core/Inc/main.h(94): warning:  #1295-D: Deprecated declaration check_for_USB_storage_connection - give arg types
   void check_for_USB_storage_connection();
-../Core/Src/main.c(700): warning:  #186-D: pointless comparison of unsigned integer with zero
-          for (uint16_t i = len - 1; i >= 0; i--) {
-../Core/Src/main.c: 18 warnings, 0 errors
+../Core/Inc/cg9a01.h(74): warning:  #47-D: incompatible redefinition of macro "RAINBOW_YELLOW" (declared at line 104 of "../Core/Inc/GC9A01.h")
+  #define RAINBOW_YELLOW   0xFFE0
+..\Core\Src\File_Handling.c: 18 warnings, 0 errors
 linking...
-Program Size: Code=41710 RO-data=8634 RW-data=40588 ZI-data=11516  
+Program Size: Code=41810 RO-data=8634 RW-data=40588 ZI-data=11516  
 FromELF: creating hex file...
 "LCD_test_3\LCD_test_3.axf" - 0 Error(s), 18 Warning(s).
 
@@ -91,7 +91,7 @@ Package Vendor: Keil
 
    * Component: ARM::CMSIS:CORE@6.1.0
       Include file:  CMSIS/Core/Include/tz_context.h
-Build Time Elapsed:  00:00:02
+Build Time Elapsed:  00:00:01
 </pre>
 </body>
 </html>

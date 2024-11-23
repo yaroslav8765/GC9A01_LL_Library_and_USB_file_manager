@@ -200,6 +200,29 @@ FRESULT Read_File(char *name, uint8_t page, char *buffer, uint16_t lenght) {
 }
 
 
+typedef struct __attribute__((packed)) {
+    uint16_t bfType;
+    uint32_t bfSize;
+    uint16_t bfReserved1;
+    uint16_t bfReserved2;
+    uint32_t bfOffBits;
+} BITMAPFILEHEADER;
+
+typedef struct __attribute__((packed)) {
+    uint32_t biSize;
+    int32_t  biWidth;
+    int32_t  biHeight;
+    uint16_t biPlanes;
+    uint16_t biBitCount;
+    uint32_t biCompression;
+    uint32_t biSizeImage;
+    int32_t  biXPelsPerMeter;
+    int32_t  biYPelsPerMeter;
+    uint32_t biClrUsed;
+    uint32_t biClrImportant;
+} BITMAPINFOHEADER;
+
+
 FRESULT Read_File_and_print_BMP(char *name) {
     uint32_t file_size;
 
@@ -222,25 +245,38 @@ FRESULT Read_File_and_print_BMP(char *name) {
     }
 
     file_size = f_size(&USBHFile);
-
-    unsigned short buffer2[240];
+		BITMAPFILEHEADER fileHeader;
+    BITMAPINFOHEADER infoHeader;
 		
-		for (uint16_t column = 0; column < 240; column++) {
-				if (240 * column >= file_size) break;
+		fresult = f_read(&USBHFile, &fileHeader, sizeof(BITMAPFILEHEADER), &br);
+    if (fresult != FR_OK) {
+        f_close(&USBHFile);
+        return fresult;
+    }
+		fresult = f_read(&USBHFile, &infoHeader, sizeof(BITMAPINFOHEADER), &br);
+    if (fresult != FR_OK ) {
+        f_close(&USBHFile);
+        return fresult;
+    }
 
-				fresult = f_lseek(&USBHFile,64 + 480 * column);
+    unsigned short buffer2[infoHeader.biWidth];
+		
+		for (uint16_t column = 0; column < infoHeader.biHeight; column++) {
+				if (infoHeader.biWidth * column >= file_size) break;
+
+				fresult = f_lseek(&USBHFile,64 + (infoHeader.biWidth*2) * column);
 				if (fresult != FR_OK) {
 						GC9A01_Text("Seek error!\n", 1);
 						break;
 				}
 
-				fresult = f_read(&USBHFile, buffer2, 480, &br);
+				fresult = f_read(&USBHFile, buffer2, infoHeader.biWidth*2, &br);
 				if (fresult != FR_OK) {
 						GC9A01_Text("Read error!\n", 1);
 						break;
 				}
 
-				GC9A01_show_picture(buffer2, 0, column, 240, 1, 240, 1);
+				GC9A01_show_picture(buffer2, 0, column, infoHeader.biWidth, 1, infoHeader.biWidth, 1);
 		}
 		//free(buffer2);
 		f_close(&USBHFile);
@@ -248,7 +284,6 @@ FRESULT Read_File_and_print_BMP(char *name) {
 
     return fresult;
 }
-
 
 uint8_t get_depth_of_dir(char *path){
 	uint8_t result = 0;
