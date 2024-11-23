@@ -1,10 +1,36 @@
 #include "main.h"
-#define LCD_W 240
-#define LCD_H 240
+#include "stm32f4xx_ll_spi.h"
+/***************************************CONFIG PINS, SPI and DMA*************************************************/
 
-#define GC9A01_TFTWIDTH 240
-#define GC9A01_TFTHEIGHT 240
 
+#define LCD_RST_1 LL_GPIO_SetOutputPin	(	RES_GPIO_Port,RES_Pin	)			// LCD_RST = 1 , LCD RESET pin
+#define LCD_RST_0 LL_GPIO_ResetOutputPin(	RES_GPIO_Port,RES_Pin	)			// LCD_RST = 0 , LCD RESET pin
+
+#define LCD_CS_1 LL_GPIO_SetOutputPin		(	CS_GPIO_Port,CS_Pin		)			// LCD_CS = 1, LCD select pin
+#define LCD_CS_0 LL_GPIO_ResetOutputPin	(	CS_GPIO_Port,CS_Pin		)			// LCD_CS = 0, LCD select pin
+
+#define LCD_DC_1 LL_GPIO_SetOutputPin		(	DC_GPIO_Port,DC_Pin		)			// LCD_DC = 1, LCD Data/Command pin
+#define LCD_DC_0 LL_GPIO_ResetOutputPin	(	DC_GPIO_Port,DC_Pin		)			// LCD_DC = 0,LCD Data/Command pin
+
+#define SPI_NO SPI1																										//Which SPI do you use
+#define DMA_NO DMA2																										//Which DMA do you use
+#define DMA_STREAM LL_DMA_STREAM_3																		//Which DMA stream do you use
+
+
+/****************************************************************************************************************/
+
+
+
+
+
+#define swap(a,b) {int16_t t=a;a=b;b=t;}
+
+#define LCD_W 240								//With of LCD
+#define LCD_H 240								//Height of LCD
+#define USE_HORIZONTAL 1  //Set the display direction 0,1,2,3	four directions
+
+
+/*******************************************INIT DISPLAY DATA****************************************************/
 #define GC9A01_RST_DELAY 120    ///< delay ms wait for reset finish
 #define GC9A01_SLPIN_DELAY 120  ///< delay ms wait for sleep in finish
 #define GC9A01_SLPOUT_DELAY 120 ///< delay ms wait for sleep out finish
@@ -43,7 +69,12 @@
 #define GC9A01_RDID2 0xDB
 #define GC9A01_RDID3 0xDC
 #define GC9A01_RDID4 0xDD
+/*******************************************INIT DISPLAY DATA END*************************************************/
 
+
+
+
+/***************************************************COLORS********************************************************/
 #define WHITE            0xFFFF
 #define BLACK            0x0000
 #define BLUE             0x001F
@@ -65,7 +96,6 @@
 #define LGRAY            0xC618
 #define LGRAYBLUE        0xA651
 #define LBBLUE           0x2B12
-
 // Colors of the rainbow
 #define VIOLET           0x8010
 #define INDIGO           0x4810
@@ -74,7 +104,6 @@
 #define RAINBOW_YELLOW   0xFEC0
 #define RAINBOW_ORANGE   0xFD20
 #define RAINBOW_RED      0xF800
-
 // Additional colors
 #define ORANGE           0xFD20
 #define PINK             0xF97F
@@ -89,7 +118,6 @@
 #define CORAL            0xFBEA
 #define AQUA             0x07FF
 
-#define USE_HORIZONTAL 1  //Set the display direction 0,1,2,3	four directions
 /********************TEXT STYLE**********************/
 #define default_text_color BLACK
 #define default_background_color WHITE
@@ -108,13 +136,14 @@
 #define OUT_TEXT_LEFT_INDENTATION 35
 #define OUT_TEXT_RIGHT_INDENTATION 35
 /****************************************************/
+
+
+
 typedef enum
 {
 	active,
 	unactive
 }states;
-
-
 
 struct MenuMember {
     char text[50];
@@ -140,6 +169,7 @@ typedef struct
 	uint16_t BackColor;
 	sFONT *pFont;
 }GC9A01_DrawPropTypeDef;
+
 void SPI_write(uint8_t data);
 void GC9A01_Write_Cmd_Data (uint8_t CMDP);
 void GC9A01_Write_Cmd(uint8_t CMD);
@@ -168,3 +198,4 @@ void refresh_menu_member(struct MenuMember Members, uint8_t pos);
 uint8_t get_active_menu_member(struct MenuMember Members[8]);
 uint8_t chek_menu_member_for_the_file_type(struct MenuMember Member, char *str);
 void menu_active_member_running_text_animation(struct MenuMember Members[8], uint8_t pos);
+

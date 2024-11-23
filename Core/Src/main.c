@@ -190,27 +190,27 @@ int main(void)
   while (1)
   {
 		
-		check_for_USB_storage_connection();
-		if(LL_GPIO_IsInputPinSet(LEFT_GPIO_Port,LEFT_Pin) == 1){
-			LEFT_button_handrel();
-		}
-		if(LL_GPIO_IsInputPinSet(RIGHT_GPIO_Port,RIGHT_Pin) == 1){
-		  RIGHT_button_handrel();
-		}
-		if(LL_GPIO_IsInputPinSet(UP_GPIO_Port,UP_Pin) == 1){
-			UP_button_handrel();
-			shift = 0;
-		}
-		if(LL_GPIO_IsInputPinSet(DOWN_GPIO_Port,DOWN_Pin) == 1){
-			DOWN_button_handrel();
-			shift = 0;
-		}
-		if(enable_menu_member_animation == 1){
-			menu_active_member_running_text_animation(&Members[get_active_menu_member(Members)],get_active_menu_member(Members));
-			delay_ms(5);
-		}
+//		check_for_USB_storage_connection();
+//		if(LL_GPIO_IsInputPinSet(LEFT_GPIO_Port,LEFT_Pin) == 1){
+//			LEFT_button_handrel();
+//		}
+//		if(LL_GPIO_IsInputPinSet(RIGHT_GPIO_Port,RIGHT_Pin) == 1){
+//		  RIGHT_button_handrel();
+//		}
+//		if(LL_GPIO_IsInputPinSet(UP_GPIO_Port,UP_Pin) == 1){
+//			UP_button_handrel();
+//			shift = 0;
+//		}
+//		if(LL_GPIO_IsInputPinSet(DOWN_GPIO_Port,DOWN_Pin) == 1){
+//			DOWN_button_handrel();
+//			shift = 0;
+//		}
+//		if(enable_menu_member_animation == 1){
+//			menu_active_member_running_text_animation(&Members[get_active_menu_member(Members)],get_active_menu_member(Members));
+//			delay_ms(5);
+//		}
 		
-//		display_test_animation();
+		display_test_animation();
     /* USER CODE END WHILE */
 
 

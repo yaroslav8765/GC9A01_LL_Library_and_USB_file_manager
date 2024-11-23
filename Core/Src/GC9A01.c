@@ -1,17 +1,4 @@
 #include "main.h"
-#include "stm32f4xx_ll_spi.h"
-
-#define swap(a,b) {int16_t t=a;a=b;b=t;}
-
-#define LCD_RST_1 LL_GPIO_SetOutputPin	(	RES_GPIO_Port,RES_Pin	)			// LCD_RST = 1 , LCD RESET pin
-#define LCD_RST_0 LL_GPIO_ResetOutputPin(	RES_GPIO_Port,RES_Pin	)			// LCD_RST = 0 , LCD RESET pin
-
-#define LCD_CS_1 LL_GPIO_SetOutputPin		(	CS_GPIO_Port,CS_Pin		)			// LCD_CS = 1, LCD select pin
-#define LCD_CS_0 LL_GPIO_ResetOutputPin	(	CS_GPIO_Port,CS_Pin		)			// LCD_CS = 0, LCD select pin
-
-#define LCD_DC_1 LL_GPIO_SetOutputPin		(	DC_GPIO_Port,DC_Pin		)			// LCD_DC = 1, LCD Data/Command pin
-#define LCD_DC_0 LL_GPIO_ResetOutputPin	(	DC_GPIO_Port,DC_Pin		)			// LCD_DC = 0,LCD Data/Command pin
-
 
 GC9A01_DrawPropTypeDef lcdprop;
 extern volatile uint8_t dma_spi_fl1;
@@ -19,33 +6,33 @@ uint8_t screen_buf[65536] = {0};
 uint8_t shift = 0;
 colors current_text_color;
 
-//===============================================================
+/************************************basic display fuctions start************************************/
 
 void SPI_write(uint8_t data) {
-	while(!LL_SPI_IsActiveFlag_TXE(SPI1)) {}
-  LL_SPI_TransmitData8 (SPI1, data);
-  while(!LL_SPI_IsActiveFlag_RXNE(SPI1)) {}
-  LL_SPI_ReceiveData8(SPI1);
+	while(!LL_SPI_IsActiveFlag_TXE(SPI_NO)) {}
+  LL_SPI_TransmitData8 (SPI_NO, data);
+  while(!LL_SPI_IsActiveFlag_RXNE(SPI_NO)) {}
+  LL_SPI_ReceiveData8(SPI_NO);
 }
 
 void GC9A01_Write_Cmd_Data (uint8_t CMDP)
 {
-    LCD_CS_0;
-   	LCD_DC_1;
+	LCD_CS_0;
+	LCD_DC_1;
 	
-		SPI_write(CMDP);
+	SPI_write(CMDP);
 
-   	LCD_CS_1;
+	LCD_CS_1;
 }
 
 void GC9A01_Write_Cmd(uint8_t CMD)
 {
-    LCD_CS_0;
-   	LCD_DC_0;
+	LCD_CS_0;
+	LCD_DC_0;
 
-   	SPI_write(CMD);
+	SPI_write(CMD);
 
-   	LCD_CS_1;
+	LCD_CS_1;
 }
 
 void GC9A01_Write_Data_U16(uint16_t y)
@@ -59,38 +46,38 @@ void GC9A01_Write_Data_U16(uint16_t y)
 
 void GC9A01_Write_Data(uint8_t DH,uint8_t DL)
 {
-    LCD_CS_0;
-   	LCD_DC_1;
+  LCD_CS_0;
+  LCD_DC_1;
 
-   	SPI_write(DH);
-   	SPI_write(DL);
+  SPI_write(DH);
+  SPI_write(DL);
 
-   	LCD_CS_1;
+	LCD_CS_1;
 }
 
 
 void GC9A01_Write_Bytes(uint8_t * pbuff, uint16_t size)
 {
-    LCD_CS_0;
-   	LCD_DC_1;
-		dma_spi_fl1=0;
-		LL_DMA_DisableStream(DMA2, LL_DMA_STREAM_3);
-		LL_DMA_SetDataLength(DMA2, LL_DMA_STREAM_3, size);
-		LL_DMA_EnableIT_TC(DMA2, LL_DMA_STREAM_3);
-		LL_DMA_ClearFlag_TC3(DMA2);
-		LL_DMA_ClearFlag_TE3(DMA2);
-		LL_DMA_ConfigAddresses(	DMA2, LL_DMA_STREAM_3, 																	\
-														(uint32_t)pbuff, 																				\
-														LL_SPI_DMA_GetRegAddr(SPI1),														\
-														LL_DMA_GetDataTransferDirection(DMA2, LL_DMA_STREAM_3)	\
-													);	
-		LL_DMA_EnableStream(DMA2, LL_DMA_STREAM_3);
-		while (!dma_spi_fl1) {};
-		LL_DMA_DisableStream(DMA2, LL_DMA_STREAM_3);
+  LCD_CS_0;
+ 	LCD_DC_1;
+	dma_spi_fl1=0;
+	LL_DMA_DisableStream(DMA_NO, DMA_STREAM);
+	LL_DMA_SetDataLength(DMA_NO, DMA_STREAM, size);
+	LL_DMA_EnableIT_TC(DMA_NO, DMA_STREAM);
+	LL_DMA_ClearFlag_TC3(DMA_NO);
+	LL_DMA_ClearFlag_TE3(DMA_NO);
+	LL_DMA_ConfigAddresses(	DMA_NO, DMA_STREAM, 																	\
+													(uint32_t)pbuff, 																				\
+													LL_SPI_DMA_GetRegAddr(SPI_NO),														\
+													LL_DMA_GetDataTransferDirection(DMA_NO, DMA_STREAM)	\
+												);	
+	LL_DMA_EnableStream(DMA2, DMA_STREAM);
+	while (!dma_spi_fl1) {};
+	LL_DMA_DisableStream(DMA2, DMA_STREAM);
 			
-		dma_spi_fl1 = 0;
+	dma_spi_fl1 = 0;
 
-   	LCD_CS_1;
+	LCD_CS_1;
 }
 
 void GC9A01_Initial(void)
@@ -338,65 +325,71 @@ void GC9A01_Initial(void)
 	GC9A01_Write_Cmd(0x29);
 }
 
+void GC9A01_SetPos(uint8_t Xstart, uint8_t Ystart, uint8_t Xend, uint8_t Yend)
+{
+	GC9A01_Write_Cmd(0x2A);  
+	GC9A01_Write_Cmd_Data((Xstart >> 8) & 0xFF);
+	GC9A01_Write_Cmd_Data(Xstart & 0xFF);
+  GC9A01_Write_Cmd_Data((Xend >> 8) & 0xFF);
+  GC9A01_Write_Cmd_Data(Xend & 0xFF);
+
+  GC9A01_Write_Cmd(0x2B);  
+  GC9A01_Write_Cmd_Data((Ystart >> 8) & 0xFF);
+  GC9A01_Write_Cmd_Data(Ystart & 0xFF);
+  GC9A01_Write_Cmd_Data((Yend >> 8) & 0xFF);
+  GC9A01_Write_Cmd_Data(Yend & 0xFF);
+
+  GC9A01_Write_Cmd(0x2C);
+}
+
+/*****************************basic display functions end****************************************/
+
+
+
+
+
+
 void GC9A01_ClearScreen(uint16_t bColor)
 {
-	GC9A01_ClearWindow(0,0,GC9A01_TFTWIDTH,GC9A01_TFTHEIGHT,bColor);
+	GC9A01_ClearWindow(0,0,LCD_W,LCD_H,bColor);
 }
 
 
 void GC9A01_ClearWindow(uint8_t startX, uint8_t startY, uint8_t endX, uint8_t endY, uint16_t bColor)
 {
-	unsigned int i;
+    uint32_t i;
 
-	unsigned char hb = (bColor&0xFFFF) >> 8;
-	unsigned char lb = bColor & 0xFF;
-	unsigned short tempColor = lb * 256 + hb;
+    uint8_t hb = (bColor & 0xFFFF) >> 8;
+    uint8_t lb = bColor & 0xFF;
+    uint16_t tempColor = lb * 256 + hb;
 
-	unsigned int totalSize = (endX-startX) * (endY - startY) * 2;
-	unsigned int bufSize = 256;
-	unsigned int loopNum = (totalSize - (totalSize % bufSize)) / bufSize;
-	unsigned int modNum = totalSize % bufSize; 
+    uint32_t totalSize = (endX - startX) * (endY - startY) * 2;
+    uint32_t bufSize = 256;
+    uint32_t loopNum = (totalSize - (totalSize % bufSize)) / bufSize;
+    uint32_t modNum = totalSize % bufSize;
 
+    uint16_t tempBuf[bufSize];
+    uint8_t *ptempBuf;
 
-	unsigned short tempBuf[bufSize];
-	unsigned char * ptempBuf;
+    for (i = 0; i < bufSize; i++) {
+        tempBuf[i] = tempColor;
+    }
 
- for(i=0; i<bufSize; i++){
-	 tempBuf[i] = tempColor;
- }
+    GC9A01_SetPos(startX, startY, endX - 1, endY - 1);
 
- GC9A01_SetPos(startX,startY,endX-1,endY-1);
+    ptempBuf = (uint8_t *)tempBuf;
+    for (i = 0; i < loopNum; i++) {
+        GC9A01_Write_Bytes(ptempBuf, bufSize);
+    }
 
- ptempBuf = (unsigned char *)tempBuf;
- for(i=0; i<loopNum; i++){
-	 GC9A01_Write_Bytes(ptempBuf, bufSize);
- }
-
- if (modNum > 0) {
-   GC9A01_Write_Bytes(ptempBuf, modNum);
-	}
-
+    if (modNum > 0) {
+        GC9A01_Write_Bytes(ptempBuf, modNum);
+    }
 }
 
-void GC9A01_SetPos(uint8_t Xstart, uint8_t Ystart, uint8_t Xend, uint8_t Yend)
-{
-    GC9A01_Write_Cmd(0x2A);  
-    GC9A01_Write_Cmd_Data((Xstart >> 8) & 0xFF);
-    GC9A01_Write_Cmd_Data(Xstart & 0xFF);
-    GC9A01_Write_Cmd_Data((Xend >> 8) & 0xFF);
-    GC9A01_Write_Cmd_Data(Xend & 0xFF);
-
-    GC9A01_Write_Cmd(0x2B);  
-    GC9A01_Write_Cmd_Data((Ystart >> 8) & 0xFF);
-    GC9A01_Write_Cmd_Data(Ystart & 0xFF);
-    GC9A01_Write_Cmd_Data((Yend >> 8) & 0xFF);
-    GC9A01_Write_Cmd_Data(Yend & 0xFF);
-
-    GC9A01_Write_Cmd(0x2C);
-}
 
  void GC9A01_inversPicData(uint16_t *picture, uint8_t x, uint8_t y){
- 	int i;
+ 	uint16_t i;
  	uint8_t hb, lb;
 
  	for(i=0; i<y*x; i++){
@@ -406,56 +399,57 @@ void GC9A01_SetPos(uint8_t Xstart, uint8_t Ystart, uint8_t Xend, uint8_t Yend)
  	}
  }
  
-void GC9A01_show_picture(uint16_t *picture, uint16_t x,uint16_t y,uint16_t b,uint16_t h, uint8_t widht, uint8_t height)
- {
-	 int i;
-	 unsigned char * pPic;
-	 unsigned int totalSize = widht*height*2;
-	 unsigned int bufSize = 512;
+void GC9A01_show_picture(uint16_t *picture, uint16_t x, uint16_t y, uint16_t b, uint16_t h, uint8_t width, uint8_t height)
+{
+    int32_t i;
+    uint8_t *pPic;
+    uint32_t totalSize = width * height * 2;
+    uint32_t bufSize = 512;
 
- 	 unsigned int loopNum = (totalSize - (totalSize % bufSize)) / bufSize;
- 	 unsigned int modNum = totalSize % bufSize;
+    uint32_t loopNum = (totalSize - (totalSize % bufSize)) / bufSize;
+    uint32_t modNum = totalSize % bufSize;
 
+    GC9A01_SetPos(x, y, (x + b) - 1, (y + h) - 1);
+    GC9A01_inversPicData(picture, b, h);
 
-    GC9A01_SetPos(x,y,(x+b)-1,(y+h)-1);
-    GC9A01_inversPicData(picture,b,h);
+    pPic = (uint8_t *)picture;
 
-    pPic = (unsigned char *)picture;
-
-    for(i=0; i<loopNum; i++){
-    	GC9A01_Write_Bytes(pPic+i*bufSize, bufSize);
+    for (i = 0; i < loopNum; i++) {
+        GC9A01_Write_Bytes(pPic + i * bufSize, bufSize);
     }
-    GC9A01_Write_Bytes(pPic+i*bufSize, modNum);
-    GC9A01_inversPicData(picture,b,h);
+    GC9A01_Write_Bytes(pPic + i * bufSize, modNum);
+    GC9A01_inversPicData(picture, b, h);
 
     return;
- }
+}
+
  
 void GC9A01_DrawPixel_2x2(uint8_t x, uint8_t y, uint16_t color)
 {
-    unsigned int i;
-    unsigned char hb = (color & 0xFFFF) >> 8;
-    unsigned char lb = color & 0xFF;
-    unsigned short tempColor = lb * 256 + hb;
-	
-    unsigned int bufSize = 4;  
+    uint16_t i;
+    uint8_t hb = (color & 0xFFFF) >> 8;
+    uint8_t lb = color & 0xFF;
+    uint16_t tempColor = lb * 256 + hb;
 
-    unsigned short tempBuf[bufSize];
-    unsigned char *ptempBuf;
+    uint32_t bufSize = 4;
+
+    uint16_t tempBuf[bufSize];
+    uint8_t *ptempBuf;
 
     for (i = 0; i < bufSize; i++) {
         tempBuf[i] = tempColor;
     }
 
-		GC9A01_SetPos(x, y, x + 1, y + 1);
+    GC9A01_SetPos(x, y, x + 1, y + 1);
 
-    ptempBuf = (unsigned char *)tempBuf;
+    ptempBuf = (uint8_t *)tempBuf;
     GC9A01_Write_Bytes(ptempBuf, 8);
 }
 
+
 void GC9A01_draw_line(uint16_t color, uint16_t x1, uint16_t y1,uint16_t x2, uint16_t y2)
 {
-  int steep = abs(y2-y1)>abs(x2-x1);
+  int16_t steep = abs(y2-y1)>abs(x2-x1);
   if(steep)
   {
     swap(x1,y1);
@@ -466,11 +460,11 @@ void GC9A01_draw_line(uint16_t color, uint16_t x1, uint16_t y1,uint16_t x2, uint
     swap(x1,x2);
     swap(y1,y2);
   }
-  int dx,dy;
+  int16_t dx,dy;
   dx=x2-x1;
   dy=abs(y2-y1);
-  int err=dx/2;
-  int ystep;
+  int16_t err=dx/2;
+  int16_t ystep;
   if(y1<y2) ystep=1;
   else ystep=-1;
   for(;x1<=x2;x1++)
@@ -496,11 +490,11 @@ void GC9A01_DrawRect(uint16_t color, uint16_t x1, uint16_t y1, uint16_t x2, uint
 
 void GC9A01_DrawCircle(uint16_t x0, uint16_t y0, uint8_t r, uint16_t color)
 {
-	int f = 1-r;
-	int ddF_x=1;
-	int ddF_y=-2*r;
-	int x = 0;
-	int y = r;
+	int16_t f = 1-r;
+	int16_t ddF_x=1;
+	int16_t ddF_y=-2*r;
+	int16_t x = 0;
+	int16_t y = r;
 	GC9A01_DrawPixel_2x2(x0,y0+r,color);
 	GC9A01_DrawPixel_2x2(x0,y0-r,color);
 	GC9A01_DrawPixel_2x2(x0+r,y0,color);
@@ -526,9 +520,10 @@ void GC9A01_DrawCircle(uint16_t x0, uint16_t y0, uint8_t r, uint16_t color)
 		GC9A01_DrawPixel_2x2(x0-y,y0-x,color);
 	}
 }
+
 void GC9A01_FilledDrawCircle(uint16_t x0, uint16_t y0, uint8_t r, uint16_t color)
 {
-	for(int i = r; i>0; i = i-2){
+	for(uint8_t i = r; i>0; i = i-2){
 		GC9A01_DrawCircle(x0, y0, i, color);
 	}
 }

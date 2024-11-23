@@ -27,9 +27,7 @@ Project File Date:  11/09/2024
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 3 (build 300)', folder: 'C:\Keil_v5\ARM\ARMCC\Bin'
 Build target 'LCD_test_3'
-compiling GC9A01.c...
-../Core/Inc/GC9A01.h(170): warning:  #1-D: last line of file ends without a newline
-  void menu_active_member_running_text_animation(struct MenuMember Members[8], uint8_t pos);
+compiling File_Handling.c...
 ../Core/Inc/main.h(74): warning:  #1295-D: Deprecated declaration LEFT_button_handrel - give arg types
   void LEFT_button_handrel();
 ../Core/Inc/main.h(75): warning:  #1295-D: Deprecated declaration RIGHT_button_handrel - give arg types
@@ -64,12 +62,48 @@ compiling GC9A01.c...
   void view_image_RIGHT_button_handler();
 ../Core/Inc/main.h(94): warning:  #1295-D: Deprecated declaration check_for_USB_storage_connection - give arg types
   void check_for_USB_storage_connection();
-..\Core\Src\GC9A01.c(790): warning:  #940-D: missing return statement at end of non-void function "get_active_menu_member"
+../Core/Inc/cg9a01.h(74): warning:  #47-D: incompatible redefinition of macro "RAINBOW_YELLOW" (declared at line 104 of "../Core/Inc/GC9A01.h")
+  #define RAINBOW_YELLOW   0xFFE0
+..\Core\Src\File_Handling.c: 18 warnings, 0 errors
+compiling GC9A01.c...
+../Core/Inc/main.h(74): warning:  #1295-D: Deprecated declaration LEFT_button_handrel - give arg types
+  void LEFT_button_handrel();
+../Core/Inc/main.h(75): warning:  #1295-D: Deprecated declaration RIGHT_button_handrel - give arg types
+  void RIGHT_button_handrel();
+../Core/Inc/main.h(76): warning:  #1295-D: Deprecated declaration UP_button_handrel - give arg types
+  void UP_button_handrel();
+../Core/Inc/main.h(77): warning:  #1295-D: Deprecated declaration DOWN_button_handrel - give arg types
+  void DOWN_button_handrel();
+../Core/Inc/main.h(79): warning:  #1295-D: Deprecated declaration view_menu_DOWN_button_handler - give arg types
+  void view_menu_DOWN_button_handler();
+../Core/Inc/main.h(80): warning:  #1295-D: Deprecated declaration view_menu_UP_button_handler - give arg types
+  void view_menu_UP_button_handler();
+../Core/Inc/main.h(81): warning:  #1295-D: Deprecated declaration view_menu_LEFT_button_handler - give arg types
+  void view_menu_LEFT_button_handler();
+../Core/Inc/main.h(82): warning:  #1295-D: Deprecated declaration view_menu_RIGHT_button_handler - give arg types
+  void view_menu_RIGHT_button_handler();
+../Core/Inc/main.h(84): warning:  #1295-D: Deprecated declaration view_txt_DOWN_button_handler - give arg types
+  void view_txt_DOWN_button_handler();
+../Core/Inc/main.h(85): warning:  #1295-D: Deprecated declaration view_txt_UP_button_handler - give arg types
+  void view_txt_UP_button_handler();
+../Core/Inc/main.h(86): warning:  #1295-D: Deprecated declaration view_txt_LEFT_button_handler - give arg types
+  void view_txt_LEFT_button_handler();
+../Core/Inc/main.h(87): warning:  #1295-D: Deprecated declaration view_txt_RIGHT_button_handler - give arg types
+  void view_txt_RIGHT_button_handler();
+../Core/Inc/main.h(89): warning:  #1295-D: Deprecated declaration view_image_DOWN_button_handler - give arg types
+  void view_image_DOWN_button_handler();
+../Core/Inc/main.h(90): warning:  #1295-D: Deprecated declaration view_image_UP_button_handler - give arg types
+  void view_image_UP_button_handler();
+../Core/Inc/main.h(91): warning:  #1295-D: Deprecated declaration view_image_LEFT_button_handler - give arg types
+  void view_image_LEFT_button_handler();
+../Core/Inc/main.h(92): warning:  #1295-D: Deprecated declaration view_image_RIGHT_button_handler - give arg types
+  void view_image_RIGHT_button_handler();
+../Core/Inc/main.h(94): warning:  #1295-D: Deprecated declaration check_for_USB_storage_connection - give arg types
+  void check_for_USB_storage_connection();
+..\Core\Src\GC9A01.c(785): warning:  #940-D: missing return statement at end of non-void function "get_active_menu_member"
   }
-..\Core\Src\GC9A01.c: 19 warnings, 0 errors
+..\Core\Src\GC9A01.c: 18 warnings, 0 errors
 compiling main.c...
-../Core/Inc/GC9A01.h(170): warning:  #1-D: last line of file ends without a newline
-  void menu_active_member_running_text_animation(struct MenuMember Members[8], uint8_t pos);
 ../Core/Inc/main.h(74): warning:  #1295-D: Deprecated declaration LEFT_button_handrel - give arg types
   void LEFT_button_handrel();
 ../Core/Inc/main.h(75): warning:  #1295-D: Deprecated declaration RIGHT_button_handrel - give arg types
@@ -106,11 +140,659 @@ compiling main.c...
   void check_for_USB_storage_connection();
 ../Core/Src/main.c(700): warning:  #186-D: pointless comparison of unsigned integer with zero
           for (uint16_t i = len - 1; i >= 0; i--) {
-../Core/Src/main.c: 19 warnings, 0 errors
+../Core/Src/main.c: 18 warnings, 0 errors
+compiling stm32f4xx_it.c...
+../Core/Inc/main.h(74): warning:  #1295-D: Deprecated declaration LEFT_button_handrel - give arg types
+  void LEFT_button_handrel();
+../Core/Inc/main.h(75): warning:  #1295-D: Deprecated declaration RIGHT_button_handrel - give arg types
+  void RIGHT_button_handrel();
+../Core/Inc/main.h(76): warning:  #1295-D: Deprecated declaration UP_button_handrel - give arg types
+  void UP_button_handrel();
+../Core/Inc/main.h(77): warning:  #1295-D: Deprecated declaration DOWN_button_handrel - give arg types
+  void DOWN_button_handrel();
+../Core/Inc/main.h(79): warning:  #1295-D: Deprecated declaration view_menu_DOWN_button_handler - give arg types
+  void view_menu_DOWN_button_handler();
+../Core/Inc/main.h(80): warning:  #1295-D: Deprecated declaration view_menu_UP_button_handler - give arg types
+  void view_menu_UP_button_handler();
+../Core/Inc/main.h(81): warning:  #1295-D: Deprecated declaration view_menu_LEFT_button_handler - give arg types
+  void view_menu_LEFT_button_handler();
+../Core/Inc/main.h(82): warning:  #1295-D: Deprecated declaration view_menu_RIGHT_button_handler - give arg types
+  void view_menu_RIGHT_button_handler();
+../Core/Inc/main.h(84): warning:  #1295-D: Deprecated declaration view_txt_DOWN_button_handler - give arg types
+  void view_txt_DOWN_button_handler();
+../Core/Inc/main.h(85): warning:  #1295-D: Deprecated declaration view_txt_UP_button_handler - give arg types
+  void view_txt_UP_button_handler();
+../Core/Inc/main.h(86): warning:  #1295-D: Deprecated declaration view_txt_LEFT_button_handler - give arg types
+  void view_txt_LEFT_button_handler();
+../Core/Inc/main.h(87): warning:  #1295-D: Deprecated declaration view_txt_RIGHT_button_handler - give arg types
+  void view_txt_RIGHT_button_handler();
+../Core/Inc/main.h(89): warning:  #1295-D: Deprecated declaration view_image_DOWN_button_handler - give arg types
+  void view_image_DOWN_button_handler();
+../Core/Inc/main.h(90): warning:  #1295-D: Deprecated declaration view_image_UP_button_handler - give arg types
+  void view_image_UP_button_handler();
+../Core/Inc/main.h(91): warning:  #1295-D: Deprecated declaration view_image_LEFT_button_handler - give arg types
+  void view_image_LEFT_button_handler();
+../Core/Inc/main.h(92): warning:  #1295-D: Deprecated declaration view_image_RIGHT_button_handler - give arg types
+  void view_image_RIGHT_button_handler();
+../Core/Inc/main.h(94): warning:  #1295-D: Deprecated declaration check_for_USB_storage_connection - give arg types
+  void check_for_USB_storage_connection();
+../Core/Src/stm32f4xx_it.c: 17 warnings, 0 errors
+compiling stm32f4xx_hal_msp.c...
+../Core/Inc/main.h(74): warning:  #1295-D: Deprecated declaration LEFT_button_handrel - give arg types
+  void LEFT_button_handrel();
+../Core/Inc/main.h(75): warning:  #1295-D: Deprecated declaration RIGHT_button_handrel - give arg types
+  void RIGHT_button_handrel();
+../Core/Inc/main.h(76): warning:  #1295-D: Deprecated declaration UP_button_handrel - give arg types
+  void UP_button_handrel();
+../Core/Inc/main.h(77): warning:  #1295-D: Deprecated declaration DOWN_button_handrel - give arg types
+  void DOWN_button_handrel();
+../Core/Inc/main.h(79): warning:  #1295-D: Deprecated declaration view_menu_DOWN_button_handler - give arg types
+  void view_menu_DOWN_button_handler();
+../Core/Inc/main.h(80): warning:  #1295-D: Deprecated declaration view_menu_UP_button_handler - give arg types
+  void view_menu_UP_button_handler();
+../Core/Inc/main.h(81): warning:  #1295-D: Deprecated declaration view_menu_LEFT_button_handler - give arg types
+  void view_menu_LEFT_button_handler();
+../Core/Inc/main.h(82): warning:  #1295-D: Deprecated declaration view_menu_RIGHT_button_handler - give arg types
+  void view_menu_RIGHT_button_handler();
+../Core/Inc/main.h(84): warning:  #1295-D: Deprecated declaration view_txt_DOWN_button_handler - give arg types
+  void view_txt_DOWN_button_handler();
+../Core/Inc/main.h(85): warning:  #1295-D: Deprecated declaration view_txt_UP_button_handler - give arg types
+  void view_txt_UP_button_handler();
+../Core/Inc/main.h(86): warning:  #1295-D: Deprecated declaration view_txt_LEFT_button_handler - give arg types
+  void view_txt_LEFT_button_handler();
+../Core/Inc/main.h(87): warning:  #1295-D: Deprecated declaration view_txt_RIGHT_button_handler - give arg types
+  void view_txt_RIGHT_button_handler();
+../Core/Inc/main.h(89): warning:  #1295-D: Deprecated declaration view_image_DOWN_button_handler - give arg types
+  void view_image_DOWN_button_handler();
+../Core/Inc/main.h(90): warning:  #1295-D: Deprecated declaration view_image_UP_button_handler - give arg types
+  void view_image_UP_button_handler();
+../Core/Inc/main.h(91): warning:  #1295-D: Deprecated declaration view_image_LEFT_button_handler - give arg types
+  void view_image_LEFT_button_handler();
+../Core/Inc/main.h(92): warning:  #1295-D: Deprecated declaration view_image_RIGHT_button_handler - give arg types
+  void view_image_RIGHT_button_handler();
+../Core/Inc/main.h(94): warning:  #1295-D: Deprecated declaration check_for_USB_storage_connection - give arg types
+  void check_for_USB_storage_connection();
+../Core/Src/stm32f4xx_hal_msp.c: 17 warnings, 0 errors
+compiling usbh_diskio.c...
+../Core/Inc/main.h(74): warning:  #1295-D: Deprecated declaration LEFT_button_handrel - give arg types
+  void LEFT_button_handrel();
+../Core/Inc/main.h(75): warning:  #1295-D: Deprecated declaration RIGHT_button_handrel - give arg types
+  void RIGHT_button_handrel();
+../Core/Inc/main.h(76): warning:  #1295-D: Deprecated declaration UP_button_handrel - give arg types
+  void UP_button_handrel();
+../Core/Inc/main.h(77): warning:  #1295-D: Deprecated declaration DOWN_button_handrel - give arg types
+  void DOWN_button_handrel();
+../Core/Inc/main.h(79): warning:  #1295-D: Deprecated declaration view_menu_DOWN_button_handler - give arg types
+  void view_menu_DOWN_button_handler();
+../Core/Inc/main.h(80): warning:  #1295-D: Deprecated declaration view_menu_UP_button_handler - give arg types
+  void view_menu_UP_button_handler();
+../Core/Inc/main.h(81): warning:  #1295-D: Deprecated declaration view_menu_LEFT_button_handler - give arg types
+  void view_menu_LEFT_button_handler();
+../Core/Inc/main.h(82): warning:  #1295-D: Deprecated declaration view_menu_RIGHT_button_handler - give arg types
+  void view_menu_RIGHT_button_handler();
+../Core/Inc/main.h(84): warning:  #1295-D: Deprecated declaration view_txt_DOWN_button_handler - give arg types
+  void view_txt_DOWN_button_handler();
+../Core/Inc/main.h(85): warning:  #1295-D: Deprecated declaration view_txt_UP_button_handler - give arg types
+  void view_txt_UP_button_handler();
+../Core/Inc/main.h(86): warning:  #1295-D: Deprecated declaration view_txt_LEFT_button_handler - give arg types
+  void view_txt_LEFT_button_handler();
+../Core/Inc/main.h(87): warning:  #1295-D: Deprecated declaration view_txt_RIGHT_button_handler - give arg types
+  void view_txt_RIGHT_button_handler();
+../Core/Inc/main.h(89): warning:  #1295-D: Deprecated declaration view_image_DOWN_button_handler - give arg types
+  void view_image_DOWN_button_handler();
+../Core/Inc/main.h(90): warning:  #1295-D: Deprecated declaration view_image_UP_button_handler - give arg types
+  void view_image_UP_button_handler();
+../Core/Inc/main.h(91): warning:  #1295-D: Deprecated declaration view_image_LEFT_button_handler - give arg types
+  void view_image_LEFT_button_handler();
+../Core/Inc/main.h(92): warning:  #1295-D: Deprecated declaration view_image_RIGHT_button_handler - give arg types
+  void view_image_RIGHT_button_handler();
+../Core/Inc/main.h(94): warning:  #1295-D: Deprecated declaration check_for_USB_storage_connection - give arg types
+  void check_for_USB_storage_connection();
+../FATFS/Target/usbh_diskio.c: 17 warnings, 0 errors
+compiling fatfs.c...
+../Core/Inc/main.h(74): warning:  #1295-D: Deprecated declaration LEFT_button_handrel - give arg types
+  void LEFT_button_handrel();
+../Core/Inc/main.h(75): warning:  #1295-D: Deprecated declaration RIGHT_button_handrel - give arg types
+  void RIGHT_button_handrel();
+../Core/Inc/main.h(76): warning:  #1295-D: Deprecated declaration UP_button_handrel - give arg types
+  void UP_button_handrel();
+../Core/Inc/main.h(77): warning:  #1295-D: Deprecated declaration DOWN_button_handrel - give arg types
+  void DOWN_button_handrel();
+../Core/Inc/main.h(79): warning:  #1295-D: Deprecated declaration view_menu_DOWN_button_handler - give arg types
+  void view_menu_DOWN_button_handler();
+../Core/Inc/main.h(80): warning:  #1295-D: Deprecated declaration view_menu_UP_button_handler - give arg types
+  void view_menu_UP_button_handler();
+../Core/Inc/main.h(81): warning:  #1295-D: Deprecated declaration view_menu_LEFT_button_handler - give arg types
+  void view_menu_LEFT_button_handler();
+../Core/Inc/main.h(82): warning:  #1295-D: Deprecated declaration view_menu_RIGHT_button_handler - give arg types
+  void view_menu_RIGHT_button_handler();
+../Core/Inc/main.h(84): warning:  #1295-D: Deprecated declaration view_txt_DOWN_button_handler - give arg types
+  void view_txt_DOWN_button_handler();
+../Core/Inc/main.h(85): warning:  #1295-D: Deprecated declaration view_txt_UP_button_handler - give arg types
+  void view_txt_UP_button_handler();
+../Core/Inc/main.h(86): warning:  #1295-D: Deprecated declaration view_txt_LEFT_button_handler - give arg types
+  void view_txt_LEFT_button_handler();
+../Core/Inc/main.h(87): warning:  #1295-D: Deprecated declaration view_txt_RIGHT_button_handler - give arg types
+  void view_txt_RIGHT_button_handler();
+../Core/Inc/main.h(89): warning:  #1295-D: Deprecated declaration view_image_DOWN_button_handler - give arg types
+  void view_image_DOWN_button_handler();
+../Core/Inc/main.h(90): warning:  #1295-D: Deprecated declaration view_image_UP_button_handler - give arg types
+  void view_image_UP_button_handler();
+../Core/Inc/main.h(91): warning:  #1295-D: Deprecated declaration view_image_LEFT_button_handler - give arg types
+  void view_image_LEFT_button_handler();
+../Core/Inc/main.h(92): warning:  #1295-D: Deprecated declaration view_image_RIGHT_button_handler - give arg types
+  void view_image_RIGHT_button_handler();
+../Core/Inc/main.h(94): warning:  #1295-D: Deprecated declaration check_for_USB_storage_connection - give arg types
+  void check_for_USB_storage_connection();
+../FATFS/App/fatfs.c: 17 warnings, 0 errors
+compiling usb_host.c...
+../Core/Inc/main.h(74): warning:  #1295-D: Deprecated declaration LEFT_button_handrel - give arg types
+  void LEFT_button_handrel();
+../Core/Inc/main.h(75): warning:  #1295-D: Deprecated declaration RIGHT_button_handrel - give arg types
+  void RIGHT_button_handrel();
+../Core/Inc/main.h(76): warning:  #1295-D: Deprecated declaration UP_button_handrel - give arg types
+  void UP_button_handrel();
+../Core/Inc/main.h(77): warning:  #1295-D: Deprecated declaration DOWN_button_handrel - give arg types
+  void DOWN_button_handrel();
+../Core/Inc/main.h(79): warning:  #1295-D: Deprecated declaration view_menu_DOWN_button_handler - give arg types
+  void view_menu_DOWN_button_handler();
+../Core/Inc/main.h(80): warning:  #1295-D: Deprecated declaration view_menu_UP_button_handler - give arg types
+  void view_menu_UP_button_handler();
+../Core/Inc/main.h(81): warning:  #1295-D: Deprecated declaration view_menu_LEFT_button_handler - give arg types
+  void view_menu_LEFT_button_handler();
+../Core/Inc/main.h(82): warning:  #1295-D: Deprecated declaration view_menu_RIGHT_button_handler - give arg types
+  void view_menu_RIGHT_button_handler();
+../Core/Inc/main.h(84): warning:  #1295-D: Deprecated declaration view_txt_DOWN_button_handler - give arg types
+  void view_txt_DOWN_button_handler();
+../Core/Inc/main.h(85): warning:  #1295-D: Deprecated declaration view_txt_UP_button_handler - give arg types
+  void view_txt_UP_button_handler();
+../Core/Inc/main.h(86): warning:  #1295-D: Deprecated declaration view_txt_LEFT_button_handler - give arg types
+  void view_txt_LEFT_button_handler();
+../Core/Inc/main.h(87): warning:  #1295-D: Deprecated declaration view_txt_RIGHT_button_handler - give arg types
+  void view_txt_RIGHT_button_handler();
+../Core/Inc/main.h(89): warning:  #1295-D: Deprecated declaration view_image_DOWN_button_handler - give arg types
+  void view_image_DOWN_button_handler();
+../Core/Inc/main.h(90): warning:  #1295-D: Deprecated declaration view_image_UP_button_handler - give arg types
+  void view_image_UP_button_handler();
+../Core/Inc/main.h(91): warning:  #1295-D: Deprecated declaration view_image_LEFT_button_handler - give arg types
+  void view_image_LEFT_button_handler();
+../Core/Inc/main.h(92): warning:  #1295-D: Deprecated declaration view_image_RIGHT_button_handler - give arg types
+  void view_image_RIGHT_button_handler();
+../Core/Inc/main.h(94): warning:  #1295-D: Deprecated declaration check_for_USB_storage_connection - give arg types
+  void check_for_USB_storage_connection();
+../USB_HOST/App/usb_host.c: 17 warnings, 0 errors
+compiling usbh_conf.c...
+../Core/Inc/main.h(74): warning:  #1295-D: Deprecated declaration LEFT_button_handrel - give arg types
+  void LEFT_button_handrel();
+../Core/Inc/main.h(75): warning:  #1295-D: Deprecated declaration RIGHT_button_handrel - give arg types
+  void RIGHT_button_handrel();
+../Core/Inc/main.h(76): warning:  #1295-D: Deprecated declaration UP_button_handrel - give arg types
+  void UP_button_handrel();
+../Core/Inc/main.h(77): warning:  #1295-D: Deprecated declaration DOWN_button_handrel - give arg types
+  void DOWN_button_handrel();
+../Core/Inc/main.h(79): warning:  #1295-D: Deprecated declaration view_menu_DOWN_button_handler - give arg types
+  void view_menu_DOWN_button_handler();
+../Core/Inc/main.h(80): warning:  #1295-D: Deprecated declaration view_menu_UP_button_handler - give arg types
+  void view_menu_UP_button_handler();
+../Core/Inc/main.h(81): warning:  #1295-D: Deprecated declaration view_menu_LEFT_button_handler - give arg types
+  void view_menu_LEFT_button_handler();
+../Core/Inc/main.h(82): warning:  #1295-D: Deprecated declaration view_menu_RIGHT_button_handler - give arg types
+  void view_menu_RIGHT_button_handler();
+../Core/Inc/main.h(84): warning:  #1295-D: Deprecated declaration view_txt_DOWN_button_handler - give arg types
+  void view_txt_DOWN_button_handler();
+../Core/Inc/main.h(85): warning:  #1295-D: Deprecated declaration view_txt_UP_button_handler - give arg types
+  void view_txt_UP_button_handler();
+../Core/Inc/main.h(86): warning:  #1295-D: Deprecated declaration view_txt_LEFT_button_handler - give arg types
+  void view_txt_LEFT_button_handler();
+../Core/Inc/main.h(87): warning:  #1295-D: Deprecated declaration view_txt_RIGHT_button_handler - give arg types
+  void view_txt_RIGHT_button_handler();
+../Core/Inc/main.h(89): warning:  #1295-D: Deprecated declaration view_image_DOWN_button_handler - give arg types
+  void view_image_DOWN_button_handler();
+../Core/Inc/main.h(90): warning:  #1295-D: Deprecated declaration view_image_UP_button_handler - give arg types
+  void view_image_UP_button_handler();
+../Core/Inc/main.h(91): warning:  #1295-D: Deprecated declaration view_image_LEFT_button_handler - give arg types
+  void view_image_LEFT_button_handler();
+../Core/Inc/main.h(92): warning:  #1295-D: Deprecated declaration view_image_RIGHT_button_handler - give arg types
+  void view_image_RIGHT_button_handler();
+../Core/Inc/main.h(94): warning:  #1295-D: Deprecated declaration check_for_USB_storage_connection - give arg types
+  void check_for_USB_storage_connection();
+../USB_HOST/Target/usbh_conf.c: 17 warnings, 0 errors
+compiling diskio.c...
+../Core/Inc/main.h(74): warning:  #1295-D: Deprecated declaration LEFT_button_handrel - give arg types
+  void LEFT_button_handrel();
+../Core/Inc/main.h(75): warning:  #1295-D: Deprecated declaration RIGHT_button_handrel - give arg types
+  void RIGHT_button_handrel();
+../Core/Inc/main.h(76): warning:  #1295-D: Deprecated declaration UP_button_handrel - give arg types
+  void UP_button_handrel();
+../Core/Inc/main.h(77): warning:  #1295-D: Deprecated declaration DOWN_button_handrel - give arg types
+  void DOWN_button_handrel();
+../Core/Inc/main.h(79): warning:  #1295-D: Deprecated declaration view_menu_DOWN_button_handler - give arg types
+  void view_menu_DOWN_button_handler();
+../Core/Inc/main.h(80): warning:  #1295-D: Deprecated declaration view_menu_UP_button_handler - give arg types
+  void view_menu_UP_button_handler();
+../Core/Inc/main.h(81): warning:  #1295-D: Deprecated declaration view_menu_LEFT_button_handler - give arg types
+  void view_menu_LEFT_button_handler();
+../Core/Inc/main.h(82): warning:  #1295-D: Deprecated declaration view_menu_RIGHT_button_handler - give arg types
+  void view_menu_RIGHT_button_handler();
+../Core/Inc/main.h(84): warning:  #1295-D: Deprecated declaration view_txt_DOWN_button_handler - give arg types
+  void view_txt_DOWN_button_handler();
+../Core/Inc/main.h(85): warning:  #1295-D: Deprecated declaration view_txt_UP_button_handler - give arg types
+  void view_txt_UP_button_handler();
+../Core/Inc/main.h(86): warning:  #1295-D: Deprecated declaration view_txt_LEFT_button_handler - give arg types
+  void view_txt_LEFT_button_handler();
+../Core/Inc/main.h(87): warning:  #1295-D: Deprecated declaration view_txt_RIGHT_button_handler - give arg types
+  void view_txt_RIGHT_button_handler();
+../Core/Inc/main.h(89): warning:  #1295-D: Deprecated declaration view_image_DOWN_button_handler - give arg types
+  void view_image_DOWN_button_handler();
+../Core/Inc/main.h(90): warning:  #1295-D: Deprecated declaration view_image_UP_button_handler - give arg types
+  void view_image_UP_button_handler();
+../Core/Inc/main.h(91): warning:  #1295-D: Deprecated declaration view_image_LEFT_button_handler - give arg types
+  void view_image_LEFT_button_handler();
+../Core/Inc/main.h(92): warning:  #1295-D: Deprecated declaration view_image_RIGHT_button_handler - give arg types
+  void view_image_RIGHT_button_handler();
+../Core/Inc/main.h(94): warning:  #1295-D: Deprecated declaration check_for_USB_storage_connection - give arg types
+  void check_for_USB_storage_connection();
+../Middlewares/Third_Party/FatFs/src/diskio.c: 17 warnings, 0 errors
+compiling ff_gen_drv.c...
+../Core/Inc/main.h(74): warning:  #1295-D: Deprecated declaration LEFT_button_handrel - give arg types
+  void LEFT_button_handrel();
+../Core/Inc/main.h(75): warning:  #1295-D: Deprecated declaration RIGHT_button_handrel - give arg types
+  void RIGHT_button_handrel();
+../Core/Inc/main.h(76): warning:  #1295-D: Deprecated declaration UP_button_handrel - give arg types
+  void UP_button_handrel();
+../Core/Inc/main.h(77): warning:  #1295-D: Deprecated declaration DOWN_button_handrel - give arg types
+  void DOWN_button_handrel();
+../Core/Inc/main.h(79): warning:  #1295-D: Deprecated declaration view_menu_DOWN_button_handler - give arg types
+  void view_menu_DOWN_button_handler();
+../Core/Inc/main.h(80): warning:  #1295-D: Deprecated declaration view_menu_UP_button_handler - give arg types
+  void view_menu_UP_button_handler();
+../Core/Inc/main.h(81): warning:  #1295-D: Deprecated declaration view_menu_LEFT_button_handler - give arg types
+  void view_menu_LEFT_button_handler();
+../Core/Inc/main.h(82): warning:  #1295-D: Deprecated declaration view_menu_RIGHT_button_handler - give arg types
+  void view_menu_RIGHT_button_handler();
+../Core/Inc/main.h(84): warning:  #1295-D: Deprecated declaration view_txt_DOWN_button_handler - give arg types
+  void view_txt_DOWN_button_handler();
+../Core/Inc/main.h(85): warning:  #1295-D: Deprecated declaration view_txt_UP_button_handler - give arg types
+  void view_txt_UP_button_handler();
+../Core/Inc/main.h(86): warning:  #1295-D: Deprecated declaration view_txt_LEFT_button_handler - give arg types
+  void view_txt_LEFT_button_handler();
+../Core/Inc/main.h(87): warning:  #1295-D: Deprecated declaration view_txt_RIGHT_button_handler - give arg types
+  void view_txt_RIGHT_button_handler();
+../Core/Inc/main.h(89): warning:  #1295-D: Deprecated declaration view_image_DOWN_button_handler - give arg types
+  void view_image_DOWN_button_handler();
+../Core/Inc/main.h(90): warning:  #1295-D: Deprecated declaration view_image_UP_button_handler - give arg types
+  void view_image_UP_button_handler();
+../Core/Inc/main.h(91): warning:  #1295-D: Deprecated declaration view_image_LEFT_button_handler - give arg types
+  void view_image_LEFT_button_handler();
+../Core/Inc/main.h(92): warning:  #1295-D: Deprecated declaration view_image_RIGHT_button_handler - give arg types
+  void view_image_RIGHT_button_handler();
+../Core/Inc/main.h(94): warning:  #1295-D: Deprecated declaration check_for_USB_storage_connection - give arg types
+  void check_for_USB_storage_connection();
+../Middlewares/Third_Party/FatFs/src/ff_gen_drv.c: 17 warnings, 0 errors
+compiling ff.c...
+../Core/Inc/main.h(74): warning:  #1295-D: Deprecated declaration LEFT_button_handrel - give arg types
+  void LEFT_button_handrel();
+../Core/Inc/main.h(75): warning:  #1295-D: Deprecated declaration RIGHT_button_handrel - give arg types
+  void RIGHT_button_handrel();
+../Core/Inc/main.h(76): warning:  #1295-D: Deprecated declaration UP_button_handrel - give arg types
+  void UP_button_handrel();
+../Core/Inc/main.h(77): warning:  #1295-D: Deprecated declaration DOWN_button_handrel - give arg types
+  void DOWN_button_handrel();
+../Core/Inc/main.h(79): warning:  #1295-D: Deprecated declaration view_menu_DOWN_button_handler - give arg types
+  void view_menu_DOWN_button_handler();
+../Core/Inc/main.h(80): warning:  #1295-D: Deprecated declaration view_menu_UP_button_handler - give arg types
+  void view_menu_UP_button_handler();
+../Core/Inc/main.h(81): warning:  #1295-D: Deprecated declaration view_menu_LEFT_button_handler - give arg types
+  void view_menu_LEFT_button_handler();
+../Core/Inc/main.h(82): warning:  #1295-D: Deprecated declaration view_menu_RIGHT_button_handler - give arg types
+  void view_menu_RIGHT_button_handler();
+../Core/Inc/main.h(84): warning:  #1295-D: Deprecated declaration view_txt_DOWN_button_handler - give arg types
+  void view_txt_DOWN_button_handler();
+../Core/Inc/main.h(85): warning:  #1295-D: Deprecated declaration view_txt_UP_button_handler - give arg types
+  void view_txt_UP_button_handler();
+../Core/Inc/main.h(86): warning:  #1295-D: Deprecated declaration view_txt_LEFT_button_handler - give arg types
+  void view_txt_LEFT_button_handler();
+../Core/Inc/main.h(87): warning:  #1295-D: Deprecated declaration view_txt_RIGHT_button_handler - give arg types
+  void view_txt_RIGHT_button_handler();
+../Core/Inc/main.h(89): warning:  #1295-D: Deprecated declaration view_image_DOWN_button_handler - give arg types
+  void view_image_DOWN_button_handler();
+../Core/Inc/main.h(90): warning:  #1295-D: Deprecated declaration view_image_UP_button_handler - give arg types
+  void view_image_UP_button_handler();
+../Core/Inc/main.h(91): warning:  #1295-D: Deprecated declaration view_image_LEFT_button_handler - give arg types
+  void view_image_LEFT_button_handler();
+../Core/Inc/main.h(92): warning:  #1295-D: Deprecated declaration view_image_RIGHT_button_handler - give arg types
+  void view_image_RIGHT_button_handler();
+../Core/Inc/main.h(94): warning:  #1295-D: Deprecated declaration check_for_USB_storage_connection - give arg types
+  void check_for_USB_storage_connection();
+../Middlewares/Third_Party/FatFs/src/ff.c: 17 warnings, 0 errors
+compiling syscall.c...
+../Core/Inc/main.h(74): warning:  #1295-D: Deprecated declaration LEFT_button_handrel - give arg types
+  void LEFT_button_handrel();
+../Core/Inc/main.h(75): warning:  #1295-D: Deprecated declaration RIGHT_button_handrel - give arg types
+  void RIGHT_button_handrel();
+../Core/Inc/main.h(76): warning:  #1295-D: Deprecated declaration UP_button_handrel - give arg types
+  void UP_button_handrel();
+../Core/Inc/main.h(77): warning:  #1295-D: Deprecated declaration DOWN_button_handrel - give arg types
+  void DOWN_button_handrel();
+../Core/Inc/main.h(79): warning:  #1295-D: Deprecated declaration view_menu_DOWN_button_handler - give arg types
+  void view_menu_DOWN_button_handler();
+../Core/Inc/main.h(80): warning:  #1295-D: Deprecated declaration view_menu_UP_button_handler - give arg types
+  void view_menu_UP_button_handler();
+../Core/Inc/main.h(81): warning:  #1295-D: Deprecated declaration view_menu_LEFT_button_handler - give arg types
+  void view_menu_LEFT_button_handler();
+../Core/Inc/main.h(82): warning:  #1295-D: Deprecated declaration view_menu_RIGHT_button_handler - give arg types
+  void view_menu_RIGHT_button_handler();
+../Core/Inc/main.h(84): warning:  #1295-D: Deprecated declaration view_txt_DOWN_button_handler - give arg types
+  void view_txt_DOWN_button_handler();
+../Core/Inc/main.h(85): warning:  #1295-D: Deprecated declaration view_txt_UP_button_handler - give arg types
+  void view_txt_UP_button_handler();
+../Core/Inc/main.h(86): warning:  #1295-D: Deprecated declaration view_txt_LEFT_button_handler - give arg types
+  void view_txt_LEFT_button_handler();
+../Core/Inc/main.h(87): warning:  #1295-D: Deprecated declaration view_txt_RIGHT_button_handler - give arg types
+  void view_txt_RIGHT_button_handler();
+../Core/Inc/main.h(89): warning:  #1295-D: Deprecated declaration view_image_DOWN_button_handler - give arg types
+  void view_image_DOWN_button_handler();
+../Core/Inc/main.h(90): warning:  #1295-D: Deprecated declaration view_image_UP_button_handler - give arg types
+  void view_image_UP_button_handler();
+../Core/Inc/main.h(91): warning:  #1295-D: Deprecated declaration view_image_LEFT_button_handler - give arg types
+  void view_image_LEFT_button_handler();
+../Core/Inc/main.h(92): warning:  #1295-D: Deprecated declaration view_image_RIGHT_button_handler - give arg types
+  void view_image_RIGHT_button_handler();
+../Core/Inc/main.h(94): warning:  #1295-D: Deprecated declaration check_for_USB_storage_connection - give arg types
+  void check_for_USB_storage_connection();
+../Middlewares/Third_Party/FatFs/src/option/syscall.c: 17 warnings, 0 errors
+compiling ccsbcs.c...
+../Core/Inc/main.h(74): warning:  #1295-D: Deprecated declaration LEFT_button_handrel - give arg types
+  void LEFT_button_handrel();
+../Core/Inc/main.h(75): warning:  #1295-D: Deprecated declaration RIGHT_button_handrel - give arg types
+  void RIGHT_button_handrel();
+../Core/Inc/main.h(76): warning:  #1295-D: Deprecated declaration UP_button_handrel - give arg types
+  void UP_button_handrel();
+../Core/Inc/main.h(77): warning:  #1295-D: Deprecated declaration DOWN_button_handrel - give arg types
+  void DOWN_button_handrel();
+../Core/Inc/main.h(79): warning:  #1295-D: Deprecated declaration view_menu_DOWN_button_handler - give arg types
+  void view_menu_DOWN_button_handler();
+../Core/Inc/main.h(80): warning:  #1295-D: Deprecated declaration view_menu_UP_button_handler - give arg types
+  void view_menu_UP_button_handler();
+../Core/Inc/main.h(81): warning:  #1295-D: Deprecated declaration view_menu_LEFT_button_handler - give arg types
+  void view_menu_LEFT_button_handler();
+../Core/Inc/main.h(82): warning:  #1295-D: Deprecated declaration view_menu_RIGHT_button_handler - give arg types
+  void view_menu_RIGHT_button_handler();
+../Core/Inc/main.h(84): warning:  #1295-D: Deprecated declaration view_txt_DOWN_button_handler - give arg types
+  void view_txt_DOWN_button_handler();
+../Core/Inc/main.h(85): warning:  #1295-D: Deprecated declaration view_txt_UP_button_handler - give arg types
+  void view_txt_UP_button_handler();
+../Core/Inc/main.h(86): warning:  #1295-D: Deprecated declaration view_txt_LEFT_button_handler - give arg types
+  void view_txt_LEFT_button_handler();
+../Core/Inc/main.h(87): warning:  #1295-D: Deprecated declaration view_txt_RIGHT_button_handler - give arg types
+  void view_txt_RIGHT_button_handler();
+../Core/Inc/main.h(89): warning:  #1295-D: Deprecated declaration view_image_DOWN_button_handler - give arg types
+  void view_image_DOWN_button_handler();
+../Core/Inc/main.h(90): warning:  #1295-D: Deprecated declaration view_image_UP_button_handler - give arg types
+  void view_image_UP_button_handler();
+../Core/Inc/main.h(91): warning:  #1295-D: Deprecated declaration view_image_LEFT_button_handler - give arg types
+  void view_image_LEFT_button_handler();
+../Core/Inc/main.h(92): warning:  #1295-D: Deprecated declaration view_image_RIGHT_button_handler - give arg types
+  void view_image_RIGHT_button_handler();
+../Core/Inc/main.h(94): warning:  #1295-D: Deprecated declaration check_for_USB_storage_connection - give arg types
+  void check_for_USB_storage_connection();
+../Middlewares/Third_Party/FatFs/src/option/ccsbcs.c: 17 warnings, 0 errors
+compiling usbh_core.c...
+../Core/Inc/main.h(74): warning:  #1295-D: Deprecated declaration LEFT_button_handrel - give arg types
+  void LEFT_button_handrel();
+../Core/Inc/main.h(75): warning:  #1295-D: Deprecated declaration RIGHT_button_handrel - give arg types
+  void RIGHT_button_handrel();
+../Core/Inc/main.h(76): warning:  #1295-D: Deprecated declaration UP_button_handrel - give arg types
+  void UP_button_handrel();
+../Core/Inc/main.h(77): warning:  #1295-D: Deprecated declaration DOWN_button_handrel - give arg types
+  void DOWN_button_handrel();
+../Core/Inc/main.h(79): warning:  #1295-D: Deprecated declaration view_menu_DOWN_button_handler - give arg types
+  void view_menu_DOWN_button_handler();
+../Core/Inc/main.h(80): warning:  #1295-D: Deprecated declaration view_menu_UP_button_handler - give arg types
+  void view_menu_UP_button_handler();
+../Core/Inc/main.h(81): warning:  #1295-D: Deprecated declaration view_menu_LEFT_button_handler - give arg types
+  void view_menu_LEFT_button_handler();
+../Core/Inc/main.h(82): warning:  #1295-D: Deprecated declaration view_menu_RIGHT_button_handler - give arg types
+  void view_menu_RIGHT_button_handler();
+../Core/Inc/main.h(84): warning:  #1295-D: Deprecated declaration view_txt_DOWN_button_handler - give arg types
+  void view_txt_DOWN_button_handler();
+../Core/Inc/main.h(85): warning:  #1295-D: Deprecated declaration view_txt_UP_button_handler - give arg types
+  void view_txt_UP_button_handler();
+../Core/Inc/main.h(86): warning:  #1295-D: Deprecated declaration view_txt_LEFT_button_handler - give arg types
+  void view_txt_LEFT_button_handler();
+../Core/Inc/main.h(87): warning:  #1295-D: Deprecated declaration view_txt_RIGHT_button_handler - give arg types
+  void view_txt_RIGHT_button_handler();
+../Core/Inc/main.h(89): warning:  #1295-D: Deprecated declaration view_image_DOWN_button_handler - give arg types
+  void view_image_DOWN_button_handler();
+../Core/Inc/main.h(90): warning:  #1295-D: Deprecated declaration view_image_UP_button_handler - give arg types
+  void view_image_UP_button_handler();
+../Core/Inc/main.h(91): warning:  #1295-D: Deprecated declaration view_image_LEFT_button_handler - give arg types
+  void view_image_LEFT_button_handler();
+../Core/Inc/main.h(92): warning:  #1295-D: Deprecated declaration view_image_RIGHT_button_handler - give arg types
+  void view_image_RIGHT_button_handler();
+../Core/Inc/main.h(94): warning:  #1295-D: Deprecated declaration check_for_USB_storage_connection - give arg types
+  void check_for_USB_storage_connection();
+../Middlewares/ST/STM32_USB_Host_Library/Core/Src/usbh_core.c: 17 warnings, 0 errors
+compiling usbh_ioreq.c...
+../Core/Inc/main.h(74): warning:  #1295-D: Deprecated declaration LEFT_button_handrel - give arg types
+  void LEFT_button_handrel();
+../Core/Inc/main.h(75): warning:  #1295-D: Deprecated declaration RIGHT_button_handrel - give arg types
+  void RIGHT_button_handrel();
+../Core/Inc/main.h(76): warning:  #1295-D: Deprecated declaration UP_button_handrel - give arg types
+  void UP_button_handrel();
+../Core/Inc/main.h(77): warning:  #1295-D: Deprecated declaration DOWN_button_handrel - give arg types
+  void DOWN_button_handrel();
+../Core/Inc/main.h(79): warning:  #1295-D: Deprecated declaration view_menu_DOWN_button_handler - give arg types
+  void view_menu_DOWN_button_handler();
+../Core/Inc/main.h(80): warning:  #1295-D: Deprecated declaration view_menu_UP_button_handler - give arg types
+  void view_menu_UP_button_handler();
+../Core/Inc/main.h(81): warning:  #1295-D: Deprecated declaration view_menu_LEFT_button_handler - give arg types
+  void view_menu_LEFT_button_handler();
+../Core/Inc/main.h(82): warning:  #1295-D: Deprecated declaration view_menu_RIGHT_button_handler - give arg types
+  void view_menu_RIGHT_button_handler();
+../Core/Inc/main.h(84): warning:  #1295-D: Deprecated declaration view_txt_DOWN_button_handler - give arg types
+  void view_txt_DOWN_button_handler();
+../Core/Inc/main.h(85): warning:  #1295-D: Deprecated declaration view_txt_UP_button_handler - give arg types
+  void view_txt_UP_button_handler();
+../Core/Inc/main.h(86): warning:  #1295-D: Deprecated declaration view_txt_LEFT_button_handler - give arg types
+  void view_txt_LEFT_button_handler();
+../Core/Inc/main.h(87): warning:  #1295-D: Deprecated declaration view_txt_RIGHT_button_handler - give arg types
+  void view_txt_RIGHT_button_handler();
+../Core/Inc/main.h(89): warning:  #1295-D: Deprecated declaration view_image_DOWN_button_handler - give arg types
+  void view_image_DOWN_button_handler();
+../Core/Inc/main.h(90): warning:  #1295-D: Deprecated declaration view_image_UP_button_handler - give arg types
+  void view_image_UP_button_handler();
+../Core/Inc/main.h(91): warning:  #1295-D: Deprecated declaration view_image_LEFT_button_handler - give arg types
+  void view_image_LEFT_button_handler();
+../Core/Inc/main.h(92): warning:  #1295-D: Deprecated declaration view_image_RIGHT_button_handler - give arg types
+  void view_image_RIGHT_button_handler();
+../Core/Inc/main.h(94): warning:  #1295-D: Deprecated declaration check_for_USB_storage_connection - give arg types
+  void check_for_USB_storage_connection();
+../Middlewares/ST/STM32_USB_Host_Library/Core/Src/usbh_ioreq.c: 17 warnings, 0 errors
+compiling usbh_pipes.c...
+../Core/Inc/main.h(74): warning:  #1295-D: Deprecated declaration LEFT_button_handrel - give arg types
+  void LEFT_button_handrel();
+../Core/Inc/main.h(75): warning:  #1295-D: Deprecated declaration RIGHT_button_handrel - give arg types
+  void RIGHT_button_handrel();
+../Core/Inc/main.h(76): warning:  #1295-D: Deprecated declaration UP_button_handrel - give arg types
+  void UP_button_handrel();
+../Core/Inc/main.h(77): warning:  #1295-D: Deprecated declaration DOWN_button_handrel - give arg types
+  void DOWN_button_handrel();
+../Core/Inc/main.h(79): warning:  #1295-D: Deprecated declaration view_menu_DOWN_button_handler - give arg types
+  void view_menu_DOWN_button_handler();
+../Core/Inc/main.h(80): warning:  #1295-D: Deprecated declaration view_menu_UP_button_handler - give arg types
+  void view_menu_UP_button_handler();
+../Core/Inc/main.h(81): warning:  #1295-D: Deprecated declaration view_menu_LEFT_button_handler - give arg types
+  void view_menu_LEFT_button_handler();
+../Core/Inc/main.h(82): warning:  #1295-D: Deprecated declaration view_menu_RIGHT_button_handler - give arg types
+  void view_menu_RIGHT_button_handler();
+../Core/Inc/main.h(84): warning:  #1295-D: Deprecated declaration view_txt_DOWN_button_handler - give arg types
+  void view_txt_DOWN_button_handler();
+../Core/Inc/main.h(85): warning:  #1295-D: Deprecated declaration view_txt_UP_button_handler - give arg types
+  void view_txt_UP_button_handler();
+../Core/Inc/main.h(86): warning:  #1295-D: Deprecated declaration view_txt_LEFT_button_handler - give arg types
+  void view_txt_LEFT_button_handler();
+../Core/Inc/main.h(87): warning:  #1295-D: Deprecated declaration view_txt_RIGHT_button_handler - give arg types
+  void view_txt_RIGHT_button_handler();
+../Core/Inc/main.h(89): warning:  #1295-D: Deprecated declaration view_image_DOWN_button_handler - give arg types
+  void view_image_DOWN_button_handler();
+../Core/Inc/main.h(90): warning:  #1295-D: Deprecated declaration view_image_UP_button_handler - give arg types
+  void view_image_UP_button_handler();
+../Core/Inc/main.h(91): warning:  #1295-D: Deprecated declaration view_image_LEFT_button_handler - give arg types
+  void view_image_LEFT_button_handler();
+../Core/Inc/main.h(92): warning:  #1295-D: Deprecated declaration view_image_RIGHT_button_handler - give arg types
+  void view_image_RIGHT_button_handler();
+../Core/Inc/main.h(94): warning:  #1295-D: Deprecated declaration check_for_USB_storage_connection - give arg types
+  void check_for_USB_storage_connection();
+../Middlewares/ST/STM32_USB_Host_Library/Core/Src/usbh_pipes.c: 17 warnings, 0 errors
+compiling usbh_ctlreq.c...
+../Core/Inc/main.h(74): warning:  #1295-D: Deprecated declaration LEFT_button_handrel - give arg types
+  void LEFT_button_handrel();
+../Core/Inc/main.h(75): warning:  #1295-D: Deprecated declaration RIGHT_button_handrel - give arg types
+  void RIGHT_button_handrel();
+../Core/Inc/main.h(76): warning:  #1295-D: Deprecated declaration UP_button_handrel - give arg types
+  void UP_button_handrel();
+../Core/Inc/main.h(77): warning:  #1295-D: Deprecated declaration DOWN_button_handrel - give arg types
+  void DOWN_button_handrel();
+../Core/Inc/main.h(79): warning:  #1295-D: Deprecated declaration view_menu_DOWN_button_handler - give arg types
+  void view_menu_DOWN_button_handler();
+../Core/Inc/main.h(80): warning:  #1295-D: Deprecated declaration view_menu_UP_button_handler - give arg types
+  void view_menu_UP_button_handler();
+../Core/Inc/main.h(81): warning:  #1295-D: Deprecated declaration view_menu_LEFT_button_handler - give arg types
+  void view_menu_LEFT_button_handler();
+../Core/Inc/main.h(82): warning:  #1295-D: Deprecated declaration view_menu_RIGHT_button_handler - give arg types
+  void view_menu_RIGHT_button_handler();
+../Core/Inc/main.h(84): warning:  #1295-D: Deprecated declaration view_txt_DOWN_button_handler - give arg types
+  void view_txt_DOWN_button_handler();
+../Core/Inc/main.h(85): warning:  #1295-D: Deprecated declaration view_txt_UP_button_handler - give arg types
+  void view_txt_UP_button_handler();
+../Core/Inc/main.h(86): warning:  #1295-D: Deprecated declaration view_txt_LEFT_button_handler - give arg types
+  void view_txt_LEFT_button_handler();
+../Core/Inc/main.h(87): warning:  #1295-D: Deprecated declaration view_txt_RIGHT_button_handler - give arg types
+  void view_txt_RIGHT_button_handler();
+../Core/Inc/main.h(89): warning:  #1295-D: Deprecated declaration view_image_DOWN_button_handler - give arg types
+  void view_image_DOWN_button_handler();
+../Core/Inc/main.h(90): warning:  #1295-D: Deprecated declaration view_image_UP_button_handler - give arg types
+  void view_image_UP_button_handler();
+../Core/Inc/main.h(91): warning:  #1295-D: Deprecated declaration view_image_LEFT_button_handler - give arg types
+  void view_image_LEFT_button_handler();
+../Core/Inc/main.h(92): warning:  #1295-D: Deprecated declaration view_image_RIGHT_button_handler - give arg types
+  void view_image_RIGHT_button_handler();
+../Core/Inc/main.h(94): warning:  #1295-D: Deprecated declaration check_for_USB_storage_connection - give arg types
+  void check_for_USB_storage_connection();
+../Middlewares/ST/STM32_USB_Host_Library/Core/Src/usbh_ctlreq.c: 17 warnings, 0 errors
+compiling usbh_msc_scsi.c...
+../Core/Inc/main.h(74): warning:  #1295-D: Deprecated declaration LEFT_button_handrel - give arg types
+  void LEFT_button_handrel();
+../Core/Inc/main.h(75): warning:  #1295-D: Deprecated declaration RIGHT_button_handrel - give arg types
+  void RIGHT_button_handrel();
+../Core/Inc/main.h(76): warning:  #1295-D: Deprecated declaration UP_button_handrel - give arg types
+  void UP_button_handrel();
+../Core/Inc/main.h(77): warning:  #1295-D: Deprecated declaration DOWN_button_handrel - give arg types
+  void DOWN_button_handrel();
+../Core/Inc/main.h(79): warning:  #1295-D: Deprecated declaration view_menu_DOWN_button_handler - give arg types
+  void view_menu_DOWN_button_handler();
+../Core/Inc/main.h(80): warning:  #1295-D: Deprecated declaration view_menu_UP_button_handler - give arg types
+  void view_menu_UP_button_handler();
+../Core/Inc/main.h(81): warning:  #1295-D: Deprecated declaration view_menu_LEFT_button_handler - give arg types
+  void view_menu_LEFT_button_handler();
+../Core/Inc/main.h(82): warning:  #1295-D: Deprecated declaration view_menu_RIGHT_button_handler - give arg types
+  void view_menu_RIGHT_button_handler();
+../Core/Inc/main.h(84): warning:  #1295-D: Deprecated declaration view_txt_DOWN_button_handler - give arg types
+  void view_txt_DOWN_button_handler();
+../Core/Inc/main.h(85): warning:  #1295-D: Deprecated declaration view_txt_UP_button_handler - give arg types
+  void view_txt_UP_button_handler();
+../Core/Inc/main.h(86): warning:  #1295-D: Deprecated declaration view_txt_LEFT_button_handler - give arg types
+  void view_txt_LEFT_button_handler();
+../Core/Inc/main.h(87): warning:  #1295-D: Deprecated declaration view_txt_RIGHT_button_handler - give arg types
+  void view_txt_RIGHT_button_handler();
+../Core/Inc/main.h(89): warning:  #1295-D: Deprecated declaration view_image_DOWN_button_handler - give arg types
+  void view_image_DOWN_button_handler();
+../Core/Inc/main.h(90): warning:  #1295-D: Deprecated declaration view_image_UP_button_handler - give arg types
+  void view_image_UP_button_handler();
+../Core/Inc/main.h(91): warning:  #1295-D: Deprecated declaration view_image_LEFT_button_handler - give arg types
+  void view_image_LEFT_button_handler();
+../Core/Inc/main.h(92): warning:  #1295-D: Deprecated declaration view_image_RIGHT_button_handler - give arg types
+  void view_image_RIGHT_button_handler();
+../Core/Inc/main.h(94): warning:  #1295-D: Deprecated declaration check_for_USB_storage_connection - give arg types
+  void check_for_USB_storage_connection();
+../Middlewares/ST/STM32_USB_Host_Library/Class/MSC/Src/usbh_msc_scsi.c: 17 warnings, 0 errors
+compiling usbh_msc.c...
+../Core/Inc/main.h(74): warning:  #1295-D: Deprecated declaration LEFT_button_handrel - give arg types
+  void LEFT_button_handrel();
+../Core/Inc/main.h(75): warning:  #1295-D: Deprecated declaration RIGHT_button_handrel - give arg types
+  void RIGHT_button_handrel();
+../Core/Inc/main.h(76): warning:  #1295-D: Deprecated declaration UP_button_handrel - give arg types
+  void UP_button_handrel();
+../Core/Inc/main.h(77): warning:  #1295-D: Deprecated declaration DOWN_button_handrel - give arg types
+  void DOWN_button_handrel();
+../Core/Inc/main.h(79): warning:  #1295-D: Deprecated declaration view_menu_DOWN_button_handler - give arg types
+  void view_menu_DOWN_button_handler();
+../Core/Inc/main.h(80): warning:  #1295-D: Deprecated declaration view_menu_UP_button_handler - give arg types
+  void view_menu_UP_button_handler();
+../Core/Inc/main.h(81): warning:  #1295-D: Deprecated declaration view_menu_LEFT_button_handler - give arg types
+  void view_menu_LEFT_button_handler();
+../Core/Inc/main.h(82): warning:  #1295-D: Deprecated declaration view_menu_RIGHT_button_handler - give arg types
+  void view_menu_RIGHT_button_handler();
+../Core/Inc/main.h(84): warning:  #1295-D: Deprecated declaration view_txt_DOWN_button_handler - give arg types
+  void view_txt_DOWN_button_handler();
+../Core/Inc/main.h(85): warning:  #1295-D: Deprecated declaration view_txt_UP_button_handler - give arg types
+  void view_txt_UP_button_handler();
+../Core/Inc/main.h(86): warning:  #1295-D: Deprecated declaration view_txt_LEFT_button_handler - give arg types
+  void view_txt_LEFT_button_handler();
+../Core/Inc/main.h(87): warning:  #1295-D: Deprecated declaration view_txt_RIGHT_button_handler - give arg types
+  void view_txt_RIGHT_button_handler();
+../Core/Inc/main.h(89): warning:  #1295-D: Deprecated declaration view_image_DOWN_button_handler - give arg types
+  void view_image_DOWN_button_handler();
+../Core/Inc/main.h(90): warning:  #1295-D: Deprecated declaration view_image_UP_button_handler - give arg types
+  void view_image_UP_button_handler();
+../Core/Inc/main.h(91): warning:  #1295-D: Deprecated declaration view_image_LEFT_button_handler - give arg types
+  void view_image_LEFT_button_handler();
+../Core/Inc/main.h(92): warning:  #1295-D: Deprecated declaration view_image_RIGHT_button_handler - give arg types
+  void view_image_RIGHT_button_handler();
+../Core/Inc/main.h(94): warning:  #1295-D: Deprecated declaration check_for_USB_storage_connection - give arg types
+  void check_for_USB_storage_connection();
+../Middlewares/ST/STM32_USB_Host_Library/Class/MSC/Src/usbh_msc.c: 17 warnings, 0 errors
+compiling usbh_msc_bot.c...
+../Core/Inc/main.h(74): warning:  #1295-D: Deprecated declaration LEFT_button_handrel - give arg types
+  void LEFT_button_handrel();
+../Core/Inc/main.h(75): warning:  #1295-D: Deprecated declaration RIGHT_button_handrel - give arg types
+  void RIGHT_button_handrel();
+../Core/Inc/main.h(76): warning:  #1295-D: Deprecated declaration UP_button_handrel - give arg types
+  void UP_button_handrel();
+../Core/Inc/main.h(77): warning:  #1295-D: Deprecated declaration DOWN_button_handrel - give arg types
+  void DOWN_button_handrel();
+../Core/Inc/main.h(79): warning:  #1295-D: Deprecated declaration view_menu_DOWN_button_handler - give arg types
+  void view_menu_DOWN_button_handler();
+../Core/Inc/main.h(80): warning:  #1295-D: Deprecated declaration view_menu_UP_button_handler - give arg types
+  void view_menu_UP_button_handler();
+../Core/Inc/main.h(81): warning:  #1295-D: Deprecated declaration view_menu_LEFT_button_handler - give arg types
+  void view_menu_LEFT_button_handler();
+../Core/Inc/main.h(82): warning:  #1295-D: Deprecated declaration view_menu_RIGHT_button_handler - give arg types
+  void view_menu_RIGHT_button_handler();
+../Core/Inc/main.h(84): warning:  #1295-D: Deprecated declaration view_txt_DOWN_button_handler - give arg types
+  void view_txt_DOWN_button_handler();
+../Core/Inc/main.h(85): warning:  #1295-D: Deprecated declaration view_txt_UP_button_handler - give arg types
+  void view_txt_UP_button_handler();
+../Core/Inc/main.h(86): warning:  #1295-D: Deprecated declaration view_txt_LEFT_button_handler - give arg types
+  void view_txt_LEFT_button_handler();
+../Core/Inc/main.h(87): warning:  #1295-D: Deprecated declaration view_txt_RIGHT_button_handler - give arg types
+  void view_txt_RIGHT_button_handler();
+../Core/Inc/main.h(89): warning:  #1295-D: Deprecated declaration view_image_DOWN_button_handler - give arg types
+  void view_image_DOWN_button_handler();
+../Core/Inc/main.h(90): warning:  #1295-D: Deprecated declaration view_image_UP_button_handler - give arg types
+  void view_image_UP_button_handler();
+../Core/Inc/main.h(91): warning:  #1295-D: Deprecated declaration view_image_LEFT_button_handler - give arg types
+  void view_image_LEFT_button_handler();
+../Core/Inc/main.h(92): warning:  #1295-D: Deprecated declaration view_image_RIGHT_button_handler - give arg types
+  void view_image_RIGHT_button_handler();
+../Core/Inc/main.h(94): warning:  #1295-D: Deprecated declaration check_for_USB_storage_connection - give arg types
+  void check_for_USB_storage_connection();
+../Middlewares/ST/STM32_USB_Host_Library/Class/MSC/Src/usbh_msc_bot.c: 17 warnings, 0 errors
 linking...
-Program Size: Code=40230 RO-data=8634 RW-data=40588 ZI-data=11036  
+Program Size: Code=35180 RO-data=11676 RW-data=40588 ZI-data=11268  
 FromELF: creating hex file...
-"LCD_test_3\LCD_test_3.axf" - 0 Error(s), 38 Warning(s).
+"LCD_test_3\LCD_test_3.axf" - 0 Error(s), 360 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -133,7 +815,7 @@ Package Vendor: Keil
 
    * Component: ARM::CMSIS:CORE@6.1.0
       Include file:  CMSIS/Core/Include/tz_context.h
-Build Time Elapsed:  00:00:02
+Build Time Elapsed:  00:00:14
 </pre>
 </body>
 </html>
