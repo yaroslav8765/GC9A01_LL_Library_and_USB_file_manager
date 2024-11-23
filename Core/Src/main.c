@@ -67,7 +67,7 @@
 	seeing a well-crafted system run seamlessly in real-world applications. 						\
 	This requires patience, dedication, and a willingness to continuously learn					\
 	and adapt to new challenges."};
-	
+	uint16_t screen_buf[240] = {0};
 	FATFS fs;
 	DIR dr;
 	FIL fl;
@@ -190,27 +190,27 @@ int main(void)
   while (1)
   {
 		
-//		check_for_USB_storage_connection();
-//		if(LL_GPIO_IsInputPinSet(LEFT_GPIO_Port,LEFT_Pin) == 1){
-//			LEFT_button_handrel();
-//		}
-//		if(LL_GPIO_IsInputPinSet(RIGHT_GPIO_Port,RIGHT_Pin) == 1){
-//		  RIGHT_button_handrel();
-//		}
-//		if(LL_GPIO_IsInputPinSet(UP_GPIO_Port,UP_Pin) == 1){
-//			UP_button_handrel();
-//			shift = 0;
-//		}
-//		if(LL_GPIO_IsInputPinSet(DOWN_GPIO_Port,DOWN_Pin) == 1){
-//			DOWN_button_handrel();
-//			shift = 0;
-//		}
-//		if(enable_menu_member_animation == 1){
-//			menu_active_member_running_text_animation(&Members[get_active_menu_member(Members)],get_active_menu_member(Members));
-//			delay_ms(5);
-//		}
-		
-		display_test_animation();
+		check_for_USB_storage_connection();
+		if(LL_GPIO_IsInputPinSet(LEFT_GPIO_Port,LEFT_Pin) == 1){
+			LEFT_button_handrel();
+		}
+		if(LL_GPIO_IsInputPinSet(RIGHT_GPIO_Port,RIGHT_Pin) == 1){
+		  RIGHT_button_handrel();
+		}
+		if(LL_GPIO_IsInputPinSet(UP_GPIO_Port,UP_Pin) == 1){
+			UP_button_handrel();
+			shift = 0;
+		}
+		if(LL_GPIO_IsInputPinSet(DOWN_GPIO_Port,DOWN_Pin) == 1){
+			DOWN_button_handrel();
+			shift = 0;
+		}
+		if(enable_menu_member_animation == 1){
+			menu_active_member_running_text_animation(&Members[get_active_menu_member(Members)],get_active_menu_member(Members));
+			delay_ms(5);
+		}
+		//GC9A01_show_picture(tohru1,50,50,140,140,140,140);
+		//display_test_animation();
     /* USER CODE END WHILE */
 
 
@@ -721,7 +721,8 @@ void view_menu_LEFT_button_handler() {
 
 
 void view_menu_RIGHT_button_handler(){
-	uint8_t active_member = get_active_menu_member(Members);
+	uint8_t active_member = get_active_menu_member(Members);	
+	
 	//case .txt file
 	if(chek_menu_member_for_the_file_type(Members[active_member],"txt") == 1){
 		enable_menu_member_animation = 0;
@@ -759,6 +760,16 @@ void view_menu_RIGHT_button_handler(){
 		Unmount_USB();
 		GC9A01_ClearScreen(WHITE);
 		ShowMenu(Members,current_page);
+	}else if(chek_menu_member_for_the_file_type(Members[active_member],"bmp") == 1){
+		enable_menu_member_animation = 0;
+		snprintf(path_txt, sizeof(path_txt), "%.*s/%s", (int)(strlen(path)), path, Members[active_member].text);
+		current_mode = view_image;
+		GC9A01_ClearScreen(WHITE);
+		Mount_USB();
+		Read_File_and_print_BMP(path_txt);
+		//Read_File(path_txt,txt_file_page,buffer, 240 );
+		Unmount_USB();
+	
 	}
 	/*
 		other cases
@@ -801,6 +812,12 @@ void view_image_UP_button_handler(){
 }
 	
 void view_image_LEFT_button_handler(){
+	GC9A01_ClearScreen(WHITE);
+	current_mode = view_file_menu;
+	txt_file_page = 1;
+	enable_menu_member_animation = 1;
+	shift = 0;
+	ShowMenu(Members, current_page);
 }
 	
 void view_image_RIGHT_button_handler(){

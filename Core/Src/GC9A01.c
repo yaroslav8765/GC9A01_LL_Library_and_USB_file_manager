@@ -2,7 +2,7 @@
 
 GC9A01_DrawPropTypeDef lcdprop;
 extern volatile uint8_t dma_spi_fl1;
-uint8_t screen_buf[65536] = {0};
+//uint8_t screen_buf[65536] = {0};
 uint8_t shift = 0;
 colors current_text_color;
 

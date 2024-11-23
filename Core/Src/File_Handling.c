@@ -199,6 +199,57 @@ FRESULT Read_File(char *name, uint8_t page, char *buffer, uint16_t lenght) {
     return fresult;
 }
 
+
+FRESULT Read_File_and_print_BMP(char *name) {
+    uint32_t file_size;
+
+    fresult = f_stat(name, &USBHfno);
+    if (fresult != FR_OK) {
+        char *buf = malloc(100 * sizeof(char));
+        sprintf(buf, "ERROR!!! *%s* does not exist\n\n", name);
+        GC9A01_Text(buf, 1);
+        free(buf);
+        return fresult;
+    }
+
+    fresult = f_open(&USBHFile, name, FA_READ);
+    if (fresult != FR_OK) {
+        char *buf = malloc(100 * sizeof(char));
+        sprintf(buf, "ERROR!!! No. %d in opening file *%s*\n\n", fresult, name);
+        GC9A01_Text(buf, 1);
+        free(buf);
+        return fresult;
+    }
+
+    file_size = f_size(&USBHFile);
+
+    unsigned short buffer2[240];
+		
+		for (uint16_t column = 0; column < 240; column++) {
+				if (240 * column >= file_size) break;
+
+				fresult = f_lseek(&USBHFile,64 + 480 * column);
+				if (fresult != FR_OK) {
+						GC9A01_Text("Seek error!\n", 1);
+						break;
+				}
+
+				fresult = f_read(&USBHFile, buffer2, 480, &br);
+				if (fresult != FR_OK) {
+						GC9A01_Text("Read error!\n", 1);
+						break;
+				}
+
+				GC9A01_show_picture(buffer2, 0, column, 240, 1, 240, 1);
+		}
+		//free(buffer2);
+		f_close(&USBHFile);
+
+
+    return fresult;
+}
+
+
 uint8_t get_depth_of_dir(char *path){
 	uint8_t result = 0;
 	 for (int i = strlen(path) - 1; i >= 0; i--){
