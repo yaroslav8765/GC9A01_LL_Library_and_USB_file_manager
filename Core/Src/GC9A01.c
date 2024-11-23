@@ -597,7 +597,7 @@ void GC9A01_String(uint16_t x,uint16_t y, char *str)
 	uint8_t lenght = strlen(str);
 	uint8_t step = x;
 	if((lenght + 2) * lcdprop.pFont->Width > LCD_W - x){
-		for(int i = 0; i != (((LCD_W - x)/lcdprop.pFont->Width-2)); i++){
+		for(uint8_t i = 0; i != (((LCD_W - x)/lcdprop.pFont->Width-2)); i++){
 			GC9A01_DrawChar(step,y,str[i]);
 			step+=lcdprop.pFont->Width;
 		}
@@ -747,9 +747,9 @@ void refresh_menu_member(struct MenuMember Members, uint8_t pos){
 	sprintf(str, "%d", 	Members.number);								
 	GC9A01_String		(X_POS, Y_POS+(pos*lcdprop.pFont->Width)+(pos*STEP), str);
 	GC9A01_DrawChar	((Members.number > 9 ? X_POS + 2 * lcdprop.pFont->Width : X_POS + lcdprop.pFont->Width), 			\
-	Y_POS+(pos*lcdprop.pFont->Width)+(pos*STEP), 								'.');
+	Y_POS+(pos*lcdprop.pFont->Width)+(pos*STEP), '.');
 	GC9A01_String		((Members.number > 9 ? X_POS + 3 * lcdprop.pFont->Width : X_POS + 2 * lcdprop.pFont->Width), 	\
-	Y_POS+(pos*lcdprop.pFont->Width)+(pos*STEP), 								Members.text);
+	Y_POS+(pos*lcdprop.pFont->Width)+(pos*STEP), Members.text);
 	GC9A01_SetBackColor(default_background_color);	
 	
 }

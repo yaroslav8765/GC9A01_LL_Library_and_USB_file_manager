@@ -170,19 +170,19 @@ int main(void)
 	MX_USB_HOST_Init();
 	MX_FATFS_Init();
 	
-		while(Appli_state != APPLICATION_READY){
-			MX_USB_HOST_Process();
-		}
-		Mount_USB();
-		uint8_t files = Scan_USB_for_amount_of_files("/");
-		Members[7].state = unactive;
-		Scan_USB(path, Members,current_page);
-		amount_of_files = Scan_USB_for_amount_of_files("/");
-		Unmount_USB();
+	while(Appli_state != APPLICATION_READY){
+		MX_USB_HOST_Process();
+	}
+	Mount_USB();
+	uint8_t files = Scan_USB_for_amount_of_files("/");
+	Members[7].state = unactive;
+	Scan_USB(path, Members,current_page);
+	amount_of_files = Scan_USB_for_amount_of_files("/");
+	Unmount_USB();
 		
-		MX_TIM1_Init();
-		LL_TIM_EnableIT_UPDATE(TIM1);
-		LL_TIM_EnableCounter(TIM1);
+	MX_TIM1_Init();
+	LL_TIM_EnableIT_UPDATE(TIM1);
+	LL_TIM_EnableCounter(TIM1);
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -690,14 +690,14 @@ void view_menu_UP_button_handler(){
 
 void view_menu_LEFT_button_handler() {
       if (strcmp("/", path) != 0) { 
-        int len = strlen(path);
+        uint16_t len = strlen(path);
 
         if (path[len - 1] == '/') {
             path[len - 1] = '\0';
             len--;
         }
 
-        for (int i = len - 1; i >= 0; i--) {
+        for (uint16_t i = len - 1; i >= 0; i--) {
             if (path[i] == '/') {
                 path[i] = '\0';
                 break;
@@ -730,7 +730,6 @@ void view_menu_RIGHT_button_handler(){
 		extern GC9A01_DrawPropTypeDef lcdprop;
 		char buffer[lcdprop.pFont->Width * lcdprop.pFont->Height];
 		
-	//	char path_txt[512];
 		snprintf(path_txt, sizeof(path_txt), "%.*s/%s", (int)(strlen(path)), path, Members[active_member].text);
 
 		Mount_USB();
@@ -738,9 +737,13 @@ void view_menu_RIGHT_button_handler(){
 		Unmount_USB();
 		GC9A01_Text(buffer,1);
 		current_mode = view_txt;
+		
+	//directory case
 	}else if(chek_menu_member_for_the_file_type(Members[active_member],"DIR") == 1){
 		current_page = 1;
-		
+		Members[current_active_menu_member].state = unactive;
+		current_active_menu_member = 0;
+		Members[current_active_menu_member].state = active;
 		
 		uint8_t lenght_of_current_path = strlen(path);
 		uint8_t len = strlen(Members[active_member].text);
@@ -811,28 +814,28 @@ void check_for_USB_storage_connection(){
 	if(Appli_state == APPLICATION_READY){
 		USB_Storage_state = connected;
 		if(	USB_Storage_last_state == disconected){
-		enable_menu_member_animation = 0;
-		GC9A01_ClearScreen(WHITE);
-		current_page = 1;
-		Members[current_active_menu_member].state = unactive;
-		current_active_menu_member = 0;
-		Members[current_active_menu_member].state = active;
-		Mount_USB();
-		clear_and_set_root(path, 512);
-		Scan_USB(path, Members,current_page);
-		Unmount_USB();
-		ShowMenu(Members,current_page);
+			enable_menu_member_animation = 0;
+			GC9A01_ClearScreen(WHITE);
+			current_page = 1;
+			Members[current_active_menu_member].state = unactive;
+			current_active_menu_member = 0;
+			Members[current_active_menu_member].state = active;
+			Mount_USB();
+			clear_and_set_root(path, 512);
+			Scan_USB(path, Members,current_page);
+			Unmount_USB();
+			ShowMenu(Members,current_page);
 		}
 		USB_Storage_last_state = connected;
 	} else {
 		USB_Storage_state = disconected;
 		if(	USB_Storage_last_state == connected){
-		GC9A01_ClearScreen(WHITE);
-		GC9A01_SetTextColor(default_text_color);
-		GC9A01_SetBackColor(default_background_color);
-		GC9A01_SetFont(default_font);
-		GC9A01_Rainbow_String(40,100, "Storage");
-		GC9A01_Rainbow_String(40,120, "Disconected");
+			GC9A01_ClearScreen(WHITE);
+			GC9A01_SetTextColor(default_text_color);
+			GC9A01_SetBackColor(default_background_color);
+			GC9A01_SetFont(default_font);
+			GC9A01_Rainbow_String(40,100, "Storage");
+			GC9A01_Rainbow_String(40,120, "Disconected");
 		}
 		USB_Storage_last_state = disconected;
 	}
