@@ -261,7 +261,7 @@ FRESULT Read_File_and_print_BMP(char *name) {
 
     unsigned short buffer2[infoHeader.biWidth];
 		
-		for (uint16_t column = 0; column < infoHeader.biHeight; column++) {
+		for (uint16_t column = infoHeader.biHeight; column >= 0; column--) {
 				if (infoHeader.biWidth * column >= file_size) break;
 
 				fresult = f_lseek(&USBHFile,64 + (infoHeader.biWidth*2) * column);
@@ -275,8 +275,10 @@ FRESULT Read_File_and_print_BMP(char *name) {
 						GC9A01_Text("Read error!\n", 1);
 						break;
 				}
+				
+				
 
-				GC9A01_show_picture(buffer2, 0, column, infoHeader.biWidth, 1, infoHeader.biWidth, 1);
+				GC9A01_show_picture(buffer2, 0, (infoHeader.biHeight-1) - column, infoHeader.biWidth, 1, infoHeader.biWidth, 1);
 		}
 		//free(buffer2);
 		f_close(&USBHFile);

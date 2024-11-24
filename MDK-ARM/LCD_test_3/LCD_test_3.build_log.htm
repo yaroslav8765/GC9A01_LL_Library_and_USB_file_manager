@@ -64,11 +64,13 @@ compiling File_Handling.c...
   void check_for_USB_storage_connection();
 ../Core/Inc/cg9a01.h(74): warning:  #47-D: incompatible redefinition of macro "RAINBOW_YELLOW" (declared at line 104 of "../Core/Inc/GC9A01.h")
   #define RAINBOW_YELLOW   0xFFE0
-..\Core\Src\File_Handling.c: 18 warnings, 0 errors
+..\Core\Src\File_Handling.c(264): warning:  #186-D: pointless comparison of unsigned integer with zero
+  		for (uint16_t column = infoHeader.biHeight; column >= 0; column--) {
+..\Core\Src\File_Handling.c: 19 warnings, 0 errors
 linking...
-Program Size: Code=41810 RO-data=8634 RW-data=40588 ZI-data=11516  
+Program Size: Code=41822 RO-data=8634 RW-data=40588 ZI-data=11516  
 FromELF: creating hex file...
-"LCD_test_3\LCD_test_3.axf" - 0 Error(s), 18 Warning(s).
+"LCD_test_3\LCD_test_3.axf" - 0 Error(s), 19 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -91,7 +93,7 @@ Package Vendor: Keil
 
    * Component: ARM::CMSIS:CORE@6.1.0
       Include file:  CMSIS/Core/Include/tz_context.h
-Build Time Elapsed:  00:00:01
+Build Time Elapsed:  00:00:02
 </pre>
 </body>
 </html>

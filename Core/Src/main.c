@@ -162,11 +162,13 @@ int main(void)
   LL_DMA_EnableIT_TE(DMA2, LL_DMA_STREAM_3);
 	LL_SPI_EnableDMAReq_TX(SPI1);
 	LL_SPI_Enable(SPI1);
+	
 	GC9A01_Initial();
 	GC9A01_ClearScreen(WHITE);
 	GC9A01_SetBackColor(BLACK);
 	GC9A01_SetFont(&Font16);
 	GC9A01_SetTextColor(WHITE);
+	
 	MX_USB_HOST_Init();
 	MX_FATFS_Init();
 	
@@ -760,6 +762,7 @@ void view_menu_RIGHT_button_handler(){
 		Unmount_USB();
 		GC9A01_ClearScreen(WHITE);
 		ShowMenu(Members,current_page);
+		
 	}else if(chek_menu_member_for_the_file_type(Members[active_member],"bmp") == 1){
 		enable_menu_member_animation = 0;
 		snprintf(path_txt, sizeof(path_txt), "%.*s/%s", (int)(strlen(path)), path, Members[active_member].text);
@@ -832,6 +835,7 @@ void check_for_USB_storage_connection(){
 		USB_Storage_state = connected;
 		if(	USB_Storage_last_state == disconected){
 			enable_menu_member_animation = 0;
+			current_mode = view_file_menu;
 			GC9A01_ClearScreen(WHITE);
 			current_page = 1;
 			Members[current_active_menu_member].state = unactive;
