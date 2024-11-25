@@ -57,6 +57,8 @@
 	char buffer[256];
 	char path[512] = "/";
 	char path_txt[512];
+	uint16_t horizontal_offset = 0; 
+	uint16_t vertical_offset = 0;
 	char very_long_str[] = {"The journey of developing embedded systems									\
 	often involves understanding complex hardware and software integration. 						\
 	From initializing microcontrollers to setting up various communication protocols,		\
@@ -769,7 +771,7 @@ void view_menu_RIGHT_button_handler(){
 		current_mode = view_image;
 		GC9A01_ClearScreen(WHITE);
 		Mount_USB();
-		Read_File_and_print_BMP(path_txt);
+		Read_File_and_print_BMP(path_txt,horizontal_offset,vertical_offset );
 		//Read_File(path_txt,txt_file_page,buffer, 240 );
 		Unmount_USB();
 	
@@ -802,28 +804,81 @@ void view_txt_LEFT_button_handler(){
 }
 
 void view_txt_RIGHT_button_handler(){
-	//nothing
+	//nothing 
 }
 
 
 
 
 void view_image_DOWN_button_handler(){
+	
+	vertical_offset  = vertical_offset - 1;
+	uint8_t active_member = get_active_menu_member(Members);	
+	if(chek_menu_member_for_the_file_type(Members[active_member],"bmp") == 1){
+		enable_menu_member_animation = 0;
+		snprintf(path_txt, sizeof(path_txt), "%.*s/%s", (int)(strlen(path)), path, Members[active_member].text);
+		current_mode = view_image;
+		GC9A01_ClearScreen(WHITE);
+		Mount_USB();
+		Read_File_and_print_BMP(path_txt,horizontal_offset,vertical_offset );
+		//Read_File(path_txt,txt_file_page,buffer, 240 );
+		Unmount_USB();
+	
+	}
 }
 	
 void view_image_UP_button_handler(){
+	vertical_offset  = vertical_offset + 1;
+	uint8_t active_member = get_active_menu_member(Members);	
+	if(chek_menu_member_for_the_file_type(Members[active_member],"bmp") == 1){
+		enable_menu_member_animation = 0;
+		snprintf(path_txt, sizeof(path_txt), "%.*s/%s", (int)(strlen(path)), path, Members[active_member].text);
+		current_mode = view_image;
+		GC9A01_ClearScreen(WHITE);
+		Mount_USB();
+		Read_File_and_print_BMP(path_txt,horizontal_offset,vertical_offset );
+		//Read_File(path_txt,txt_file_page,buffer, 240 );
+		Unmount_USB();
+	
+	}
 }
 	
 void view_image_LEFT_button_handler(){
-	GC9A01_ClearScreen(WHITE);
-	current_mode = view_file_menu;
-	txt_file_page = 1;
-	enable_menu_member_animation = 1;
-	shift = 0;
-	ShowMenu(Members, current_page);
+	horizontal_offset = horizontal_offset - 1;
+	uint8_t active_member = get_active_menu_member(Members);	
+	if(chek_menu_member_for_the_file_type(Members[active_member],"bmp") == 1){
+		enable_menu_member_animation = 0;
+		snprintf(path_txt, sizeof(path_txt), "%.*s/%s", (int)(strlen(path)), path, Members[active_member].text);
+		current_mode = view_image;
+		GC9A01_ClearScreen(WHITE);
+		Mount_USB();
+		Read_File_and_print_BMP(path_txt,horizontal_offset,vertical_offset );
+		//Read_File(path_txt,txt_file_page,buffer, 240 );
+		Unmount_USB();
+	
+	}
+//	GC9A01_ClearScreen(WHITE);
+//	current_mode = view_file_menu;
+//	txt_file_page = 1;
+//	enable_menu_member_animation = 1;
+//	shift = 0;
+//	ShowMenu(Members, current_page);
 }
 	
 void view_image_RIGHT_button_handler(){
+	horizontal_offset = horizontal_offset + 1;
+	uint8_t active_member = get_active_menu_member(Members);	
+	if(chek_menu_member_for_the_file_type(Members[active_member],"bmp") == 1){
+		enable_menu_member_animation = 0;
+		snprintf(path_txt, sizeof(path_txt), "%.*s/%s", (int)(strlen(path)), path, Members[active_member].text);
+		current_mode = view_image;
+		GC9A01_ClearScreen(WHITE);
+		Mount_USB();
+		Read_File_and_print_BMP(path_txt,horizontal_offset,vertical_offset );
+		//Read_File(path_txt,txt_file_page,buffer, 240 );
+		Unmount_USB();
+	
+	}
 }
 
 

@@ -223,8 +223,13 @@ typedef struct __attribute__((packed)) {
 } BITMAPINFOHEADER;
 
 
-FRESULT Read_File_and_print_BMP(char *name) {
+FRESULT Read_File_and_print_BMP(char *name, uint16_t horizontal_offset, uint16_t vertical_offset) {
     uint32_t file_size;
+		uint16_t shift_H = LCD_H + 0;
+		uint16_t shift_V = LCD_W + 0;
+	  unsigned short buffer2[LCD_W];
+		BITMAPFILEHEADER fileHeader;
+    BITMAPINFOHEADER infoHeader;
 
     fresult = f_stat(name, &USBHfno);
     if (fresult != FR_OK) {
@@ -245,8 +250,6 @@ FRESULT Read_File_and_print_BMP(char *name) {
     }
 
     file_size = f_size(&USBHFile);
-		BITMAPFILEHEADER fileHeader;
-    BITMAPINFOHEADER infoHeader;
 		
 		fresult = f_read(&USBHFile, &fileHeader, sizeof(BITMAPFILEHEADER), &br);
     if (fresult != FR_OK) {
@@ -258,19 +261,29 @@ FRESULT Read_File_and_print_BMP(char *name) {
         f_close(&USBHFile);
         return fresult;
     }
-
-    unsigned short buffer2[infoHeader.biWidth];
 		
-		for (uint16_t column = infoHeader.biHeight; column >= 0; column--) {
-				if (infoHeader.biWidth * column >= file_size) break;
+		if(infoHeader.biWidth > LCD_W && infoHeader.biHeight > LCD_H){
+			vertical_offset = vertical_offset * 16;
+			horizontal_offset = horizontal_offset * 16;
+		} else {
+			vertical_offset = 0;
+			horizontal_offset = 0;
+		}
+		if(infoHeader.biHeight - vertical_offset < 0 || infoHeader.biWidth - horizontal_offset < 0){
+			horizontal_offset = infoHeader.biHeight - LCD_H;
+			vertical_offset = infoHeader.biWidth - LCD_W;
+		}
+		
+		for (uint16_t column = LCD_H; column >= 0; column--) {
+				if (infoHeader.biWidth * column * 2 >= file_size) break;
 
-				fresult = f_lseek(&USBHFile,64 + (infoHeader.biWidth*2) * column);
+				fresult = f_lseek(&USBHFile,64 + ((infoHeader.biWidth*2) * (column+vertical_offset) + horizontal_offset));
 				if (fresult != FR_OK) {
 						GC9A01_Text("Seek error!\n", 1);
 						break;
 				}
 
-				fresult = f_read(&USBHFile, buffer2, infoHeader.biWidth*2, &br);
+				fresult = f_read(&USBHFile, buffer2, LCD_W*2, &br);
 				if (fresult != FR_OK) {
 						GC9A01_Text("Read error!\n", 1);
 						break;
@@ -278,11 +291,10 @@ FRESULT Read_File_and_print_BMP(char *name) {
 				
 				
 
-				GC9A01_show_picture(buffer2, 0, (infoHeader.biHeight-1) - column, infoHeader.biWidth, 1, infoHeader.biWidth, 1);
+				GC9A01_show_picture(buffer2, 0, (LCD_H-1) - column, LCD_W, 1, LCD_W, 1);
 		}
 		//free(buffer2);
 		f_close(&USBHFile);
-
 
     return fresult;
 }

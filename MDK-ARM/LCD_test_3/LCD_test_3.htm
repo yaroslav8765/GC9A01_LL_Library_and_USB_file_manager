@@ -3,11 +3,11 @@
 <title>Static Call Graph - [LCD_test_3\LCD_test_3.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image LCD_test_3\LCD_test_3.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060300: Last Updated: Sun Nov 24 11:36:18 2024
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060300: Last Updated: Mon Nov 25 11:55:08 2024
 <BR><P>
-<H3>Maximum Stack Usage =       1280 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
+<H3>Maximum Stack Usage =       1592 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
-__rt_entry_main &rArr; main &rArr; UP_button_handrel &rArr; view_txt_UP_button_handler &rArr; view_menu_RIGHT_button_handler &rArr; Scan_USB &rArr; f_opendir &rArr; follow_path &rArr; dir_find &rArr; dir_next &rArr; create_chain &rArr; put_fat &rArr; move_window &rArr; sync_window &rArr; disk_write
+__rt_entry_main &rArr; main &rArr; UP_button_handrel &rArr; view_txt_UP_button_handler &rArr; view_menu_RIGHT_button_handler &rArr; Read_File_and_print_BMP &rArr; f_open &rArr; dir_register &rArr; dir_find &rArr; dir_next &rArr; create_chain &rArr; put_fat &rArr; move_window &rArr; sync_window &rArr; disk_write
 <P>
 <H3>
 Functions with no stack information
@@ -249,8 +249,8 @@ Global Symbols
 <P><STRONG><a name="[1c6]"></a>__rt_entry_postsh_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __rtentry2.o(.ARM.Collect$$rtentry$$00000009))
 
 <P><STRONG><a name="[6b]"></a>__rt_entry_main</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __rtentry2.o(.ARM.Collect$$rtentry$$0000000D))
-<BR><BR>[Stack]<UL><LI>Max Depth = 1280 + Unknown Stack Size
-<LI>Call Chain = __rt_entry_main &rArr; main &rArr; UP_button_handrel &rArr; view_txt_UP_button_handler &rArr; view_menu_RIGHT_button_handler &rArr; Scan_USB &rArr; f_opendir &rArr; follow_path &rArr; dir_find &rArr; dir_next &rArr; create_chain &rArr; put_fat &rArr; move_window &rArr; sync_window &rArr; disk_write
+<BR><BR>[Stack]<UL><LI>Max Depth = 1592 + Unknown Stack Size
+<LI>Call Chain = __rt_entry_main &rArr; main &rArr; UP_button_handrel &rArr; view_txt_UP_button_handler &rArr; view_menu_RIGHT_button_handler &rArr; Read_File_and_print_BMP &rArr; f_open &rArr; dir_register &rArr; dir_find &rArr; dir_next &rArr; create_chain &rArr; put_fat &rArr; move_window &rArr; sync_window &rArr; disk_write
 </UL>
 <BR>[Calls]<UL><LI><a href="#[6c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 <LI><a href="#[6d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;exit
@@ -503,6 +503,10 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[11a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Scan_USB_for_amount_of_files
 <LI><a href="#[114]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Scan_USB
 <LI><a href="#[109]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;view_menu_RIGHT_button_handler
+<LI><a href="#[122]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;view_image_UP_button_handler
+<LI><a href="#[10b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;view_image_RIGHT_button_handler
+<LI><a href="#[ee]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;view_image_LEFT_button_handler
+<LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;view_image_DOWN_button_handler
 </UL>
 
 <P><STRONG><a name="[88]"></a>_printf_str</STRONG> (Thumb, 82 bytes, Stack size 16 bytes, _printf_str.o(.text))
@@ -543,6 +547,10 @@ Global Symbols
 <LI><a href="#[a7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GC9A01_String
 <LI><a href="#[109]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;view_menu_RIGHT_button_handler
 <LI><a href="#[ec]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;view_menu_LEFT_button_handler
+<LI><a href="#[122]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;view_image_UP_button_handler
+<LI><a href="#[10b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;view_image_RIGHT_button_handler
+<LI><a href="#[ee]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;view_image_LEFT_button_handler
+<LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;view_image_DOWN_button_handler
 </UL>
 
 <P><STRONG><a name="[111]"></a>__aeabi_memcpy</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, rt_memcpy_v6.o(.text))
@@ -563,6 +571,10 @@ Global Symbols
 <LI><a href="#[120]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;view_menu_UP_button_handler
 <LI><a href="#[109]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;view_menu_RIGHT_button_handler
 <LI><a href="#[94]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;view_menu_DOWN_button_handler
+<LI><a href="#[122]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;view_image_UP_button_handler
+<LI><a href="#[10b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;view_image_RIGHT_button_handler
+<LI><a href="#[ee]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;view_image_LEFT_button_handler
+<LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;view_image_DOWN_button_handler
 <LI><a href="#[152]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USBH_MSC_GetLUNInfo
 <LI><a href="#[7d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__rt_memcpy
 </UL>
@@ -812,8 +824,8 @@ Global Symbols
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f411xe.o(RESET)
 </UL>
 <P><STRONG><a name="[92]"></a>DOWN_button_handrel</STRONG> (Thumb, 50 bytes, Stack size 8 bytes, main.o(i.DOWN_button_handrel))
-<BR><BR>[Stack]<UL><LI>Max Depth = 1272 + Unknown Stack Size
-<LI>Call Chain = DOWN_button_handrel &rArr; view_txt_DOWN_button_handler &rArr; view_menu_RIGHT_button_handler &rArr; Scan_USB &rArr; f_opendir &rArr; follow_path &rArr; dir_find &rArr; dir_next &rArr; create_chain &rArr; put_fat &rArr; move_window &rArr; sync_window &rArr; disk_write
+<BR><BR>[Stack]<UL><LI>Max Depth = 1584 + Unknown Stack Size
+<LI>Call Chain = DOWN_button_handrel &rArr; view_txt_DOWN_button_handler &rArr; view_menu_RIGHT_button_handler &rArr; Read_File_and_print_BMP &rArr; f_open &rArr; dir_register &rArr; dir_find &rArr; dir_next &rArr; create_chain &rArr; put_fat &rArr; move_window &rArr; sync_window &rArr; disk_write
 </UL>
 <BR>[Calls]<UL><LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GPIO_TogglePin
 <LI><a href="#[95]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;view_txt_DOWN_button_handler
@@ -863,7 +875,10 @@ Global Symbols
 <LI><a href="#[109]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;view_menu_RIGHT_button_handler
 <LI><a href="#[ec]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;view_menu_LEFT_button_handler
 <LI><a href="#[94]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;view_menu_DOWN_button_handler
+<LI><a href="#[122]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;view_image_UP_button_handler
+<LI><a href="#[10b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;view_image_RIGHT_button_handler
 <LI><a href="#[ee]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;view_image_LEFT_button_handler
+<LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;view_image_DOWN_button_handler
 <LI><a href="#[6c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 <LI><a href="#[169]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;check_for_USB_storage_connection
 <LI><a href="#[91]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Error_Handler
@@ -1293,8 +1308,8 @@ Global Symbols
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f411xe.o(RESET)
 </UL>
 <P><STRONG><a name="[eb]"></a>LEFT_button_handrel</STRONG> (Thumb, 50 bytes, Stack size 8 bytes, main.o(i.LEFT_button_handrel))
-<BR><BR>[Stack]<UL><LI>Max Depth = 1152 + Unknown Stack Size
-<LI>Call Chain = LEFT_button_handrel &rArr; view_menu_LEFT_button_handler &rArr; Scan_USB &rArr; f_opendir &rArr; follow_path &rArr; dir_find &rArr; dir_next &rArr; create_chain &rArr; put_fat &rArr; move_window &rArr; sync_window &rArr; disk_write
+<BR><BR>[Stack]<UL><LI>Max Depth = 1560 + Unknown Stack Size
+<LI>Call Chain = LEFT_button_handrel &rArr; view_image_LEFT_button_handler &rArr; Read_File_and_print_BMP &rArr; f_open &rArr; dir_register &rArr; dir_find &rArr; dir_next &rArr; create_chain &rArr; put_fat &rArr; move_window &rArr; sync_window &rArr; disk_write
 </UL>
 <BR>[Calls]<UL><LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GPIO_TogglePin
 <LI><a href="#[ed]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;view_txt_LEFT_button_handler
@@ -1376,6 +1391,10 @@ Global Symbols
 <LI><a href="#[109]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;view_menu_RIGHT_button_handler
 <LI><a href="#[ec]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;view_menu_LEFT_button_handler
 <LI><a href="#[94]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;view_menu_DOWN_button_handler
+<LI><a href="#[122]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;view_image_UP_button_handler
+<LI><a href="#[10b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;view_image_RIGHT_button_handler
+<LI><a href="#[ee]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;view_image_LEFT_button_handler
+<LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;view_image_DOWN_button_handler
 <LI><a href="#[6c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 <LI><a href="#[169]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;check_for_USB_storage_connection
 </UL>
@@ -1394,8 +1413,8 @@ Global Symbols
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f411xe.o(RESET)
 </UL>
 <P><STRONG><a name="[108]"></a>RIGHT_button_handrel</STRONG> (Thumb, 50 bytes, Stack size 8 bytes, main.o(i.RIGHT_button_handrel))
-<BR><BR>[Stack]<UL><LI>Max Depth = 1264 + Unknown Stack Size
-<LI>Call Chain = RIGHT_button_handrel &rArr; view_menu_RIGHT_button_handler &rArr; Scan_USB &rArr; f_opendir &rArr; follow_path &rArr; dir_find &rArr; dir_next &rArr; create_chain &rArr; put_fat &rArr; move_window &rArr; sync_window &rArr; disk_write
+<BR><BR>[Stack]<UL><LI>Max Depth = 1576 + Unknown Stack Size
+<LI>Call Chain = RIGHT_button_handrel &rArr; view_menu_RIGHT_button_handler &rArr; Read_File_and_print_BMP &rArr; f_open &rArr; dir_register &rArr; dir_find &rArr; dir_next &rArr; create_chain &rArr; put_fat &rArr; move_window &rArr; sync_window &rArr; disk_write
 </UL>
 <BR>[Calls]<UL><LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GPIO_TogglePin
 <LI><a href="#[10a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;view_txt_RIGHT_button_handler
@@ -1422,8 +1441,8 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[109]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;view_menu_RIGHT_button_handler
 </UL>
 
-<P><STRONG><a name="[112]"></a>Read_File_and_print_BMP</STRONG> (Thumb, 364 bytes, Stack size 96 bytes, file_handling.o(i.Read_File_and_print_BMP))
-<BR><BR>[Stack]<UL><LI>Max Depth = 960 + Unknown Stack Size
+<P><STRONG><a name="[112]"></a>Read_File_and_print_BMP</STRONG> (Thumb, 408 bytes, Stack size 584 bytes, file_handling.o(i.Read_File_and_print_BMP))
+<BR><BR>[Stack]<UL><LI>Max Depth = 1448 + Unknown Stack Size
 <LI>Call Chain = Read_File_and_print_BMP &rArr; f_open &rArr; dir_register &rArr; dir_find &rArr; dir_next &rArr; create_chain &rArr; put_fat &rArr; move_window &rArr; sync_window &rArr; disk_write
 </UL>
 <BR>[Calls]<UL><LI><a href="#[10d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;f_stat
@@ -1438,6 +1457,10 @@ Global Symbols
 <LI><a href="#[72]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;malloc
 </UL>
 <BR>[Called By]<UL><LI><a href="#[109]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;view_menu_RIGHT_button_handler
+<LI><a href="#[122]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;view_image_UP_button_handler
+<LI><a href="#[10b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;view_image_RIGHT_button_handler
+<LI><a href="#[ee]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;view_image_LEFT_button_handler
+<LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;view_image_DOWN_button_handler
 </UL>
 
 <P><STRONG><a name="[ad]"></a>SPI_write</STRONG> (Thumb, 46 bytes, Stack size 0 bytes, gc9a01.o(i.SPI_write))
@@ -1505,7 +1528,6 @@ Global Symbols
 <LI><a href="#[109]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;view_menu_RIGHT_button_handler
 <LI><a href="#[ec]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;view_menu_LEFT_button_handler
 <LI><a href="#[94]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;view_menu_DOWN_button_handler
-<LI><a href="#[ee]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;view_image_LEFT_button_handler
 <LI><a href="#[169]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;check_for_USB_storage_connection
 </UL>
 
@@ -1533,8 +1555,8 @@ Global Symbols
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f411xe.o(RESET)
 </UL>
 <P><STRONG><a name="[11f]"></a>UP_button_handrel</STRONG> (Thumb, 50 bytes, Stack size 8 bytes, main.o(i.UP_button_handrel))
-<BR><BR>[Stack]<UL><LI>Max Depth = 1272 + Unknown Stack Size
-<LI>Call Chain = UP_button_handrel &rArr; view_txt_UP_button_handler &rArr; view_menu_RIGHT_button_handler &rArr; Scan_USB &rArr; f_opendir &rArr; follow_path &rArr; dir_find &rArr; dir_next &rArr; create_chain &rArr; put_fat &rArr; move_window &rArr; sync_window &rArr; disk_write
+<BR><BR>[Stack]<UL><LI>Max Depth = 1584 + Unknown Stack Size
+<LI>Call Chain = UP_button_handrel &rArr; view_txt_UP_button_handler &rArr; view_menu_RIGHT_button_handler &rArr; Read_File_and_print_BMP &rArr; f_open &rArr; dir_register &rArr; dir_find &rArr; dir_next &rArr; create_chain &rArr; put_fat &rArr; move_window &rArr; sync_window &rArr; disk_write
 </UL>
 <BR>[Calls]<UL><LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GPIO_TogglePin
 <LI><a href="#[121]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;view_txt_UP_button_handler
@@ -2255,6 +2277,10 @@ Global Symbols
 <LI><a href="#[109]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;view_menu_RIGHT_button_handler
 <LI><a href="#[ec]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;view_menu_LEFT_button_handler
 <LI><a href="#[94]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;view_menu_DOWN_button_handler
+<LI><a href="#[122]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;view_image_UP_button_handler
+<LI><a href="#[10b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;view_image_RIGHT_button_handler
+<LI><a href="#[ee]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;view_image_LEFT_button_handler
+<LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;view_image_DOWN_button_handler
 <LI><a href="#[6c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 <LI><a href="#[169]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;check_for_USB_storage_connection
 </UL>
@@ -2289,6 +2315,10 @@ Global Symbols
 <BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = chek_menu_member_for_the_file_type
 </UL>
 <BR>[Called By]<UL><LI><a href="#[109]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;view_menu_RIGHT_button_handler
+<LI><a href="#[122]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;view_image_UP_button_handler
+<LI><a href="#[10b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;view_image_RIGHT_button_handler
+<LI><a href="#[ee]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;view_image_LEFT_button_handler
+<LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;view_image_DOWN_button_handler
 </UL>
 
 <P><STRONG><a name="[16a]"></a>clear_and_set_root</STRONG> (Thumb, 28 bytes, Stack size 16 bytes, main.o(i.clear_and_set_root))
@@ -2495,6 +2525,10 @@ Global Symbols
 <P><STRONG><a name="[19e]"></a>get_active_menu_member</STRONG> (Thumb, 38 bytes, Stack size 0 bytes, gc9a01.o(i.get_active_menu_member))
 <BR><BR>[Called By]<UL><LI><a href="#[19f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;menu_active_member_running_text_animation
 <LI><a href="#[109]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;view_menu_RIGHT_button_handler
+<LI><a href="#[122]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;view_image_UP_button_handler
+<LI><a href="#[10b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;view_image_RIGHT_button_handler
+<LI><a href="#[ee]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;view_image_LEFT_button_handler
+<LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;view_image_DOWN_button_handler
 <LI><a href="#[6c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
@@ -2504,8 +2538,8 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[6c]"></a>main</STRONG> (Thumb, 590 bytes, Stack size 8 bytes, main.o(i.main))
-<BR><BR>[Stack]<UL><LI>Max Depth = 1280 + Unknown Stack Size
-<LI>Call Chain = main &rArr; UP_button_handrel &rArr; view_txt_UP_button_handler &rArr; view_menu_RIGHT_button_handler &rArr; Scan_USB &rArr; f_opendir &rArr; follow_path &rArr; dir_find &rArr; dir_next &rArr; create_chain &rArr; put_fat &rArr; move_window &rArr; sync_window &rArr; disk_write
+<BR><BR>[Stack]<UL><LI>Max Depth = 1592 + Unknown Stack Size
+<LI>Call Chain = main &rArr; UP_button_handrel &rArr; view_txt_UP_button_handler &rArr; view_menu_RIGHT_button_handler &rArr; Read_File_and_print_BMP &rArr; f_open &rArr; dir_register &rArr; dir_find &rArr; dir_next &rArr; create_chain &rArr; put_fat &rArr; move_window &rArr; sync_window &rArr; disk_write
 </UL>
 <BR>[Calls]<UL><LI><a href="#[f3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__NVIC_SetPriority
 <LI><a href="#[f1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__NVIC_GetPriorityGrouping
@@ -2573,26 +2607,72 @@ Global Symbols
 <LI><a href="#[94]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;view_menu_DOWN_button_handler
 </UL>
 
-<P><STRONG><a name="[96]"></a>view_image_DOWN_button_handler</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, main.o(i.view_image_DOWN_button_handler))
-<BR><BR>[Called By]<UL><LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DOWN_button_handrel
+<P><STRONG><a name="[96]"></a>view_image_DOWN_button_handler</STRONG> (Thumb, 174 bytes, Stack size 104 bytes, main.o(i.view_image_DOWN_button_handler))
+<BR><BR>[Stack]<UL><LI>Max Depth = 1552 + Unknown Stack Size
+<LI>Call Chain = view_image_DOWN_button_handler &rArr; Read_File_and_print_BMP &rArr; f_open &rArr; dir_register &rArr; dir_find &rArr; dir_next &rArr; create_chain &rArr; put_fat &rArr; move_window &rArr; sync_window &rArr; disk_write
+</UL>
+<BR>[Calls]<UL><LI><a href="#[19e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_active_menu_member
+<LI><a href="#[1a3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;chek_menu_member_for_the_file_type
+<LI><a href="#[97]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GC9A01_ClearScreen
+<LI><a href="#[168]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Unmount_USB
+<LI><a href="#[112]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Read_File_and_print_BMP
+<LI><a href="#[105]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Mount_USB
+<LI><a href="#[7e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memcpy4
+<LI><a href="#[a8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;strlen
+<LI><a href="#[78]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2snprintf
+</UL>
+<BR>[Called By]<UL><LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DOWN_button_handrel
 </UL>
 
-<P><STRONG><a name="[ee]"></a>view_image_LEFT_button_handler</STRONG> (Thumb, 44 bytes, Stack size 8 bytes, main.o(i.view_image_LEFT_button_handler))
-<BR><BR>[Stack]<UL><LI>Max Depth = 216 + Unknown Stack Size
-<LI>Call Chain = view_image_LEFT_button_handler &rArr; ShowMenu &rArr; GC9A01_String &rArr; GC9A01_DrawChar &rArr; GC9A01_DrawPixel_2x2 &rArr; malloc &rArr; __Heap_Full &rArr; __Heap_ProvideMemory &rArr; free
+<P><STRONG><a name="[ee]"></a>view_image_LEFT_button_handler</STRONG> (Thumb, 174 bytes, Stack size 104 bytes, main.o(i.view_image_LEFT_button_handler))
+<BR><BR>[Stack]<UL><LI>Max Depth = 1552 + Unknown Stack Size
+<LI>Call Chain = view_image_LEFT_button_handler &rArr; Read_File_and_print_BMP &rArr; f_open &rArr; dir_register &rArr; dir_find &rArr; dir_next &rArr; create_chain &rArr; put_fat &rArr; move_window &rArr; sync_window &rArr; disk_write
 </UL>
-<BR>[Calls]<UL><LI><a href="#[11b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ShowMenu
+<BR>[Calls]<UL><LI><a href="#[19e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_active_menu_member
+<LI><a href="#[1a3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;chek_menu_member_for_the_file_type
 <LI><a href="#[97]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GC9A01_ClearScreen
+<LI><a href="#[168]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Unmount_USB
+<LI><a href="#[112]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Read_File_and_print_BMP
+<LI><a href="#[105]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Mount_USB
+<LI><a href="#[7e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memcpy4
+<LI><a href="#[a8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;strlen
+<LI><a href="#[78]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2snprintf
 </UL>
 <BR>[Called By]<UL><LI><a href="#[eb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LEFT_button_handrel
 </UL>
 
-<P><STRONG><a name="[10b]"></a>view_image_RIGHT_button_handler</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, main.o(i.view_image_RIGHT_button_handler))
-<BR><BR>[Called By]<UL><LI><a href="#[108]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RIGHT_button_handrel
+<P><STRONG><a name="[10b]"></a>view_image_RIGHT_button_handler</STRONG> (Thumb, 174 bytes, Stack size 104 bytes, main.o(i.view_image_RIGHT_button_handler))
+<BR><BR>[Stack]<UL><LI>Max Depth = 1552 + Unknown Stack Size
+<LI>Call Chain = view_image_RIGHT_button_handler &rArr; Read_File_and_print_BMP &rArr; f_open &rArr; dir_register &rArr; dir_find &rArr; dir_next &rArr; create_chain &rArr; put_fat &rArr; move_window &rArr; sync_window &rArr; disk_write
+</UL>
+<BR>[Calls]<UL><LI><a href="#[19e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_active_menu_member
+<LI><a href="#[1a3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;chek_menu_member_for_the_file_type
+<LI><a href="#[97]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GC9A01_ClearScreen
+<LI><a href="#[168]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Unmount_USB
+<LI><a href="#[112]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Read_File_and_print_BMP
+<LI><a href="#[105]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Mount_USB
+<LI><a href="#[7e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memcpy4
+<LI><a href="#[a8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;strlen
+<LI><a href="#[78]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2snprintf
+</UL>
+<BR>[Called By]<UL><LI><a href="#[108]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RIGHT_button_handrel
 </UL>
 
-<P><STRONG><a name="[122]"></a>view_image_UP_button_handler</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, main.o(i.view_image_UP_button_handler))
-<BR><BR>[Called By]<UL><LI><a href="#[11f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UP_button_handrel
+<P><STRONG><a name="[122]"></a>view_image_UP_button_handler</STRONG> (Thumb, 174 bytes, Stack size 104 bytes, main.o(i.view_image_UP_button_handler))
+<BR><BR>[Stack]<UL><LI>Max Depth = 1552 + Unknown Stack Size
+<LI>Call Chain = view_image_UP_button_handler &rArr; Read_File_and_print_BMP &rArr; f_open &rArr; dir_register &rArr; dir_find &rArr; dir_next &rArr; create_chain &rArr; put_fat &rArr; move_window &rArr; sync_window &rArr; disk_write
+</UL>
+<BR>[Calls]<UL><LI><a href="#[19e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_active_menu_member
+<LI><a href="#[1a3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;chek_menu_member_for_the_file_type
+<LI><a href="#[97]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GC9A01_ClearScreen
+<LI><a href="#[168]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Unmount_USB
+<LI><a href="#[112]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Read_File_and_print_BMP
+<LI><a href="#[105]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Mount_USB
+<LI><a href="#[7e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memcpy4
+<LI><a href="#[a8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;strlen
+<LI><a href="#[78]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2snprintf
+</UL>
+<BR>[Called By]<UL><LI><a href="#[11f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UP_button_handrel
 </UL>
 
 <P><STRONG><a name="[94]"></a>view_menu_DOWN_button_handler</STRONG> (Thumb, 346 bytes, Stack size 96 bytes, main.o(i.view_menu_DOWN_button_handler))
@@ -2626,9 +2706,9 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[eb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LEFT_button_handrel
 </UL>
 
-<P><STRONG><a name="[109]"></a>view_menu_RIGHT_button_handler</STRONG> (Thumb, 660 bytes, Stack size 120 bytes, main.o(i.view_menu_RIGHT_button_handler))
-<BR><BR>[Stack]<UL><LI>Max Depth = 1256 + Unknown Stack Size
-<LI>Call Chain = view_menu_RIGHT_button_handler &rArr; Scan_USB &rArr; f_opendir &rArr; follow_path &rArr; dir_find &rArr; dir_next &rArr; create_chain &rArr; put_fat &rArr; move_window &rArr; sync_window &rArr; disk_write
+<P><STRONG><a name="[109]"></a>view_menu_RIGHT_button_handler</STRONG> (Thumb, 668 bytes, Stack size 120 bytes, main.o(i.view_menu_RIGHT_button_handler))
+<BR><BR>[Stack]<UL><LI>Max Depth = 1568 + Unknown Stack Size
+<LI>Call Chain = view_menu_RIGHT_button_handler &rArr; Read_File_and_print_BMP &rArr; f_open &rArr; dir_register &rArr; dir_find &rArr; dir_next &rArr; create_chain &rArr; put_fat &rArr; move_window &rArr; sync_window &rArr; disk_write
 </UL>
 <BR>[Calls]<UL><LI><a href="#[19e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_active_menu_member
 <LI><a href="#[1a3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;chek_menu_member_for_the_file_type
@@ -2671,8 +2751,8 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[95]"></a>view_txt_DOWN_button_handler</STRONG> (Thumb, 18 bytes, Stack size 8 bytes, main.o(i.view_txt_DOWN_button_handler))
-<BR><BR>[Stack]<UL><LI>Max Depth = 1264 + Unknown Stack Size
-<LI>Call Chain = view_txt_DOWN_button_handler &rArr; view_menu_RIGHT_button_handler &rArr; Scan_USB &rArr; f_opendir &rArr; follow_path &rArr; dir_find &rArr; dir_next &rArr; create_chain &rArr; put_fat &rArr; move_window &rArr; sync_window &rArr; disk_write
+<BR><BR>[Stack]<UL><LI>Max Depth = 1576 + Unknown Stack Size
+<LI>Call Chain = view_txt_DOWN_button_handler &rArr; view_menu_RIGHT_button_handler &rArr; Read_File_and_print_BMP &rArr; f_open &rArr; dir_register &rArr; dir_find &rArr; dir_next &rArr; create_chain &rArr; put_fat &rArr; move_window &rArr; sync_window &rArr; disk_write
 </UL>
 <BR>[Calls]<UL><LI><a href="#[109]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;view_menu_RIGHT_button_handler
 </UL>
@@ -2694,8 +2774,8 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[121]"></a>view_txt_UP_button_handler</STRONG> (Thumb, 18 bytes, Stack size 8 bytes, main.o(i.view_txt_UP_button_handler))
-<BR><BR>[Stack]<UL><LI>Max Depth = 1264 + Unknown Stack Size
-<LI>Call Chain = view_txt_UP_button_handler &rArr; view_menu_RIGHT_button_handler &rArr; Scan_USB &rArr; f_opendir &rArr; follow_path &rArr; dir_find &rArr; dir_next &rArr; create_chain &rArr; put_fat &rArr; move_window &rArr; sync_window &rArr; disk_write
+<BR><BR>[Stack]<UL><LI>Max Depth = 1576 + Unknown Stack Size
+<LI>Call Chain = view_txt_UP_button_handler &rArr; view_menu_RIGHT_button_handler &rArr; Read_File_and_print_BMP &rArr; f_open &rArr; dir_register &rArr; dir_find &rArr; dir_next &rArr; create_chain &rArr; put_fat &rArr; move_window &rArr; sync_window &rArr; disk_write
 </UL>
 <BR>[Calls]<UL><LI><a href="#[109]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;view_menu_RIGHT_button_handler
 </UL>
