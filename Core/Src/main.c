@@ -109,7 +109,7 @@
 	void display_test_animation(void);
 	void ClearBuffer(char *buffer, size_t length);
 	void clear_and_set_root(char *array, size_t size);
-
+	void refresh_BMP_image(void);
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
@@ -498,6 +498,21 @@ void clear_and_set_root(char *array, size_t size) {
     }
 }
 
+void refresh_BMP_image(void){
+	
+	uint8_t active_member = get_active_menu_member(Members);	
+	if(chek_menu_member_for_the_file_type(Members[active_member],"bmp") == 1){
+		enable_menu_member_animation = 0;
+		snprintf(path_txt, sizeof(path_txt), "%.*s/%s", (int)(strlen(path)), path, Members[active_member].text);
+		current_mode = view_image;
+		GC9A01_ClearScreen(WHITE);
+		Mount_USB();
+		Read_File_and_print_BMP(path_txt,&horizontal_offset,&vertical_offset );
+		Unmount_USB();
+	
+	}
+}
+
 void display_test_animation(void){
 		for(uint8_t i=0;i<10;i++)
     {
@@ -771,7 +786,7 @@ void view_menu_RIGHT_button_handler(){
 		current_mode = view_image;
 		GC9A01_ClearScreen(WHITE);
 		Mount_USB();
-		Read_File_and_print_BMP(path_txt,horizontal_offset,vertical_offset );
+		Read_File_and_print_BMP(path_txt,&horizontal_offset,&vertical_offset );
 		//Read_File(path_txt,txt_file_page,buffer, 240 );
 		Unmount_USB();
 	
@@ -811,52 +826,30 @@ void view_txt_RIGHT_button_handler(){
 
 
 void view_image_DOWN_button_handler(){
-	
-	vertical_offset  = vertical_offset - 1;
-	uint8_t active_member = get_active_menu_member(Members);	
-	if(chek_menu_member_for_the_file_type(Members[active_member],"bmp") == 1){
-		enable_menu_member_animation = 0;
-		snprintf(path_txt, sizeof(path_txt), "%.*s/%s", (int)(strlen(path)), path, Members[active_member].text);
-		current_mode = view_image;
-		GC9A01_ClearScreen(WHITE);
-		Mount_USB();
-		Read_File_and_print_BMP(path_txt,horizontal_offset,vertical_offset );
-		//Read_File(path_txt,txt_file_page,buffer, 240 );
-		Unmount_USB();
+	if(vertical_offset >= 64){
+		vertical_offset  = vertical_offset - 64;
+	} else {
+		vertical_offset = 0;
+	}
+	refresh_BMP_image();
 	
 	}
-}
+
 	
 void view_image_UP_button_handler(){
-	vertical_offset  = vertical_offset + 1;
-	uint8_t active_member = get_active_menu_member(Members);	
-	if(chek_menu_member_for_the_file_type(Members[active_member],"bmp") == 1){
-		enable_menu_member_animation = 0;
-		snprintf(path_txt, sizeof(path_txt), "%.*s/%s", (int)(strlen(path)), path, Members[active_member].text);
-		current_mode = view_image;
-		GC9A01_ClearScreen(WHITE);
-		Mount_USB();
-		Read_File_and_print_BMP(path_txt,horizontal_offset,vertical_offset );
-		//Read_File(path_txt,txt_file_page,buffer, 240 );
-		Unmount_USB();
-	
-	}
+	vertical_offset  = vertical_offset + 64;
+	refresh_BMP_image();
+
 }
 	
 void view_image_LEFT_button_handler(){
-	horizontal_offset = horizontal_offset - 1;
-	uint8_t active_member = get_active_menu_member(Members);	
-	if(chek_menu_member_for_the_file_type(Members[active_member],"bmp") == 1){
-		enable_menu_member_animation = 0;
-		snprintf(path_txt, sizeof(path_txt), "%.*s/%s", (int)(strlen(path)), path, Members[active_member].text);
-		current_mode = view_image;
-		GC9A01_ClearScreen(WHITE);
-		Mount_USB();
-		Read_File_and_print_BMP(path_txt,horizontal_offset,vertical_offset );
-		//Read_File(path_txt,txt_file_page,buffer, 240 );
-		Unmount_USB();
-	
+	if(horizontal_offset >= 64){
+		horizontal_offset  = horizontal_offset - 64;
+	} else {
+		horizontal_offset = 0;
 	}
+	refresh_BMP_image();
+
 //	GC9A01_ClearScreen(WHITE);
 //	current_mode = view_file_menu;
 //	txt_file_page = 1;
@@ -866,19 +859,9 @@ void view_image_LEFT_button_handler(){
 }
 	
 void view_image_RIGHT_button_handler(){
-	horizontal_offset = horizontal_offset + 1;
-	uint8_t active_member = get_active_menu_member(Members);	
-	if(chek_menu_member_for_the_file_type(Members[active_member],"bmp") == 1){
-		enable_menu_member_animation = 0;
-		snprintf(path_txt, sizeof(path_txt), "%.*s/%s", (int)(strlen(path)), path, Members[active_member].text);
-		current_mode = view_image;
-		GC9A01_ClearScreen(WHITE);
-		Mount_USB();
-		Read_File_and_print_BMP(path_txt,horizontal_offset,vertical_offset );
-		//Read_File(path_txt,txt_file_page,buffer, 240 );
-		Unmount_USB();
-	
-	}
+	horizontal_offset = horizontal_offset + 64;
+	refresh_BMP_image();
+
 }
 
 

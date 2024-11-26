@@ -223,7 +223,7 @@ typedef struct __attribute__((packed)) {
 } BITMAPINFOHEADER;
 
 
-FRESULT Read_File_and_print_BMP(char *name, uint16_t horizontal_offset, uint16_t vertical_offset) {
+FRESULT Read_File_and_print_BMP(char *name, uint16_t *horizontal_offset, uint16_t *vertical_offset) {
     uint32_t file_size;
 		uint16_t shift_H = LCD_H + 0;
 		uint16_t shift_V = LCD_W + 0;
@@ -263,21 +263,30 @@ FRESULT Read_File_and_print_BMP(char *name, uint16_t horizontal_offset, uint16_t
     }
 		
 		if(infoHeader.biWidth > LCD_W && infoHeader.biHeight > LCD_H){
-			vertical_offset = vertical_offset * 16;
-			horizontal_offset = horizontal_offset * 16;
+			//vertical_offset = vertical_offset * 8;
+			//horizontal_offset = horizontal_offset * 8;
 		} else {
 			vertical_offset = 0;
 			horizontal_offset = 0;
 		}
-		if(infoHeader.biHeight - vertical_offset < 0 || infoHeader.biWidth - horizontal_offset < 0){
-			horizontal_offset = infoHeader.biHeight - LCD_H;
-			vertical_offset = infoHeader.biWidth - LCD_W;
+		
+		
+		if(*vertical_offset > infoHeader.biHeight - LCD_H ){
+			*vertical_offset = infoHeader.biHeight - LCD_H;
 		}
+		if(*horizontal_offset > infoHeader.biWidth + LCD_W + LCD_W - 54){
+			*horizontal_offset = infoHeader.biWidth + LCD_W + LCD_W - 54 ;
+		}
+//		
+//		if(infoHeader.biHeight - vertical_offset == 0 || infoHeader.biWidth - horizontal_offset == 0){
+//			horizontal_offset = infoHeader.biWidth - LCD_W;
+//			vertical_offset = infoHeader.biHeight - LCD_H;
+//		}
 		
 		for (uint16_t column = LCD_H; column >= 0; column--) {
 				if (infoHeader.biWidth * column * 2 >= file_size) break;
 
-				fresult = f_lseek(&USBHFile,64 + ((infoHeader.biWidth*2) * (column+vertical_offset) + horizontal_offset));
+				fresult = f_lseek(&USBHFile,64 + ((infoHeader.biWidth*2) * (column+ (*vertical_offset)) + (*horizontal_offset)));
 				if (fresult != FR_OK) {
 						GC9A01_Text("Seek error!\n", 1);
 						break;

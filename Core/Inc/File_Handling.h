@@ -27,7 +27,7 @@ uint8_t Scan_USB_for_amount_of_files(char *pat);
 /* read data from the file
  * @ name : is the path to the file*/
 FRESULT Read_File (char *name, uint8_t page,char *buffer, uint16_t lenght);
-FRESULT Read_File_and_print_BMP(char *name, uint16_t horizontal_offset, uint16_t vertical_offset);
+FRESULT Read_File_and_print_BMP(char *name, uint16_t *horizontal_offset, uint16_t *vertical_offset);
 uint8_t get_depth_of_dir(char *path);
 
 
