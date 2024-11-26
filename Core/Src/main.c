@@ -666,7 +666,7 @@ void view_menu_DOWN_button_handler(){
 			Members[current_active_menu_member].state = active;
 			refresh_menu_member(Members[current_active_menu_member],current_active_menu_member);
 		}else{
-			if(amount_of_files>=((current_page)*AMOUNT_OF_MENU_MEMBERS)+1){
+			if(amount_of_files>=((current_page)*AMOUNT_OF_MENU_MEMBERS)){
 				current_active_menu_member = 0;
 				Members[current_active_menu_member].state = active;
 				Members[AMOUNT_OF_MENU_MEMBERS - 1].state = unactive;

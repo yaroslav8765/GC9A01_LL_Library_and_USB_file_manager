@@ -262,31 +262,23 @@ FRESULT Read_File_and_print_BMP(char *name, uint16_t *horizontal_offset, uint16_
         return fresult;
     }
 		
-		if(infoHeader.biWidth > LCD_W && infoHeader.biHeight > LCD_H){
-			//vertical_offset = vertical_offset * 8;
-			//horizontal_offset = horizontal_offset * 8;
-		} else {
+		if(infoHeader.biWidth < LCD_W && infoHeader.biHeight < LCD_H){
 			vertical_offset = 0;
 			horizontal_offset = 0;
+		} else {
+			if(*vertical_offset > infoHeader.biHeight - LCD_H ){
+				*vertical_offset = infoHeader.biHeight - LCD_H;
+			}
+			if(*horizontal_offset > infoHeader.biWidth - LCD_W){
+				*horizontal_offset = infoHeader.biWidth - LCD_W;
+			}
 		}
-		
-		
-		if(*vertical_offset > infoHeader.biHeight - LCD_H ){
-			*vertical_offset = infoHeader.biHeight - LCD_H;
-		}
-		if(*horizontal_offset > infoHeader.biWidth + LCD_W + LCD_W - 54){
-			*horizontal_offset = infoHeader.biWidth + LCD_W + LCD_W - 54 ;
-		}
-//		
-//		if(infoHeader.biHeight - vertical_offset == 0 || infoHeader.biWidth - horizontal_offset == 0){
-//			horizontal_offset = infoHeader.biWidth - LCD_W;
-//			vertical_offset = infoHeader.biHeight - LCD_H;
-//		}
+
 		
 		for (uint16_t column = LCD_H; column >= 0; column--) {
 				if (infoHeader.biWidth * column * 2 >= file_size) break;
 
-				fresult = f_lseek(&USBHFile,64 + ((infoHeader.biWidth*2) * (column+ (*vertical_offset)) + (*horizontal_offset)));
+				fresult = f_lseek(&USBHFile,64 + ((infoHeader.biWidth*2) * (column+ (*vertical_offset)) + (*horizontal_offset*2)));
 				if (fresult != FR_OK) {
 						GC9A01_Text("Seek error!\n", 1);
 						break;
