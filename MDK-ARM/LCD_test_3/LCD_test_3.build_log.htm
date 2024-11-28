@@ -64,16 +64,16 @@ compiling File_Handling.c...
   void check_for_USB_storage_connection();
 ../Core/Inc/cg9a01.h(74): warning:  #47-D: incompatible redefinition of macro "RAINBOW_YELLOW" (declared at line 104 of "../Core/Inc/GC9A01.h")
   #define RAINBOW_YELLOW   0xFFE0
-..\Core\Src\File_Handling.c(278): warning:  #186-D: pointless comparison of unsigned integer with zero
+..\Core\Src\File_Handling.c(281): warning:  #186-D: pointless comparison of unsigned integer with zero
   		for (uint16_t column = 
 CD_H; column >= 0; column--) {
 ..\Core\Src\File_Handling.c(228): warning:  #177-D: variable "shift_H" was declared but never referenced
-  		uint16_t shift_H = LCD_H + 0;
+  	uint16_t shift_H = LCD_H + 0;
 ..\Core\Src\File_Handling.c(229): warning:  #177-D: variable "shift_V" was declared but never referenced
-  		uint16_t shift_V = LCD_W + 0;
+  	uint16_t shift_V = LCD_W + 0;
 ..\Core\Src\File_Handling.c: 21 warnings, 0 errors
 linking...
-Program Size: Code=42134 RO-data=8634 RW-data=40596 ZI-data=11516  
+Program Size: Code=42190 RO-data=8634 RW-data=40596 ZI-data=11516  
 FromELF: creating hex file...
 "LCD_test_3\LCD_test_3.axf" - 0 Error(s), 21 Warning(s).
 

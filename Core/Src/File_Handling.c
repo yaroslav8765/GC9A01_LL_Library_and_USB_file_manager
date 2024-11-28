@@ -201,67 +201,71 @@ FRESULT Read_File(char *name, uint8_t page, char *buffer, uint16_t lenght) {
 
 
 typedef struct __attribute__((packed)) {
-    uint16_t bfType;
-    uint32_t bfSize;
-    uint16_t bfReserved1;
-    uint16_t bfReserved2;
-    uint32_t bfOffBits;
+	uint16_t bfType;
+	uint32_t bfSize;
+	uint16_t bfReserved1;
+	uint16_t bfReserved2;
+	uint32_t bfOffBits;
 } BITMAPFILEHEADER;
 
 typedef struct __attribute__((packed)) {
-    uint32_t biSize;
-    int32_t  biWidth;
-    int32_t  biHeight;
-    uint16_t biPlanes;
-    uint16_t biBitCount;
-    uint32_t biCompression;
-    uint32_t biSizeImage;
-    int32_t  biXPelsPerMeter;
-    int32_t  biYPelsPerMeter;
-    uint32_t biClrUsed;
-    uint32_t biClrImportant;
+	uint32_t biSize;
+	int32_t  biWidth;
+	int32_t  biHeight;
+	uint16_t biPlanes;
+	uint16_t biBitCount;
+	uint32_t biCompression;	
+	uint32_t biSizeImage;
+	int32_t  biXPelsPerMeter;
+	int32_t  biYPelsPerMeter;
+  uint32_t biClrUsed;
+  uint32_t biClrImportant;
 } BITMAPINFOHEADER;
 
 
 FRESULT Read_File_and_print_BMP(char *name, uint16_t *horizontal_offset, uint16_t *vertical_offset) {
-    uint32_t file_size;
-		uint16_t shift_H = LCD_H + 0;
-		uint16_t shift_V = LCD_W + 0;
-	  unsigned short buffer2[LCD_W];
-		BITMAPFILEHEADER fileHeader;
-    BITMAPINFOHEADER infoHeader;
+  uint32_t file_size;
+	uint16_t shift_H = LCD_H + 0;
+	uint16_t shift_V = LCD_W + 0;
+	unsigned short buffer2[LCD_W];
+	BITMAPFILEHEADER fileHeader;
+  BITMAPINFOHEADER infoHeader;
 
-    fresult = f_stat(name, &USBHfno);
-    if (fresult != FR_OK) {
-        char *buf = malloc(100 * sizeof(char));
-        sprintf(buf, "ERROR!!! *%s* does not exist\n\n", name);
-        GC9A01_Text(buf, 1);
-        free(buf);
-        return fresult;
-    }
+  fresult = f_stat(name, &USBHfno);
+  if (fresult != FR_OK) {
+		char *buf = malloc(100 * sizeof(char));
+    sprintf(buf, "ERROR!!! *%s* does not exist\n\n", name);
+    GC9A01_Text(buf, 1);
+    free(buf);
+    return fresult;
+	}
 
-    fresult = f_open(&USBHFile, name, FA_READ);
-    if (fresult != FR_OK) {
-        char *buf = malloc(100 * sizeof(char));
-        sprintf(buf, "ERROR!!! No. %d in opening file *%s*\n\n", fresult, name);
-        GC9A01_Text(buf, 1);
-        free(buf);
-        return fresult;
-    }
+  fresult = f_open(&USBHFile, name, FA_READ);
+  if (fresult != FR_OK) {
+		char *buf = malloc(100 * sizeof(char));
+		sprintf(buf, "ERROR!!! No. %d in opening file *%s*\n\n", fresult, name);
+    GC9A01_Text(buf, 1);
+    free(buf);
+    return fresult;
+	}
 
-    file_size = f_size(&USBHFile);
+	file_size = f_size(&USBHFile);
 		
-		fresult = f_read(&USBHFile, &fileHeader, sizeof(BITMAPFILEHEADER), &br);
-    if (fresult != FR_OK) {
-        f_close(&USBHFile);
-        return fresult;
-    }
-		fresult = f_read(&USBHFile, &infoHeader, sizeof(BITMAPINFOHEADER), &br);
-    if (fresult != FR_OK ) {
-        f_close(&USBHFile);
-        return fresult;
-    }
 		
+/*******************************READ BMP HEADER***************************/
+	fresult = f_read(&USBHFile, &fileHeader, sizeof(BITMAPFILEHEADER), &br);
+  if (fresult != FR_OK) {
+		f_close(&USBHFile);
+    return fresult;
+	}
+	fresult = f_read(&USBHFile, &infoHeader, sizeof(BITMAPINFOHEADER), &br);
+	if (fresult != FR_OK ) {
+		f_close(&USBHFile);
+		return fresult;
+	}
+	
+	if(fileHeader.bfType == 0x4D42 || infoHeader.biBitCount != 16 ){
+			
 		if(infoHeader.biWidth < LCD_W && infoHeader.biHeight < LCD_H){
 			vertical_offset = 0;
 			horizontal_offset = 0;
@@ -273,32 +277,38 @@ FRESULT Read_File_and_print_BMP(char *name, uint16_t *horizontal_offset, uint16_
 				*horizontal_offset = infoHeader.biWidth - LCD_W;
 			}
 		}
-
-		
+			
 		for (uint16_t column = LCD_H; column >= 0; column--) {
-				if (infoHeader.biWidth * column * 2 >= file_size) break;
+			if (infoHeader.biWidth * column * 2 >= file_size) break;
 
-				fresult = f_lseek(&USBHFile,64 + ((infoHeader.biWidth*2) * (column+ (*vertical_offset)) + (*horizontal_offset*2)));
-				if (fresult != FR_OK) {
-						GC9A01_Text("Seek error!\n", 1);
-						break;
-				}
+			fresult = f_lseek(&USBHFile,64 + ((infoHeader.biWidth*2) * (column+ (*vertical_offset)) + (*horizontal_offset*2)));
+			if (fresult != FR_OK) {
+				GC9A01_Text("Seek error!\n", 1);
+				break;
+			}
 
-				fresult = f_read(&USBHFile, buffer2, LCD_W*2, &br);
-				if (fresult != FR_OK) {
-						GC9A01_Text("Read error!\n", 1);
-						break;
-				}
-				
-				
-
-				GC9A01_show_picture(buffer2, 0, (LCD_H-1) - column, LCD_W, 1, LCD_W, 1);
+			fresult = f_read(&USBHFile, buffer2, LCD_W*2, &br);
+			if (fresult != FR_OK) {
+				GC9A01_Text("Read error!\n", 1);
+				break;
+			}
+					
+			GC9A01_show_picture(buffer2, 0, (LCD_H-1) - column, LCD_W, 1, LCD_W, 1);
 		}
-		//free(buffer2);
+	} else {
+		GC9A01_Text("Wrong with rows direction!\n", 1);
+	}
 		f_close(&USBHFile);
-
     return fresult;
 }
+
+
+
+
+
+
+
+
 
 uint8_t get_depth_of_dir(char *path){
 	uint8_t result = 0;
