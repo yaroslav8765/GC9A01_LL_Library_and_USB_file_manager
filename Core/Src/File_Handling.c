@@ -314,9 +314,9 @@ FRESULT Read_File_and_print_BMP(char *name, uint16_t *horizontal_offset, uint16_
 				*horizontal_offset = infoHeader.biWidth - LCD_W;
 			}
 		}
-		vertical_offset_2 = infoHeader.biHeight - *vertical_offset - LCD_H;
 		
-		uint32_t row_size = ((infoHeader.biWidth * 2 + 3) / 4) * 4; // ?????? ?????? ? ?????? ????????????
+		vertical_offset_2 = infoHeader.biHeight - *vertical_offset - LCD_H;
+		uint32_t row_size = ((infoHeader.biWidth * 2 + 3) / 4) * 4;
 
 		for (uint16_t column = 0; column < LCD_H; column++) {
 				if (fileHeader.bfOffBits + row_size * column >= file_size) break;
@@ -335,31 +335,14 @@ FRESULT Read_File_and_print_BMP(char *name, uint16_t *horizontal_offset, uint16_
 
 				GC9A01_show_picture(buffer2, 0, column, LCD_W, 1, LCD_W, 1);
 		}
-
-			//	GC9A01_show_picture(buffer2, 0, column, infoHeader.biWidth, 1, infoHeader.biWidth, 1);
-
-//		for (uint16_t column = LCD_H; column >= 0; column--) {
-//			if (infoHeader.biWidth * column * 2 >= file_size) break;
-
-//			fresult = f_lseek(&USBHFile,fileHeader.bfOffBits + ((infoHeader.biWidth*2) * (column+ (*vertical_offset)) + (*horizontal_offset*2)));
-//			if (fresult != FR_OK) {
-//				GC9A01_Text("Seek error!\n", 1);
-//				break;
-//			}
-
-//			fresult = f_read(&USBHFile, buffer2, LCD_W*2, &br);
-//			if (fresult != FR_OK) {
-//				GC9A01_Text("Read error!\n", 1);
-//				break;
-//			}
-//					
-//			GC9A01_show_picture(buffer2, 0, (LCD_H-1) - column, LCD_W, 1, LCD_W, 1);
-//		}
 	
-	
+		
+/****************************OTHER CASES*****************************/
 	}else {
-		GC9A01_Text("Wrong with rows direction!\n", 1);
+		GC9A01_Text("Please, use only 16-bit ccolors  \n", 1);
 	}
+	
+	
 		f_close(&USBHFile);
     return fresult;
 }

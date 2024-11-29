@@ -209,6 +209,11 @@ int main(void)
 			DOWN_button_handrel();
 			shift = 0;
 		}
+		if(LL_GPIO_IsInputPinSet(BUTTON_GPIO_Port,BUTTON_Pin) == 0){
+		  BACK_TO_MENU_button_handler();
+			shift = 0;
+		}
+		
 		if(enable_menu_member_animation == 1){
 			menu_active_member_running_text_animation(&Members[get_active_menu_member(Members)],get_active_menu_member(Members));
 			delay_ms(5);
@@ -437,7 +442,7 @@ static void MX_GPIO_Init(void)
   /**/
   GPIO_InitStruct.Pin = BUTTON_Pin;
   GPIO_InitStruct.Mode = LL_GPIO_MODE_INPUT;
-  GPIO_InitStruct.Pull = LL_GPIO_PULL_DOWN;
+  GPIO_InitStruct.Pull = LL_GPIO_PULL_UP;
   LL_GPIO_Init(BUTTON_GPIO_Port, &GPIO_InitStruct);
 
   /**/
@@ -646,12 +651,15 @@ void DOWN_button_handrel(){
 			view_image_DOWN_button_handler();
 		break;
 	}
-	}
+}
 
-	
-	
-	
-	
+void BACK_TO_MENU_button_handler(){
+	current_mode = view_file_menu;
+	GC9A01_ClearScreen(WHITE);
+	enable_menu_member_animation = 1;
+	shift = 0;
+	ShowMenu(Members, current_page);
+}	
 	
 	
 void view_menu_DOWN_button_handler(){
@@ -849,13 +857,6 @@ void view_image_LEFT_button_handler(){
 		horizontal_offset = 0;
 	}
 	refresh_BMP_image();
-
-//	GC9A01_ClearScreen(WHITE);
-//	current_mode = view_file_menu;
-//	txt_file_page = 1;
-//	enable_menu_member_animation = 1;
-//	shift = 0;
-//	ShowMenu(Members, current_page);
 }
 	
 void view_image_RIGHT_button_handler(){
@@ -872,7 +873,7 @@ void check_for_USB_storage_connection(){
 	if(Appli_state == APPLICATION_READY){
 		USB_Storage_state = connected;
 		if(	USB_Storage_last_state == disconected){
-			enable_menu_member_animation = 0;
+			enable_menu_member_animation = 1;
 			current_mode = view_file_menu;
 			GC9A01_ClearScreen(WHITE);
 			current_page = 1;
@@ -889,6 +890,7 @@ void check_for_USB_storage_connection(){
 	} else {
 		USB_Storage_state = disconected;
 		if(	USB_Storage_last_state == connected){
+			enable_menu_member_animation = 0;
 			GC9A01_ClearScreen(WHITE);
 			GC9A01_SetTextColor(default_text_color);
 			GC9A01_SetBackColor(default_background_color);

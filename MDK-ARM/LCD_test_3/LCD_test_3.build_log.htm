@@ -27,7 +27,7 @@ Project File Date:  11/09/2024
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 3 (build 300)', folder: 'C:\Keil_v5\ARM\ARMCC\Bin'
 Build target 'LCD_test_3'
-compiling File_Handling.c...
+compiling main.c...
 ../Core/Inc/main.h(74): warning:  #1295-D: Deprecated declaration LEFT_button_handrel - give arg types
   void LEFT_button_handrel();
 ../Core/Inc/main.h(75): warning:  #1295-D: Deprecated declaration RIGHT_button_handrel - give arg types
@@ -36,46 +36,41 @@ compiling File_Handling.c...
   void UP_button_handrel();
 ../Core/Inc/main.h(77): warning:  #1295-D: Deprecated declaration DOWN_button_handrel - give arg types
   void DOWN_button_handrel();
-../Core/Inc/main.h(79): warning:  #1295-D: Deprecated declaration view_menu_DOWN_button_handler - give arg types
+../Core/Inc/main.h(78): warning:  #1295-D: Deprecated declaration BACK_TO_MENU_button_handler - give arg types
+  void BACK_TO_MENU_button_handler();
+../Core/Inc/main.h(80): warning:  #1295-D: Deprecated declaration view_menu_DOWN_button_handler - give arg types
   void view_menu_DOWN_button_handler();
-../Core/Inc/main.h(80): warning:  #1295-D: Deprecated declaration view_menu_UP_button_handler - give arg types
+../Core/Inc/main.h(81): warning:  #1295-D: Deprecated declaration view_menu_UP_button_handler - give arg types
   void view_menu_UP_button_handler();
-../Core/Inc/main.h(81): warning:  #1295-D: Deprecated declaration view_menu_LEFT_button_handler - give arg types
+../Core/Inc/main.h(82): warning:  #1295-D: Deprecated declaration view_menu_LEFT_button_handler - give arg types
   void view_menu_LEFT_button_handler();
-../Core/Inc/main.h(82): warning:  #1295-D: Deprecated declaration view_menu_RIGHT_button_handler - give arg types
+../Core/Inc/main.h(83): warning:  #1295-D: Deprecated declaration view_menu_RIGHT_button_handler - give arg types
   void view_menu_RIGHT_button_handler();
-../Core/Inc/main.h(84): warning:  #1295-D: Deprecated declaration view_txt_DOWN_button_handler - give arg types
+../Core/Inc/main.h(85): warning:  #1295-D: Deprecated declaration view_txt_DOWN_button_handler - give arg types
   void view_txt_DOWN_button_handler();
-../Core/Inc/main.h(85): warning:  #1295-D: Deprecated declaration view_txt_UP_button_handler - give arg types
+../Core/Inc/main.h(86): warning:  #1295-D: Deprecated declaration view_txt_UP_button_handler - give arg types
   void view_txt_UP_button_handler();
-../Core/Inc/main.h(86): warning:  #1295-D: Deprecated declaration view_txt_LEFT_button_handler - give arg types
+../Core/Inc/main.h(87): warning:  #1295-D: Deprecated declaration view_txt_LEFT_button_handler - give arg types
   void view_txt_LEFT_button_handler();
-../Core/Inc/main.h(87): warning:  #1295-D: Deprecated declaration view_txt_RIGHT_button_handler - give arg types
+../Core/Inc/main.h(88): warning:  #1295-D: Deprecated declaration view_txt_RIGHT_button_handler - give arg types
   void view_txt_RIGHT_button_handler();
-../Core/Inc/main.h(89): warning:  #1295-D: Deprecated declaration view_image_DOWN_button_handler - give arg types
+../Core/Inc/main.h(90): warning:  #1295-D: Deprecated declaration view_image_DOWN_button_handler - give arg types
   void view_image_DOWN_button_handler();
-../Core/Inc/main.h(90): warning:  #1295-D: Deprecated declaration view_image_UP_button_handler - give arg types
+../Core/Inc/main.h(91): warning:  #1295-D: Deprecated declaration view_image_UP_button_handler - give arg types
   void view_image_UP_button_handler();
-../Core/Inc/main.h(91): warning:  #1295-D: Deprecated declaration view_image_LEFT_button_handler - give arg types
+../Core/Inc/main.h(92): warning:  #1295-D: Deprecated declaration view_image_LEFT_button_handler - give arg types
   void view_image_LEFT_button_handler();
-../Core/Inc/main.h(92): warning:  #1295-D: Deprecated declaration view_image_RIGHT_button_handler - give arg types
+../Core/Inc/main.h(93): warning:  #1295-D: Deprecated declaration view_image_RIGHT_button_handler - give arg types
   void view_image_RIGHT_button_handler();
-../Core/Inc/main.h(94): warning:  #1295-D: Deprecated declaration check_for_USB_storage_connection - give arg types
+../Core/Inc/main.h(95): warning:  #1295-D: Deprecated declaration check_for_USB_storage_connection - give arg types
   void check_for_USB_storage_connection();
-../Core/Inc/cg9a01.h(74): warning:  #47-D: incompatible redefinition of macro "RAINBOW_YELLOW" (declared at line 104 of "../Core/Inc/GC9A01.h")
-  #define RAINBOW_YELLOW   0xFFE0
-..\Core\Src\File_Handling.c(282): warning:  #186-D: pointless comparison of unsigned integer with zero
-  		for (uint16_t column = 
-CD_H; column >= 0; column--) {
-..\Core\Src\File_Handling.c(228): warning:  #177-D: variable "shift_H" was declared but never referenced
-  	uint16_t shift_H = LCD_H + 0;
-..\Core\Src\File_Handling.c(229): warning:  #177-D: variable "shift_V" was declared but never referenced
-  	uint16_t shift_V = LCD_W + 0;
-..\Core\Src\File_Handling.c: 21 warnings, 0 errors
+../Core/Src/main.c(727): warning:  #186-D: pointless comparison of unsigned integer with zero
+          for (uint16_t i = len - 1; i >= 0; i--) {
+../Core/Src/main.c: 19 warnings, 0 errors
 linking...
-Program Size: Code=42450 RO-data=8634 RW-data=40596 ZI-data=11516  
+Program Size: Code=42550 RO-data=8634 RW-data=40596 ZI-data=11516  
 FromELF: creating hex file...
-"LCD_test_3\LCD_test_3.axf" - 0 Error(s), 21 Warning(s).
+"LCD_test_3\LCD_test_3.axf" - 0 Error(s), 19 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -98,7 +93,7 @@ Package Vendor: Keil
 
    * Component: ARM::CMSIS:CORE@6.1.0
       Include file:  CMSIS/Core/Include/tz_context.h
-Build Time Elapsed:  00:00:02
+Build Time Elapsed:  00:00:01
 </pre>
 </body>
 </html>

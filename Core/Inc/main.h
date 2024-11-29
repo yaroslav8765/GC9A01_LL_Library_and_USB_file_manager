@@ -75,6 +75,7 @@ void LEFT_button_handrel();
 void RIGHT_button_handrel();
 void UP_button_handrel();
 void DOWN_button_handrel();
+void BACK_TO_MENU_button_handler();
 
 void view_menu_DOWN_button_handler();
 void view_menu_UP_button_handler();
