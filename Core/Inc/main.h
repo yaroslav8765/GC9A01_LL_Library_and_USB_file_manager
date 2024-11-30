@@ -71,6 +71,22 @@ extern "C" {
 void Error_Handler(void);
 
 /* USER CODE BEGIN EFP */
+
+	typedef enum
+	{
+		connected,
+		disconected
+	}usb_drive_state;
+	
+	typedef enum
+	{
+		view_file_menu,
+		view_txt,
+		view_image,
+		error
+	}Device_mode;
+	
+	
 void LEFT_button_handrel();
 void RIGHT_button_handrel();
 void UP_button_handrel();

@@ -54,6 +54,7 @@
 	uint8_t amount_of_files = 0;
 	uint8_t txt_file_page = 1;
 	uint8_t enable_menu_member_animation = 1;
+	uint8_t enable_button_handling = 1;
 	char buffer[256];
 	char path[512] = "/";
 	char path_txt[512];
@@ -76,18 +77,6 @@
 	FRESULT res;
 	
 	struct MenuMember Members[8];
-	typedef enum
-	{
-		connected,
-		disconected
-	}usb_drive_state;
-	
-	typedef enum
-	{
-		view_file_menu,
-		view_txt,
-		view_image
-	}Device_mode;
 
 	usb_drive_state USB_Storage_state = disconected;
 	usb_drive_state USB_Storage_last_state = disconected;
@@ -195,23 +184,25 @@ int main(void)
   {
 		
 		check_for_USB_storage_connection();
-		if(LL_GPIO_IsInputPinSet(LEFT_GPIO_Port,LEFT_Pin) == 1){
-			LEFT_button_handrel();
-		}
-		if(LL_GPIO_IsInputPinSet(RIGHT_GPIO_Port,RIGHT_Pin) == 1){
-		  RIGHT_button_handrel();
-		}
-		if(LL_GPIO_IsInputPinSet(UP_GPIO_Port,UP_Pin) == 1){
-			UP_button_handrel();
-			shift = 0;
-		}
-		if(LL_GPIO_IsInputPinSet(DOWN_GPIO_Port,DOWN_Pin) == 1){
-			DOWN_button_handrel();
-			shift = 0;
-		}
-		if(LL_GPIO_IsInputPinSet(BUTTON_GPIO_Port,BUTTON_Pin) == 0){
-		  BACK_TO_MENU_button_handler();
-			shift = 0;
+		if(enable_button_handling == 1){
+			if(LL_GPIO_IsInputPinSet(LEFT_GPIO_Port,LEFT_Pin) == 1){
+				LEFT_button_handrel();
+			}
+			if(LL_GPIO_IsInputPinSet(RIGHT_GPIO_Port,RIGHT_Pin) == 1){
+				RIGHT_button_handrel();
+			}
+			if(LL_GPIO_IsInputPinSet(UP_GPIO_Port,UP_Pin) == 1){
+				UP_button_handrel();
+				shift = 0;
+			}
+			if(LL_GPIO_IsInputPinSet(DOWN_GPIO_Port,DOWN_Pin) == 1){
+				DOWN_button_handrel();
+				shift = 0;
+			}
+			if(LL_GPIO_IsInputPinSet(BUTTON_GPIO_Port,BUTTON_Pin) == 0){
+				BACK_TO_MENU_button_handler();
+				shift = 0;
+			}
 		}
 		
 		if(enable_menu_member_animation == 1){
@@ -606,6 +597,9 @@ void LEFT_button_handrel(){
 		case view_image:
 			view_image_LEFT_button_handler();
 		break;
+		case error:
+			BACK_TO_MENU_button_handler();
+		break;
 	}
 }
 void RIGHT_button_handrel(){
@@ -620,6 +614,9 @@ void RIGHT_button_handrel(){
 		case view_image:
 			view_image_RIGHT_button_handler();
 		break;
+		case error:
+			BACK_TO_MENU_button_handler();
+		break;
 	}
 }
 void UP_button_handrel(){
@@ -633,6 +630,9 @@ void UP_button_handrel(){
 		break;
 		case view_image:
 			view_image_UP_button_handler();
+		break;
+		case error:
+			BACK_TO_MENU_button_handler();
 		break;
 	}
 }
@@ -649,6 +649,9 @@ void DOWN_button_handrel(){
 		break;
 		case view_image:
 			view_image_DOWN_button_handler();
+		break;
+		case error:
+			BACK_TO_MENU_button_handler();
 		break;
 	}
 }
@@ -874,6 +877,7 @@ void check_for_USB_storage_connection(){
 		USB_Storage_state = connected;
 		if(	USB_Storage_last_state == disconected){
 			enable_menu_member_animation = 1;
+			enable_button_handling = 1;
 			current_mode = view_file_menu;
 			GC9A01_ClearScreen(WHITE);
 			current_page = 1;
@@ -891,6 +895,7 @@ void check_for_USB_storage_connection(){
 		USB_Storage_state = disconected;
 		if(	USB_Storage_last_state == connected){
 			enable_menu_member_animation = 0;
+			enable_button_handling = 0;
 			GC9A01_ClearScreen(WHITE);
 			GC9A01_SetTextColor(default_text_color);
 			GC9A01_SetBackColor(default_background_color);

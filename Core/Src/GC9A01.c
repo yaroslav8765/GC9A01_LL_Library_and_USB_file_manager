@@ -638,7 +638,7 @@ void GC9A01_Text(char *str, uint8_t page) {
                 break;
             } else {
                 GC9A01_DrawChar(text_start_pos, text_end_pos, *str);
-                text_start_pos += lcdprop.pFont->Width;
+               text_start_pos += lcdprop.pFont->Width;
                 str++;
             }
         }
@@ -649,8 +649,6 @@ void GC9A01_Text(char *str, uint8_t page) {
         }
     }
 }
-
-
 
 void GC9A01_Rainbow_String(uint16_t x,uint16_t y, char *str)
 {
