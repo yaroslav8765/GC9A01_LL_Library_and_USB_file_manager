@@ -206,7 +206,8 @@ int main(void)
 		}
 		
 		if(enable_menu_member_animation == 1){
-			menu_active_member_running_text_animation(&Members[get_active_menu_member(Members)],get_active_menu_member(Members));
+			menu_active_member_running_text_animation \
+			(&Members[get_active_menu_member(Members)],get_active_menu_member(Members));
 			delay_ms(5);
 		}
 		//GC9A01_show_picture(tohru1,50,50,140,140,140,140);
@@ -798,7 +799,6 @@ void view_menu_RIGHT_button_handler(){
 		GC9A01_ClearScreen(WHITE);
 		Mount_USB();
 		Read_File_and_print_BMP(path_txt,&horizontal_offset,&vertical_offset );
-		//Read_File(path_txt,txt_file_page,buffer, 240 );
 		Unmount_USB();
 	
 	}
