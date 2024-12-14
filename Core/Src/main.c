@@ -60,16 +60,6 @@
 	char path_txt[512];
 	uint16_t horizontal_offset = 0; 
 	uint16_t vertical_offset = 0;
-	char very_long_str[] = {"The journey of developing embedded systems									\
-	often involves understanding complex hardware and software integration. 						\
-	From initializing microcontrollers to setting up various communication protocols,		\
-	each step requires precision and careful planning. Embedded systems are designed		\
-	for specific tasks, and their performance and efficiency rely heavily on optimized	\
-	code and memory management. Debugging embedded systems can be challenging due to	 	\
-	limited resources and the need for specialized tools. However, the reward comes in	\
-	seeing a well-crafted system run seamlessly in real-world applications. 						\
-	This requires patience, dedication, and a willingness to continuously learn					\
-	and adapt to new challenges."};
 	uint16_t screen_buf[240] = {0};
 	FATFS fs;
 	DIR dr;
@@ -603,6 +593,7 @@ void LEFT_button_handrel(){
 		break;
 	}
 }
+
 void RIGHT_button_handrel(){
 	HAL_GPIO_TogglePin(LED_GPIO_Port,LED_Pin);
 	switch(current_mode){
@@ -620,6 +611,7 @@ void RIGHT_button_handrel(){
 		break;
 	}
 }
+
 void UP_button_handrel(){
 	HAL_GPIO_TogglePin(LED_GPIO_Port,LED_Pin);
 	switch(current_mode){
@@ -637,7 +629,6 @@ void UP_button_handrel(){
 		break;
 	}
 }
-
 
 void DOWN_button_handrel(){
 	HAL_GPIO_TogglePin(LED_GPIO_Port,LED_Pin);
@@ -664,7 +655,6 @@ void BACK_TO_MENU_button_handler(){
 	shift = 0;
 	ShowMenu(Members, current_page);
 }	
-	
 	
 void view_menu_DOWN_button_handler(){
 	if(USB_Storage_state == connected){
@@ -750,7 +740,6 @@ void view_menu_LEFT_button_handler() {
     }
 }
 
-
 void view_menu_RIGHT_button_handler(){
 	uint8_t active_member = get_active_menu_member(Members);	
 	
@@ -784,7 +773,6 @@ void view_menu_RIGHT_button_handler(){
 		temp[len - 3] = '\0';
 		sprintf(path+lenght_of_current_path, "/%.*s",(int)(strlen(Members[active_member].text) - 4),	Members[active_member].text);
 		
-		
 		Mount_USB();
 		Scan_USB(path, Members,current_page);
 		amount_of_files = Scan_USB_for_amount_of_files(path);
@@ -806,9 +794,6 @@ void view_menu_RIGHT_button_handler(){
 		other cases
 	*/
 }
-
-
-
 
 void view_txt_DOWN_button_handler(){
 	txt_file_page ++;
@@ -832,9 +817,6 @@ void view_txt_LEFT_button_handler(){
 void view_txt_RIGHT_button_handler(){
 	//nothing 
 }
-
-
-
 
 void view_image_DOWN_button_handler(){
 	if(vertical_offset >= 64){
@@ -867,9 +849,6 @@ void view_image_RIGHT_button_handler(){
 	refresh_BMP_image();
 
 }
-
-
-
 
 void check_for_USB_storage_connection(){
 	MX_USB_HOST_Process();

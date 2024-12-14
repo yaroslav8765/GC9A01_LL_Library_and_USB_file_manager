@@ -27,55 +27,6 @@ Project File Date:  11/09/2024
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 3 (build 300)', folder: 'C:\Keil_v5\ARM\ARMCC\Bin'
 Build target 'LCD_test_3'
-compiling File_Handling.c...
-../Core/Inc/main.h(90): warning:  #1295-D: Deprecated declaration LEFT_button_handrel - give arg types
-  void LEFT_button_handrel();
-../Core/Inc/main.h(91): warning:  #1295-D: Deprecated declaration RIGHT_button_handrel - give arg types
-  void RIGHT_button_handrel();
-../Core/Inc/main.h(92): warning:  #1295-D: Deprecated declaration UP_button_handrel - give arg types
-  void UP_button_handrel();
-../Core/Inc/main.h(93): warning:  #1295-D: Deprecated declaration DOWN_button_handrel - give arg types
-  void DOWN_button_handrel();
-../Core/Inc/main.h(94): warning:  #1295-D: Deprecated declaration BACK_TO_MENU_button_handler - give arg types
-  void BACK_TO_MENU_button_handler();
-../Core/Inc/main.h(96): warning:  #1295-D: Deprecated declaration view_menu_DOWN_button_handler - give arg types
-  void view_menu_DOWN_button_handler();
-../Core/Inc/main.h(97): warning:  #1295-D: Deprecated declaration view_menu_UP_button_handler - give arg types
-  void view_menu_UP_button_handler();
-../Core/Inc/main.h(98): warning:  #1295-D: Deprecated declaration view_menu_LEFT_button_handler - give arg types
-  void view_menu_LEFT_button_handler();
-../Core/Inc/main.h(99): warning:  #1295-D: Deprecated declaration view_menu_RIGHT_button_handler - give arg types
-  void view_menu_RIGHT_button_handler();
-../Core/Inc/main.h(101): warning:  #1295-D: Deprecated declaration view_txt_DOWN_button_handler - give arg types
-  void view_txt_DOWN_button_handler();
-../Core/Inc/main.h(102): warning:  #1295-D: Deprecated declaration view_txt_UP_button_handler - give arg types
-  void view_txt_UP_button_handler();
-../Core/Inc/main.h(103): warning:  #1295-D: Deprecated declaration view_txt_LEFT_button_handler - give arg types
-  void view_txt_LEFT_button_handler();
-../Core/Inc/main.h(104): warning:  #1295-D: Deprecated declaration view_txt_RIGHT_button_handler - give arg types
-  void view_txt_RIGHT_button_handler();
-../Core/Inc/main.h(106): warning:  #1295-D: Deprecated declaration view_image_DOWN_button_handler - give arg types
-  void view_image_DOWN_button_handler();
-../Core/Inc/main.h(107): warning:  #1295-D: Deprecated declaration view_image_UP_button_handler - give arg types
-  void view_image_UP_button_handler();
-../Core/Inc/main.h(108): warning:  #1295-D: Deprecated declaration view_image_LEFT_button_handler - give arg types
-  void view_image_LEFT_button_handler();
-../Core/Inc/main.h(109): warning:  #1295-D: Deprecated declaration view_image_RIGHT_button_handler - give arg types
-  void view_image_RIGHT_button_handler();
-../Core/Inc/main.h(111): warning:  #1295-D: Deprecated declaration check_for_USB_storage_connection - give arg types
-  void check_for_USB_storage_connection();
-../Core/Inc/File_Handling.h(19): warning:  #1-D: last line of file ends without a newline
-  #endif
-../Core/Inc/cg9a01.h(74): warning:  #47-D: incompatible redefinition of macro "RAINBOW_YELLOW" (declared at line 104 of "../Core/Inc/GC9A01.h")
-  #define RAINBOW_YELLOW   0xFFE0
-..\Core\Src\File_Handling.c(253): warning:  #186-D: pointless comparison of unsigned integer with zero
-  		for (uint16_t column = 
-CD_H; column >= 0; column--) {
-..\Core\Src\File_Handling.c(197): warning:  #177-D: variable "shift_H" was declared but never referenced
-  	uint16_t shift_H = LCD_H + 0;
-..\Core\Src\File_Handling.c(198): warning:  #177-D: variable "shift_V" was declared but never referenced
-  	uint16_t shift_V = LCD_W + 0;
-..\Core\Src\File_Handling.c: 23 warnings, 0 errors
 compiling main.c...
 ../Core/Inc/main.h(90): warning:  #1295-D: Deprecated declaration LEFT_button_handrel - give arg types
   void LEFT_button_handrel();
@@ -113,15 +64,15 @@ compiling main.c...
   void view_image_RIGHT_button_handler();
 ../Core/Inc/main.h(111): warning:  #1295-D: Deprecated declaration check_for_USB_storage_connection - give arg types
   void check_for_USB_storage_connection();
-../Core/Inc/File_Handling.h(19): warning:  #1-D: last line of file ends without a newline
+../Core/Inc/File_Handling.h(42): warning:  #1-D: last line of file ends without a newline
   #endif
-../Core/Src/main.c(730): warning:  #186-D: pointless comparison of unsigned integer with zero
+../Core/Src/main.c(721): warning:  #186-D: pointless comparison of unsigned integer with zero
           for (uint16_t i = len - 1; i >= 0; i--) {
 ../Core/Src/main.c: 20 warnings, 0 errors
 linking...
-Program Size: Code=42754 RO-data=8634 RW-data=40596 ZI-data=11516  
+Program Size: Code=42618 RO-data=8634 RW-data=39856 ZI-data=11520  
 FromELF: creating hex file...
-"LCD_test_3\LCD_test_3.axf" - 0 Error(s), 43 Warning(s).
+"LCD_test_3\LCD_test_3.axf" - 0 Error(s), 20 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -144,7 +95,7 @@ Package Vendor: Keil
 
    * Component: ARM::CMSIS:CORE@6.1.0
       Include file:  CMSIS/Core/Include/tz_context.h
-Build Time Elapsed:  00:00:03
+Build Time Elapsed:  00:00:01
 </pre>
 </body>
 </html>

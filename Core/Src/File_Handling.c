@@ -35,6 +35,30 @@ void Unmount_USB (void)
 	} 
 }
 
+FRESULT check_if_file_exist(char *name){
+	 fresult = f_stat(name, &USBHfno);
+		if (fresult != FR_OK) {
+			char *buf = malloc(100 * sizeof(char));
+			sprintf(buf, "ERROR!!! *%s* does not exist \n Press any button", name);
+			current_mode = error;
+			GC9A01_Text(buf, 1);
+			free(buf);
+		}
+		return fresult;
+}
+
+FRESULT check_if_file_opens(char *name){
+	fresult = f_open(&USBHFile, name, FA_READ);
+  if (fresult != FR_OK) {
+		char *buf = malloc(100 * sizeof(char));
+		sprintf(buf, "ERROR!!! No. %d in opening file *%s* \n Press any button", fresult, name);
+		current_mode = error;
+    GC9A01_Text(buf, 1);
+    free(buf);
+	}
+	return fresult;
+}
+
 uint8_t Scan_USB_for_amount_of_files(char *pat) {
 	uint8_t file_num = 0;
   DIR dir;
@@ -118,25 +142,13 @@ FRESULT Scan_USB (char* pat, struct MenuMember *member, uint8_t page)
 FRESULT Read_File(char *name, uint8_t page, char *buffer, uint16_t lenght) {
 	uint32_t file_size;
 	
-  fresult = f_stat(name, &USBHfno);
-  if (fresult != FR_OK) {
-		char *buf = malloc(100 * sizeof(char));
-    sprintf(buf, "ERROR!!! *%s* does not exist\n", name);
-    GC9A01_Text(buf, 1);
-		current_mode = error;
-    free(buf);
+  if (check_if_file_exist(name) != FR_OK) {
+    return fresult;
+	}
+	if (check_if_file_opens(name) != FR_OK) {
     return fresult;
 	}
 
-  fresult = f_open(&USBHFile, name, FA_READ);
-	if (fresult != FR_OK) {
-		char *buf = malloc(100 * sizeof(char));
-    sprintf(buf, "ERROR!!! No. %d in opening file *%s* \n Press any button", fresult, name);
-    GC9A01_Text(buf, 1);
-		current_mode = error;
-    free(buf);
-		return fresult;
-  }
 
 	file_size = f_size(&USBHFile);
 
@@ -169,29 +181,6 @@ FRESULT Read_File(char *name, uint8_t page, char *buffer, uint16_t lenght) {
 }
 
 
-typedef struct __attribute__((packed)) {
-	uint16_t bfType;
-	uint32_t bfSize;
-	uint16_t bfReserved1;
-	uint16_t bfReserved2;
-	uint32_t bfOffBits;
-} BITMAPFILEHEADER;
-
-typedef struct __attribute__((packed)) {
-	uint32_t biSize;
-	int32_t  biWidth;
-	int32_t  biHeight;
-	uint16_t biPlanes;
-	uint16_t biBitCount;
-	uint32_t biCompression;	
-	uint32_t biSizeImage;
-	int32_t  biXPelsPerMeter;
-	int32_t  biYPelsPerMeter;
-  uint32_t biClrUsed;
-  uint32_t biClrImportant;
-} BITMAPINFOHEADER;
-
-
 FRESULT Read_File_and_print_BMP(char *name, uint16_t *horizontal_offset, uint16_t *vertical_offset) {
   uint32_t file_size;
 	uint16_t shift_H = LCD_H + 0;
@@ -200,23 +189,10 @@ FRESULT Read_File_and_print_BMP(char *name, uint16_t *horizontal_offset, uint16_
 	BITMAPFILEHEADER fileHeader;
   BITMAPINFOHEADER infoHeader;
 
-  fresult = f_stat(name, &USBHfno);
-  if (fresult != FR_OK) {
-		char *buf = malloc(100 * sizeof(char));
-    sprintf(buf, "ERROR!!! *%s* does not exist \n Press any button", name);
-		current_mode = error;
-    GC9A01_Text(buf, 1);
-    free(buf);
+  if (check_if_file_exist(name) != FR_OK) {
     return fresult;
 	}
-
-  fresult = f_open(&USBHFile, name, FA_READ);
-  if (fresult != FR_OK) {
-		char *buf = malloc(100 * sizeof(char));
-		sprintf(buf, "ERROR!!! No. %d in opening file *%s* \n Press any button", fresult, name);
-		current_mode = error;
-    GC9A01_Text(buf, 1);
-    free(buf);
+	if (check_if_file_opens(name) != FR_OK) {
     return fresult;
 	}
 
@@ -269,7 +245,7 @@ FRESULT Read_File_and_print_BMP(char *name, uint16_t *horizontal_offset, uint16_
 					
 			GC9A01_show_picture(buffer2, 0, (LCD_H-1) - column, LCD_W, 1, LCD_W, 1);
 		}
-		
+
 /***************************TOP-BOTTOM CASE****************************/
 	} else if(fileHeader.bfType == 0x4D42 && infoHeader.biBitCount == 16 && infoHeader.biHeight < 0){
 		
@@ -322,14 +298,6 @@ FRESULT Read_File_and_print_BMP(char *name, uint16_t *horizontal_offset, uint16_
 		f_close(&USBHFile);
     return fresult;
 }
-
-
-
-
-
-
-
-
 
 uint8_t get_depth_of_dir(char *path){
 	uint8_t result = 0;
