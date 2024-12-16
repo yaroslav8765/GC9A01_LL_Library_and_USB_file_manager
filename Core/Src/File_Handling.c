@@ -181,14 +181,14 @@ FRESULT Read_File(char *name, uint8_t page, char *buffer, uint16_t lenght) {
 }
 
 
-FRESULT Read_File_and_print_BMP(char *name, uint16_t *horizontal_offset, uint16_t *vertical_offset) {
+FRESULT Read_File_and_print_BMP(char *name, uint16_t *horizontal_offset, uint16_t *vertical_offset, uint16_t interpolation) {
   uint32_t file_size;
 	uint16_t shift_H = LCD_H + 0;
 	uint16_t shift_V = LCD_W + 0;
 	unsigned short buffer2[LCD_W];
 	BITMAPFILEHEADER fileHeader;
   BITMAPINFOHEADER infoHeader;
-
+	
   if (check_if_file_exist(name) != FR_OK) {
     return fresult;
 	}
@@ -211,6 +211,26 @@ FRESULT Read_File_and_print_BMP(char *name, uint16_t *horizontal_offset, uint16_
 		return fresult;
 	}
 	
+/*******************MY IDEAS*********/
+	//interpolation = 1 - read every 2 byte
+	//interpolation = 2 - read 2 byte and 2 byte skip
+	//interpolation = 3 - read 2 byte and 4 byte skip and so on
+	
+	//if I want to compress image, then I need to create temp array with size <= infoHeader.biWidth && size = LCD_W * interpolation?
+	/*||
+		||
+		||
+	 \  /
+		\/*/
+	unsigned short temp_buf[LCD_W * interpolation	<=	infoHeader.biWidth	?	LCD_W * interpolation	:	LCD_W];
+	//next we need to make LCD_H/interpolation cycles for 1.1 stage of vertical interpolaton
+	//edit f_lseek and f_read - the hardest part, I`ll de it later
+	
+/*************************************************************************/
+	
+	
+	
+
 /***************************BOTTOM-TOP CASE*******************************/
 	if(fileHeader.bfType == 0x4D42 && infoHeader.biBitCount == 16 && infoHeader.biHeight > 0 ){
 			
@@ -237,6 +257,7 @@ FRESULT Read_File_and_print_BMP(char *name, uint16_t *horizontal_offset, uint16_
 			}
 
 			fresult = f_read(&USBHFile, buffer2, LCD_W*2, &br);
+			//lcd_w 
 			if (fresult != FR_OK) {
 				GC9A01_Text("Read error! \n Press any button", 1);
 				current_mode = error;

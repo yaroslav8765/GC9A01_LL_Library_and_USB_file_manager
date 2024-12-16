@@ -27,7 +27,7 @@ Project File Date:  11/09/2024
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 3 (build 300)', folder: 'C:\Keil_v5\ARM\ARMCC\Bin'
 Build target 'LCD_test_3'
-compiling main.c...
+compiling File_Handling.c...
 ../Core/Inc/main.h(90): warning:  #1295-D: Deprecated declaration LEFT_button_handrel - give arg types
   void LEFT_button_handrel();
 ../Core/Inc/main.h(91): warning:  #1295-D: Deprecated declaration RIGHT_button_handrel - give arg types
@@ -66,13 +66,24 @@ compiling main.c...
   void check_for_USB_storage_connection();
 ../Core/Inc/File_Handling.h(42): warning:  #1-D: last line of file ends without a newline
   #endif
-../Core/Src/main.c(721): warning:  #186-D: pointless comparison of unsigned integer with zero
-          for (uint16_t i = len - 1; i >= 0; i--) {
-../Core/Src/main.c: 20 warnings, 0 errors
+../Core/Inc/cg9a01.h(74): warning:  #47-D: incompatible redefinition of macro "RAINBOW_YELLOW" (declared at line 104 of "../Core/Inc/GC9A01.h")
+  #define RAINBOW_YELLOW   0xFFE0
+..\Core\Src\File_Handling.c(224): warning:  #9-D: nested comment is not allowed
+  		\/*/
+..\Core\Src\File_Handling.c(249): warning:  #186-D: pointless comparison of unsigned integer with zero
+  		for (uint16_t column = 
+CD_H; column >= 0; column--) {
+..\Core\Src\File_Handling.c(186): warning:  #177-D: variable "shift_H" was declared but never referenced
+  	uint16_t shift_H = LCD_H + 0;
+..\Core\Src\File_Handling.c(187): warning:  #177-D: variable "shift_V" was declared but never referenced
+  	uint16_t shift_V = LCD_W + 0;
+..\Core\Src\File_Handling.c(225): warning:  #177-D: variable "temp_buf" was declared but never referenced
+  	unsigned short temp_buf[LCD_W * interpolation	<=	infoHeader.biWidth	?	LCD_W * interpolation	:	LCD_W];
+..\Core\Src\File_Handling.c: 25 warnings, 0 errors
 linking...
-Program Size: Code=42618 RO-data=8634 RW-data=39856 ZI-data=11520  
+Program Size: Code=42678 RO-data=8634 RW-data=39856 ZI-data=11520  
 FromELF: creating hex file...
-"LCD_test_3\LCD_test_3.axf" - 0 Error(s), 20 Warning(s).
+"LCD_test_3\LCD_test_3.axf" - 0 Error(s), 25 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -95,7 +106,7 @@ Package Vendor: Keil
 
    * Component: ARM::CMSIS:CORE@6.1.0
       Include file:  CMSIS/Core/Include/tz_context.h
-Build Time Elapsed:  00:00:01
+Build Time Elapsed:  00:00:02
 </pre>
 </body>
 </html>

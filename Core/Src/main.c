@@ -60,6 +60,7 @@
 	char path_txt[512];
 	uint16_t horizontal_offset = 0; 
 	uint16_t vertical_offset = 0;
+	uint16_t interpolation_coef = 0;
 	uint16_t screen_buf[240] = {0};
 	FATFS fs;
 	DIR dr;
@@ -494,7 +495,7 @@ void refresh_BMP_image(void){
 		current_mode = view_image;
 		GC9A01_ClearScreen(WHITE);
 		Mount_USB();
-		Read_File_and_print_BMP(path_txt,&horizontal_offset,&vertical_offset );
+		Read_File_and_print_BMP(path_txt,&horizontal_offset,&vertical_offset,interpolation_coef );
 		Unmount_USB();
 	
 	}
@@ -786,7 +787,7 @@ void view_menu_RIGHT_button_handler(){
 		current_mode = view_image;
 		GC9A01_ClearScreen(WHITE);
 		Mount_USB();
-		Read_File_and_print_BMP(path_txt,&horizontal_offset,&vertical_offset );
+		Read_File_and_print_BMP(path_txt,&horizontal_offset,&vertical_offset,interpolation_coef );
 		Unmount_USB();
 	
 	}
