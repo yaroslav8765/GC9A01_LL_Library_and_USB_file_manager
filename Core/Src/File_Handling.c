@@ -17,6 +17,13 @@ FATFS *pUSBHFatFS;
 DWORD fre_clust;
 uint32_t total, free_space;
 
+
+void compress_array(unsigned short *array, unsigned short *result,uint16_t size, uint16_t coefficient){
+	for(uint16_t i = 0; i!=size; i++){
+		result[i] = array[i*coefficient];
+	}
+}
+
 void Mount_USB (void)
 {
 	fresult = f_mount(&USBHFatFS, USBHPath, 1);
@@ -217,14 +224,16 @@ FRESULT Read_File_and_print_BMP(char *name, uint16_t *horizontal_offset, uint16_
 	//interpolation = 3 - read 2 byte and 4 byte skip and so on
 	
 	//if I want to compress image, then I need to create temp array with size <= infoHeader.biWidth && size = LCD_W * interpolation?
-	/*||
+	/*
+		||
 		||
 		||
 	 \  /
-		\/*/
+		\/																																																														*/
 	unsigned short temp_buf[LCD_W * interpolation	<=	infoHeader.biWidth	?	LCD_W * interpolation	:	LCD_W];
 	//next we need to make LCD_H/interpolation cycles for 1.1 stage of vertical interpolaton
 	//edit f_lseek and f_read - the hardest part, I`ll de it later
+	
 	
 /*************************************************************************/
 	
@@ -249,22 +258,26 @@ FRESULT Read_File_and_print_BMP(char *name, uint16_t *horizontal_offset, uint16_
 		for (uint16_t column = LCD_H; column >= 0; column--) {
 			if (infoHeader.biWidth * column * 2 >= file_size) break;
 
-			fresult = f_lseek(&USBHFile,fileHeader.bfOffBits + ((infoHeader.biWidth*2) * (column+ (*vertical_offset)) + (*horizontal_offset*2)));
-			if (fresult != FR_OK) {
-				GC9A01_Text("Seek error! \n Press any button", 1);
-				current_mode = error;
-				break;
-			}
+			
+			if(column%interpolation==0){
+				fresult = f_lseek(&USBHFile,(fileHeader.bfOffBits + ((infoHeader.biWidth*2) * (column+ (*vertical_offset)) + (*horizontal_offset*2))*interpolation));
+				if (fresult != FR_OK) {
+					GC9A01_Text("Seek error! \n Press any button", 1);
+					current_mode = error;
+					break;
+				}
 
-			fresult = f_read(&USBHFile, buffer2, LCD_W*2, &br);
-			//lcd_w 
-			if (fresult != FR_OK) {
-				GC9A01_Text("Read error! \n Press any button", 1);
-				current_mode = error;
-				break;
+				fresult = f_read(&USBHFile, temp_buf, (infoHeader.biWidth > LCD_W ? LCD_W*2*interpolation :LCD_W*2), &br);
+				//lcd_w 
+				compress_array(temp_buf,buffer2,LCD_W, interpolation);
+				if (fresult != FR_OK) {
+					GC9A01_Text("Read error! \n Press any button", 1);
+					current_mode = error;
+					break;
+				}
+				//GC9A01_show_picture(buffer2, 0, ((LCD_H-1) - column)/interpolation, LCD_W, 1, LCD_W, 1);
 			}
-					
-			GC9A01_show_picture(buffer2, 0, (LCD_H-1) - column, LCD_W, 1, LCD_W, 1);
+			GC9A01_show_picture(buffer2, 0, ((LCD_H-1) - column), LCD_W, 1, LCD_W, 1);
 		}
 
 /***************************TOP-BOTTOM CASE****************************/
