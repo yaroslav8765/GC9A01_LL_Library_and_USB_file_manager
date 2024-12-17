@@ -219,22 +219,9 @@ FRESULT Read_File_and_print_BMP(char *name, uint16_t *horizontal_offset, uint16_
 	}
 	
 /*******************MY IDEAS*********/
-	//interpolation = 1 - read every 2 byte
-	//interpolation = 2 - read 2 byte and 2 byte skip
-	//interpolation = 3 - read 2 byte and 4 byte skip and so on
 	
-	//if I want to compress image, then I need to create temp array with size <= infoHeader.biWidth && size = LCD_W * interpolation?
-	/*
-		||
-		||
-		||
-	 \  /
-		\/																																																														*/
 	unsigned short temp_buf[LCD_W * interpolation	<=	infoHeader.biWidth	?	LCD_W * interpolation	:	LCD_W];
-	//next we need to make LCD_H/interpolation cycles for 1.1 stage of vertical interpolaton
-	//edit f_lseek and f_read - the hardest part, I`ll de it later
-	
-	
+
 /*************************************************************************/
 	
 	
@@ -242,40 +229,52 @@ FRESULT Read_File_and_print_BMP(char *name, uint16_t *horizontal_offset, uint16_
 
 /***************************BOTTOM-TOP CASE*******************************/
 	if(fileHeader.bfType == 0x4D42 && infoHeader.biBitCount == 16 && infoHeader.biHeight > 0 ){
+		
+		if(infoHeader.biWidth/ interpolation <= LCD_W || infoHeader.biHeight/ interpolation <= LCD_H){	
 			
-		if(infoHeader.biWidth < LCD_W && infoHeader.biHeight < LCD_H){
-			vertical_offset = 0;
-			horizontal_offset = 0;
-		} else {
-			if(*vertical_offset > infoHeader.biHeight - LCD_H ){
-				*vertical_offset = infoHeader.biHeight - LCD_H;
+			if(infoHeader.biWidth / interpolation <= LCD_W ){	
+				*horizontal_offset = 0;
 			}
-			if(*horizontal_offset > infoHeader.biWidth - LCD_W){
-				*horizontal_offset = infoHeader.biWidth - LCD_W;
+			
+			if( (infoHeader.biHeight) / interpolation <= LCD_H){
+				*vertical_offset = 0;
 			}
+			
 		}
+		else {
 			
+			if(*vertical_offset > (infoHeader.biHeight/interpolation) - LCD_H ){
+				*vertical_offset = (infoHeader.biHeight/interpolation) - LCD_H;
+			}
+			
+			if(*horizontal_offset > (infoHeader.biWidth/interpolation) - LCD_W){
+				*horizontal_offset = (infoHeader.biWidth/interpolation) - LCD_W;
+			}
+			
+		}
+		
 		for (uint16_t column = LCD_H; column >= 0; column--) {
 			if (infoHeader.biWidth * column * 2 >= file_size) break;
 
 			
 			if(column%interpolation==0){
+				//add check if we`re not out of image memory
 				fresult = f_lseek(&USBHFile,(fileHeader.bfOffBits + ((infoHeader.biWidth*2) * (column+ (*vertical_offset)) + (*horizontal_offset*2))*interpolation));
 				if (fresult != FR_OK) {
 					GC9A01_Text("Seek error! \n Press any button", 1);
 					current_mode = error;
 					break;
 				}
-
+				
 				fresult = f_read(&USBHFile, temp_buf, (infoHeader.biWidth > LCD_W ? LCD_W*2*interpolation :LCD_W*2), &br);
 				//lcd_w 
-				compress_array(temp_buf,buffer2,LCD_W, interpolation);
 				if (fresult != FR_OK) {
 					GC9A01_Text("Read error! \n Press any button", 1);
 					current_mode = error;
 					break;
 				}
-				//GC9A01_show_picture(buffer2, 0, ((LCD_H-1) - column)/interpolation, LCD_W, 1, LCD_W, 1);
+				compress_array(temp_buf,buffer2,LCD_W, interpolation);
+				
 			}
 			GC9A01_show_picture(buffer2, 0, ((LCD_H-1) - column), LCD_W, 1, LCD_W, 1);
 		}

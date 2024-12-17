@@ -60,7 +60,7 @@
 	char path_txt[512];
 	uint16_t horizontal_offset = 0; 
 	uint16_t vertical_offset = 0;
-	uint16_t interpolation_coef = 2;
+	uint16_t interpolation_coef = 1;
 	uint16_t screen_buf[240] = {0};
 	FATFS fs;
 	DIR dr;
@@ -176,6 +176,15 @@ int main(void)
 		
 		check_for_USB_storage_connection();
 		if(enable_button_handling == 1){
+			
+			if(LL_GPIO_IsInputPinSet(UP_GPIO_Port,UP_Pin) == 1 && LL_GPIO_IsInputPinSet(DOWN_GPIO_Port,DOWN_Pin) == 1){
+				UP_DOWN_button_handrel();
+				shift = 0;
+			}
+			if(LL_GPIO_IsInputPinSet(LEFT_GPIO_Port,LEFT_Pin) == 1 && LL_GPIO_IsInputPinSet(RIGHT_GPIO_Port,RIGHT_Pin) == 1){
+				LEFT_RIGHT_button_handrel();
+				shift = 0;
+			}
 			if(LL_GPIO_IsInputPinSet(LEFT_GPIO_Port,LEFT_Pin) == 1){
 				LEFT_button_handrel();
 			}
@@ -575,6 +584,48 @@ void display_test_animation(void){
 		GC9A01_Rainbow_String(60,130,"WORLD");
 		delay_ms(500);
 		GC9A01_ClearScreen(WHITE);
+}
+
+void UP_DOWN_button_handrel(){
+	HAL_GPIO_TogglePin(LED_GPIO_Port,LED_Pin);
+	switch(current_mode){
+		case view_file_menu:
+			
+		break;
+		case view_txt:
+			
+		break;
+		case view_image:
+			if(interpolation_coef < 10){
+				interpolation_coef ++;
+				refresh_BMP_image();
+			}
+		break;
+		case error:
+			BACK_TO_MENU_button_handler();
+		break;
+	}
+}
+
+void LEFT_RIGHT_button_handrel(){
+	HAL_GPIO_TogglePin(LED_GPIO_Port,LED_Pin);
+	switch(current_mode){
+		case view_file_menu:
+			
+		break;
+		case view_txt:
+			
+		break;
+		case view_image:
+			if(interpolation_coef > 1){
+				interpolation_coef --;
+				refresh_BMP_image();
+			}
+		break;
+		case error:
+			BACK_TO_MENU_button_handler();
+		break;
+	}
 }
 
 void LEFT_button_handrel(){
