@@ -22,7 +22,7 @@ Dialog DLL:      TCM.DLL V1.56.4.0
  
 <h2>Project:</h2>
 D:\embeded systems\CUBE_MX DISPLAY test\LCD_test_3\MDK-ARM\LCD_test_3.uvprojx
-Project File Date:  11/09/2024
+Project File Date:  12/17/2024
 
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 3 (build 300)', folder: 'C:\Keil_v5\ARM\ARMCC\Bin'
@@ -72,16 +72,15 @@ compiling File_Handling.c...
   #endif
 ../Core/Inc/cg9a01.h(74): warning:  #47-D: incompatible redefinition of macro "RAINBOW_YELLOW" (declared at line 104 of "../Core/Inc/GC9A01.h")
   #define RAINBOW_YELLOW   0xFFE0
-..\Core\Src\File_Handling.c(256): warning:  #186-D: pointless comparison of unsigned integer with zero
-  		for (uint16_t column = 
-CD_H; column >= 0; column--) {
-..\Core\Src\File_Handling.c(193): warning:  #177-D: variable "shift_H" was declared but never referenced
+..\Core\Src\File_Handling.c(216): warning:  #177-D: variable "shift_H" was declared but never referenced
   	uint16_t shift_H = LCD_H + 0;
-..\Core\Src\File_Handling.c(194): warning:  #177-D: variable "shift_V" was declared but never referenced
+..\Core\Src\File_Handling.c(217): warning:  #177-D: variable "shift_V" was declared but never referenced
   	uint16_t shift_V = LCD_W + 0;
+..\Core\Src\File_Handling.c(246): warning:  #177-D: variable "temp_buf" was declared but never referenced
+  	unsigned short temp_buf[LCD_W * interpolation	<=	infoHeader.biWidth	?	LCD_W * interpolation	:	LCD_W];
 ..\Core\Src\File_Handling.c: 25 warnings, 0 errors
 linking...
-Program Size: Code=43038 RO-data=8634 RW-data=39856 ZI-data=11520  
+Program Size: Code=43114 RO-data=8634 RW-data=39856 ZI-data=11520  
 FromELF: creating hex file...
 "LCD_test_3\LCD_test_3.axf" - 0 Error(s), 25 Warning(s).
 
@@ -106,7 +105,7 @@ Package Vendor: Keil
 
    * Component: ARM::CMSIS:CORE@6.1.0
       Include file:  CMSIS/Core/Include/tz_context.h
-Build Time Elapsed:  00:00:02
+Build Time Elapsed:  00:00:01
 </pre>
 </body>
 </html>

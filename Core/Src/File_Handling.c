@@ -24,6 +24,28 @@ void compress_array(unsigned short *array, unsigned short *result,uint16_t size,
 	}
 }
 
+void flip_array(unsigned short *array, uint16_t rows) {
+    unsigned short temp[LCD_W]; // ????????? ?????? ??? ???????? ??????
+    uint16_t top = 0;          // ?????? ??????? ??????
+    uint16_t bottom = rows - 1; // ?????? ?????? ??????
+
+    while (top < bottom) {
+        // ???????? ??????? ?????? ?? ????????? ??????
+        memcpy(temp, &array[top * LCD_W], LCD_W * sizeof(unsigned short));
+        
+        // ???????? ?????? ?????? ?? ????? ???????
+        memcpy(&array[top * LCD_W], &array[bottom * LCD_W], LCD_W * sizeof(unsigned short));
+        
+        // ???????? ????????? ?????? ?? ????? ?????? ??????
+        memcpy(&array[bottom * LCD_W], temp, LCD_W * sizeof(unsigned short));
+        
+        // ??????? ?????????
+        top++;
+        bottom--;
+    }
+}
+
+
 void Mount_USB (void)
 {
 	fresult = f_mount(&USBHFatFS, USBHPath, 1);
@@ -187,12 +209,13 @@ FRESULT Read_File(char *name, uint8_t page, char *buffer, uint16_t lenght) {
   return fresult;
 }
 
+#define temp_height 4
 
 FRESULT Read_File_and_print_BMP(char *name, uint16_t *horizontal_offset, uint16_t *vertical_offset, uint16_t interpolation) {
   uint32_t file_size;
 	uint16_t shift_H = LCD_H + 0;
 	uint16_t shift_V = LCD_W + 0;
-	unsigned short buffer2[LCD_W];
+	unsigned short buffer2[LCD_W*temp_height];
 	BITMAPFILEHEADER fileHeader;
   BITMAPINFOHEADER infoHeader;
 	
@@ -222,12 +245,6 @@ FRESULT Read_File_and_print_BMP(char *name, uint16_t *horizontal_offset, uint16_
 	
 	unsigned short temp_buf[LCD_W * interpolation	<=	infoHeader.biWidth	?	LCD_W * interpolation	:	LCD_W];
 
-/*************************************************************************/
-	
-	
-	
-
-/***************************BOTTOM-TOP CASE*******************************/
 	if(fileHeader.bfType == 0x4D42 && infoHeader.biBitCount == 16 && infoHeader.biHeight > 0 ){
 		
 		if(infoHeader.biWidth/ interpolation <= LCD_W || infoHeader.biHeight/ interpolation <= LCD_H){	
@@ -253,12 +270,14 @@ FRESULT Read_File_and_print_BMP(char *name, uint16_t *horizontal_offset, uint16_
 			
 		}
 		
-		for (uint16_t column = LCD_H; column >= 0; column--) {
+		for (uint16_t column = 0 ; column <= LCD_H; column = column + temp_height) {
 			if (infoHeader.biWidth * column * 2 >= file_size) break;
 
 			
 			if(column%interpolation==0){
 				//add check if we`re not out of image memory
+				//the promlem is if image width > LCD_W, then we need change f_read algorithm
+				//there is also white line on the bottom,  need to fix
 				fresult = f_lseek(&USBHFile,(fileHeader.bfOffBits + ((infoHeader.biWidth*2) * (column+ (*vertical_offset)) + (*horizontal_offset*2))*interpolation));
 				if (fresult != FR_OK) {
 					GC9A01_Text("Seek error! \n Press any button", 1);
@@ -266,18 +285,75 @@ FRESULT Read_File_and_print_BMP(char *name, uint16_t *horizontal_offset, uint16_
 					break;
 				}
 				
-				fresult = f_read(&USBHFile, temp_buf, (infoHeader.biWidth > LCD_W ? LCD_W*2*interpolation :LCD_W*2), &br);
+				fresult = f_read(&USBHFile, buffer2, (infoHeader.biWidth > LCD_W ? LCD_W*2*interpolation*temp_height :LCD_W*2*temp_height), &br);
 				//lcd_w 
 				if (fresult != FR_OK) {
 					GC9A01_Text("Read error! \n Press any button", 1);
 					current_mode = error;
 					break;
 				}
-				compress_array(temp_buf,buffer2,LCD_W, interpolation);
+				flip_array(buffer2, temp_height);
+				//compress_array(temp_buf,buffer2,LCD_W, interpolation);
 				
 			}
-			GC9A01_show_picture(buffer2, 0, ((LCD_H-1) - column), LCD_W, 1, LCD_W, 1);
+			GC9A01_show_picture(buffer2, 0, ((LCD_H-1) - column), LCD_W, temp_height, LCD_W, temp_height);
 		}
+/*************************************************************************/
+	
+	
+	
+
+/***************************BOTTOM-TOP CASE*******************************/
+//	if(fileHeader.bfType == 0x4D42 && infoHeader.biBitCount == 16 && infoHeader.biHeight > 0 ){
+//		
+//		if(infoHeader.biWidth/ interpolation <= LCD_W || infoHeader.biHeight/ interpolation <= LCD_H){	
+//			
+//			if(infoHeader.biWidth / interpolation <= LCD_W ){	
+//				*horizontal_offset = 0;
+//			}
+//			
+//			if( (infoHeader.biHeight) / interpolation <= LCD_H){
+//				*vertical_offset = 0;
+//			}
+//			
+//		}
+//		else {
+//			
+//			if(*vertical_offset > (infoHeader.biHeight/interpolation) - LCD_H ){
+//				*vertical_offset = (infoHeader.biHeight/interpolation) - LCD_H;
+//			}
+//			
+//			if(*horizontal_offset > (infoHeader.biWidth/interpolation) - LCD_W){
+//				*horizontal_offset = (infoHeader.biWidth/interpolation) - LCD_W;
+//			}
+//			
+//		}
+//		
+//		for (uint16_t column = LCD_H; column >= 0; column--) {
+//			if (infoHeader.biWidth * column * 2 >= file_size) break;
+
+//			
+//			if(column%interpolation==0){
+//				//add check if we`re not out of image memory
+//				fresult = f_lseek(&USBHFile,(fileHeader.bfOffBits + ((infoHeader.biWidth*2) * (column+ (*vertical_offset)) + (*horizontal_offset*2))*interpolation));
+//				if (fresult != FR_OK) {
+//					GC9A01_Text("Seek error! \n Press any button", 1);
+//					current_mode = error;
+//					break;
+//				}
+//				
+//				fresult = f_read(&USBHFile, temp_buf, (infoHeader.biWidth > LCD_W ? LCD_W*2*interpolation :LCD_W*2), &br);
+//				//lcd_w 
+//				if (fresult != FR_OK) {
+//					GC9A01_Text("Read error! \n Press any button", 1);
+//					current_mode = error;
+//					break;
+//				}
+//				compress_array(temp_buf,buffer2,LCD_W, interpolation);
+//				
+//			}
+//			GC9A01_show_picture(buffer2, 0, ((LCD_H-1) - column), LCD_W, 1, LCD_W, 1);
+//		}
 
 /***************************TOP-BOTTOM CASE****************************/
 	} else if(fileHeader.bfType == 0x4D42 && infoHeader.biBitCount == 16 && infoHeader.biHeight < 0){

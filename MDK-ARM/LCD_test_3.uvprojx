@@ -395,11 +395,6 @@
           <GroupName>Application/User/Core</GroupName>
           <Files>
             <File>
-              <FileName>font.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\Core\Inc\font.h</FilePath>
-            </File>
-            <File>
               <FileName>font8.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\Core\Inc\font8.c</FilePath>
