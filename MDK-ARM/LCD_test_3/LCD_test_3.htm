@@ -3,9 +3,9 @@
 <title>Static Call Graph - [LCD_test_3\LCD_test_3.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image LCD_test_3\LCD_test_3.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060300: Last Updated: Tue Dec 17 16:59:57 2024
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060300: Last Updated: Wed Dec 18 15:21:17 2024
 <BR><P>
-<H3>Maximum Stack Usage =       3080 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
+<H3>Maximum Stack Usage =       3088 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
 __rt_entry_main &rArr; main &rArr; UP_button_handrel &rArr; view_txt_UP_button_handler &rArr; view_menu_RIGHT_button_handler &rArr; Read_File_and_print_BMP &rArr; check_if_file_opens &rArr; f_open &rArr; dir_register &rArr; dir_find &rArr; dir_next &rArr; create_chain &rArr; put_fat &rArr; move_window &rArr; sync_window &rArr; disk_write
 <P>
@@ -249,7 +249,7 @@ Global Symbols
 <P><STRONG><a name="[1cc]"></a>__rt_entry_postsh_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __rtentry2.o(.ARM.Collect$$rtentry$$00000009))
 
 <P><STRONG><a name="[6b]"></a>__rt_entry_main</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __rtentry2.o(.ARM.Collect$$rtentry$$0000000D))
-<BR><BR>[Stack]<UL><LI>Max Depth = 3080 + Unknown Stack Size
+<BR><BR>[Stack]<UL><LI>Max Depth = 3088 + Unknown Stack Size
 <LI>Call Chain = __rt_entry_main &rArr; main &rArr; UP_button_handrel &rArr; view_txt_UP_button_handler &rArr; view_menu_RIGHT_button_handler &rArr; Read_File_and_print_BMP &rArr; check_if_file_opens &rArr; f_open &rArr; dir_register &rArr; dir_find &rArr; dir_next &rArr; create_chain &rArr; put_fat &rArr; move_window &rArr; sync_window &rArr; disk_write
 </UL>
 <BR>[Calls]<UL><LI><a href="#[6c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
@@ -837,7 +837,7 @@ Global Symbols
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f411xe.o(RESET)
 </UL>
 <P><STRONG><a name="[95]"></a>DOWN_button_handrel</STRONG> (Thumb, 60 bytes, Stack size 8 bytes, main.o(i.DOWN_button_handrel))
-<BR><BR>[Stack]<UL><LI>Max Depth = 3072 + Unknown Stack Size
+<BR><BR>[Stack]<UL><LI>Max Depth = 3080 + Unknown Stack Size
 <LI>Call Chain = DOWN_button_handrel &rArr; view_txt_DOWN_button_handler &rArr; view_menu_RIGHT_button_handler &rArr; Read_File_and_print_BMP &rArr; check_if_file_opens &rArr; f_open &rArr; dir_register &rArr; dir_find &rArr; dir_next &rArr; create_chain &rArr; put_fat &rArr; move_window &rArr; sync_window &rArr; disk_write
 </UL>
 <BR>[Calls]<UL><LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GPIO_TogglePin
@@ -1326,7 +1326,7 @@ Global Symbols
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f411xe.o(RESET)
 </UL>
 <P><STRONG><a name="[ed]"></a>LEFT_RIGHT_button_handrel</STRONG> (Thumb, 70 bytes, Stack size 8 bytes, main.o(i.LEFT_RIGHT_button_handrel))
-<BR><BR>[Stack]<UL><LI>Max Depth = 3048 + Unknown Stack Size
+<BR><BR>[Stack]<UL><LI>Max Depth = 3056 + Unknown Stack Size
 <LI>Call Chain = LEFT_RIGHT_button_handrel &rArr; refresh_BMP_image &rArr; Read_File_and_print_BMP &rArr; check_if_file_opens &rArr; f_open &rArr; dir_register &rArr; dir_find &rArr; dir_next &rArr; create_chain &rArr; put_fat &rArr; move_window &rArr; sync_window &rArr; disk_write
 </UL>
 <BR>[Calls]<UL><LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GPIO_TogglePin
@@ -1337,7 +1337,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[ef]"></a>LEFT_button_handrel</STRONG> (Thumb, 60 bytes, Stack size 8 bytes, main.o(i.LEFT_button_handrel))
-<BR><BR>[Stack]<UL><LI>Max Depth = 3056 + Unknown Stack Size
+<BR><BR>[Stack]<UL><LI>Max Depth = 3064 + Unknown Stack Size
 <LI>Call Chain = LEFT_button_handrel &rArr; view_image_LEFT_button_handler &rArr; refresh_BMP_image &rArr; Read_File_and_print_BMP &rArr; check_if_file_opens &rArr; f_open &rArr; dir_register &rArr; dir_find &rArr; dir_next &rArr; create_chain &rArr; put_fat &rArr; move_window &rArr; sync_window &rArr; disk_write
 </UL>
 <BR>[Calls]<UL><LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GPIO_TogglePin
@@ -1440,7 +1440,7 @@ Global Symbols
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f411xe.o(RESET)
 </UL>
 <P><STRONG><a name="[10b]"></a>RIGHT_button_handrel</STRONG> (Thumb, 60 bytes, Stack size 8 bytes, main.o(i.RIGHT_button_handrel))
-<BR><BR>[Stack]<UL><LI>Max Depth = 3064 + Unknown Stack Size
+<BR><BR>[Stack]<UL><LI>Max Depth = 3072 + Unknown Stack Size
 <LI>Call Chain = RIGHT_button_handrel &rArr; view_menu_RIGHT_button_handler &rArr; Read_File_and_print_BMP &rArr; check_if_file_opens &rArr; f_open &rArr; dir_register &rArr; dir_find &rArr; dir_next &rArr; create_chain &rArr; put_fat &rArr; move_window &rArr; sync_window &rArr; disk_write
 </UL>
 <BR>[Calls]<UL><LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GPIO_TogglePin
@@ -1469,8 +1469,8 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[10c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;view_menu_RIGHT_button_handler
 </UL>
 
-<P><STRONG><a name="[115]"></a>Read_File_and_print_BMP</STRONG> (Thumb, 782 bytes, Stack size 2056 bytes, file_handling.o(i.Read_File_and_print_BMP))
-<BR><BR>[Stack]<UL><LI>Max Depth = 2936 + Unknown Stack Size
+<P><STRONG><a name="[115]"></a>Read_File_and_print_BMP</STRONG> (Thumb, 826 bytes, Stack size 2064 bytes, file_handling.o(i.Read_File_and_print_BMP))
+<BR><BR>[Stack]<UL><LI>Max Depth = 2944 + Unknown Stack Size
 <LI>Call Chain = Read_File_and_print_BMP &rArr; check_if_file_opens &rArr; f_open &rArr; dir_register &rArr; dir_find &rArr; dir_next &rArr; create_chain &rArr; put_fat &rArr; move_window &rArr; sync_window &rArr; disk_write
 </UL>
 <BR>[Calls]<UL><LI><a href="#[113]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;f_read
@@ -1576,7 +1576,7 @@ Global Symbols
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f411xe.o(RESET)
 </UL>
 <P><STRONG><a name="[122]"></a>UP_DOWN_button_handrel</STRONG> (Thumb, 70 bytes, Stack size 8 bytes, main.o(i.UP_DOWN_button_handrel))
-<BR><BR>[Stack]<UL><LI>Max Depth = 3048 + Unknown Stack Size
+<BR><BR>[Stack]<UL><LI>Max Depth = 3056 + Unknown Stack Size
 <LI>Call Chain = UP_DOWN_button_handrel &rArr; refresh_BMP_image &rArr; Read_File_and_print_BMP &rArr; check_if_file_opens &rArr; f_open &rArr; dir_register &rArr; dir_find &rArr; dir_next &rArr; create_chain &rArr; put_fat &rArr; move_window &rArr; sync_window &rArr; disk_write
 </UL>
 <BR>[Calls]<UL><LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GPIO_TogglePin
@@ -1587,7 +1587,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[123]"></a>UP_button_handrel</STRONG> (Thumb, 60 bytes, Stack size 8 bytes, main.o(i.UP_button_handrel))
-<BR><BR>[Stack]<UL><LI>Max Depth = 3072 + Unknown Stack Size
+<BR><BR>[Stack]<UL><LI>Max Depth = 3080 + Unknown Stack Size
 <LI>Call Chain = UP_button_handrel &rArr; view_txt_UP_button_handler &rArr; view_menu_RIGHT_button_handler &rArr; Read_File_and_print_BMP &rArr; check_if_file_opens &rArr; f_open &rArr; dir_register &rArr; dir_find &rArr; dir_next &rArr; create_chain &rArr; put_fat &rArr; move_window &rArr; sync_window &rArr; disk_write
 </UL>
 <BR>[Calls]<UL><LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GPIO_TogglePin
@@ -2596,7 +2596,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[6c]"></a>main</STRONG> (Thumb, 688 bytes, Stack size 8 bytes, main.o(i.main))
-<BR><BR>[Stack]<UL><LI>Max Depth = 3080 + Unknown Stack Size
+<BR><BR>[Stack]<UL><LI>Max Depth = 3088 + Unknown Stack Size
 <LI>Call Chain = main &rArr; UP_button_handrel &rArr; view_txt_UP_button_handler &rArr; view_menu_RIGHT_button_handler &rArr; Read_File_and_print_BMP &rArr; check_if_file_opens &rArr; f_open &rArr; dir_register &rArr; dir_find &rArr; dir_next &rArr; create_chain &rArr; put_fat &rArr; move_window &rArr; sync_window &rArr; disk_write
 </UL>
 <BR>[Calls]<UL><LI><a href="#[f7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__NVIC_SetPriority
@@ -2654,7 +2654,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[ee]"></a>refresh_BMP_image</STRONG> (Thumb, 164 bytes, Stack size 104 bytes, main.o(i.refresh_BMP_image))
-<BR><BR>[Stack]<UL><LI>Max Depth = 3040 + Unknown Stack Size
+<BR><BR>[Stack]<UL><LI>Max Depth = 3048 + Unknown Stack Size
 <LI>Call Chain = refresh_BMP_image &rArr; Read_File_and_print_BMP &rArr; check_if_file_opens &rArr; f_open &rArr; dir_register &rArr; dir_find &rArr; dir_next &rArr; create_chain &rArr; put_fat &rArr; move_window &rArr; sync_window &rArr; disk_write
 </UL>
 <BR>[Calls]<UL><LI><a href="#[1a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_active_menu_member
@@ -2691,7 +2691,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[99]"></a>view_image_DOWN_button_handler</STRONG> (Thumb, 34 bytes, Stack size 8 bytes, main.o(i.view_image_DOWN_button_handler))
-<BR><BR>[Stack]<UL><LI>Max Depth = 3048 + Unknown Stack Size
+<BR><BR>[Stack]<UL><LI>Max Depth = 3056 + Unknown Stack Size
 <LI>Call Chain = view_image_DOWN_button_handler &rArr; refresh_BMP_image &rArr; Read_File_and_print_BMP &rArr; check_if_file_opens &rArr; f_open &rArr; dir_register &rArr; dir_find &rArr; dir_next &rArr; create_chain &rArr; put_fat &rArr; move_window &rArr; sync_window &rArr; disk_write
 </UL>
 <BR>[Calls]<UL><LI><a href="#[ee]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;refresh_BMP_image
@@ -2700,7 +2700,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[f2]"></a>view_image_LEFT_button_handler</STRONG> (Thumb, 34 bytes, Stack size 8 bytes, main.o(i.view_image_LEFT_button_handler))
-<BR><BR>[Stack]<UL><LI>Max Depth = 3048 + Unknown Stack Size
+<BR><BR>[Stack]<UL><LI>Max Depth = 3056 + Unknown Stack Size
 <LI>Call Chain = view_image_LEFT_button_handler &rArr; refresh_BMP_image &rArr; Read_File_and_print_BMP &rArr; check_if_file_opens &rArr; f_open &rArr; dir_register &rArr; dir_find &rArr; dir_next &rArr; create_chain &rArr; put_fat &rArr; move_window &rArr; sync_window &rArr; disk_write
 </UL>
 <BR>[Calls]<UL><LI><a href="#[ee]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;refresh_BMP_image
@@ -2709,7 +2709,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[10e]"></a>view_image_RIGHT_button_handler</STRONG> (Thumb, 18 bytes, Stack size 8 bytes, main.o(i.view_image_RIGHT_button_handler))
-<BR><BR>[Stack]<UL><LI>Max Depth = 3048 + Unknown Stack Size
+<BR><BR>[Stack]<UL><LI>Max Depth = 3056 + Unknown Stack Size
 <LI>Call Chain = view_image_RIGHT_button_handler &rArr; refresh_BMP_image &rArr; Read_File_and_print_BMP &rArr; check_if_file_opens &rArr; f_open &rArr; dir_register &rArr; dir_find &rArr; dir_next &rArr; create_chain &rArr; put_fat &rArr; move_window &rArr; sync_window &rArr; disk_write
 </UL>
 <BR>[Calls]<UL><LI><a href="#[ee]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;refresh_BMP_image
@@ -2718,7 +2718,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[126]"></a>view_image_UP_button_handler</STRONG> (Thumb, 18 bytes, Stack size 8 bytes, main.o(i.view_image_UP_button_handler))
-<BR><BR>[Stack]<UL><LI>Max Depth = 3048 + Unknown Stack Size
+<BR><BR>[Stack]<UL><LI>Max Depth = 3056 + Unknown Stack Size
 <LI>Call Chain = view_image_UP_button_handler &rArr; refresh_BMP_image &rArr; Read_File_and_print_BMP &rArr; check_if_file_opens &rArr; f_open &rArr; dir_register &rArr; dir_find &rArr; dir_next &rArr; create_chain &rArr; put_fat &rArr; move_window &rArr; sync_window &rArr; disk_write
 </UL>
 <BR>[Calls]<UL><LI><a href="#[ee]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;refresh_BMP_image
@@ -2758,7 +2758,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[10c]"></a>view_menu_RIGHT_button_handler</STRONG> (Thumb, 668 bytes, Stack size 120 bytes, main.o(i.view_menu_RIGHT_button_handler))
-<BR><BR>[Stack]<UL><LI>Max Depth = 3056 + Unknown Stack Size
+<BR><BR>[Stack]<UL><LI>Max Depth = 3064 + Unknown Stack Size
 <LI>Call Chain = view_menu_RIGHT_button_handler &rArr; Read_File_and_print_BMP &rArr; check_if_file_opens &rArr; f_open &rArr; dir_register &rArr; dir_find &rArr; dir_next &rArr; create_chain &rArr; put_fat &rArr; move_window &rArr; sync_window &rArr; disk_write
 </UL>
 <BR>[Calls]<UL><LI><a href="#[1a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_active_menu_member
@@ -2802,7 +2802,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[98]"></a>view_txt_DOWN_button_handler</STRONG> (Thumb, 18 bytes, Stack size 8 bytes, main.o(i.view_txt_DOWN_button_handler))
-<BR><BR>[Stack]<UL><LI>Max Depth = 3064 + Unknown Stack Size
+<BR><BR>[Stack]<UL><LI>Max Depth = 3072 + Unknown Stack Size
 <LI>Call Chain = view_txt_DOWN_button_handler &rArr; view_menu_RIGHT_button_handler &rArr; Read_File_and_print_BMP &rArr; check_if_file_opens &rArr; f_open &rArr; dir_register &rArr; dir_find &rArr; dir_next &rArr; create_chain &rArr; put_fat &rArr; move_window &rArr; sync_window &rArr; disk_write
 </UL>
 <BR>[Calls]<UL><LI><a href="#[10c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;view_menu_RIGHT_button_handler
@@ -2825,7 +2825,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[125]"></a>view_txt_UP_button_handler</STRONG> (Thumb, 18 bytes, Stack size 8 bytes, main.o(i.view_txt_UP_button_handler))
-<BR><BR>[Stack]<UL><LI>Max Depth = 3064 + Unknown Stack Size
+<BR><BR>[Stack]<UL><LI>Max Depth = 3072 + Unknown Stack Size
 <LI>Call Chain = view_txt_UP_button_handler &rArr; view_menu_RIGHT_button_handler &rArr; Read_File_and_print_BMP &rArr; check_if_file_opens &rArr; f_open &rArr; dir_register &rArr; dir_find &rArr; dir_next &rArr; create_chain &rArr; put_fat &rArr; move_window &rArr; sync_window &rArr; disk_write
 </UL>
 <BR>[Calls]<UL><LI><a href="#[10c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;view_menu_RIGHT_button_handler

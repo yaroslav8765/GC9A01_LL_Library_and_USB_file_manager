@@ -244,7 +244,7 @@ FRESULT Read_File_and_print_BMP(char *name, uint16_t *horizontal_offset, uint16_
 /*******************MY IDEAS*********/
 	
 	unsigned short temp_buf[LCD_W * interpolation	<=	infoHeader.biWidth	?	LCD_W * interpolation	:	LCD_W];
-
+	uint16_t column = 0;
 	if(fileHeader.bfType == 0x4D42 && infoHeader.biBitCount == 16 && infoHeader.biHeight > 0 ){
 		
 		if(infoHeader.biWidth/ interpolation <= LCD_W || infoHeader.biHeight/ interpolation <= LCD_H){	
@@ -270,34 +270,71 @@ FRESULT Read_File_and_print_BMP(char *name, uint16_t *horizontal_offset, uint16_
 			
 		}
 		
-		for (uint16_t column = 0 ; column <= LCD_H; column = column + temp_height) {
+		for (column = 0 ; column + temp_height<= LCD_H; column += temp_height) {
 			if (infoHeader.biWidth * column * 2 >= file_size) break;
 
 			
-			if(column%interpolation==0){
 				//add check if we`re not out of image memory
 				//the promlem is if image width > LCD_W, then we need change f_read algorithm
-				//there is also white line on the bottom,  need to fix
-				fresult = f_lseek(&USBHFile,(fileHeader.bfOffBits + ((infoHeader.biWidth*2) * (column+ (*vertical_offset)) + (*horizontal_offset*2))*interpolation));
-				if (fresult != FR_OK) {
-					GC9A01_Text("Seek error! \n Press any button", 1);
-					current_mode = error;
-					break;
-				}
+			for(uint8_t i = 0; i!= temp_height; i++){
 				
-				fresult = f_read(&USBHFile, buffer2, (infoHeader.biWidth > LCD_W ? LCD_W*2*interpolation*temp_height :LCD_W*2*temp_height), &br);
-				//lcd_w 
+				uint32_t offset = fileHeader.bfOffBits +																						\
+                          ((infoHeader.biWidth * 2) * (column + (*vertical_offset) + i) +		\
+                          (*horizontal_offset * 2));
+        if (offset >= file_size) {
+            GC9A01_Text("Seek error! \n Press any button", 1);
+            current_mode = error;
+            break;
+        }
+				fresult = f_lseek(&USBHFile, offset);
+        if (fresult != FR_OK) {
+            GC9A01_Text("Seek error! \n Press any button", 1);
+            current_mode = error;
+            break;
+        }
+				
+				fresult = f_read(&USBHFile, buffer2 + (LCD_W * (i)), LCD_W*2, &br);
 				if (fresult != FR_OK) {
 					GC9A01_Text("Read error! \n Press any button", 1);
 					current_mode = error;
 					break;
 				}
-				flip_array(buffer2, temp_height);
-				//compress_array(temp_buf,buffer2,LCD_W, interpolation);
-				
 			}
-			GC9A01_show_picture(buffer2, 0, ((LCD_H-1) - column), LCD_W, temp_height, LCD_W, temp_height);
+			
+			flip_array(buffer2, temp_height);
+			GC9A01_show_picture(buffer2, 0, ((LCD_H - temp_height) - column), LCD_W, temp_height, LCD_W, temp_height);
 		}
+		
+		
+		
+		//out rest of lines ||
+		//									||
+		//									||
+		//								 \	/
+		//									\/
+		
+		
+//		for ( ; column >= 0; column--) {
+//			if (infoHeader.biWidth * column * 2 >= file_size) break;
+
+//			fresult = f_lseek(&USBHFile,fileHeader.bfOffBits + ((infoHeader.biWidth*2) * (column+ (*vertical_offset)) + (*horizontal_offset*2)));
+//			if (fresult != FR_OK) {
+//				GC9A01_Text("Seek error! \n Press any button", 1);
+//				current_mode = error;
+//				break;
+//			}
+
+//			fresult = f_read(&USBHFile, buffer2, LCD_W*2, &br);
+//			if (fresult != FR_OK) {
+//				GC9A01_Text("Read error! \n Press any button", 1);
+//				current_mode = error;
+//				break;
+//			}
+//					
+//			GC9A01_show_picture(buffer2, 0, (LCD_H-1) - column, LCD_W, 1, LCD_W, 1);
+//		}
+//		
+		
 /*************************************************************************/
 	
 	
