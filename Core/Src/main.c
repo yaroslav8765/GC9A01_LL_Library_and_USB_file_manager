@@ -76,12 +76,12 @@
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
-	void SystemClock_Config(void);
-	static void MX_GPIO_Init(void);
-	static void MX_DMA_Init(void);
-	static void MX_SPI1_Init(void);
-	static void MX_TIM1_Init(void);
-	void MX_USB_HOST_Process(void);
+void SystemClock_Config(void);
+static void MX_GPIO_Init(void);
+static void MX_DMA_Init(void);
+static void MX_SPI1_Init(void);
+static void MX_TIM1_Init(void);
+void MX_USB_HOST_Process(void);
 
 /* USER CODE BEGIN PFP */
 	void delay_ms(uint32_t ms);
@@ -135,7 +135,9 @@ int main(void)
   MX_GPIO_Init();
   MX_DMA_Init();
   MX_SPI1_Init();
-
+//  MX_FATFS_Init();
+//  MX_USB_HOST_Init();
+//  MX_TIM1_Init();
   /* USER CODE BEGIN 2 */
 	LL_DMA_DisableStream(DMA2, LL_DMA_STREAM_3);
 	LL_DMA_ClearFlag_TC3(DMA2);
@@ -213,7 +215,7 @@ int main(void)
 		//GC9A01_show_picture(tohru1,50,50,140,140,140,140);
 		//display_test_animation();
     /* USER CODE END WHILE */
-
+    MX_USB_HOST_Process();
 
     /* USER CODE BEGIN 3 */
   }
@@ -368,7 +370,7 @@ static void MX_TIM1_Init(void)
   /* USER CODE END TIM1_Init 1 */
   TIM_InitStruct.Prescaler = 1000;
   TIM_InitStruct.CounterMode = LL_TIM_COUNTERMODE_UP;
-  TIM_InitStruct.Autoreload = 30000;
+  TIM_InitStruct.Autoreload = 10000;
   TIM_InitStruct.ClockDivision = LL_TIM_CLOCKDIVISION_DIV1;
   TIM_InitStruct.RepetitionCounter = 0;
   LL_TIM_Init(TIM1, &TIM_InitStruct);

@@ -243,7 +243,14 @@ FRESULT Read_File_and_print_BMP(char *name, uint16_t *horizontal_offset, uint16_
 	
 /*******************MY IDEAS*********/
 	
-	unsigned short temp_buf[LCD_W * interpolation	<=	infoHeader.biWidth	?	LCD_W * interpolation	:	LCD_W];
+
+		
+/*************************************************************************/
+	
+	
+	
+
+/***************************BOTTOM-TOP CASE*******************************/
 	uint16_t column = 0;
 	if(fileHeader.bfType == 0x4D42 && infoHeader.biBitCount == 16 && infoHeader.biHeight > 0 ){
 		
@@ -273,9 +280,6 @@ FRESULT Read_File_and_print_BMP(char *name, uint16_t *horizontal_offset, uint16_
 		for (column = 0 ; column + temp_height<= LCD_H; column += temp_height) {
 			if (infoHeader.biWidth * column * 2 >= file_size) break;
 
-			
-				//add check if we`re not out of image memory
-				//the promlem is if image width > LCD_W, then we need change f_read algorithm
 			for(uint8_t i = 0; i!= temp_height; i++){
 				
 				uint32_t offset = fileHeader.bfOffBits +																						\
@@ -286,6 +290,7 @@ FRESULT Read_File_and_print_BMP(char *name, uint16_t *horizontal_offset, uint16_
             current_mode = error;
             break;
         }
+				
 				fresult = f_lseek(&USBHFile, offset);
         if (fresult != FR_OK) {
             GC9A01_Text("Seek error! \n Press any button", 1);
@@ -293,7 +298,8 @@ FRESULT Read_File_and_print_BMP(char *name, uint16_t *horizontal_offset, uint16_
             break;
         }
 				
-				fresult = f_read(&USBHFile, buffer2 + (LCD_W * (i)), LCD_W*2, &br);
+				//if infoHeader.biWidth < LCD_W * Interpotation -> read image_W * 2, otherwise read LCD_W * interpolation * 2
+				fresult = f_read(&USBHFile, buffer2 + (LCD_W * (i)), infoHeader.biWidth < LCD_W * interpolation ? infoHeader.biWidth * 2 : LCD_W * interpolation * 2, &br);
 				if (fresult != FR_OK) {
 					GC9A01_Text("Read error! \n Press any button", 1);
 					current_mode = error;
@@ -302,96 +308,11 @@ FRESULT Read_File_and_print_BMP(char *name, uint16_t *horizontal_offset, uint16_
 			}
 			
 			flip_array(buffer2, temp_height);
+			//compress_array(buffer2, buffer2,LCD_W,interpolation);
 			GC9A01_show_picture(buffer2, 0, ((LCD_H - temp_height) - column), LCD_W, temp_height, LCD_W, temp_height);
 		}
-		
-		
-		
-		//out rest of lines ||
-		//									||
-		//									||
-		//								 \	/
-		//									\/
-		
-		
-//		for ( ; column >= 0; column--) {
-//			if (infoHeader.biWidth * column * 2 >= file_size) break;
 
-//			fresult = f_lseek(&USBHFile,fileHeader.bfOffBits + ((infoHeader.biWidth*2) * (column+ (*vertical_offset)) + (*horizontal_offset*2)));
-//			if (fresult != FR_OK) {
-//				GC9A01_Text("Seek error! \n Press any button", 1);
-//				current_mode = error;
-//				break;
-//			}
-
-//			fresult = f_read(&USBHFile, buffer2, LCD_W*2, &br);
-//			if (fresult != FR_OK) {
-//				GC9A01_Text("Read error! \n Press any button", 1);
-//				current_mode = error;
-//				break;
-//			}
-//					
-//			GC9A01_show_picture(buffer2, 0, (LCD_H-1) - column, LCD_W, 1, LCD_W, 1);
-//		}
-//		
 		
-/*************************************************************************/
-	
-	
-	
-
-/***************************BOTTOM-TOP CASE*******************************/
-//	if(fileHeader.bfType == 0x4D42 && infoHeader.biBitCount == 16 && infoHeader.biHeight > 0 ){
-//		
-//		if(infoHeader.biWidth/ interpolation <= LCD_W || infoHeader.biHeight/ interpolation <= LCD_H){	
-//			
-//			if(infoHeader.biWidth / interpolation <= LCD_W ){	
-//				*horizontal_offset = 0;
-//			}
-//			
-//			if( (infoHeader.biHeight) / interpolation <= LCD_H){
-//				*vertical_offset = 0;
-//			}
-//			
-//		}
-//		else {
-//			
-//			if(*vertical_offset > (infoHeader.biHeight/interpolation) - LCD_H ){
-//				*vertical_offset = (infoHeader.biHeight/interpolation) - LCD_H;
-//			}
-//			
-//			if(*horizontal_offset > (infoHeader.biWidth/interpolation) - LCD_W){
-//				*horizontal_offset = (infoHeader.biWidth/interpolation) - LCD_W;
-//			}
-//			
-//		}
-//		
-//		for (uint16_t column = LCD_H; column >= 0; column--) {
-//			if (infoHeader.biWidth * column * 2 >= file_size) break;
-
-//			
-//			if(column%interpolation==0){
-//				//add check if we`re not out of image memory
-//				fresult = f_lseek(&USBHFile,(fileHeader.bfOffBits + ((infoHeader.biWidth*2) * (column+ (*vertical_offset)) + (*horizontal_offset*2))*interpolation));
-//				if (fresult != FR_OK) {
-//					GC9A01_Text("Seek error! \n Press any button", 1);
-//					current_mode = error;
-//					break;
-//				}
-//				
-//				fresult = f_read(&USBHFile, temp_buf, (infoHeader.biWidth > LCD_W ? LCD_W*2*interpolation :LCD_W*2), &br);
-//				//lcd_w 
-//				if (fresult != FR_OK) {
-//					GC9A01_Text("Read error! \n Press any button", 1);
-//					current_mode = error;
-//					break;
-//				}
-//				compress_array(temp_buf,buffer2,LCD_W, interpolation);
-//				
-//			}
-//			GC9A01_show_picture(buffer2, 0, ((LCD_H-1) - column), LCD_W, 1, LCD_W, 1);
-//		}
-
 /***************************TOP-BOTTOM CASE****************************/
 	} else if(fileHeader.bfType == 0x4D42 && infoHeader.biBitCount == 16 && infoHeader.biHeight < 0){
 		
@@ -422,8 +343,8 @@ FRESULT Read_File_and_print_BMP(char *name, uint16_t *horizontal_offset, uint16_
 						current_mode = error;
 						break;
 				}
-
-				fresult = f_read(&USBHFile, buffer2, LCD_W * 2, &br);
+				//if infoHeader.biWidth < LCD_W * Interpotation -> read image_W * 2, otherwise read LCD_W * interpolation * 2 // pizda
+				//fresult = f_read(&USBHFile, buffer2, infoHeader.biWidth < LCD_W * interpolation ? infoHeader.biWidth * 2 : LCD_W * interpolation * 2, &br);
 				if (fresult != FR_OK) {
 						GC9A01_Text("Read error! \n Press any button", 1);
 						current_mode = error;
