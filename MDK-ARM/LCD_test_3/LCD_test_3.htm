@@ -3,7 +3,7 @@
 <title>Static Call Graph - [LCD_test_3\LCD_test_3.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image LCD_test_3\LCD_test_3.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060300: Last Updated: Sat Dec 21 13:03:47 2024
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060300: Last Updated: Sun Dec 22 13:11:32 2024
 <BR><P>
 <H3>Maximum Stack Usage =       1648 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -1471,7 +1471,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[10c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;view_menu_RIGHT_button_handler
 </UL>
 
-<P><STRONG><a name="[115]"></a>Read_File_and_print_BMP</STRONG> (Thumb, 766 bytes, Stack size 624 bytes, file_handling.o(i.Read_File_and_print_BMP))
+<P><STRONG><a name="[115]"></a>Read_File_and_print_BMP</STRONG> (Thumb, 820 bytes, Stack size 624 bytes, file_handling.o(i.Read_File_and_print_BMP))
 <BR><BR>[Stack]<UL><LI>Max Depth = 1504 + Unknown Stack Size
 <LI>Call Chain = Read_File_and_print_BMP &rArr; check_if_file_opens &rArr; f_open &rArr; dir_register &rArr; dir_find &rArr; dir_next &rArr; create_chain &rArr; put_fat &rArr; move_window &rArr; sync_window &rArr; disk_write
 </UL>
@@ -2389,8 +2389,8 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[16f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;check_for_USB_storage_connection
 </UL>
 
-<P><STRONG><a name="[118]"></a>compress_row</STRONG> (Thumb, 84 bytes, Stack size 32 bytes, file_handling.o(i.compress_row))
-<BR><BR>[Stack]<UL><LI>Max Depth = 32<LI>Call Chain = compress_row
+<P><STRONG><a name="[118]"></a>compress_row</STRONG> (Thumb, 298 bytes, Stack size 96 bytes, file_handling.o(i.compress_row))
+<BR><BR>[Stack]<UL><LI>Max Depth = 96<LI>Call Chain = compress_row
 </UL>
 <BR>[Called By]<UL><LI><a href="#[115]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Read_File_and_print_BMP
 </UL>
@@ -2474,7 +2474,7 @@ Global Symbols
 <LI><a href="#[115]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Read_File_and_print_BMP
 </UL>
 
-<P><STRONG><a name="[117]"></a>f_lseek_with_error_message</STRONG> (Thumb, 66 bytes, Stack size 16 bytes, file_handling.o(i.f_lseek_with_error_message))
+<P><STRONG><a name="[117]"></a>f_lseek_with_error_message</STRONG> (Thumb, 48 bytes, Stack size 16 bytes, file_handling.o(i.f_lseek_with_error_message))
 <BR><BR>[Stack]<UL><LI>Max Depth = 216<LI>Call Chain = f_lseek_with_error_message &rArr; f_lseek &rArr; create_chain &rArr; put_fat &rArr; move_window &rArr; sync_window &rArr; disk_write
 </UL>
 <BR>[Calls]<UL><LI><a href="#[119]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;f_lseek

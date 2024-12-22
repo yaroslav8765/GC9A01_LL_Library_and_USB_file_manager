@@ -20,13 +20,43 @@ uint32_t total, free_space;
 
 void compress_row(uint16_t *row1, uint16_t *row2, uint16_t *output, uint8_t interpolation) {
     for (int x = 0; x < 240; x++) {
-        int x_src1 = x * interpolation; // ?????? ??????? ???????
-        int x_src2 = x_src1 + 1;       // ?????? ??????? ???????
-        // ????????? ?????? ? ????????? ???????? ??????
-        uint16_t pixel1 = (row1[x_src1] + row2[x_src1]) / 2;
-        uint16_t pixel2 = (row1[x_src2] + row2[x_src2]) / 2;
-        output[x] = (pixel1 + pixel2) / 2;
+        int x_src1 = x * interpolation;
+        int x_src2 = x_src1 + 1;
+
+        uint16_t pixel1_row1 = row1[x_src1];
+        uint16_t pixel2_row1 = row1[x_src2];
+        uint16_t pixel1_row2 = row2[x_src1];
+        uint16_t pixel2_row2 = row2[x_src2];
+
+        uint8_t r1 = ((pixel1_row1 >> 11) & 0x1F);
+        uint8_t g1 = ((pixel1_row1 >> 5) & 0x3F);
+        uint8_t b1 = (pixel1_row1 & 0x1F);
+
+        uint8_t r2 = ((pixel2_row1 >> 11) & 0x1F);
+        uint8_t g2 = ((pixel2_row1 >> 5) & 0x3F);
+        uint8_t b2 = (pixel2_row1 & 0x1F);
+
+        uint8_t r3 = ((pixel1_row2 >> 11) & 0x1F);
+        uint8_t g3 = ((pixel1_row2 >> 5) & 0x3F);
+        uint8_t b3 = (pixel1_row2 & 0x1F);
+
+        uint8_t r4 = ((pixel2_row2 >> 11) & 0x1F);
+        uint8_t g4 = ((pixel2_row2 >> 5) & 0x3F);
+        uint8_t b4 = (pixel2_row2 & 0x1F);
+
+        uint8_t r = (r1 + r2 + r3 + r4) / 4;
+        uint8_t g = (g1 + g2 + g3 + g4) / 4;
+        uint8_t b = (b1 + b2 + b3 + b4) / 4;
+
+        output[x] = (r << 11) | (g << 5) | b;
     }
+}
+
+
+void compress_array(unsigned short *array, unsigned short *result,uint16_t size, uint16_t coefficient){
+	for(uint16_t i = 0; i!=size; i++){
+		result[i] = array[i*coefficient];
+	}
 }
 
 FRESULT read_BMP_header(BITMAPFILEHEADER *fileheader,BITMAPINFOHEADER *infoheader){
@@ -48,10 +78,10 @@ FRESULT read_BMP_header(BITMAPFILEHEADER *fileheader,BITMAPINFOHEADER *infoheade
 }
 
 FRESULT f_lseek_with_error_message(uint32_t offset, uint32_t file_size){
-	if (offset >= file_size) {
-		GC9A01_Text("Seek error! \n Press any button", 1);
-		current_mode = error;	 
-		}			
+//	if (offset >= file_size) {
+//		GC9A01_Text("Seek error! \n Press any button", 1);
+//		current_mode = error;	 
+//		}			
 	fresult = f_lseek(&USBHFile, offset);
 	if (fresult != FR_OK) {
 		GC9A01_Text("Seek error! \n Press any button", 1);
@@ -261,12 +291,15 @@ FRESULT Read_File_and_print_BMP(char *name, uint16_t *horizontal_offset, uint16_
 	if(fileHeader.bfType == 0x4D42 && infoHeader.biBitCount == 16 && infoHeader.biHeight > 0 ){
 		
 		if(infoHeader.biWidth	/ interpolation <= LCD_W || infoHeader.biHeight/ interpolation <= LCD_H){	
+			
 			if(infoHeader.biWidth / interpolation <= LCD_W ){	
 				*horizontal_offset = 0;
 			}
+			
 			if( (infoHeader.biHeight) / interpolation <= LCD_H){
 				*vertical_offset = 0;
 			}
+			
 		}
 		else {
 			if(*vertical_offset > (infoHeader.biHeight/interpolation) - LCD_H ){
@@ -286,22 +319,18 @@ FRESULT Read_File_and_print_BMP(char *name, uint16_t *horizontal_offset, uint16_
 		
 		
 		
-		//fresult = f_lseek_with_error_message(offset, file_size);
+		fresult = f_lseek_with_error_message(offset, file_size);
 				
-		//fresult = f_read(&USBHFile, buffer1 + (LCD_W * (interpolation - 1)), infoHeader.biWidth < LCD_W * interpolation ? infoHeader.biWidth * 2 : LCD_W * interpolation * 2, &br);
+		fresult = f_read(&USBHFile, buffer1 + (LCD_W * (interpolation - 1)), infoHeader.biWidth < LCD_W * interpolation ? infoHeader.biWidth * 2 : LCD_W * interpolation * 2, &br);
 		
-		for (column = 1 ; column + 1<= LCD_H; column +=interpolation) {
+		for (column = 1 ; column <= LCD_H; column ++) {
 			if (infoHeader.biWidth * column * 2 >= file_size) break;
 
-				
-				offset = fileHeader.bfOffBits 											+		\
-                          ((infoHeader.biWidth * 2) 				* 	\
-													(column + (*vertical_offset) ) 		+		\
-                          (*horizontal_offset * 2));
+				offset = (fileHeader.bfOffBits + ((infoHeader.biWidth*2) * (column+ (*vertical_offset)) + (*horizontal_offset*2))*interpolation);
 				
 				fresult = f_lseek_with_error_message(offset, file_size);
 				
-				fresult = f_read(&USBHFile, buffer2 + (LCD_W * (interpolation - 1)), infoHeader.biWidth < LCD_W * interpolation ? infoHeader.biWidth * 2 : LCD_W * interpolation * 2, &br);
+				fresult = f_read(&USBHFile, buffer2 , infoHeader.biWidth < LCD_W * interpolation ? infoHeader.biWidth * 2 : LCD_W * interpolation * 2, &br);
 				
 				if (fresult != FR_OK) {
 					GC9A01_Text("Read error! \n Press any button", 1);
@@ -309,8 +338,9 @@ FRESULT Read_File_and_print_BMP(char *name, uint16_t *horizontal_offset, uint16_
 					break;
 				}
 			compress_row(buffer1, buffer2, output_row, interpolation);
-			GC9A01_show_picture(output_row, 0, ((LCD_H - 1) - column), LCD_W, 1, LCD_W, 1);
-			memcpy(buffer1, output_row, sizeof(buffer1));
+			//compress_array(buffer2,output_row,240,interpolation);
+			GC9A01_show_picture(output_row, 0, ((LCD_H-1 ) - (column-1)), LCD_W, 1, LCD_W, 1);
+			memcpy(buffer1, buffer2, sizeof(buffer1));
 		}
 
 		
