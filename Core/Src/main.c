@@ -706,6 +706,9 @@ void BACK_TO_MENU_button_handler(){
 	current_mode = view_file_menu;
 	GC9A01_ClearScreen(WHITE);
 	enable_menu_member_animation = 1;
+	vertical_offset = 0;
+	horizontal_offset = 0;
+	interpolation_coef = 1;
 	shift = 0;
 	ShowMenu(Members, current_page);
 }	

@@ -264,10 +264,7 @@ FRESULT Read_File_and_print_BMP(char *name, uint16_t *horizontal_offset, uint16_
 	unsigned short output_row[LCD_W];
 	BITMAPFILEHEADER fileHeader;
   BITMAPINFOHEADER infoHeader;
-	uint32_t offset = fileHeader.bfOffBits 							+		\
-                    ((infoHeader.biWidth * 2) 				* 	\
-										(column + (*vertical_offset) ) 		+		\
-                    (*horizontal_offset * 2));
+	uint32_t offset; 
   if (check_if_file_exist(name) != FR_OK) {
     return fresult;
 	}
@@ -291,7 +288,7 @@ FRESULT Read_File_and_print_BMP(char *name, uint16_t *horizontal_offset, uint16_
 	if(fileHeader.bfType == 0x4D42 && infoHeader.biBitCount == 16 && infoHeader.biHeight > 0 ){
 		
 		if(infoHeader.biWidth	/ interpolation <= LCD_W || infoHeader.biHeight/ interpolation <= LCD_H){	
-			
+
 			if(infoHeader.biWidth / interpolation <= LCD_W ){	
 				*horizontal_offset = 0;
 			}
@@ -309,7 +306,11 @@ FRESULT Read_File_and_print_BMP(char *name, uint16_t *horizontal_offset, uint16_
 				*horizontal_offset = (infoHeader.biWidth/interpolation) - LCD_W;
 			}
 		}
-		
+		//*horizontal_offset = 0;*vertical_offset = 0;
+		offset = fileHeader.bfOffBits 						+		\
+            ((infoHeader.biWidth * 2) 				* 	\
+						(column + (*vertical_offset) ) 		+		\
+            (*horizontal_offset * 2));
 /****************************************************************************/	
 		
 		
@@ -342,7 +343,10 @@ FRESULT Read_File_and_print_BMP(char *name, uint16_t *horizontal_offset, uint16_
 			GC9A01_show_picture(output_row, 0, ((LCD_H-1 ) - (column-1)), LCD_W, 1, LCD_W, 1);
 			memcpy(buffer1, buffer2, sizeof(buffer1));
 		}
-
+		char *buf = malloc(100 * sizeof(char));
+    sprintf(buf, "I%dHO%dVO%dO%d,", interpolation, *horizontal_offset, *vertical_offset, offset);
+		GC9A01_String(20,180,buf);
+		free(buf);
 		
 		
 		

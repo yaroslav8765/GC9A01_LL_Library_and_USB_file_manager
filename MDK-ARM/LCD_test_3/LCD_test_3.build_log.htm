@@ -27,7 +27,7 @@ Project File Date:  12/20/2024
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 3 (build 300)', folder: 'C:\Keil_v5\ARM\ARMCC\Bin'
 Build target 'LCD_test_3'
-compiling File_Handling.c...
+compiling main.c...
 ../Core/Inc/main.h(90): warning:  #1295-D: Deprecated declaration LEFT_button_handrel - give arg types
   void LEFT_button_handrel();
 ../Core/Inc/main.h(91): warning:  #1295-D: Deprecated declaration RIGHT_button_handrel - give arg types
@@ -70,17 +70,13 @@ compiling File_Handling.c...
   void check_for_USB_storage_connection();
 ../Core/Inc/File_Handling.h(42): warning:  #1-D: last line of file ends without a newline
   #endif
-../Core/Inc/cg9a01.h(74): warning:  #47-D: incompatible redefinition of macro "RAINBOW_YELLOW" (declared at line 104 of "../Core/Inc/GC9A01.h")
-  #define RAINBOW_YELLOW   0xFFE0
-..\Core\Src\File_Handling.c(78): warning:  #940-D: missing return statement at end of non-void function "read_BMP_header"
-  }
-..\Core\Src\File_Handling.c(91): warning:  #940-D: missing return statement at end of non-void function "f_lseek_with_error_message"
-  }
-..\Core\Src\File_Handling.c: 24 warnings, 0 errors
+../Core/Src/main.c(778): warning:  #186-D: pointless comparison of unsigned integer with zero
+          for (uint16_t i = len - 1; i >= 0; i--) {
+../Core/Src/main.c: 22 warnings, 0 errors
 linking...
-Program Size: Code=43674 RO-data=8634 RW-data=39856 ZI-data=18432  
+Program Size: Code=43766 RO-data=8634 RW-data=39856 ZI-data=18432  
 FromELF: creating hex file...
-"LCD_test_3\LCD_test_3.axf" - 0 Error(s), 24 Warning(s).
+"LCD_test_3\LCD_test_3.axf" - 0 Error(s), 22 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -103,7 +99,7 @@ Package Vendor: Keil
 
    * Component: ARM::CMSIS:CORE@6.1.0
       Include file:  CMSIS/Core/Include/tz_context.h
-Build Time Elapsed:  00:00:01
+Build Time Elapsed:  00:00:03
 </pre>
 </body>
 </html>
