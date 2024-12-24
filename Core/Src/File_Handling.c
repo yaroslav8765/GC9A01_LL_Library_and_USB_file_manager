@@ -18,11 +18,14 @@ DWORD fre_clust;
 uint32_t total, free_space;
 
 
-void compress_row(uint16_t *row1, uint16_t *row2, uint16_t *output, uint8_t interpolation) {
-    for (int x = 0; x < 240; x++) {
+void compress_row(uint16_t *row1, uint16_t *row2, uint16_t *output, uint8_t interpolation, uint16_t horizontal_offset, uint16_t image_width) {
+		for (int x = 0; x < LCD_W; x++) {
+			output[x] = 0xFFFF;
+		}
+    for (int x = 0; x < LCD_W; x++) {
         int x_src1 = x * interpolation;
         int x_src2 = x_src1 + 1;
-
+				int16_t free_pixels = LCD_W - (image_width/interpolation);
         uint16_t pixel1_row1 = row1[x_src1];
         uint16_t pixel2_row1 = row1[x_src2];
         uint16_t pixel1_row2 = row2[x_src1];
@@ -47,8 +50,8 @@ void compress_row(uint16_t *row1, uint16_t *row2, uint16_t *output, uint8_t inte
         uint8_t r = (r1 + r2 + r3 + r4) / 4;
         uint8_t g = (g1 + g2 + g3 + g4) / 4;
         uint8_t b = (b1 + b2 + b3 + b4) / 4;
-
-        output[x] = (r << 11) | (g << 5) | b;
+				output[x + (free_pixels <= 0 ? 0 : (horizontal_offset / 10) < free_pixels ? (horizontal_offset / 10) : free_pixels )] = (r << 11) | (g << 5) | b;
+				if((x + free_pixels) >=LCD_W) break;
     }
 }
 
@@ -259,6 +262,10 @@ FRESULT Read_File(char *name, uint8_t page, char *buffer, uint16_t lenght) {
 FRESULT Read_File_and_print_BMP(char *name, uint16_t *horizontal_offset, uint16_t *vertical_offset, uint16_t interpolation) {
   uint32_t file_size;
 	uint16_t column = 0;
+	uint16_t horizontal_offset2 = *horizontal_offset;
+	uint16_t vertical_offset2 = *vertical_offset;
+	uint16_t mem_horizontal_offset = *horizontal_offset;
+	uint16_t mem_vertical_offset = *vertical_offset;
 	unsigned short buffer1[LCD_W*interpolation];
 	unsigned short buffer2[LCD_W*interpolation];
 	unsigned short output_row[LCD_W];
@@ -290,27 +297,27 @@ FRESULT Read_File_and_print_BMP(char *name, uint16_t *horizontal_offset, uint16_
 		if(infoHeader.biWidth	/ interpolation <= LCD_W || infoHeader.biHeight/ interpolation <= LCD_H){	
 
 			if(infoHeader.biWidth / interpolation <= LCD_W ){	
-				*horizontal_offset = 0;
+				mem_horizontal_offset = 0;
 			}
 			
 			if( (infoHeader.biHeight) / interpolation <= LCD_H){
-				*vertical_offset = 0;
+				mem_vertical_offset = 0;
 			}
 			
 		}
 		else {
-			if(*vertical_offset > (infoHeader.biHeight/interpolation) - LCD_H ){
-				*vertical_offset = (infoHeader.biHeight/interpolation) - LCD_H;
+			if(mem_vertical_offset > (infoHeader.biHeight/interpolation) - LCD_H ){
+				mem_vertical_offset = (infoHeader.biHeight/interpolation) - LCD_H;
 			}
-			if(*horizontal_offset > (infoHeader.biWidth/interpolation) - LCD_W){
-				*horizontal_offset = (infoHeader.biWidth/interpolation) - LCD_W;
+			if(mem_horizontal_offset > (infoHeader.biWidth/interpolation) - LCD_W){
+				mem_horizontal_offset = (infoHeader.biWidth/interpolation) - LCD_W;
 			}
 		}
 		//*horizontal_offset = 0;*vertical_offset = 0;
 		offset = fileHeader.bfOffBits 						+		\
             ((infoHeader.biWidth * 2) 				* 	\
-						(column + (*vertical_offset) ) 		+		\
-            (*horizontal_offset * 2));
+						(column + (mem_vertical_offset) ) 		+		\
+            (mem_horizontal_offset * 2));
 /****************************************************************************/	
 		
 		
@@ -326,8 +333,8 @@ FRESULT Read_File_and_print_BMP(char *name, uint16_t *horizontal_offset, uint16_
 		
 		for (column = 1 ; column <= LCD_H; column ++) {
 			if (infoHeader.biWidth * column * 2 >= file_size) break;
-
-				offset = (fileHeader.bfOffBits + ((infoHeader.biWidth*2) * (column+ (*vertical_offset)) + (*horizontal_offset*2))*interpolation);
+			if (column < infoHeader.biHeight/interpolation){
+				offset = (fileHeader.bfOffBits + ((infoHeader.biWidth*2) * (column+ (mem_vertical_offset)) + (mem_horizontal_offset*2))*interpolation);
 				
 				fresult = f_lseek_with_error_message(offset, file_size);
 				
@@ -338,14 +345,18 @@ FRESULT Read_File_and_print_BMP(char *name, uint16_t *horizontal_offset, uint16_
 					current_mode = error;
 					break;
 				}
-			compress_row(buffer1, buffer2, output_row, interpolation);
-			//compress_array(buffer2,output_row,240,interpolation);
-			GC9A01_show_picture(output_row, 0, ((LCD_H-1 ) - (column-1)), LCD_W, 1, LCD_W, 1);
+			compress_row(buffer1, buffer2, output_row, interpolation, *horizontal_offset,infoHeader.biWidth);
+			} else {
+				for (int x = 0; x < LCD_W; x++) {
+					output_row[x] = 0xFFFF;
+				}
+			}
+			GC9A01_show_picture(output_row, 0, ((LCD_H-1 ) - (column-1)) - ((infoHeader.biHeight/interpolation) >= LCD_H ? 0 : ((*vertical_offset/10) >= (LCD_H - (infoHeader.biHeight/interpolation))) ? (LCD_H - (infoHeader.biHeight/interpolation)):(*vertical_offset/10) ), LCD_W, 1, LCD_W, 1);
 			memcpy(buffer1, buffer2, sizeof(buffer1));
 		}
 		char *buf = malloc(100 * sizeof(char));
-    sprintf(buf, "I%dHO%dVO%dO%d,", interpolation, *horizontal_offset, *vertical_offset, offset);
-		GC9A01_String(20,180,buf);
+    sprintf(buf, "I%dH%dVO%d,", interpolation, (LCD_H - (infoHeader.biHeight/interpolation)), *vertical_offset);
+		//GC9A01_String(20,180,buf);
 		free(buf);
 		
 		
