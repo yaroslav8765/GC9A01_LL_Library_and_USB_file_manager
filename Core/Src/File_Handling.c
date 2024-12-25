@@ -294,26 +294,18 @@ FRESULT Read_File_and_print_BMP(char *name, uint16_t *horizontal_offset, uint16_
 /***************************BOTTOM-TOP CASE*******************************/
 	if(fileHeader.bfType == 0x4D42 && infoHeader.biBitCount == 16 && infoHeader.biHeight > 0 ){
 		
-		if(infoHeader.biWidth	/ interpolation <= LCD_W || infoHeader.biHeight/ interpolation <= LCD_H){	
-
 			if(infoHeader.biWidth / interpolation <= LCD_W ){	
 				mem_horizontal_offset = 0;
+			} else if(mem_horizontal_offset > ((infoHeader.biWidth/interpolation) - LCD_W)){
+				mem_horizontal_offset = (infoHeader.biWidth/interpolation) - LCD_W;
 			}
 			
 			if( (infoHeader.biHeight) / interpolation <= LCD_H){
 				mem_vertical_offset = 0;
-			}
-			
-		}
-		else {
-			if(mem_vertical_offset > (infoHeader.biHeight/interpolation) - LCD_H ){
+			}	else if(mem_vertical_offset > ((infoHeader.biHeight/interpolation) - LCD_H) ){
 				mem_vertical_offset = (infoHeader.biHeight/interpolation) - LCD_H;
 			}
-			if(mem_horizontal_offset > (infoHeader.biWidth/interpolation) - LCD_W){
-				mem_horizontal_offset = (infoHeader.biWidth/interpolation) - LCD_W;
-			}
-		}
-		//*horizontal_offset = 0;*vertical_offset = 0;
+
 		offset = fileHeader.bfOffBits 						+		\
             ((infoHeader.biWidth * 2) 				* 	\
 						(column + (mem_vertical_offset) ) 		+		\
@@ -351,12 +343,25 @@ FRESULT Read_File_and_print_BMP(char *name, uint16_t *horizontal_offset, uint16_
 					output_row[x] = 0xFFFF;
 				}
 			}
-			GC9A01_show_picture(output_row, 0, ((LCD_H-1 ) - (column-1)) - ((infoHeader.biHeight/interpolation) >= LCD_H ? 0 : ((*vertical_offset/10) >= (LCD_H - (infoHeader.biHeight/interpolation))) ? (LCD_H - (infoHeader.biHeight/interpolation)):(*vertical_offset/10) ), LCD_W, 1, LCD_W, 1);
+			
+			uint16_t shift;
+
+			if ((infoHeader.biHeight / interpolation) >= LCD_H) {
+					shift = 0;
+					*vertical_offset = mem_vertical_offset;
+			} else if ((*vertical_offset / 10) >= (LCD_H - (infoHeader.biHeight / interpolation))) {
+					shift = LCD_H - (infoHeader.biHeight / interpolation);
+					*vertical_offset -=64;
+			} else {
+					shift = *vertical_offset / 10;  
+			}
+
+			GC9A01_show_picture(output_row, 0, ((LCD_H-1 ) - (column-1)) - (shift), LCD_W, 1, LCD_W, 1);
 			memcpy(buffer1, buffer2, sizeof(buffer1));
 		}
 		char *buf = malloc(100 * sizeof(char));
-    sprintf(buf, "I%dH%dVO%d,", interpolation, (LCD_H - (infoHeader.biHeight/interpolation)), *vertical_offset);
-		//GC9A01_String(20,180,buf);
+    sprintf(buf, "I%dH:%dV:%d,", interpolation, *horizontal_offset, *vertical_offset);
+		GC9A01_String(20,180,buf);
 		free(buf);
 		
 		
