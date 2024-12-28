@@ -31,6 +31,12 @@ typedef struct __attribute__((packed)) {
 
 void Mount_USB (void);
 void Unmount_USB (void);
+void clear_row(uint16_t *row, uint16_t lenght);
+void calculate_shift(	uint16_t infoHeight, uint8_t interpolation, uint16_t LCDHeight,							\
+uint16_t *vertical_offset, uint16_t *v_shift, uint16_t mem_vertical_offset);
+void calculate_mem_offset(uint16_t size, uint16_t interpolation, uint16_t LCDsize, uint16_t *mem_horizontal_offset);
+void compress_row(uint16_t *row1, uint16_t *row2, uint16_t *output, uint8_t interpolation, uint16_t horizontal_offset, uint16_t image_width);
+void compress_array(unsigned short *array, unsigned short *result,uint16_t size, uint16_t coefficient);
 FRESULT Scan_USB (char* pat, struct MenuMember *member, uint8_t page);
 uint8_t Scan_USB_for_amount_of_files(char *pat);
 FRESULT Read_File (char *name, uint8_t page,char *buffer, uint16_t lenght);

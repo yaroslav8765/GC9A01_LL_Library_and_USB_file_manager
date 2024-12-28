@@ -34,6 +34,14 @@ void calculate_shift(uint16_t infoHeight, uint8_t interpolation, uint16_t LCDHei
         *v_shift = *vertical_offset / 10;
     }
 }
+void calculate_mem_offset(uint16_t size, uint16_t interpolation, uint16_t LCDsize, uint16_t *mem_horizontal_offset) {
+    if (size / interpolation <= LCDsize) {
+        *mem_horizontal_offset = 0;
+    } else if (*mem_horizontal_offset > ((size / interpolation) - LCDsize)) {
+        *mem_horizontal_offset = (size / interpolation) - LCDsize;
+    }
+}
+
 
 void compress_row(uint16_t *row1, uint16_t *row2, uint16_t *output, uint8_t interpolation, uint16_t horizontal_offset, uint16_t image_width) {
 		clear_row(output,LCD_W);
@@ -96,16 +104,14 @@ FRESULT read_BMP_header(BITMAPFILEHEADER *fileheader,BITMAPINFOHEADER *infoheade
 }
 
 FRESULT f_lseek_with_error_message(uint32_t offset, uint32_t file_size){
-//	if (offset >= file_size) {
-//		GC9A01_Text("Seek error! \n Press any button", 1);
-//		current_mode = error;	 
-//		}			
+	
 	fresult = f_lseek(&USBHFile, offset);
 	if (fresult != FR_OK) {
 		GC9A01_Text("Seek error! \n Press any button", 1);
 		current_mode = error;
 		return fresult;
 	}
+	
 }
 
 
@@ -272,8 +278,6 @@ FRESULT Read_File(char *name, uint8_t page, char *buffer, uint16_t lenght) {
   return fresult;
 }
 
-#define temp_height 1
-
 FRESULT Read_File_and_print_BMP(char *name, uint16_t *horizontal_offset, uint16_t *vertical_offset, uint16_t interpolation) {
   uint32_t file_size;
 	uint16_t column = 0;
@@ -297,55 +301,34 @@ FRESULT Read_File_and_print_BMP(char *name, uint16_t *horizontal_offset, uint16_
 	file_size = f_size(&USBHFile);
 	read_BMP_header(&fileHeader,&infoHeader);
 
-/*******************MY IDEAS*********/
-	
-
-		
-/*************************************************************************/
-	
-	
-	
-
 /***************************BOTTOM-TOP CASE*******************************/
-	if(fileHeader.bfType == 0x4D42 && infoHeader.biBitCount == 16 && infoHeader.biHeight > 0 ){
+	if(fileHeader.bfType == 0x4D42 && infoHeader.biBitCount == 16 && infoHeader.biHeight > 0 ){	
 		
-			if(infoHeader.biWidth / interpolation <= LCD_W ){	
-				mem_horizontal_offset = 0;
-			} else if(mem_horizontal_offset > ((infoHeader.biWidth/interpolation) - LCD_W)){
-				mem_horizontal_offset = (infoHeader.biWidth/interpolation) - LCD_W;
-			}
-			
-			if( (infoHeader.biHeight) / interpolation <= LCD_H){
-				mem_vertical_offset = 0;
-			}	else if(mem_vertical_offset > ((infoHeader.biHeight/interpolation) - LCD_H) ){
-				mem_vertical_offset = (infoHeader.biHeight/interpolation) - LCD_H;
-			}
-
-		offset = fileHeader.bfOffBits 						+		\
-            ((infoHeader.biWidth * 2) 				* 	\
-						(column + (mem_vertical_offset) ) 		+		\
+		calculate_mem_offset(infoHeader.biWidth,interpolation, LCD_W, &mem_horizontal_offset);
+		calculate_mem_offset(infoHeader.biHeight,interpolation, LCD_H, &mem_vertical_offset);
+		offset = fileHeader.bfOffBits 								+																										\
+            ((infoHeader.biWidth * 2) 						* 																									\
+						(column + (mem_vertical_offset) ) 		+																										\
             (mem_horizontal_offset * 2));
-/****************************************************************************/	
 		
-		
-		
-		
-		
-		
-		
-		
-		fresult = f_lseek_with_error_message(offset, file_size);
-				
-		fresult = f_read(&USBHFile, buffer1 + (LCD_W * (interpolation - 1)), infoHeader.biWidth < LCD_W * interpolation ? infoHeader.biWidth * 2 : LCD_W * interpolation * 2, &br);
+		fresult = f_lseek_with_error_message(offset, file_size);		
+		fresult = f_read(&USBHFile, buffer1 + (LCD_W * (interpolation - 1)), 															\
+		infoHeader.biWidth < LCD_W * interpolation ? infoHeader.biWidth * 2 : LCD_W * interpolation * 2,	\
+		&br);
 		
 		for (column = 1 ; column <= LCD_H; column ++) {
 			if (infoHeader.biWidth * column * 2 >= file_size) break;
-			if (column < infoHeader.biHeight/interpolation){
-				offset = (fileHeader.bfOffBits + ((infoHeader.biWidth*2) * (column+ (mem_vertical_offset)) + (mem_horizontal_offset*2))*interpolation);
+			if (column <= infoHeader.biHeight/interpolation){
+				offset = (fileHeader.bfOffBits + 																															\
+				((infoHeader.biWidth*2) * 																																		\
+				(column+ (mem_vertical_offset)) +																															\
+				(mem_horizontal_offset*2))*interpolation);
 				
 				fresult = f_lseek_with_error_message(offset, file_size);
 				
-				fresult = f_read(&USBHFile, buffer2 , infoHeader.biWidth < LCD_W * interpolation ? infoHeader.biWidth * 2 : LCD_W * interpolation * 2, &br);
+				fresult = f_read(&USBHFile, buffer2 ,																													\
+				infoHeader.biWidth<LCD_W * interpolation ? infoHeader.biWidth * 2 : LCD_W * interpolation*2,	\
+				&br);
 				
 				if (fresult != FR_OK) {
 					GC9A01_Text("Read error! \n Press any button", 1);
@@ -353,33 +336,14 @@ FRESULT Read_File_and_print_BMP(char *name, uint16_t *horizontal_offset, uint16_
 					break;
 				}
 				
-			calculate_shift(infoHeader.biWidth,interpolation,LCD_W, horizontal_offset,&h_shift, mem_horizontal_offset);
-//			if ((infoHeader.biWidth / interpolation) >= LCD_W) {
-//					h_shift = 0;
-//					*horizontal_offset = mem_horizontal_offset;
-//			} else if ((*horizontal_offset / 10) >= (LCD_W - (infoHeader.biWidth / interpolation))) {
-//					h_shift = LCD_W - (infoHeader.biWidth / interpolation) ;
-//					*horizontal_offset = ((LCD_W - (infoHeader.biWidth / interpolation))*10);
-//			} else {
-//					h_shift = *horizontal_offset / 10;  
-//			}
-			
-			compress_row(buffer1, buffer2, output_row, interpolation, h_shift,infoHeader.biWidth);
+				calculate_shift(infoHeader.biWidth,interpolation,LCD_W,																				\
+				horizontal_offset,&h_shift, mem_horizontal_offset);
+				compress_row(buffer1, buffer2, output_row, interpolation, h_shift,infoHeader.biWidth);
 			} else {
 				clear_row(output_row,LCD_W);
 			}
-			
-			calculate_shift(infoHeader.biHeight,interpolation,LCD_H, vertical_offset,&v_shift, mem_vertical_offset);
-//			if ((infoHeader.biHeight / interpolation) >= LCD_H) {
-//					v_shift = 0;
-//					*vertical_offset = mem_vertical_offset;
-//			} else if ((*vertical_offset / 10) >= (LCD_H - (infoHeader.biHeight / interpolation))) {
-//					v_shift = LCD_H - (infoHeader.biHeight / interpolation)+1;
-//					*vertical_offset = ((LCD_H - (infoHeader.biHeight / interpolation))*10);
-//			} else {
-//					v_shift = *vertical_offset / 10;  
-//			}
-
+			calculate_shift(infoHeader.biHeight,interpolation,LCD_H, 																				\
+			vertical_offset,&v_shift, mem_vertical_offset);
 			GC9A01_show_picture(output_row, 0, ((LCD_H-1 ) - (column-1)) - (v_shift), LCD_W, 1, LCD_W, 1);
 			memcpy(buffer1, buffer2, sizeof(buffer1));
 		}
@@ -389,41 +353,49 @@ FRESULT Read_File_and_print_BMP(char *name, uint16_t *horizontal_offset, uint16_
 	} else if(fileHeader.bfType == 0x4D42 && infoHeader.biBitCount == 16 && infoHeader.biHeight < 0){
 		
 		infoHeader.biHeight = infoHeader.biHeight * (-1);
-		uint16_t vertical_offset_2 = 0;
+		calculate_mem_offset(infoHeader.biWidth,interpolation, LCD_W, &mem_horizontal_offset);
+		calculate_mem_offset(infoHeader.biHeight,interpolation, LCD_H, &mem_vertical_offset);
+		offset = (fileHeader.bfOffBits + 																															\
+				((((infoHeader.biWidth * 2 + 3) / 4) * 4) * 																									\
+				(column+ (mem_vertical_offset)) +																															\
+				(mem_horizontal_offset*2))*interpolation);
 		
-		if(infoHeader.biWidth < LCD_W && infoHeader.biHeight < LCD_H){
-			vertical_offset = 0;
-			horizontal_offset = 0;
-		} else {
-			if(*vertical_offset > infoHeader.biHeight - LCD_H ){
-				*vertical_offset = infoHeader.biHeight - LCD_H;
-			}
-			if(*horizontal_offset > infoHeader.biWidth - LCD_W){
-				*horizontal_offset = infoHeader.biWidth - LCD_W;
-			}
-		}
+		fresult = f_lseek_with_error_message(offset, file_size);		
+		fresult = f_read(&USBHFile, buffer1 + (LCD_W * (interpolation - 1)), 															\
+		infoHeader.biWidth < LCD_W * interpolation ? infoHeader.biWidth * 2 : LCD_W * interpolation * 2,	\
+		&br);
 		
-		vertical_offset_2 = infoHeader.biHeight - *vertical_offset - LCD_H;
-		uint32_t row_size = ((infoHeader.biWidth * 2 + 3) / 4) * 4;
-
-		for (uint16_t column = 0; column < LCD_H; column++) {
-				if (fileHeader.bfOffBits + row_size * column >= file_size) break;
-
-				fresult = f_lseek(&USBHFile, fileHeader.bfOffBits + (row_size * (column + vertical_offset_2)) + (*horizontal_offset * 2));
+		for (column = LCD_H ; column >= 0; column --) {
+			if (infoHeader.biWidth * column * 2 >= file_size) break;
+			if (column <= infoHeader.biHeight/interpolation){
+				offset = (fileHeader.bfOffBits + 																															\
+				((((infoHeader.biWidth * 2 + 3) / 4) * 4) * 																									\
+				(column+ (mem_vertical_offset)) +																															\
+				(mem_horizontal_offset*2))*interpolation);
+				
+				fresult = f_lseek_with_error_message(offset, file_size);
+				
+				fresult = f_read(&USBHFile, buffer2 ,																													\
+				infoHeader.biWidth<LCD_W * interpolation ? infoHeader.biWidth * 2 : LCD_W * interpolation*2,	\
+				&br);
+				
 				if (fresult != FR_OK) {
-						GC9A01_Text("Seek error! \n Press any button", 1);
-						current_mode = error;
-						break;
+					GC9A01_Text("Read error! \n Press any button", 1);
+					current_mode = error;
+					break;
 				}
-				//if infoHeader.biWidth < LCD_W * Interpotation -> read image_W * 2, otherwise read LCD_W * interpolation * 2 // pizda
-				//fresult = f_read(&USBHFile, buffer2, infoHeader.biWidth < LCD_W * interpolation ? infoHeader.biWidth * 2 : LCD_W * interpolation * 2, &br);
-				if (fresult != FR_OK) {
-						GC9A01_Text("Read error! \n Press any button", 1);
-						current_mode = error;
-						break;
-				}
+				
+				calculate_shift(infoHeader.biWidth,interpolation,LCD_W,																				\
+				horizontal_offset,&h_shift, mem_horizontal_offset);
+				compress_row(buffer1, buffer2, output_row, interpolation, h_shift,infoHeader.biWidth);
+			} else {
+				clear_row(output_row,LCD_W);
+			}	
+			calculate_shift(infoHeader.biHeight,interpolation,LCD_H, 																				\
+			vertical_offset,&v_shift, mem_vertical_offset);
 
-				GC9A01_show_picture(buffer2, 0, column, LCD_W, 1, LCD_W, 1);
+			GC9A01_show_picture(output_row, 0, column + (v_shift), LCD_W, 1, LCD_W, 1);
+			memcpy(buffer1, buffer2, sizeof(buffer1));
 		}
 	
 		

@@ -3,9 +3,9 @@
 <title>Static Call Graph - [LCD_test_3\LCD_test_3.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image LCD_test_3\LCD_test_3.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060300: Last Updated: Sat Dec 28 11:55:06 2024
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060300: Last Updated: Sat Dec 28 13:31:19 2024
 <BR><P>
-<H3>Maximum Stack Usage =       1664 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
+<H3>Maximum Stack Usage =       1656 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
 __rt_entry_main &rArr; main &rArr; UP_button_handrel &rArr; view_txt_UP_button_handler &rArr; view_menu_RIGHT_button_handler &rArr; Read_File_and_print_BMP &rArr; check_if_file_opens &rArr; f_open &rArr; dir_register &rArr; dir_find &rArr; dir_next &rArr; create_chain &rArr; put_fat &rArr; move_window &rArr; sync_window &rArr; disk_write
 <P>
@@ -125,15 +125,15 @@ Global Symbols
 <BR><BR>[Calls]<UL><LI><a href="#[5d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__rt_entry
 </UL>
 
-<P><STRONG><a name="[1ae]"></a>__scatterload_rt2_thumb_only</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __scatter.o(!!!scatter), UNUSED)
+<P><STRONG><a name="[1af]"></a>__scatterload_rt2_thumb_only</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __scatter.o(!!!scatter), UNUSED)
 
-<P><STRONG><a name="[1af]"></a>__scatterload_null</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __scatter.o(!!!scatter), UNUSED)
+<P><STRONG><a name="[1b0]"></a>__scatterload_null</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __scatter.o(!!!scatter), UNUSED)
 
-<P><STRONG><a name="[1b0]"></a>__decompress</STRONG> (Thumb, 100 bytes, Stack size unknown bytes, __dclz77c.o(!!dclz77c), UNUSED)
+<P><STRONG><a name="[1b1]"></a>__decompress</STRONG> (Thumb, 100 bytes, Stack size unknown bytes, __dclz77c.o(!!dclz77c), UNUSED)
 
-<P><STRONG><a name="[1b1]"></a>__decompress2</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __dclz77c.o(!!dclz77c), UNUSED)
+<P><STRONG><a name="[1b2]"></a>__decompress2</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __dclz77c.o(!!dclz77c), UNUSED)
 
-<P><STRONG><a name="[1b2]"></a>__scatterload_zeroinit</STRONG> (Thumb, 28 bytes, Stack size unknown bytes, __scatter_zi.o(!!handler_zi), UNUSED)
+<P><STRONG><a name="[1b3]"></a>__scatterload_zeroinit</STRONG> (Thumb, 28 bytes, Stack size unknown bytes, __scatter_zi.o(!!handler_zi), UNUSED)
 
 <P><STRONG><a name="[5f]"></a>_printf_d</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, _printf_d.o(.ARM.Collect$$_printf_percent$$00000009))
 <BR><BR>[Stack]<UL><LI>Max Depth = 56 + Unknown Stack Size
@@ -153,7 +153,7 @@ Global Symbols
 <BR>[Calls]<UL><LI><a href="#[62]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_printf_string
 </UL>
 
-<P><STRONG><a name="[1b3]"></a>_printf_percent_end</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, _printf_percent_end.o(.ARM.Collect$$_printf_percent$$00000017))
+<P><STRONG><a name="[1b4]"></a>_printf_percent_end</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, _printf_percent_end.o(.ARM.Collect$$_printf_percent$$00000017))
 
 <P><STRONG><a name="[6a]"></a>__rt_lib_init</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit.o(.ARM.Collect$$libinit$$00000000))
 <BR><BR>[Called By]<UL><LI><a href="#[69]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__rt_entry_li
@@ -170,70 +170,70 @@ Global Symbols
 <BR>[Calls]<UL><LI><a href="#[66]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_init_alloc
 </UL>
 
-<P><STRONG><a name="[1b4]"></a>__rt_lib_init_preinit_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$00000004))
+<P><STRONG><a name="[1b5]"></a>__rt_lib_init_preinit_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$00000004))
 
-<P><STRONG><a name="[1b5]"></a>__rt_lib_init_alloca_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$0000002E))
+<P><STRONG><a name="[1b6]"></a>__rt_lib_init_alloca_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$0000002E))
 
-<P><STRONG><a name="[1b6]"></a>__rt_lib_init_argv_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$0000002C))
+<P><STRONG><a name="[1b7]"></a>__rt_lib_init_argv_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$0000002C))
 
-<P><STRONG><a name="[1b7]"></a>__rt_lib_init_atexit_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$0000001B))
+<P><STRONG><a name="[1b8]"></a>__rt_lib_init_atexit_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$0000001B))
 
-<P><STRONG><a name="[1b8]"></a>__rt_lib_init_clock_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$00000021))
+<P><STRONG><a name="[1b9]"></a>__rt_lib_init_clock_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$00000021))
 
-<P><STRONG><a name="[1b9]"></a>__rt_lib_init_cpp_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$00000032))
+<P><STRONG><a name="[1ba]"></a>__rt_lib_init_cpp_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$00000032))
 
-<P><STRONG><a name="[1ba]"></a>__rt_lib_init_exceptions_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$00000030))
+<P><STRONG><a name="[1bb]"></a>__rt_lib_init_exceptions_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$00000030))
 
-<P><STRONG><a name="[1bb]"></a>__rt_lib_init_fp_trap_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$0000001F))
+<P><STRONG><a name="[1bc]"></a>__rt_lib_init_fp_trap_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$0000001F))
 
-<P><STRONG><a name="[1bc]"></a>__rt_lib_init_getenv_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$00000023))
+<P><STRONG><a name="[1bd]"></a>__rt_lib_init_getenv_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$00000023))
 
-<P><STRONG><a name="[1bd]"></a>__rt_lib_init_heap_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$0000000A))
+<P><STRONG><a name="[1be]"></a>__rt_lib_init_heap_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$0000000A))
 
-<P><STRONG><a name="[1be]"></a>__rt_lib_init_lc_collate_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$00000011))
+<P><STRONG><a name="[1bf]"></a>__rt_lib_init_lc_collate_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$00000011))
 
-<P><STRONG><a name="[1bf]"></a>__rt_lib_init_lc_ctype_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$00000013))
+<P><STRONG><a name="[1c0]"></a>__rt_lib_init_lc_ctype_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$00000013))
 
-<P><STRONG><a name="[1c0]"></a>__rt_lib_init_lc_monetary_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$00000015))
+<P><STRONG><a name="[1c1]"></a>__rt_lib_init_lc_monetary_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$00000015))
 
-<P><STRONG><a name="[1c1]"></a>__rt_lib_init_lc_numeric_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$00000017))
+<P><STRONG><a name="[1c2]"></a>__rt_lib_init_lc_numeric_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$00000017))
 
-<P><STRONG><a name="[1c2]"></a>__rt_lib_init_lc_time_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$00000019))
+<P><STRONG><a name="[1c3]"></a>__rt_lib_init_lc_time_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$00000019))
 
-<P><STRONG><a name="[1c3]"></a>__rt_lib_init_rand_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$0000000E))
+<P><STRONG><a name="[1c4]"></a>__rt_lib_init_rand_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$0000000E))
 
-<P><STRONG><a name="[1c4]"></a>__rt_lib_init_return</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$00000033))
+<P><STRONG><a name="[1c5]"></a>__rt_lib_init_return</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$00000033))
 
-<P><STRONG><a name="[1c5]"></a>__rt_lib_init_signal_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$0000001D))
+<P><STRONG><a name="[1c6]"></a>__rt_lib_init_signal_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$0000001D))
 
-<P><STRONG><a name="[1c6]"></a>__rt_lib_init_stdio_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$00000025))
+<P><STRONG><a name="[1c7]"></a>__rt_lib_init_stdio_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$00000025))
 
-<P><STRONG><a name="[1c7]"></a>__rt_lib_init_user_alloc_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$0000000C))
+<P><STRONG><a name="[1c8]"></a>__rt_lib_init_user_alloc_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$0000000C))
 
 <P><STRONG><a name="[6f]"></a>__rt_lib_shutdown</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libshutdown.o(.ARM.Collect$$libshutdown$$00000000))
 <BR><BR>[Called By]<UL><LI><a href="#[6e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__rt_exit_ls
 </UL>
 
-<P><STRONG><a name="[1c8]"></a>__rt_lib_shutdown_cpp_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libshutdown2.o(.ARM.Collect$$libshutdown$$00000002))
+<P><STRONG><a name="[1c9]"></a>__rt_lib_shutdown_cpp_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libshutdown2.o(.ARM.Collect$$libshutdown$$00000002))
 
-<P><STRONG><a name="[1c9]"></a>__rt_lib_shutdown_fp_trap_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libshutdown2.o(.ARM.Collect$$libshutdown$$00000007))
+<P><STRONG><a name="[1ca]"></a>__rt_lib_shutdown_fp_trap_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libshutdown2.o(.ARM.Collect$$libshutdown$$00000007))
 
-<P><STRONG><a name="[1ca]"></a>__rt_lib_shutdown_heap_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libshutdown2.o(.ARM.Collect$$libshutdown$$0000000F))
+<P><STRONG><a name="[1cb]"></a>__rt_lib_shutdown_heap_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libshutdown2.o(.ARM.Collect$$libshutdown$$0000000F))
 
-<P><STRONG><a name="[1cb]"></a>__rt_lib_shutdown_return</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libshutdown2.o(.ARM.Collect$$libshutdown$$00000010))
+<P><STRONG><a name="[1cc]"></a>__rt_lib_shutdown_return</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libshutdown2.o(.ARM.Collect$$libshutdown$$00000010))
 
-<P><STRONG><a name="[1cc]"></a>__rt_lib_shutdown_signal_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libshutdown2.o(.ARM.Collect$$libshutdown$$0000000A))
+<P><STRONG><a name="[1cd]"></a>__rt_lib_shutdown_signal_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libshutdown2.o(.ARM.Collect$$libshutdown$$0000000A))
 
-<P><STRONG><a name="[1cd]"></a>__rt_lib_shutdown_stdio_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libshutdown2.o(.ARM.Collect$$libshutdown$$00000004))
+<P><STRONG><a name="[1ce]"></a>__rt_lib_shutdown_stdio_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libshutdown2.o(.ARM.Collect$$libshutdown$$00000004))
 
-<P><STRONG><a name="[1ce]"></a>__rt_lib_shutdown_user_alloc_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libshutdown2.o(.ARM.Collect$$libshutdown$$0000000C))
+<P><STRONG><a name="[1cf]"></a>__rt_lib_shutdown_user_alloc_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libshutdown2.o(.ARM.Collect$$libshutdown$$0000000C))
 
 <P><STRONG><a name="[5d]"></a>__rt_entry</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __rtentry.o(.ARM.Collect$$rtentry$$00000000))
 <BR><BR>[Called By]<UL><LI><a href="#[5b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__main
 <LI><a href="#[5e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__scatterload_rt2
 </UL>
 
-<P><STRONG><a name="[1cf]"></a>__rt_entry_presh_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __rtentry2.o(.ARM.Collect$$rtentry$$00000002))
+<P><STRONG><a name="[1d0]"></a>__rt_entry_presh_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __rtentry2.o(.ARM.Collect$$rtentry$$00000002))
 
 <P><STRONG><a name="[67]"></a>__rt_entry_sh</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __rtentry4.o(.ARM.Collect$$rtentry$$00000004))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8 + Unknown Stack Size
@@ -246,17 +246,17 @@ Global Symbols
 <BR><BR>[Calls]<UL><LI><a href="#[6a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__rt_lib_init
 </UL>
 
-<P><STRONG><a name="[1d0]"></a>__rt_entry_postsh_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __rtentry2.o(.ARM.Collect$$rtentry$$00000009))
+<P><STRONG><a name="[1d1]"></a>__rt_entry_postsh_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __rtentry2.o(.ARM.Collect$$rtentry$$00000009))
 
 <P><STRONG><a name="[6b]"></a>__rt_entry_main</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __rtentry2.o(.ARM.Collect$$rtentry$$0000000D))
-<BR><BR>[Stack]<UL><LI>Max Depth = 1664 + Unknown Stack Size
+<BR><BR>[Stack]<UL><LI>Max Depth = 1656 + Unknown Stack Size
 <LI>Call Chain = __rt_entry_main &rArr; main &rArr; UP_button_handrel &rArr; view_txt_UP_button_handler &rArr; view_menu_RIGHT_button_handler &rArr; Read_File_and_print_BMP &rArr; check_if_file_opens &rArr; f_open &rArr; dir_register &rArr; dir_find &rArr; dir_next &rArr; create_chain &rArr; put_fat &rArr; move_window &rArr; sync_window &rArr; disk_write
 </UL>
 <BR>[Calls]<UL><LI><a href="#[6c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 <LI><a href="#[6d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;exit
 </UL>
 
-<P><STRONG><a name="[1d1]"></a>__rt_entry_postli_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __rtentry2.o(.ARM.Collect$$rtentry$$0000000C))
+<P><STRONG><a name="[1d2]"></a>__rt_entry_postli_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __rtentry2.o(.ARM.Collect$$rtentry$$0000000C))
 
 <P><STRONG><a name="[8e]"></a>__rt_exit</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, rtexit.o(.ARM.Collect$$rtexit$$00000000))
 <BR><BR>[Called By]<UL><LI><a href="#[6d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;exit
@@ -266,7 +266,7 @@ Global Symbols
 <BR><BR>[Calls]<UL><LI><a href="#[6f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__rt_lib_shutdown
 </UL>
 
-<P><STRONG><a name="[1d2]"></a>__rt_exit_prels_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, rtexit2.o(.ARM.Collect$$rtexit$$00000002))
+<P><STRONG><a name="[1d3]"></a>__rt_exit_prels_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, rtexit2.o(.ARM.Collect$$rtexit$$00000002))
 
 <P><STRONG><a name="[70]"></a>__rt_exit_exit</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, rtexit2.o(.ARM.Collect$$rtexit$$00000004))
 <BR><BR>[Calls]<UL><LI><a href="#[71]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_sys_exit
@@ -275,7 +275,7 @@ Global Symbols
 <P><STRONG><a name="[d]"></a>Reset_Handler</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, startup_stm32f411xe.o(.text))
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f411xe.o(RESET)
 </UL>
-<P><STRONG><a name="[1d3]"></a>_maybe_terminate_alloc</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, maybetermalloc1.o(.emb_text), UNUSED)
+<P><STRONG><a name="[1d4]"></a>_maybe_terminate_alloc</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, maybetermalloc1.o(.emb_text), UNUSED)
 
 <P><STRONG><a name="[29]"></a>ADC_IRQHandler</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, startup_stm32f411xe.o(.text))
 <BR><BR>[Calls]<UL><LI><a href="#[29]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC_IRQHandler
@@ -488,8 +488,8 @@ Global Symbols
 <BR>[Calls]<UL><LI><a href="#[52]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_sputc
 <LI><a href="#[77]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_printf_char_common
 </UL>
-<BR>[Called By]<UL><LI><a href="#[1ac]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;refresh_menu_member
-<LI><a href="#[1a9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;menu_active_member_running_text_animation
+<BR>[Called By]<UL><LI><a href="#[1ad]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;refresh_menu_member
+<LI><a href="#[1aa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;menu_active_member_running_text_animation
 <LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ShowMenu
 <LI><a href="#[111]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;check_if_file_opens
 <LI><a href="#[110]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;check_if_file_exist
@@ -545,7 +545,7 @@ Global Symbols
 <P><STRONG><a name="[aa]"></a>strlen</STRONG> (Thumb, 62 bytes, Stack size 8 bytes, strlen.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = strlen
 </UL>
-<BR>[Called By]<UL><LI><a href="#[1a9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;menu_active_member_running_text_animation
+<BR>[Called By]<UL><LI><a href="#[1aa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;menu_active_member_running_text_animation
 <LI><a href="#[a9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GC9A01_String
 <LI><a href="#[10c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;view_menu_RIGHT_button_handler
 <LI><a href="#[f0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;view_menu_LEFT_button_handler
@@ -562,7 +562,7 @@ Global Symbols
 <BR><BR>[Calls]<UL><LI><a href="#[7e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memcpy4
 </UL>
 
-<P><STRONG><a name="[1d4]"></a>_memcpy_lastbytes</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, rt_memcpy_v6.o(.text), UNUSED)
+<P><STRONG><a name="[1d5]"></a>_memcpy_lastbytes</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, rt_memcpy_v6.o(.text), UNUSED)
 
 <P><STRONG><a name="[7e]"></a>__aeabi_memcpy4</STRONG> (Thumb, 0 bytes, Stack size 8 bytes, rt_memcpy_w.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = __aeabi_memcpy4
@@ -576,11 +576,11 @@ Global Symbols
 <LI><a href="#[7d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__rt_memcpy
 </UL>
 
-<P><STRONG><a name="[1d5]"></a>__aeabi_memcpy8</STRONG> (Thumb, 0 bytes, Stack size 8 bytes, rt_memcpy_w.o(.text), UNUSED)
+<P><STRONG><a name="[1d6]"></a>__aeabi_memcpy8</STRONG> (Thumb, 0 bytes, Stack size 8 bytes, rt_memcpy_w.o(.text), UNUSED)
 
-<P><STRONG><a name="[1d6]"></a>__rt_memcpy_w</STRONG> (Thumb, 100 bytes, Stack size 8 bytes, rt_memcpy_w.o(.text), UNUSED)
+<P><STRONG><a name="[1d7]"></a>__rt_memcpy_w</STRONG> (Thumb, 100 bytes, Stack size 8 bytes, rt_memcpy_w.o(.text), UNUSED)
 
-<P><STRONG><a name="[1d7]"></a>_memcpy_lastbytes_aligned</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, rt_memcpy_w.o(.text), UNUSED)
+<P><STRONG><a name="[1d8]"></a>_memcpy_lastbytes_aligned</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, rt_memcpy_w.o(.text), UNUSED)
 
 <P><STRONG><a name="[82]"></a>__aeabi_memclr</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, rt_memclr.o(.text))
 <BR><BR>[Called By]<UL><LI><a href="#[172]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;clear_and_set_root
@@ -597,7 +597,7 @@ Global Symbols
 <BR><BR>[Calls]<UL><LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_memset_w
 </UL>
 
-<P><STRONG><a name="[1d8]"></a>_memset</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, rt_memclr.o(.text), UNUSED)
+<P><STRONG><a name="[1d9]"></a>_memset</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, rt_memclr.o(.text), UNUSED)
 
 <P><STRONG><a name="[d4]"></a>__aeabi_memclr4</STRONG> (Thumb, 0 bytes, Stack size 4 bytes, rt_memclr_w.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 4<LI>Call Chain = __aeabi_memclr4
@@ -609,9 +609,9 @@ Global Symbols
 <LI><a href="#[8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USBH_MSC_InterfaceInit
 </UL>
 
-<P><STRONG><a name="[1d9]"></a>__aeabi_memclr8</STRONG> (Thumb, 0 bytes, Stack size 4 bytes, rt_memclr_w.o(.text), UNUSED)
+<P><STRONG><a name="[1da]"></a>__aeabi_memclr8</STRONG> (Thumb, 0 bytes, Stack size 4 bytes, rt_memclr_w.o(.text), UNUSED)
 
-<P><STRONG><a name="[1da]"></a>__rt_memclr_w</STRONG> (Thumb, 78 bytes, Stack size 4 bytes, rt_memclr_w.o(.text), UNUSED)
+<P><STRONG><a name="[1db]"></a>__rt_memclr_w</STRONG> (Thumb, 78 bytes, Stack size 4 bytes, rt_memclr_w.o(.text), UNUSED)
 
 <P><STRONG><a name="[80]"></a>_memset_w</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, rt_memclr_w.o(.text), UNUSED)
 <BR><BR>[Called By]<UL><LI><a href="#[7f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__rt_memclr
@@ -630,7 +630,7 @@ Global Symbols
 <LI><a href="#[f0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;view_menu_LEFT_button_handler
 </UL>
 
-<P><STRONG><a name="[1db]"></a>__use_two_region_memory</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, heapauxi.o(.text), UNUSED)
+<P><STRONG><a name="[1dc]"></a>__use_two_region_memory</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, heapauxi.o(.text), UNUSED)
 
 <P><STRONG><a name="[2]"></a>__rt_heap_escrow</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, heapauxi.o(.text), UNUSED)
 
@@ -642,9 +642,9 @@ Global Symbols
 <LI><a href="#[72]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;malloc
 </UL>
 
-<P><STRONG><a name="[1dc]"></a>__use_no_heap</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, hguard.o(.text), UNUSED)
+<P><STRONG><a name="[1dd]"></a>__use_no_heap</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, hguard.o(.text), UNUSED)
 
-<P><STRONG><a name="[1dd]"></a>__heap$guard</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, hguard.o(.text), UNUSED)
+<P><STRONG><a name="[1de]"></a>__heap$guard</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, hguard.o(.text), UNUSED)
 
 <P><STRONG><a name="[6]"></a>_terminate_user_alloc</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, init_alloc.o(.text), UNUSED)
 
@@ -725,13 +725,13 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[61]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_printf_s
 </UL>
 
-<P><STRONG><a name="[1de]"></a>__user_libspace</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, libspace.o(.text), UNUSED)
+<P><STRONG><a name="[1df]"></a>__user_libspace</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, libspace.o(.text), UNUSED)
 
 <P><STRONG><a name="[8c]"></a>__user_perproc_libspace</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, libspace.o(.text))
 <BR><BR>[Called By]<UL><LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__user_setup_stackheap
 </UL>
 
-<P><STRONG><a name="[1df]"></a>__user_perthread_libspace</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, libspace.o(.text), UNUSED)
+<P><STRONG><a name="[1e0]"></a>__user_perthread_libspace</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, libspace.o(.text), UNUSED)
 
 <P><STRONG><a name="[83]"></a>__Heap_ProvideMemory</STRONG> (Thumb, 52 bytes, Stack size 0 bytes, h1_extend.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = __Heap_ProvideMemory &rArr; free
@@ -752,11 +752,11 @@ Global Symbols
 <LI><a href="#[84]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__Heap_Broken
 </UL>
 
-<P><STRONG><a name="[1e0]"></a>__I$use$semihosting</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, use_no_semi.o(.text), UNUSED)
+<P><STRONG><a name="[1e1]"></a>__I$use$semihosting</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, use_no_semi.o(.text), UNUSED)
 
-<P><STRONG><a name="[1e1]"></a>__use_no_semihosting_swi</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, use_no_semi.o(.text), UNUSED)
+<P><STRONG><a name="[1e2]"></a>__use_no_semihosting_swi</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, use_no_semi.o(.text), UNUSED)
 
-<P><STRONG><a name="[1e2]"></a>__semihosting_library_function</STRONG> (Thumb, 0 bytes, Stack size 8 bytes, indicate_semi.o(.text), UNUSED)
+<P><STRONG><a name="[1e3]"></a>__semihosting_library_function</STRONG> (Thumb, 0 bytes, Stack size 8 bytes, indicate_semi.o(.text), UNUSED)
 
 <P><STRONG><a name="[68]"></a>__user_setup_stackheap</STRONG> (Thumb, 74 bytes, Stack size 8 bytes, sys_stackheap_outer.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8 + Unknown Stack Size
@@ -837,7 +837,7 @@ Global Symbols
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f411xe.o(RESET)
 </UL>
 <P><STRONG><a name="[95]"></a>DOWN_button_handrel</STRONG> (Thumb, 60 bytes, Stack size 8 bytes, main.o(i.DOWN_button_handrel))
-<BR><BR>[Stack]<UL><LI>Max Depth = 1656 + Unknown Stack Size
+<BR><BR>[Stack]<UL><LI>Max Depth = 1648 + Unknown Stack Size
 <LI>Call Chain = DOWN_button_handrel &rArr; view_txt_DOWN_button_handler &rArr; view_menu_RIGHT_button_handler &rArr; Read_File_and_print_BMP &rArr; check_if_file_opens &rArr; f_open &rArr; dir_register &rArr; dir_find &rArr; dir_next &rArr; create_chain &rArr; put_fat &rArr; move_window &rArr; sync_window &rArr; disk_write
 </UL>
 <BR>[Calls]<UL><LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GPIO_TogglePin
@@ -912,7 +912,7 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GC9A01_DrawPixel_2x2
 </UL>
-<BR>[Called By]<UL><LI><a href="#[1ac]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;refresh_menu_member
+<BR>[Called By]<UL><LI><a href="#[1ad]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;refresh_menu_member
 <LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ShowMenu
 <LI><a href="#[a9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GC9A01_String
 <LI><a href="#[a7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GC9A01_Rainbow_String
@@ -951,8 +951,8 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[ac]"></a>GC9A01_SetBackColor</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, gc9a01.o(i.GC9A01_SetBackColor))
-<BR><BR>[Called By]<UL><LI><a href="#[1ac]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;refresh_menu_member
-<LI><a href="#[1a9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;menu_active_member_running_text_animation
+<BR><BR>[Called By]<UL><LI><a href="#[1ad]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;refresh_menu_member
+<LI><a href="#[1aa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;menu_active_member_running_text_animation
 <LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ShowMenu
 <LI><a href="#[ab]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GC9A01_Text
 <LI><a href="#[6c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
@@ -960,8 +960,8 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[ad]"></a>GC9A01_SetFont</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, gc9a01.o(i.GC9A01_SetFont))
-<BR><BR>[Called By]<UL><LI><a href="#[1ac]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;refresh_menu_member
-<LI><a href="#[1a9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;menu_active_member_running_text_animation
+<BR><BR>[Called By]<UL><LI><a href="#[1ad]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;refresh_menu_member
+<LI><a href="#[1aa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;menu_active_member_running_text_animation
 <LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ShowMenu
 <LI><a href="#[ab]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GC9A01_Text
 <LI><a href="#[10c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;view_menu_RIGHT_button_handler
@@ -981,8 +981,8 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[a8]"></a>GC9A01_SetTextColor</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, gc9a01.o(i.GC9A01_SetTextColor))
-<BR><BR>[Called By]<UL><LI><a href="#[1ac]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;refresh_menu_member
-<LI><a href="#[1a9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;menu_active_member_running_text_animation
+<BR><BR>[Called By]<UL><LI><a href="#[1ad]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;refresh_menu_member
+<LI><a href="#[1aa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;menu_active_member_running_text_animation
 <LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ShowMenu
 <LI><a href="#[a7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GC9A01_Rainbow_String
 <LI><a href="#[ab]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GC9A01_Text
@@ -996,8 +996,8 @@ Global Symbols
 <BR>[Calls]<UL><LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GC9A01_DrawChar
 <LI><a href="#[aa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;strlen
 </UL>
-<BR>[Called By]<UL><LI><a href="#[1ac]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;refresh_menu_member
-<LI><a href="#[1a9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;menu_active_member_running_text_animation
+<BR>[Called By]<UL><LI><a href="#[1ad]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;refresh_menu_member
+<LI><a href="#[1aa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;menu_active_member_running_text_animation
 <LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ShowMenu
 </UL>
 
@@ -1011,7 +1011,7 @@ Global Symbols
 <LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GC9A01_ClearScreen
 </UL>
 <BR>[Called By]<UL><LI><a href="#[116]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;read_BMP_header
-<LI><a href="#[117]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;f_lseek_with_error_message
+<LI><a href="#[118]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;f_lseek_with_error_message
 <LI><a href="#[111]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;check_if_file_opens
 <LI><a href="#[110]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;check_if_file_exist
 <LI><a href="#[170]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Unmount_USB
@@ -1328,7 +1328,7 @@ Global Symbols
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f411xe.o(RESET)
 </UL>
 <P><STRONG><a name="[ed]"></a>LEFT_RIGHT_button_handrel</STRONG> (Thumb, 70 bytes, Stack size 8 bytes, main.o(i.LEFT_RIGHT_button_handrel))
-<BR><BR>[Stack]<UL><LI>Max Depth = 1632 + Unknown Stack Size
+<BR><BR>[Stack]<UL><LI>Max Depth = 1624 + Unknown Stack Size
 <LI>Call Chain = LEFT_RIGHT_button_handrel &rArr; refresh_BMP_image &rArr; Read_File_and_print_BMP &rArr; check_if_file_opens &rArr; f_open &rArr; dir_register &rArr; dir_find &rArr; dir_next &rArr; create_chain &rArr; put_fat &rArr; move_window &rArr; sync_window &rArr; disk_write
 </UL>
 <BR>[Calls]<UL><LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GPIO_TogglePin
@@ -1339,7 +1339,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[ef]"></a>LEFT_button_handrel</STRONG> (Thumb, 60 bytes, Stack size 8 bytes, main.o(i.LEFT_button_handrel))
-<BR><BR>[Stack]<UL><LI>Max Depth = 1640 + Unknown Stack Size
+<BR><BR>[Stack]<UL><LI>Max Depth = 1632 + Unknown Stack Size
 <LI>Call Chain = LEFT_button_handrel &rArr; view_image_LEFT_button_handler &rArr; refresh_BMP_image &rArr; Read_File_and_print_BMP &rArr; check_if_file_opens &rArr; f_open &rArr; dir_register &rArr; dir_find &rArr; dir_next &rArr; create_chain &rArr; put_fat &rArr; move_window &rArr; sync_window &rArr; disk_write
 </UL>
 <BR>[Calls]<UL><LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GPIO_TogglePin
@@ -1442,7 +1442,7 @@ Global Symbols
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f411xe.o(RESET)
 </UL>
 <P><STRONG><a name="[10b]"></a>RIGHT_button_handrel</STRONG> (Thumb, 60 bytes, Stack size 8 bytes, main.o(i.RIGHT_button_handrel))
-<BR><BR>[Stack]<UL><LI>Max Depth = 1648 + Unknown Stack Size
+<BR><BR>[Stack]<UL><LI>Max Depth = 1640 + Unknown Stack Size
 <LI>Call Chain = RIGHT_button_handrel &rArr; view_menu_RIGHT_button_handler &rArr; Read_File_and_print_BMP &rArr; check_if_file_opens &rArr; f_open &rArr; dir_register &rArr; dir_find &rArr; dir_next &rArr; create_chain &rArr; put_fat &rArr; move_window &rArr; sync_window &rArr; disk_write
 </UL>
 <BR>[Calls]<UL><LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GPIO_TogglePin
@@ -1471,22 +1471,22 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[10c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;view_menu_RIGHT_button_handler
 </UL>
 
-<P><STRONG><a name="[115]"></a>Read_File_and_print_BMP</STRONG> (Thumb, 902 bytes, Stack size 640 bytes, file_handling.o(i.Read_File_and_print_BMP))
-<BR><BR>[Stack]<UL><LI>Max Depth = 1520 + Unknown Stack Size
+<P><STRONG><a name="[115]"></a>Read_File_and_print_BMP</STRONG> (Thumb, 1044 bytes, Stack size 632 bytes, file_handling.o(i.Read_File_and_print_BMP))
+<BR><BR>[Stack]<UL><LI>Max Depth = 1512 + Unknown Stack Size
 <LI>Call Chain = Read_File_and_print_BMP &rArr; check_if_file_opens &rArr; f_open &rArr; dir_register &rArr; dir_find &rArr; dir_next &rArr; create_chain &rArr; put_fat &rArr; move_window &rArr; sync_window &rArr; disk_write
 </UL>
 <BR>[Calls]<UL><LI><a href="#[113]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;f_read
-<LI><a href="#[11b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;f_lseek
 <LI><a href="#[112]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;f_close
 <LI><a href="#[b0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GC9A01_show_picture
 <LI><a href="#[ab]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GC9A01_Text
 <LI><a href="#[116]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;read_BMP_header
-<LI><a href="#[117]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;f_lseek_with_error_message
-<LI><a href="#[119]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;compress_row
-<LI><a href="#[11a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;clear_row
+<LI><a href="#[118]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;f_lseek_with_error_message
+<LI><a href="#[11a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;compress_row
+<LI><a href="#[11b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;clear_row
 <LI><a href="#[111]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;check_if_file_opens
 <LI><a href="#[110]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;check_if_file_exist
-<LI><a href="#[118]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;calculate_shift
+<LI><a href="#[119]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;calculate_shift
+<LI><a href="#[117]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;calculate_mem_offset
 <LI><a href="#[114]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memcpy
 <LI><a href="#[75]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;free
 <LI><a href="#[72]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;malloc
@@ -1583,7 +1583,7 @@ Global Symbols
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f411xe.o(RESET)
 </UL>
 <P><STRONG><a name="[126]"></a>UP_DOWN_button_handrel</STRONG> (Thumb, 70 bytes, Stack size 8 bytes, main.o(i.UP_DOWN_button_handrel))
-<BR><BR>[Stack]<UL><LI>Max Depth = 1632 + Unknown Stack Size
+<BR><BR>[Stack]<UL><LI>Max Depth = 1624 + Unknown Stack Size
 <LI>Call Chain = UP_DOWN_button_handrel &rArr; refresh_BMP_image &rArr; Read_File_and_print_BMP &rArr; check_if_file_opens &rArr; f_open &rArr; dir_register &rArr; dir_find &rArr; dir_next &rArr; create_chain &rArr; put_fat &rArr; move_window &rArr; sync_window &rArr; disk_write
 </UL>
 <BR>[Calls]<UL><LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GPIO_TogglePin
@@ -1594,7 +1594,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[127]"></a>UP_button_handrel</STRONG> (Thumb, 60 bytes, Stack size 8 bytes, main.o(i.UP_button_handrel))
-<BR><BR>[Stack]<UL><LI>Max Depth = 1656 + Unknown Stack Size
+<BR><BR>[Stack]<UL><LI>Max Depth = 1648 + Unknown Stack Size
 <LI>Call Chain = UP_button_handrel &rArr; view_txt_UP_button_handler &rArr; view_menu_RIGHT_button_handler &rArr; Read_File_and_print_BMP &rArr; check_if_file_opens &rArr; f_open &rArr; dir_register &rArr; dir_find &rArr; dir_next &rArr; create_chain &rArr; put_fat &rArr; move_window &rArr; sync_window &rArr; disk_write
 </UL>
 <BR>[Calls]<UL><LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GPIO_TogglePin
@@ -2329,7 +2329,13 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[7a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__printf
 </UL>
 
-<P><STRONG><a name="[118]"></a>calculate_shift</STRONG> (Thumb, 84 bytes, Stack size 20 bytes, file_handling.o(i.calculate_shift))
+<P><STRONG><a name="[117]"></a>calculate_mem_offset</STRONG> (Thumb, 38 bytes, Stack size 12 bytes, file_handling.o(i.calculate_mem_offset))
+<BR><BR>[Stack]<UL><LI>Max Depth = 12<LI>Call Chain = calculate_mem_offset
+</UL>
+<BR>[Called By]<UL><LI><a href="#[115]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Read_File_and_print_BMP
+</UL>
+
+<P><STRONG><a name="[119]"></a>calculate_shift</STRONG> (Thumb, 84 bytes, Stack size 20 bytes, file_handling.o(i.calculate_shift))
 <BR><BR>[Stack]<UL><LI>Max Depth = 20<LI>Call Chain = calculate_shift
 </UL>
 <BR>[Called By]<UL><LI><a href="#[115]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Read_File_and_print_BMP
@@ -2382,7 +2388,7 @@ Global Symbols
 <LI><a href="#[10f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Read_File
 </UL>
 
-<P><STRONG><a name="[1ab]"></a>chek_menu_member_for_the_file_type</STRONG> (Thumb, 68 bytes, Stack size 24 bytes, gc9a01.o(i.chek_menu_member_for_the_file_type))
+<P><STRONG><a name="[1ac]"></a>chek_menu_member_for_the_file_type</STRONG> (Thumb, 68 bytes, Stack size 24 bytes, gc9a01.o(i.chek_menu_member_for_the_file_type))
 <BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = chek_menu_member_for_the_file_type
 </UL>
 <BR>[Called By]<UL><LI><a href="#[10c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;view_menu_RIGHT_button_handler
@@ -2397,59 +2403,59 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[171]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;check_for_USB_storage_connection
 </UL>
 
-<P><STRONG><a name="[11a]"></a>clear_row</STRONG> (Thumb, 22 bytes, Stack size 0 bytes, file_handling.o(i.clear_row))
-<BR><BR>[Called By]<UL><LI><a href="#[119]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;compress_row
+<P><STRONG><a name="[11b]"></a>clear_row</STRONG> (Thumb, 22 bytes, Stack size 0 bytes, file_handling.o(i.clear_row))
+<BR><BR>[Called By]<UL><LI><a href="#[11a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;compress_row
 <LI><a href="#[115]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Read_File_and_print_BMP
 </UL>
 
-<P><STRONG><a name="[119]"></a>compress_row</STRONG> (Thumb, 370 bytes, Stack size 100 bytes, file_handling.o(i.compress_row))
+<P><STRONG><a name="[11a]"></a>compress_row</STRONG> (Thumb, 370 bytes, Stack size 100 bytes, file_handling.o(i.compress_row))
 <BR><BR>[Stack]<UL><LI>Max Depth = 100<LI>Call Chain = compress_row
 </UL>
-<BR>[Calls]<UL><LI><a href="#[11a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;clear_row
+<BR>[Calls]<UL><LI><a href="#[11b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;clear_row
 </UL>
 <BR>[Called By]<UL><LI><a href="#[115]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Read_File_and_print_BMP
 </UL>
 
-<P><STRONG><a name="[1aa]"></a>delay_ms</STRONG> (Thumb, 20 bytes, Stack size 0 bytes, main.o(i.delay_ms))
+<P><STRONG><a name="[1ab]"></a>delay_ms</STRONG> (Thumb, 20 bytes, Stack size 0 bytes, main.o(i.delay_ms))
 <BR><BR>[Called By]<UL><LI><a href="#[6c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[1a6]"></a>disk_initialize</STRONG> (Thumb, 40 bytes, Stack size 16 bytes, diskio.o(i.disk_initialize))
+<P><STRONG><a name="[1a7]"></a>disk_initialize</STRONG> (Thumb, 40 bytes, Stack size 16 bytes, diskio.o(i.disk_initialize))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = disk_initialize
 </UL>
-<BR>[Called By]<UL><LI><a href="#[198]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;find_volume
+<BR>[Called By]<UL><LI><a href="#[199]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;find_volume
 </UL>
 
-<P><STRONG><a name="[1ad]"></a>disk_ioctl</STRONG> (Thumb, 36 bytes, Stack size 24 bytes, diskio.o(i.disk_ioctl))
+<P><STRONG><a name="[1ae]"></a>disk_ioctl</STRONG> (Thumb, 36 bytes, Stack size 24 bytes, diskio.o(i.disk_ioctl))
 <BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = disk_ioctl
 </UL>
-<BR>[Called By]<UL><LI><a href="#[1a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sync_fs
+<BR>[Called By]<UL><LI><a href="#[1a5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sync_fs
 </UL>
 
-<P><STRONG><a name="[195]"></a>disk_read</STRONG> (Thumb, 42 bytes, Stack size 24 bytes, diskio.o(i.disk_read))
+<P><STRONG><a name="[196]"></a>disk_read</STRONG> (Thumb, 42 bytes, Stack size 24 bytes, diskio.o(i.disk_read))
 <BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = disk_read
 </UL>
 <BR>[Called By]<UL><LI><a href="#[113]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;f_read
 <LI><a href="#[178]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;f_open
-<LI><a href="#[11b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;f_lseek
+<LI><a href="#[193]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;f_lseek
 <LI><a href="#[174]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;move_window
 </UL>
 
-<P><STRONG><a name="[1a5]"></a>disk_status</STRONG> (Thumb, 24 bytes, Stack size 16 bytes, diskio.o(i.disk_status))
+<P><STRONG><a name="[1a6]"></a>disk_status</STRONG> (Thumb, 24 bytes, Stack size 16 bytes, diskio.o(i.disk_status))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = disk_status
 </UL>
 <BR>[Called By]<UL><LI><a href="#[191]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;validate
-<LI><a href="#[198]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;find_volume
+<LI><a href="#[199]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;find_volume
 </UL>
 
-<P><STRONG><a name="[194]"></a>disk_write</STRONG> (Thumb, 42 bytes, Stack size 24 bytes, diskio.o(i.disk_write))
+<P><STRONG><a name="[195]"></a>disk_write</STRONG> (Thumb, 42 bytes, Stack size 24 bytes, diskio.o(i.disk_write))
 <BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = disk_write
 </UL>
 <BR>[Called By]<UL><LI><a href="#[113]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;f_read
-<LI><a href="#[11b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;f_lseek
+<LI><a href="#[193]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;f_lseek
 <LI><a href="#[190]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;f_sync
 <LI><a href="#[188]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sync_window
-<LI><a href="#[1a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sync_fs
+<LI><a href="#[1a5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sync_fs
 </UL>
 
 <P><STRONG><a name="[112]"></a>f_close</STRONG> (Thumb, 44 bytes, Stack size 16 bytes, ff.o(i.f_close))
@@ -2474,25 +2480,24 @@ Global Symbols
 <LI><a href="#[11c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Scan_USB
 </UL>
 
-<P><STRONG><a name="[11b]"></a>f_lseek</STRONG> (Thumb, 688 bytes, Stack size 72 bytes, ff.o(i.f_lseek))
+<P><STRONG><a name="[193]"></a>f_lseek</STRONG> (Thumb, 688 bytes, Stack size 72 bytes, ff.o(i.f_lseek))
 <BR><BR>[Stack]<UL><LI>Max Depth = 200<LI>Call Chain = f_lseek &rArr; create_chain &rArr; put_fat &rArr; move_window &rArr; sync_window &rArr; disk_write
 </UL>
 <BR>[Calls]<UL><LI><a href="#[191]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;validate
 <LI><a href="#[17c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_fat
 <LI><a href="#[17b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;create_chain
 <LI><a href="#[189]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;clust2sect
-<LI><a href="#[193]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;clmt_clust
-<LI><a href="#[194]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;disk_write
-<LI><a href="#[195]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;disk_read
+<LI><a href="#[194]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;clmt_clust
+<LI><a href="#[195]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;disk_write
+<LI><a href="#[196]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;disk_read
 </UL>
-<BR>[Called By]<UL><LI><a href="#[117]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;f_lseek_with_error_message
-<LI><a href="#[115]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Read_File_and_print_BMP
+<BR>[Called By]<UL><LI><a href="#[118]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;f_lseek_with_error_message
 </UL>
 
-<P><STRONG><a name="[117]"></a>f_lseek_with_error_message</STRONG> (Thumb, 48 bytes, Stack size 16 bytes, file_handling.o(i.f_lseek_with_error_message))
+<P><STRONG><a name="[118]"></a>f_lseek_with_error_message</STRONG> (Thumb, 48 bytes, Stack size 16 bytes, file_handling.o(i.f_lseek_with_error_message))
 <BR><BR>[Stack]<UL><LI>Max Depth = 216<LI>Call Chain = f_lseek_with_error_message &rArr; f_lseek &rArr; create_chain &rArr; put_fat &rArr; move_window &rArr; sync_window &rArr; disk_write
 </UL>
-<BR>[Calls]<UL><LI><a href="#[11b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;f_lseek
+<BR>[Calls]<UL><LI><a href="#[193]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;f_lseek
 <LI><a href="#[ab]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GC9A01_Text
 </UL>
 <BR>[Called By]<UL><LI><a href="#[115]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Read_File_and_print_BMP
@@ -2501,9 +2506,9 @@ Global Symbols
 <P><STRONG><a name="[10a]"></a>f_mount</STRONG> (Thumb, 92 bytes, Stack size 40 bytes, ff.o(i.f_mount))
 <BR><BR>[Stack]<UL><LI>Max Depth = 208<LI>Call Chain = f_mount &rArr; find_volume &rArr; check_fs &rArr; move_window &rArr; sync_window &rArr; disk_write
 </UL>
-<BR>[Calls]<UL><LI><a href="#[196]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_ldnumber
-<LI><a href="#[198]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;find_volume
-<LI><a href="#[197]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;clear_lock
+<BR>[Calls]<UL><LI><a href="#[197]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_ldnumber
+<LI><a href="#[199]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;find_volume
+<LI><a href="#[198]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;clear_lock
 </UL>
 <BR>[Called By]<UL><LI><a href="#[170]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Unmount_USB
 <LI><a href="#[109]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Mount_USB
@@ -2512,23 +2517,23 @@ Global Symbols
 <P><STRONG><a name="[178]"></a>f_open</STRONG> (Thumb, 570 bytes, Stack size 624 bytes, ff.o(i.f_open))
 <BR><BR>[Stack]<UL><LI>Max Depth = 864<LI>Call Chain = f_open &rArr; dir_register &rArr; dir_find &rArr; dir_next &rArr; create_chain &rArr; put_fat &rArr; move_window &rArr; sync_window &rArr; disk_write
 </UL>
-<BR>[Calls]<UL><LI><a href="#[19c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_fattime
-<LI><a href="#[19d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;st_dword
-<LI><a href="#[19f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;st_clust
-<LI><a href="#[1a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;remove_chain
+<BR>[Calls]<UL><LI><a href="#[19d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_fattime
+<LI><a href="#[19e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;st_dword
+<LI><a href="#[1a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;st_clust
+<LI><a href="#[1a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;remove_chain
 <LI><a href="#[174]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;move_window
 <LI><a href="#[181]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mem_set
 <LI><a href="#[176]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ld_dword
-<LI><a href="#[19e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ld_clust
-<LI><a href="#[1a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;inc_lock
+<LI><a href="#[19f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ld_clust
+<LI><a href="#[1a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;inc_lock
 <LI><a href="#[17c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_fat
-<LI><a href="#[199]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;follow_path
-<LI><a href="#[198]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;find_volume
-<LI><a href="#[19b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;enq_lock
+<LI><a href="#[19a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;follow_path
+<LI><a href="#[199]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;find_volume
+<LI><a href="#[19c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;enq_lock
 <LI><a href="#[18c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dir_register
 <LI><a href="#[189]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;clust2sect
-<LI><a href="#[19a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;chk_lock
-<LI><a href="#[195]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;disk_read
+<LI><a href="#[19b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;chk_lock
+<LI><a href="#[196]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;disk_read
 </UL>
 <BR>[Called By]<UL><LI><a href="#[111]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;check_if_file_opens
 </UL>
@@ -2536,10 +2541,10 @@ Global Symbols
 <P><STRONG><a name="[11d]"></a>f_opendir</STRONG> (Thumb, 152 bytes, Stack size 544 bytes, ff.o(i.f_opendir))
 <BR><BR>[Stack]<UL><LI>Max Depth = 768<LI>Call Chain = f_opendir &rArr; follow_path &rArr; dir_find &rArr; dir_next &rArr; create_chain &rArr; put_fat &rArr; move_window &rArr; sync_window &rArr; disk_write
 </UL>
-<BR>[Calls]<UL><LI><a href="#[19e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ld_clust
-<LI><a href="#[1a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;inc_lock
-<LI><a href="#[199]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;follow_path
-<LI><a href="#[198]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;find_volume
+<BR>[Calls]<UL><LI><a href="#[19f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ld_clust
+<LI><a href="#[1a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;inc_lock
+<LI><a href="#[19a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;follow_path
+<LI><a href="#[199]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;find_volume
 <LI><a href="#[183]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dir_sdi
 </UL>
 <BR>[Called By]<UL><LI><a href="#[122]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Scan_USB_for_amount_of_files
@@ -2553,9 +2558,9 @@ Global Symbols
 <LI><a href="#[18d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mem_cpy
 <LI><a href="#[17c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_fat
 <LI><a href="#[189]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;clust2sect
-<LI><a href="#[193]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;clmt_clust
-<LI><a href="#[194]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;disk_write
-<LI><a href="#[195]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;disk_read
+<LI><a href="#[194]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;clmt_clust
+<LI><a href="#[195]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;disk_write
+<LI><a href="#[196]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;disk_read
 </UL>
 <BR>[Called By]<UL><LI><a href="#[116]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;read_BMP_header
 <LI><a href="#[115]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Read_File_and_print_BMP
@@ -2566,7 +2571,7 @@ Global Symbols
 <BR><BR>[Stack]<UL><LI>Max Depth = 736<LI>Call Chain = f_readdir &rArr; dir_read &rArr; dir_next &rArr; create_chain &rArr; put_fat &rArr; move_window &rArr; sync_window &rArr; disk_write
 </UL>
 <BR>[Calls]<UL><LI><a href="#[191]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;validate
-<LI><a href="#[1a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_fileinfo
+<LI><a href="#[1a3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_fileinfo
 <LI><a href="#[183]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dir_sdi
 <LI><a href="#[18a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dir_read
 <LI><a href="#[184]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dir_next
@@ -2578,9 +2583,9 @@ Global Symbols
 <P><STRONG><a name="[177]"></a>f_stat</STRONG> (Thumb, 72 bytes, Stack size 584 bytes, ff.o(i.f_stat))
 <BR><BR>[Stack]<UL><LI>Max Depth = 808<LI>Call Chain = f_stat &rArr; follow_path &rArr; dir_find &rArr; dir_next &rArr; create_chain &rArr; put_fat &rArr; move_window &rArr; sync_window &rArr; disk_write
 </UL>
-<BR>[Calls]<UL><LI><a href="#[1a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_fileinfo
-<LI><a href="#[199]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;follow_path
-<LI><a href="#[198]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;find_volume
+<BR>[Calls]<UL><LI><a href="#[1a3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_fileinfo
+<LI><a href="#[19a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;follow_path
+<LI><a href="#[199]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;find_volume
 </UL>
 <BR>[Called By]<UL><LI><a href="#[110]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;check_if_file_exist
 </UL>
@@ -2588,14 +2593,14 @@ Global Symbols
 <P><STRONG><a name="[190]"></a>f_sync</STRONG> (Thumb, 160 bytes, Stack size 24 bytes, ff.o(i.f_sync))
 <BR><BR>[Stack]<UL><LI>Max Depth = 88<LI>Call Chain = f_sync &rArr; sync_fs &rArr; sync_window &rArr; disk_write
 </UL>
-<BR>[Calls]<UL><LI><a href="#[19c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_fattime
+<BR>[Calls]<UL><LI><a href="#[19d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_fattime
 <LI><a href="#[191]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;validate
-<LI><a href="#[1a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sync_fs
-<LI><a href="#[1a3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;st_word
-<LI><a href="#[19d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;st_dword
-<LI><a href="#[19f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;st_clust
+<LI><a href="#[1a5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sync_fs
+<LI><a href="#[1a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;st_word
+<LI><a href="#[19e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;st_dword
+<LI><a href="#[1a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;st_clust
 <LI><a href="#[174]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;move_window
-<LI><a href="#[194]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;disk_write
+<LI><a href="#[195]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;disk_write
 </UL>
 <BR>[Called By]<UL><LI><a href="#[112]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;f_close
 </UL>
@@ -2603,7 +2608,7 @@ Global Symbols
 <P><STRONG><a name="[17f]"></a>ff_convert</STRONG> (Thumb, 70 bytes, Stack size 8 bytes, ccsbcs.o(i.ff_convert))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = ff_convert
 </UL>
-<BR>[Called By]<UL><LI><a href="#[1a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_fileinfo
+<BR>[Called By]<UL><LI><a href="#[1a3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_fileinfo
 <LI><a href="#[17e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;create_name
 </UL>
 
@@ -2613,20 +2618,20 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[179]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;cmp_lfn
 </UL>
 
-<P><STRONG><a name="[1a8]"></a>get_active_menu_member</STRONG> (Thumb, 38 bytes, Stack size 0 bytes, gc9a01.o(i.get_active_menu_member))
-<BR><BR>[Called By]<UL><LI><a href="#[1a9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;menu_active_member_running_text_animation
+<P><STRONG><a name="[1a9]"></a>get_active_menu_member</STRONG> (Thumb, 38 bytes, Stack size 0 bytes, gc9a01.o(i.get_active_menu_member))
+<BR><BR>[Called By]<UL><LI><a href="#[1aa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;menu_active_member_running_text_animation
 <LI><a href="#[10c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;view_menu_RIGHT_button_handler
 <LI><a href="#[ee]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;refresh_BMP_image
 <LI><a href="#[6c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[19c]"></a>get_fattime</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, fatfs.o(i.get_fattime))
+<P><STRONG><a name="[19d]"></a>get_fattime</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, fatfs.o(i.get_fattime))
 <BR><BR>[Called By]<UL><LI><a href="#[178]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;f_open
 <LI><a href="#[190]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;f_sync
 </UL>
 
 <P><STRONG><a name="[6c]"></a>main</STRONG> (Thumb, 692 bytes, Stack size 8 bytes, main.o(i.main))
-<BR><BR>[Stack]<UL><LI>Max Depth = 1664 + Unknown Stack Size
+<BR><BR>[Stack]<UL><LI>Max Depth = 1656 + Unknown Stack Size
 <LI>Call Chain = main &rArr; UP_button_handrel &rArr; view_txt_UP_button_handler &rArr; view_menu_RIGHT_button_handler &rArr; Read_File_and_print_BMP &rArr; check_if_file_opens &rArr; f_open &rArr; dir_register &rArr; dir_find &rArr; dir_next &rArr; create_chain &rArr; put_fat &rArr; move_window &rArr; sync_window &rArr; disk_write
 </UL>
 <BR>[Calls]<UL><LI><a href="#[f7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__NVIC_SetPriority
@@ -2636,10 +2641,10 @@ Global Symbols
 <LI><a href="#[fe]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_SPI1_Init
 <LI><a href="#[fc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_GPIO_Init
 <LI><a href="#[f3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_DMA_Init
-<LI><a href="#[1a7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LL_GPIO_IsInputPinSet
+<LI><a href="#[1a8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LL_GPIO_IsInputPinSet
 <LI><a href="#[ff]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LL_APB2_GRP1_EnableClock
-<LI><a href="#[1a9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;menu_active_member_running_text_animation
-<LI><a href="#[1a8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_active_menu_member
+<LI><a href="#[1aa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;menu_active_member_running_text_animation
+<LI><a href="#[1a9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_active_menu_member
 <LI><a href="#[a8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GC9A01_SetTextColor
 <LI><a href="#[ad]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GC9A01_SetFont
 <LI><a href="#[ac]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GC9A01_SetBackColor
@@ -2653,7 +2658,7 @@ Global Symbols
 <LI><a href="#[103]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_USB_HOST_Init
 <LI><a href="#[fb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_FATFS_Init
 <LI><a href="#[e4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_Init
-<LI><a href="#[1aa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delay_ms
+<LI><a href="#[1ab]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delay_ms
 <LI><a href="#[171]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;check_for_USB_storage_connection
 <LI><a href="#[127]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UP_button_handrel
 <LI><a href="#[126]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UP_DOWN_button_handrel
@@ -2668,11 +2673,11 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[6b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__rt_entry_main
 </UL>
 
-<P><STRONG><a name="[1a9]"></a>menu_active_member_running_text_animation</STRONG> (Thumb, 222 bytes, Stack size 288 bytes, gc9a01.o(i.menu_active_member_running_text_animation))
+<P><STRONG><a name="[1aa]"></a>menu_active_member_running_text_animation</STRONG> (Thumb, 222 bytes, Stack size 288 bytes, gc9a01.o(i.menu_active_member_running_text_animation))
 <BR><BR>[Stack]<UL><LI>Max Depth = 464 + Unknown Stack Size
 <LI>Call Chain = menu_active_member_running_text_animation &rArr; GC9A01_String &rArr; GC9A01_DrawChar &rArr; GC9A01_DrawPixel_2x2 &rArr; malloc &rArr; __Heap_Full &rArr; __Heap_ProvideMemory &rArr; free
 </UL>
-<BR>[Calls]<UL><LI><a href="#[1a8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_active_menu_member
+<BR>[Calls]<UL><LI><a href="#[1a9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_active_menu_member
 <LI><a href="#[a9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GC9A01_String
 <LI><a href="#[a8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GC9A01_SetTextColor
 <LI><a href="#[ad]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GC9A01_SetFont
@@ -2694,11 +2699,11 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[ee]"></a>refresh_BMP_image</STRONG> (Thumb, 164 bytes, Stack size 104 bytes, main.o(i.refresh_BMP_image))
-<BR><BR>[Stack]<UL><LI>Max Depth = 1624 + Unknown Stack Size
+<BR><BR>[Stack]<UL><LI>Max Depth = 1616 + Unknown Stack Size
 <LI>Call Chain = refresh_BMP_image &rArr; Read_File_and_print_BMP &rArr; check_if_file_opens &rArr; f_open &rArr; dir_register &rArr; dir_find &rArr; dir_next &rArr; create_chain &rArr; put_fat &rArr; move_window &rArr; sync_window &rArr; disk_write
 </UL>
-<BR>[Calls]<UL><LI><a href="#[1a8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_active_menu_member
-<LI><a href="#[1ab]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;chek_menu_member_for_the_file_type
+<BR>[Calls]<UL><LI><a href="#[1a9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_active_menu_member
+<LI><a href="#[1ac]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;chek_menu_member_for_the_file_type
 <LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GC9A01_ClearScreen
 <LI><a href="#[170]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Unmount_USB
 <LI><a href="#[115]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Read_File_and_print_BMP
@@ -2715,7 +2720,7 @@ Global Symbols
 <LI><a href="#[ed]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LEFT_RIGHT_button_handrel
 </UL>
 
-<P><STRONG><a name="[1ac]"></a>refresh_menu_member</STRONG> (Thumb, 214 bytes, Stack size 32 bytes, gc9a01.o(i.refresh_menu_member))
+<P><STRONG><a name="[1ad]"></a>refresh_menu_member</STRONG> (Thumb, 214 bytes, Stack size 32 bytes, gc9a01.o(i.refresh_menu_member))
 <BR><BR>[Stack]<UL><LI>Max Depth = 208 + Unknown Stack Size
 <LI>Call Chain = refresh_menu_member &rArr; GC9A01_String &rArr; GC9A01_DrawChar &rArr; GC9A01_DrawPixel_2x2 &rArr; malloc &rArr; __Heap_Full &rArr; __Heap_ProvideMemory &rArr; free
 </UL>
@@ -2731,7 +2736,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[99]"></a>view_image_DOWN_button_handler</STRONG> (Thumb, 34 bytes, Stack size 8 bytes, main.o(i.view_image_DOWN_button_handler))
-<BR><BR>[Stack]<UL><LI>Max Depth = 1632 + Unknown Stack Size
+<BR><BR>[Stack]<UL><LI>Max Depth = 1624 + Unknown Stack Size
 <LI>Call Chain = view_image_DOWN_button_handler &rArr; refresh_BMP_image &rArr; Read_File_and_print_BMP &rArr; check_if_file_opens &rArr; f_open &rArr; dir_register &rArr; dir_find &rArr; dir_next &rArr; create_chain &rArr; put_fat &rArr; move_window &rArr; sync_window &rArr; disk_write
 </UL>
 <BR>[Calls]<UL><LI><a href="#[ee]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;refresh_BMP_image
@@ -2740,7 +2745,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[f2]"></a>view_image_LEFT_button_handler</STRONG> (Thumb, 34 bytes, Stack size 8 bytes, main.o(i.view_image_LEFT_button_handler))
-<BR><BR>[Stack]<UL><LI>Max Depth = 1632 + Unknown Stack Size
+<BR><BR>[Stack]<UL><LI>Max Depth = 1624 + Unknown Stack Size
 <LI>Call Chain = view_image_LEFT_button_handler &rArr; refresh_BMP_image &rArr; Read_File_and_print_BMP &rArr; check_if_file_opens &rArr; f_open &rArr; dir_register &rArr; dir_find &rArr; dir_next &rArr; create_chain &rArr; put_fat &rArr; move_window &rArr; sync_window &rArr; disk_write
 </UL>
 <BR>[Calls]<UL><LI><a href="#[ee]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;refresh_BMP_image
@@ -2749,7 +2754,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[10e]"></a>view_image_RIGHT_button_handler</STRONG> (Thumb, 18 bytes, Stack size 8 bytes, main.o(i.view_image_RIGHT_button_handler))
-<BR><BR>[Stack]<UL><LI>Max Depth = 1632 + Unknown Stack Size
+<BR><BR>[Stack]<UL><LI>Max Depth = 1624 + Unknown Stack Size
 <LI>Call Chain = view_image_RIGHT_button_handler &rArr; refresh_BMP_image &rArr; Read_File_and_print_BMP &rArr; check_if_file_opens &rArr; f_open &rArr; dir_register &rArr; dir_find &rArr; dir_next &rArr; create_chain &rArr; put_fat &rArr; move_window &rArr; sync_window &rArr; disk_write
 </UL>
 <BR>[Calls]<UL><LI><a href="#[ee]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;refresh_BMP_image
@@ -2758,7 +2763,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[12a]"></a>view_image_UP_button_handler</STRONG> (Thumb, 18 bytes, Stack size 8 bytes, main.o(i.view_image_UP_button_handler))
-<BR><BR>[Stack]<UL><LI>Max Depth = 1632 + Unknown Stack Size
+<BR><BR>[Stack]<UL><LI>Max Depth = 1624 + Unknown Stack Size
 <LI>Call Chain = view_image_UP_button_handler &rArr; refresh_BMP_image &rArr; Read_File_and_print_BMP &rArr; check_if_file_opens &rArr; f_open &rArr; dir_register &rArr; dir_find &rArr; dir_next &rArr; create_chain &rArr; put_fat &rArr; move_window &rArr; sync_window &rArr; disk_write
 </UL>
 <BR>[Calls]<UL><LI><a href="#[ee]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;refresh_BMP_image
@@ -2770,7 +2775,7 @@ Global Symbols
 <BR><BR>[Stack]<UL><LI>Max Depth = 1232 + Unknown Stack Size
 <LI>Call Chain = view_menu_DOWN_button_handler &rArr; Scan_USB &rArr; f_opendir &rArr; follow_path &rArr; dir_find &rArr; dir_next &rArr; create_chain &rArr; put_fat &rArr; move_window &rArr; sync_window &rArr; disk_write
 </UL>
-<BR>[Calls]<UL><LI><a href="#[1ac]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;refresh_menu_member
+<BR>[Calls]<UL><LI><a href="#[1ad]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;refresh_menu_member
 <LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ShowMenu
 <LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GC9A01_ClearScreen
 <LI><a href="#[170]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Unmount_USB
@@ -2798,11 +2803,11 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[10c]"></a>view_menu_RIGHT_button_handler</STRONG> (Thumb, 668 bytes, Stack size 120 bytes, main.o(i.view_menu_RIGHT_button_handler))
-<BR><BR>[Stack]<UL><LI>Max Depth = 1640 + Unknown Stack Size
+<BR><BR>[Stack]<UL><LI>Max Depth = 1632 + Unknown Stack Size
 <LI>Call Chain = view_menu_RIGHT_button_handler &rArr; Read_File_and_print_BMP &rArr; check_if_file_opens &rArr; f_open &rArr; dir_register &rArr; dir_find &rArr; dir_next &rArr; create_chain &rArr; put_fat &rArr; move_window &rArr; sync_window &rArr; disk_write
 </UL>
-<BR>[Calls]<UL><LI><a href="#[1a8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_active_menu_member
-<LI><a href="#[1ab]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;chek_menu_member_for_the_file_type
+<BR>[Calls]<UL><LI><a href="#[1a9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_active_menu_member
+<LI><a href="#[1ac]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;chek_menu_member_for_the_file_type
 <LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ShowMenu
 <LI><a href="#[ad]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GC9A01_SetFont
 <LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GC9A01_ClearScreen
@@ -2830,7 +2835,7 @@ Global Symbols
 <BR><BR>[Stack]<UL><LI>Max Depth = 1232 + Unknown Stack Size
 <LI>Call Chain = view_menu_UP_button_handler &rArr; Scan_USB &rArr; f_opendir &rArr; follow_path &rArr; dir_find &rArr; dir_next &rArr; create_chain &rArr; put_fat &rArr; move_window &rArr; sync_window &rArr; disk_write
 </UL>
-<BR>[Calls]<UL><LI><a href="#[1ac]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;refresh_menu_member
+<BR>[Calls]<UL><LI><a href="#[1ad]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;refresh_menu_member
 <LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ShowMenu
 <LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GC9A01_ClearScreen
 <LI><a href="#[170]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Unmount_USB
@@ -2842,7 +2847,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[98]"></a>view_txt_DOWN_button_handler</STRONG> (Thumb, 18 bytes, Stack size 8 bytes, main.o(i.view_txt_DOWN_button_handler))
-<BR><BR>[Stack]<UL><LI>Max Depth = 1648 + Unknown Stack Size
+<BR><BR>[Stack]<UL><LI>Max Depth = 1640 + Unknown Stack Size
 <LI>Call Chain = view_txt_DOWN_button_handler &rArr; view_menu_RIGHT_button_handler &rArr; Read_File_and_print_BMP &rArr; check_if_file_opens &rArr; f_open &rArr; dir_register &rArr; dir_find &rArr; dir_next &rArr; create_chain &rArr; put_fat &rArr; move_window &rArr; sync_window &rArr; disk_write
 </UL>
 <BR>[Calls]<UL><LI><a href="#[10c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;view_menu_RIGHT_button_handler
@@ -2865,7 +2870,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[129]"></a>view_txt_UP_button_handler</STRONG> (Thumb, 18 bytes, Stack size 8 bytes, main.o(i.view_txt_UP_button_handler))
-<BR><BR>[Stack]<UL><LI>Max Depth = 1648 + Unknown Stack Size
+<BR><BR>[Stack]<UL><LI>Max Depth = 1640 + Unknown Stack Size
 <LI>Call Chain = view_txt_UP_button_handler &rArr; view_menu_RIGHT_button_handler &rArr; Read_File_and_print_BMP &rArr; check_if_file_opens &rArr; f_open &rArr; dir_register &rArr; dir_find &rArr; dir_next &rArr; create_chain &rArr; put_fat &rArr; move_window &rArr; sync_window &rArr; disk_write
 </UL>
 <BR>[Calls]<UL><LI><a href="#[10c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;view_menu_RIGHT_button_handler
@@ -2877,9 +2882,9 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[63]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__rt_lib_init_fp_1
 </UL>
 
-<P><STRONG><a name="[1e3]"></a>__fplib_config_fpu_vfp</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, fpinit.o(x$fpl$fpinit), UNUSED)
+<P><STRONG><a name="[1e4]"></a>__fplib_config_fpu_vfp</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, fpinit.o(x$fpl$fpinit), UNUSED)
 
-<P><STRONG><a name="[1e4]"></a>__fplib_config_pureend_doubles</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, fpinit.o(x$fpl$fpinit), UNUSED)
+<P><STRONG><a name="[1e5]"></a>__fplib_config_pureend_doubles</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, fpinit.o(x$fpl$fpinit), UNUSED)
 <P>
 <H3>
 Local Symbols
@@ -2918,7 +2923,7 @@ Local Symbols
 <LI><a href="#[6c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[1a7]"></a>LL_GPIO_IsInputPinSet</STRONG> (Thumb, 18 bytes, Stack size 0 bytes, main.o(i.LL_GPIO_IsInputPinSet))
+<P><STRONG><a name="[1a8]"></a>LL_GPIO_IsInputPinSet</STRONG> (Thumb, 18 bytes, Stack size 0 bytes, main.o(i.LL_GPIO_IsInputPinSet))
 <BR><BR>[Called By]<UL><LI><a href="#[6c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
@@ -3067,35 +3072,35 @@ Local Symbols
 <LI><a href="#[175]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ld_word
 <LI><a href="#[176]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ld_dword
 </UL>
-<BR>[Called By]<UL><LI><a href="#[198]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;find_volume
+<BR>[Called By]<UL><LI><a href="#[199]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;find_volume
 </UL>
 
 <P><STRONG><a name="[180]"></a>chk_chr</STRONG> (Thumb, 20 bytes, Stack size 0 bytes, ff.o(i.chk_chr))
 <BR><BR>[Called By]<UL><LI><a href="#[17e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;create_name
 </UL>
 
-<P><STRONG><a name="[19a]"></a>chk_lock</STRONG> (Thumb, 120 bytes, Stack size 12 bytes, ff.o(i.chk_lock))
+<P><STRONG><a name="[19b]"></a>chk_lock</STRONG> (Thumb, 120 bytes, Stack size 12 bytes, ff.o(i.chk_lock))
 <BR><BR>[Stack]<UL><LI>Max Depth = 12<LI>Call Chain = chk_lock
 </UL>
 <BR>[Called By]<UL><LI><a href="#[178]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;f_open
 </UL>
 
-<P><STRONG><a name="[197]"></a>clear_lock</STRONG> (Thumb, 36 bytes, Stack size 0 bytes, ff.o(i.clear_lock))
+<P><STRONG><a name="[198]"></a>clear_lock</STRONG> (Thumb, 36 bytes, Stack size 0 bytes, ff.o(i.clear_lock))
 <BR><BR>[Called By]<UL><LI><a href="#[10a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;f_mount
-<LI><a href="#[198]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;find_volume
+<LI><a href="#[199]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;find_volume
 </UL>
 
-<P><STRONG><a name="[193]"></a>clmt_clust</STRONG> (Thumb, 50 bytes, Stack size 20 bytes, ff.o(i.clmt_clust))
+<P><STRONG><a name="[194]"></a>clmt_clust</STRONG> (Thumb, 50 bytes, Stack size 20 bytes, ff.o(i.clmt_clust))
 <BR><BR>[Stack]<UL><LI>Max Depth = 20<LI>Call Chain = clmt_clust
 </UL>
 <BR>[Called By]<UL><LI><a href="#[113]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;f_read
-<LI><a href="#[11b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;f_lseek
+<LI><a href="#[193]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;f_lseek
 </UL>
 
 <P><STRONG><a name="[189]"></a>clust2sect</STRONG> (Thumb, 26 bytes, Stack size 0 bytes, ff.o(i.clust2sect))
 <BR><BR>[Called By]<UL><LI><a href="#[113]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;f_read
 <LI><a href="#[178]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;f_open
-<LI><a href="#[11b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;f_lseek
+<LI><a href="#[193]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;f_lseek
 <LI><a href="#[183]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dir_sdi
 <LI><a href="#[184]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dir_next
 </UL>
@@ -3115,7 +3120,7 @@ Local Symbols
 <BR>[Calls]<UL><LI><a href="#[17d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;put_fat
 <LI><a href="#[17c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_fat
 </UL>
-<BR>[Called By]<UL><LI><a href="#[11b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;f_lseek
+<BR>[Called By]<UL><LI><a href="#[193]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;f_lseek
 <LI><a href="#[184]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dir_next
 </UL>
 
@@ -3126,7 +3131,7 @@ Local Symbols
 <LI><a href="#[181]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mem_set
 <LI><a href="#[180]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;chk_chr
 </UL>
-<BR>[Called By]<UL><LI><a href="#[199]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;follow_path
+<BR>[Called By]<UL><LI><a href="#[19a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;follow_path
 </UL>
 
 <P><STRONG><a name="[192]"></a>dec_lock</STRONG> (Thumb, 64 bytes, Stack size 8 bytes, ff.o(i.dec_lock))
@@ -3156,7 +3161,7 @@ Local Symbols
 <LI><a href="#[184]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dir_next
 <LI><a href="#[179]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;cmp_lfn
 </UL>
-<BR>[Called By]<UL><LI><a href="#[199]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;follow_path
+<BR>[Called By]<UL><LI><a href="#[19a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;follow_path
 <LI><a href="#[18c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dir_register
 </UL>
 
@@ -3212,27 +3217,27 @@ Local Symbols
 </UL>
 <BR>[Called By]<UL><LI><a href="#[11e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;f_readdir
 <LI><a href="#[11d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;f_opendir
-<LI><a href="#[199]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;follow_path
+<LI><a href="#[19a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;follow_path
 <LI><a href="#[18c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dir_register
 <LI><a href="#[185]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dir_find
 <LI><a href="#[182]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dir_alloc
 </UL>
 
-<P><STRONG><a name="[19b]"></a>enq_lock</STRONG> (Thumb, 34 bytes, Stack size 0 bytes, ff.o(i.enq_lock))
+<P><STRONG><a name="[19c]"></a>enq_lock</STRONG> (Thumb, 34 bytes, Stack size 0 bytes, ff.o(i.enq_lock))
 <BR><BR>[Called By]<UL><LI><a href="#[178]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;f_open
 </UL>
 
-<P><STRONG><a name="[198]"></a>find_volume</STRONG> (Thumb, 750 bytes, Stack size 88 bytes, ff.o(i.find_volume))
+<P><STRONG><a name="[199]"></a>find_volume</STRONG> (Thumb, 750 bytes, Stack size 88 bytes, ff.o(i.find_volume))
 <BR><BR>[Stack]<UL><LI>Max Depth = 168<LI>Call Chain = find_volume &rArr; check_fs &rArr; move_window &rArr; sync_window &rArr; disk_write
 </UL>
 <BR>[Calls]<UL><LI><a href="#[174]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;move_window
 <LI><a href="#[175]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ld_word
 <LI><a href="#[176]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ld_dword
-<LI><a href="#[196]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_ldnumber
-<LI><a href="#[197]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;clear_lock
+<LI><a href="#[197]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_ldnumber
+<LI><a href="#[198]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;clear_lock
 <LI><a href="#[173]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;check_fs
-<LI><a href="#[1a5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;disk_status
-<LI><a href="#[1a6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;disk_initialize
+<LI><a href="#[1a6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;disk_status
+<LI><a href="#[1a7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;disk_initialize
 </UL>
 <BR>[Called By]<UL><LI><a href="#[177]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;f_stat
 <LI><a href="#[11d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;f_opendir
@@ -3240,10 +3245,10 @@ Local Symbols
 <LI><a href="#[10a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;f_mount
 </UL>
 
-<P><STRONG><a name="[199]"></a>follow_path</STRONG> (Thumb, 162 bytes, Stack size 32 bytes, ff.o(i.follow_path))
+<P><STRONG><a name="[19a]"></a>follow_path</STRONG> (Thumb, 162 bytes, Stack size 32 bytes, ff.o(i.follow_path))
 <BR><BR>[Stack]<UL><LI>Max Depth = 224<LI>Call Chain = follow_path &rArr; dir_find &rArr; dir_next &rArr; create_chain &rArr; put_fat &rArr; move_window &rArr; sync_window &rArr; disk_write
 </UL>
-<BR>[Calls]<UL><LI><a href="#[19e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ld_clust
+<BR>[Calls]<UL><LI><a href="#[19f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ld_clust
 <LI><a href="#[183]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dir_sdi
 <LI><a href="#[185]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dir_find
 <LI><a href="#[17e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;create_name
@@ -3270,14 +3275,14 @@ Local Symbols
 </UL>
 <BR>[Called By]<UL><LI><a href="#[113]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;f_read
 <LI><a href="#[178]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;f_open
-<LI><a href="#[11b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;f_lseek
-<LI><a href="#[1a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;remove_chain
+<LI><a href="#[193]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;f_lseek
+<LI><a href="#[1a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;remove_chain
 <LI><a href="#[183]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dir_sdi
 <LI><a href="#[184]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dir_next
 <LI><a href="#[17b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;create_chain
 </UL>
 
-<P><STRONG><a name="[1a2]"></a>get_fileinfo</STRONG> (Thumb, 322 bytes, Stack size 40 bytes, ff.o(i.get_fileinfo))
+<P><STRONG><a name="[1a3]"></a>get_fileinfo</STRONG> (Thumb, 322 bytes, Stack size 40 bytes, ff.o(i.get_fileinfo))
 <BR><BR>[Stack]<UL><LI>Max Depth = 48<LI>Call Chain = get_fileinfo &rArr; ff_convert
 </UL>
 <BR>[Calls]<UL><LI><a href="#[17f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ff_convert
@@ -3287,44 +3292,44 @@ Local Symbols
 <LI><a href="#[11e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;f_readdir
 </UL>
 
-<P><STRONG><a name="[196]"></a>get_ldnumber</STRONG> (Thumb, 72 bytes, Stack size 16 bytes, ff.o(i.get_ldnumber))
+<P><STRONG><a name="[197]"></a>get_ldnumber</STRONG> (Thumb, 72 bytes, Stack size 16 bytes, ff.o(i.get_ldnumber))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = get_ldnumber
 </UL>
 <BR>[Called By]<UL><LI><a href="#[10a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;f_mount
-<LI><a href="#[198]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;find_volume
+<LI><a href="#[199]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;find_volume
 </UL>
 
-<P><STRONG><a name="[1a1]"></a>inc_lock</STRONG> (Thumb, 182 bytes, Stack size 8 bytes, ff.o(i.inc_lock))
+<P><STRONG><a name="[1a2]"></a>inc_lock</STRONG> (Thumb, 182 bytes, Stack size 8 bytes, ff.o(i.inc_lock))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = inc_lock
 </UL>
 <BR>[Called By]<UL><LI><a href="#[11d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;f_opendir
 <LI><a href="#[178]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;f_open
 </UL>
 
-<P><STRONG><a name="[19e]"></a>ld_clust</STRONG> (Thumb, 38 bytes, Stack size 16 bytes, ff.o(i.ld_clust))
+<P><STRONG><a name="[19f]"></a>ld_clust</STRONG> (Thumb, 38 bytes, Stack size 16 bytes, ff.o(i.ld_clust))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = ld_clust
 </UL>
 <BR>[Calls]<UL><LI><a href="#[175]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ld_word
 </UL>
 <BR>[Called By]<UL><LI><a href="#[11d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;f_opendir
 <LI><a href="#[178]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;f_open
-<LI><a href="#[199]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;follow_path
+<LI><a href="#[19a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;follow_path
 </UL>
 
 <P><STRONG><a name="[176]"></a>ld_dword</STRONG> (Thumb, 24 bytes, Stack size 0 bytes, ff.o(i.ld_dword))
 <BR><BR>[Called By]<UL><LI><a href="#[178]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;f_open
 <LI><a href="#[17d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;put_fat
-<LI><a href="#[1a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_fileinfo
+<LI><a href="#[1a3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_fileinfo
 <LI><a href="#[17c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_fat
-<LI><a href="#[198]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;find_volume
+<LI><a href="#[199]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;find_volume
 <LI><a href="#[173]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;check_fs
 </UL>
 
 <P><STRONG><a name="[175]"></a>ld_word</STRONG> (Thumb, 12 bytes, Stack size 0 bytes, ff.o(i.ld_word))
 <BR><BR>[Called By]<UL><LI><a href="#[18b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pick_lfn
-<LI><a href="#[19e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ld_clust
+<LI><a href="#[19f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ld_clust
 <LI><a href="#[17c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_fat
-<LI><a href="#[198]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;find_volume
+<LI><a href="#[199]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;find_volume
 <LI><a href="#[179]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;cmp_lfn
 <LI><a href="#[173]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;check_fs
 </UL>
@@ -3347,7 +3352,7 @@ Local Symbols
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = mem_set
 </UL>
 <BR>[Called By]<UL><LI><a href="#[178]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;f_open
-<LI><a href="#[1a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sync_fs
+<LI><a href="#[1a5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sync_fs
 <LI><a href="#[18c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dir_register
 <LI><a href="#[184]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dir_next
 <LI><a href="#[17e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;create_name
@@ -3357,13 +3362,13 @@ Local Symbols
 <BR><BR>[Stack]<UL><LI>Max Depth = 64<LI>Call Chain = move_window &rArr; sync_window &rArr; disk_write
 </UL>
 <BR>[Calls]<UL><LI><a href="#[188]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sync_window
-<LI><a href="#[195]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;disk_read
+<LI><a href="#[196]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;disk_read
 </UL>
 <BR>[Called By]<UL><LI><a href="#[178]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;f_open
 <LI><a href="#[190]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;f_sync
 <LI><a href="#[17d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;put_fat
 <LI><a href="#[17c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_fat
-<LI><a href="#[198]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;find_volume
+<LI><a href="#[199]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;find_volume
 <LI><a href="#[18c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dir_register
 <LI><a href="#[18a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dir_read
 <LI><a href="#[185]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dir_find
@@ -3382,24 +3387,24 @@ Local Symbols
 <P><STRONG><a name="[17d]"></a>put_fat</STRONG> (Thumb, 312 bytes, Stack size 32 bytes, ff.o(i.put_fat))
 <BR><BR>[Stack]<UL><LI>Max Depth = 96<LI>Call Chain = put_fat &rArr; move_window &rArr; sync_window &rArr; disk_write
 </UL>
-<BR>[Calls]<UL><LI><a href="#[1a3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;st_word
-<LI><a href="#[19d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;st_dword
+<BR>[Calls]<UL><LI><a href="#[1a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;st_word
+<LI><a href="#[19e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;st_dword
 <LI><a href="#[174]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;move_window
 <LI><a href="#[176]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ld_dword
 </UL>
-<BR>[Called By]<UL><LI><a href="#[1a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;remove_chain
+<BR>[Called By]<UL><LI><a href="#[1a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;remove_chain
 <LI><a href="#[17b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;create_chain
 </UL>
 
 <P><STRONG><a name="[18f]"></a>put_lfn</STRONG> (Thumb, 124 bytes, Stack size 32 bytes, ff.o(i.put_lfn))
 <BR><BR>[Stack]<UL><LI>Max Depth = 32<LI>Call Chain = put_lfn
 </UL>
-<BR>[Calls]<UL><LI><a href="#[1a3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;st_word
+<BR>[Calls]<UL><LI><a href="#[1a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;st_word
 </UL>
 <BR>[Called By]<UL><LI><a href="#[18c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dir_register
 </UL>
 
-<P><STRONG><a name="[1a0]"></a>remove_chain</STRONG> (Thumb, 154 bytes, Stack size 32 bytes, ff.o(i.remove_chain))
+<P><STRONG><a name="[1a1]"></a>remove_chain</STRONG> (Thumb, 154 bytes, Stack size 32 bytes, ff.o(i.remove_chain))
 <BR><BR>[Stack]<UL><LI>Max Depth = 128<LI>Call Chain = remove_chain &rArr; put_fat &rArr; move_window &rArr; sync_window &rArr; disk_write
 </UL>
 <BR>[Calls]<UL><LI><a href="#[17d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;put_fat
@@ -3408,26 +3413,26 @@ Local Symbols
 <BR>[Called By]<UL><LI><a href="#[178]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;f_open
 </UL>
 
-<P><STRONG><a name="[19f]"></a>st_clust</STRONG> (Thumb, 36 bytes, Stack size 16 bytes, ff.o(i.st_clust))
+<P><STRONG><a name="[1a0]"></a>st_clust</STRONG> (Thumb, 36 bytes, Stack size 16 bytes, ff.o(i.st_clust))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = st_clust
 </UL>
-<BR>[Calls]<UL><LI><a href="#[1a3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;st_word
+<BR>[Calls]<UL><LI><a href="#[1a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;st_word
 </UL>
 <BR>[Called By]<UL><LI><a href="#[178]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;f_open
 <LI><a href="#[190]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;f_sync
 </UL>
 
-<P><STRONG><a name="[19d]"></a>st_dword</STRONG> (Thumb, 24 bytes, Stack size 0 bytes, ff.o(i.st_dword))
+<P><STRONG><a name="[19e]"></a>st_dword</STRONG> (Thumb, 24 bytes, Stack size 0 bytes, ff.o(i.st_dword))
 <BR><BR>[Called By]<UL><LI><a href="#[178]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;f_open
 <LI><a href="#[190]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;f_sync
-<LI><a href="#[1a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sync_fs
+<LI><a href="#[1a5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sync_fs
 <LI><a href="#[17d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;put_fat
 </UL>
 
-<P><STRONG><a name="[1a3]"></a>st_word</STRONG> (Thumb, 12 bytes, Stack size 0 bytes, ff.o(i.st_word))
+<P><STRONG><a name="[1a4]"></a>st_word</STRONG> (Thumb, 12 bytes, Stack size 0 bytes, ff.o(i.st_word))
 <BR><BR>[Called By]<UL><LI><a href="#[190]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;f_sync
-<LI><a href="#[1a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sync_fs
-<LI><a href="#[19f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;st_clust
+<LI><a href="#[1a5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sync_fs
+<LI><a href="#[1a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;st_clust
 <LI><a href="#[18f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;put_lfn
 <LI><a href="#[17d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;put_fat
 </UL>
@@ -3440,15 +3445,15 @@ Local Symbols
 <LI><a href="#[185]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dir_find
 </UL>
 
-<P><STRONG><a name="[1a4]"></a>sync_fs</STRONG> (Thumb, 134 bytes, Stack size 16 bytes, ff.o(i.sync_fs))
+<P><STRONG><a name="[1a5]"></a>sync_fs</STRONG> (Thumb, 134 bytes, Stack size 16 bytes, ff.o(i.sync_fs))
 <BR><BR>[Stack]<UL><LI>Max Depth = 64<LI>Call Chain = sync_fs &rArr; sync_window &rArr; disk_write
 </UL>
 <BR>[Calls]<UL><LI><a href="#[188]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sync_window
-<LI><a href="#[1a3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;st_word
-<LI><a href="#[19d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;st_dword
+<LI><a href="#[1a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;st_word
+<LI><a href="#[19e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;st_dword
 <LI><a href="#[181]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mem_set
-<LI><a href="#[194]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;disk_write
-<LI><a href="#[1ad]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;disk_ioctl
+<LI><a href="#[195]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;disk_write
+<LI><a href="#[1ae]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;disk_ioctl
 </UL>
 <BR>[Called By]<UL><LI><a href="#[190]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;f_sync
 </UL>
@@ -3456,9 +3461,9 @@ Local Symbols
 <P><STRONG><a name="[188]"></a>sync_window</STRONG> (Thumb, 82 bytes, Stack size 24 bytes, ff.o(i.sync_window))
 <BR><BR>[Stack]<UL><LI>Max Depth = 48<LI>Call Chain = sync_window &rArr; disk_write
 </UL>
-<BR>[Calls]<UL><LI><a href="#[194]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;disk_write
+<BR>[Calls]<UL><LI><a href="#[195]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;disk_write
 </UL>
-<BR>[Called By]<UL><LI><a href="#[1a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sync_fs
+<BR>[Called By]<UL><LI><a href="#[1a5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sync_fs
 <LI><a href="#[174]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;move_window
 <LI><a href="#[184]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dir_next
 </UL>
@@ -3466,11 +3471,11 @@ Local Symbols
 <P><STRONG><a name="[191]"></a>validate</STRONG> (Thumb, 60 bytes, Stack size 16 bytes, ff.o(i.validate))
 <BR><BR>[Stack]<UL><LI>Max Depth = 32<LI>Call Chain = validate &rArr; disk_status
 </UL>
-<BR>[Calls]<UL><LI><a href="#[1a5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;disk_status
+<BR>[Calls]<UL><LI><a href="#[1a6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;disk_status
 </UL>
 <BR>[Called By]<UL><LI><a href="#[11e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;f_readdir
 <LI><a href="#[113]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;f_read
-<LI><a href="#[11b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;f_lseek
+<LI><a href="#[193]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;f_lseek
 <LI><a href="#[121]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;f_closedir
 <LI><a href="#[112]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;f_close
 <LI><a href="#[190]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;f_sync
