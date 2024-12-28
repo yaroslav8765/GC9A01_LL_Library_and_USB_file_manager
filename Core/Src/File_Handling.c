@@ -17,12 +17,27 @@ FATFS *pUSBHFatFS;
 DWORD fre_clust;
 uint32_t total, free_space;
 
+void clear_row(uint16_t *row, uint16_t lenght){
+	for (int x = 0; x < lenght; x++) {
+			row[x] = 0xFFFF;
+		}
+}
+
+void calculate_shift(uint16_t infoHeight, uint8_t interpolation, uint16_t LCDHeight, uint16_t *vertical_offset, uint16_t *v_shift, uint16_t mem_vertical_offset) {
+    if ((infoHeight / interpolation) >= LCDHeight) {
+        *v_shift = 0;
+        *vertical_offset = mem_vertical_offset;
+    } else if ((*vertical_offset / 10) >= (LCDHeight - (infoHeight / interpolation))) {
+        *v_shift = LCDHeight - (infoHeight / interpolation) + 1;
+        *vertical_offset = (LCDHeight - (infoHeight / interpolation)) * 10;
+    } else {
+        *v_shift = *vertical_offset / 10;
+    }
+}
 
 void compress_row(uint16_t *row1, uint16_t *row2, uint16_t *output, uint8_t interpolation, uint16_t horizontal_offset, uint16_t image_width) {
-		for (int x = 0; x < LCD_W; x++) {
-			output[x] = 0xFFFF;
-		}
-    for (int x = 0; x < LCD_W; x++) {
+		clear_row(output,LCD_W);
+    for (int x = 0; x <= LCD_W; x++) {
         int x_src1 = x * interpolation;
         int x_src2 = x_src1 + 1;
 				int16_t free_pixels = LCD_W - (image_width/interpolation);
@@ -51,7 +66,7 @@ void compress_row(uint16_t *row1, uint16_t *row2, uint16_t *output, uint8_t inte
         uint8_t g = (g1 + g2 + g3 + g4) / 4;
         uint8_t b = (b1 + b2 + b3 + b4) / 4;
 				output[x + (free_pixels <= 0 ? 0 : horizontal_offset)] = (r << 11) | (g << 5) | b;
-				if((x + free_pixels) >=LCD_W) break;
+				if((x + free_pixels) >=LCD_W-1) break;
     }
 }
 
@@ -264,6 +279,8 @@ FRESULT Read_File_and_print_BMP(char *name, uint16_t *horizontal_offset, uint16_
 	uint16_t column = 0;
 	uint16_t mem_horizontal_offset = *horizontal_offset;
 	uint16_t mem_vertical_offset = *vertical_offset;
+	uint16_t h_shift = 0;
+	uint16_t v_shift = 0;
 	unsigned short buffer1[LCD_W*interpolation];
 	unsigned short buffer2[LCD_W*interpolation];
 	unsigned short output_row[LCD_W];
@@ -336,71 +353,36 @@ FRESULT Read_File_and_print_BMP(char *name, uint16_t *horizontal_offset, uint16_
 					break;
 				}
 				
-			uint16_t h_shift;
-
-			if ((infoHeader.biWidth / interpolation) >= LCD_W) {
-					h_shift = 0;
-					*horizontal_offset = mem_horizontal_offset;
-			} else if ((*horizontal_offset / 10) >= (LCD_W - (infoHeader.biWidth / interpolation))) {
-					h_shift = LCD_W - (infoHeader.biWidth / interpolation);
-					*horizontal_offset = ((LCD_W - (infoHeader.biWidth / interpolation))*10);//-=64;
-			} else {
-					h_shift = *horizontal_offset / 10;  
-			}
+			calculate_shift(infoHeader.biWidth,interpolation,LCD_W, horizontal_offset,&h_shift, mem_horizontal_offset);
+//			if ((infoHeader.biWidth / interpolation) >= LCD_W) {
+//					h_shift = 0;
+//					*horizontal_offset = mem_horizontal_offset;
+//			} else if ((*horizontal_offset / 10) >= (LCD_W - (infoHeader.biWidth / interpolation))) {
+//					h_shift = LCD_W - (infoHeader.biWidth / interpolation) ;
+//					*horizontal_offset = ((LCD_W - (infoHeader.biWidth / interpolation))*10);
+//			} else {
+//					h_shift = *horizontal_offset / 10;  
+//			}
+			
 			compress_row(buffer1, buffer2, output_row, interpolation, h_shift,infoHeader.biWidth);
 			} else {
-				for (int x = 0; x < LCD_W; x++) {
-					output_row[x] = 0xFFFF;
-				}
+				clear_row(output_row,LCD_W);
 			}
 			
-			uint16_t v_shift;
-
-			if ((infoHeader.biHeight / interpolation) >= LCD_H) {
-					v_shift = 0;
-					*vertical_offset = mem_vertical_offset;
-			} else if ((*vertical_offset / 10) >= (LCD_H - (infoHeader.biHeight / interpolation))) {
-					v_shift = LCD_H - (infoHeader.biHeight / interpolation)+1;
-					*vertical_offset = ((LCD_H - (infoHeader.biHeight / interpolation))*10)+10;//-=64;
-			} else {
-					v_shift = *vertical_offset / 10;  
-			}
+			calculate_shift(infoHeader.biHeight,interpolation,LCD_H, vertical_offset,&v_shift, mem_vertical_offset);
+//			if ((infoHeader.biHeight / interpolation) >= LCD_H) {
+//					v_shift = 0;
+//					*vertical_offset = mem_vertical_offset;
+//			} else if ((*vertical_offset / 10) >= (LCD_H - (infoHeader.biHeight / interpolation))) {
+//					v_shift = LCD_H - (infoHeader.biHeight / interpolation)+1;
+//					*vertical_offset = ((LCD_H - (infoHeader.biHeight / interpolation))*10);
+//			} else {
+//					v_shift = *vertical_offset / 10;  
+//			}
 
 			GC9A01_show_picture(output_row, 0, ((LCD_H-1 ) - (column-1)) - (v_shift), LCD_W, 1, LCD_W, 1);
 			memcpy(buffer1, buffer2, sizeof(buffer1));
 		}
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		char *buf = malloc(100 * sizeof(char));
-    sprintf(buf, "I%dH:%dV:%d,", interpolation, *horizontal_offset, *vertical_offset);
-		GC9A01_String(20,180,buf);
-		free(buf);
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
 		
 		
 /***************************TOP-BOTTOM CASE****************************/
