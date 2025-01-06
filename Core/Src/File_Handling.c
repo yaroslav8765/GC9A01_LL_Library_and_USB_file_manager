@@ -285,8 +285,11 @@ FRESULT Read_File_and_print_BMP(char *name, uint16_t *horizontal_offset, uint16_
 	uint16_t mem_vertical_offset = *vertical_offset;
 	uint16_t h_shift = 0;
 	uint16_t v_shift = 0;
-	unsigned short buffer1[LCD_W*interpolation];
-	unsigned short buffer2[LCD_W*interpolation];
+	unsigned short buffer1[2400];
+	unsigned short buffer2[2400];
+	
+	memset(buffer1, 0, sizeof(buffer1));
+	memset(buffer2, 0, sizeof(buffer2));
 	unsigned short output_row[LCD_W];
 	BITMAPFILEHEADER fileHeader;
   BITMAPINFOHEADER infoHeader;
@@ -306,6 +309,7 @@ FRESULT Read_File_and_print_BMP(char *name, uint16_t *horizontal_offset, uint16_
 		
 		calculate_mem_offset(infoHeader.biWidth,interpolation, LCD_W, &mem_horizontal_offset);
 		calculate_mem_offset(infoHeader.biHeight,interpolation, LCD_H, &mem_vertical_offset);
+		
 		offset = fileHeader.bfOffBits 								+																										\
             ((infoHeader.biWidth * 2) 						* 																									\
 						(column + (mem_vertical_offset) ) 		+																										\
@@ -344,6 +348,7 @@ FRESULT Read_File_and_print_BMP(char *name, uint16_t *horizontal_offset, uint16_
 			}
 			calculate_shift(infoHeader.biHeight,interpolation,LCD_H, 																				\
 			vertical_offset,&v_shift, mem_vertical_offset);
+			
 			GC9A01_show_picture(output_row, 0, ((LCD_H-1 ) - (column-1)) - (v_shift), LCD_W, 1, LCD_W, 1);
 			memcpy(buffer1, buffer2, sizeof(buffer1));
 		}
@@ -404,8 +409,6 @@ FRESULT Read_File_and_print_BMP(char *name, uint16_t *horizontal_offset, uint16_
 		GC9A01_Text("Please, use only 16-bit ccolors  \n Press any button", 1);
 		current_mode = error;
 	}
-	
-	
 		f_close(&USBHFile);
     return fresult;
 }
@@ -417,5 +420,6 @@ uint8_t get_depth_of_dir(char *path){
 			result++;
 		}
 	}
+	 
 	return result;
 }
