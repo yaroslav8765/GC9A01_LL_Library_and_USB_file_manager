@@ -60,7 +60,7 @@
 	char path_txt[512];
 	uint16_t horizontal_offset = 0; 
 	uint16_t vertical_offset = 0;
-	uint16_t interpolation_coef = 4;
+	uint16_t interpolation_coef = 1;
 	uint16_t screen_buf[240] = {0};
 	FATFS fs;
 	DIR dr;
@@ -598,7 +598,7 @@ void UP_DOWN_button_handrel(){
 			
 		break;
 		case view_image:
-			if(interpolation_coef < 10){
+			if(interpolation_coef <= MAX_INTERPOLATION_COEF){
 				interpolation_coef ++;
 				refresh_BMP_image();
 			}

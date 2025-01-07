@@ -23,7 +23,9 @@ void clear_row(uint16_t *row, uint16_t lenght){
 		}
 }
 
-void calculate_shift(uint16_t infoHeight, uint8_t interpolation, uint16_t LCDHeight, uint16_t *vertical_offset, uint16_t *v_shift, uint16_t mem_vertical_offset) {
+void calculate_shift(	uint16_t infoHeight, 	uint8_t interpolation, 																										\
+											uint16_t LCDHeight, 	uint16_t *vertical_offset, 																								\
+											uint16_t *v_shift, 		uint16_t mem_vertical_offset) {
     if ((infoHeight / interpolation) >= LCDHeight) {
         *v_shift = 0;
         *vertical_offset = mem_vertical_offset;
@@ -43,7 +45,9 @@ void calculate_mem_offset(uint16_t size, uint16_t interpolation, uint16_t LCDsiz
 }
 
 
-void compress_row(uint16_t *row1, uint16_t *row2, uint16_t *output, uint8_t interpolation, uint16_t horizontal_offset, uint16_t image_width) {
+void compress_row(uint16_t *row1, 						uint16_t *row2,																													\
+									uint16_t *output, 					uint8_t interpolation, 																									\
+									uint16_t horizontal_offset, uint16_t image_width) {
 		clear_row(output,LCD_W);
     for (int x = 0; x <= LCD_W; x++) {
         int x_src1 = x * interpolation;
@@ -211,7 +215,7 @@ FRESULT Scan_USB (char* pat, struct MenuMember *member, uint8_t page)
         {
 					if (USBHfno.fattrib & AM_DIR) 
           {
-						if (!(strcmp("SYSTEM~1", USBHfno.fname)) || !(strcmp("System Volume Information", USBHfno.fname))) continue;
+						if (!(strcmp("SYSTEM~1", USBHfno.fname)) || !(strcmp("System Volume Information",USBHfno.fname))) continue;
 							snprintf(buf, sizeof(buf), "%s.DIR", USBHfno.fname);
           }
           else 
@@ -278,140 +282,146 @@ FRESULT Read_File(char *name, uint8_t page, char *buffer, uint16_t lenght) {
   return fresult;
 }
 
-FRESULT Read_File_and_print_BMP(char *name, uint16_t *horizontal_offset, uint16_t *vertical_offset, uint16_t interpolation) {
-  uint32_t file_size;
-	uint16_t column = 0;
-	uint16_t mem_horizontal_offset = *horizontal_offset;
-	uint16_t mem_vertical_offset = *vertical_offset;
-	uint16_t h_shift = 0;
-	uint16_t v_shift = 0;
-	unsigned short buffer1[2400];
-	unsigned short buffer2[2400];
-	
-	memset(buffer1, 0, sizeof(buffer1));
-	memset(buffer2, 0, sizeof(buffer2));
-	unsigned short output_row[LCD_W];
-	BITMAPFILEHEADER fileHeader;
-  BITMAPINFOHEADER infoHeader;
-	uint32_t offset; 
-  if (check_if_file_exist(name) != FR_OK) {
-    return fresult;
-	}
-	if (check_if_file_opens(name) != FR_OK) {
-    return fresult;
-	}
+void process_bottom_to_top(	BITMAPFILEHEADER *fileHeader, BITMAPINFOHEADER *infoHeader, 																\
+														uint16_t *horizontal_offset, 	uint16_t *vertical_offset, 																		\
+														uint16_t interpolation, 			uint32_t file_size, 																					\
+														unsigned short *buffer1, 			unsigned short *buffer2, 																			\
+														unsigned short *output_row) {
+    uint32_t offset;
+    uint16_t h_shift = 0, v_shift = 0;
+    uint16_t mem_horizontal_offset = *horizontal_offset;
+    uint16_t mem_vertical_offset = *vertical_offset;
 
-	file_size = f_size(&USBHFile);
-	read_BMP_header(&fileHeader,&infoHeader);
+    calculate_mem_offset(infoHeader->biWidth, interpolation, LCD_W, &mem_horizontal_offset);
+    calculate_mem_offset(infoHeader->biHeight, interpolation, LCD_H, &mem_vertical_offset);
 
-/***************************BOTTOM-TOP CASE*******************************/
-	if(fileHeader.bfType == 0x4D42 && infoHeader.biBitCount == 16 && infoHeader.biHeight > 0 ){	
-		
-		calculate_mem_offset(infoHeader.biWidth,interpolation, LCD_W, &mem_horizontal_offset);
-		calculate_mem_offset(infoHeader.biHeight,interpolation, LCD_H, &mem_vertical_offset);
-		
-		offset = fileHeader.bfOffBits 								+																										\
-            ((infoHeader.biWidth * 2) 						* 																									\
-						(column + (mem_vertical_offset) ) 		+																										\
-            (mem_horizontal_offset * 2));
-		
-		fresult = f_lseek_with_error_message(offset, file_size);		
-		fresult = f_read(&USBHFile, buffer1 + (LCD_W * (interpolation - 1)), 															\
-		infoHeader.biWidth < LCD_W * interpolation ? infoHeader.biWidth * 2 : LCD_W * interpolation * 2,	\
-		&br);
-		
-		for (column = 1 ; column <= LCD_H; column ++) {
-			if (infoHeader.biWidth * column * 2 >= file_size) break;
-			if (column <= infoHeader.biHeight/interpolation){
-				offset = (fileHeader.bfOffBits + 																															\
-				((infoHeader.biWidth*2) * 																																		\
-				(column+ (mem_vertical_offset)) +																															\
-				(mem_horizontal_offset*2))*interpolation);
-				
-				fresult = f_lseek_with_error_message(offset, file_size);
-				
-				fresult = f_read(&USBHFile, buffer2 ,																													\
-				infoHeader.biWidth<LCD_W * interpolation ? infoHeader.biWidth * 2 : LCD_W * interpolation*2,	\
-				&br);
-				
-				if (fresult != FR_OK) {
-					GC9A01_Text("Read error! \n Press any button", 1);
-					current_mode = error;
-					break;
-				}
-				
-				calculate_shift(infoHeader.biWidth,interpolation,LCD_W,																				\
-				horizontal_offset,&h_shift, mem_horizontal_offset);
-				compress_row(buffer1, buffer2, output_row, interpolation, h_shift,infoHeader.biWidth);
-			} else {
-				clear_row(output_row,LCD_W);
-			}
-			calculate_shift(infoHeader.biHeight,interpolation,LCD_H, 																				\
-			vertical_offset,&v_shift, mem_vertical_offset);
+    for (uint16_t column = 1; column <= LCD_H; column++) {
+        if (infoHeader->biWidth * column * 2 >= file_size) break;
+
+        if (column <= infoHeader->biHeight / interpolation) {
+            offset = calculate_offset(fileHeader, infoHeader, column, 																								\
+						mem_horizontal_offset, mem_vertical_offset, interpolation);
+					
+            read_and_compress_row(offset, 							file_size, 	buffer1, 																					\
+																	buffer2, 							output_row,	interpolation, 																		\
+																	infoHeader->biWidth,	&h_shift, 	horizontal_offset);
+        } else {
+            clear_row(output_row, LCD_W);
+        }
+
+        calculate_shift(infoHeader->biHeight, interpolation, LCD_H, vertical_offset, &v_shift, mem_vertical_offset);
+        GC9A01_show_picture(output_row, 0, ((LCD_H - 1) - (column - 1)) - v_shift, LCD_W, 1, LCD_W, 1);
+        memcpy(buffer1, buffer2, sizeof(unsigned short) * MAX_BUFFER_SIZE);
+    }
+}
+														
+
+
+void process_top_to_bottom(	BITMAPFILEHEADER *fileHeader, BITMAPINFOHEADER *infoHeader, 															\
+														uint16_t *horizontal_offset, 	uint16_t *vertical_offset,																	\
+														uint16_t interpolation, 			uint32_t file_size,																					\
+														unsigned short *buffer1,			unsigned short *buffer2, 																		\
+														unsigned short *output_row) {
 			
-			GC9A01_show_picture(output_row, 0, ((LCD_H-1 ) - (column-1)) - (v_shift), LCD_W, 1, LCD_W, 1);
-			memcpy(buffer1, buffer2, sizeof(buffer1));
-		}
-		
-		
-/***************************TOP-BOTTOM CASE****************************/
-	} else if(fileHeader.bfType == 0x4D42 && infoHeader.biBitCount == 16 && infoHeader.biHeight < 0){
-		
-		infoHeader.biHeight = infoHeader.biHeight * (-1);
-		calculate_mem_offset(infoHeader.biWidth,interpolation, LCD_W, &mem_horizontal_offset);
-		calculate_mem_offset(infoHeader.biHeight,interpolation, LCD_H, &mem_vertical_offset);
-		offset = (fileHeader.bfOffBits + 																															\
-				((((infoHeader.biWidth * 2 + 3) / 4) * 4) * 																									\
-				(column+ (mem_vertical_offset)) +																															\
-				(mem_horizontal_offset*2))*interpolation);
-		
-		fresult = f_lseek_with_error_message(offset, file_size);		
-		fresult = f_read(&USBHFile, buffer1 + (LCD_W * (interpolation - 1)), 															\
-		infoHeader.biWidth < LCD_W * interpolation ? infoHeader.biWidth * 2 : LCD_W * interpolation * 2,	\
-		&br);
-		
-		for (column = LCD_H ; column >= 0; column --) {
-			if (infoHeader.biWidth * column * 2 >= file_size) break;
-			if (column <= infoHeader.biHeight/interpolation){
-				offset = (fileHeader.bfOffBits + 																															\
-				((((infoHeader.biWidth * 2 + 3) / 4) * 4) * 																									\
-				(column+ (mem_vertical_offset)) +																															\
-				(mem_horizontal_offset*2))*interpolation);
-				
-				fresult = f_lseek_with_error_message(offset, file_size);
-				
-				fresult = f_read(&USBHFile, buffer2 ,																													\
-				infoHeader.biWidth<LCD_W * interpolation ? infoHeader.biWidth * 2 : LCD_W * interpolation*2,	\
-				&br);
-				
-				if (fresult != FR_OK) {
-					GC9A01_Text("Read error! \n Press any button", 1);
-					current_mode = error;
-					break;
-				}
-				
-				calculate_shift(infoHeader.biWidth,interpolation,LCD_W,																				\
-				horizontal_offset,&h_shift, mem_horizontal_offset);
-				compress_row(buffer1, buffer2, output_row, interpolation, h_shift,infoHeader.biWidth);
-			} else {
-				clear_row(output_row,LCD_W);
-			}	
-			calculate_shift(infoHeader.biHeight,interpolation,LCD_H, 																				\
-			vertical_offset,&v_shift, mem_vertical_offset);
+    uint32_t offset;
+    uint16_t h_shift = 0, v_shift = 0;
+    uint16_t mem_horizontal_offset = *horizontal_offset;
+    uint16_t mem_vertical_offset = *vertical_offset;
 
-			GC9A01_show_picture(output_row, 0, column + (v_shift), LCD_W, 1, LCD_W, 1);
-			memcpy(buffer1, buffer2, sizeof(buffer1));
-		}
-	
-		
-/****************************OTHER CASES*****************************/
-	}else {
-		GC9A01_Text("Please, use only 16-bit ccolors  \n Press any button", 1);
-		current_mode = error;
-	}
-		f_close(&USBHFile);
+    calculate_mem_offset(infoHeader->biWidth, interpolation, LCD_W, &mem_horizontal_offset);
+    calculate_mem_offset(infoHeader->biHeight, interpolation, LCD_H, &mem_vertical_offset);
+
+    for (int16_t column = LCD_H; column >= 0; column--) {
+        if (infoHeader->biWidth * column * 2 >= file_size) break;
+
+        if (column <= infoHeader->biHeight / interpolation) {
+        offset = (fileHeader->bfOffBits + 																																						\
+				((((infoHeader->biWidth * 2 + 3) / 4) * 4) * 																																	\
+				(column+ (mem_vertical_offset)) +																																							\
+				(mem_horizontal_offset*2))*interpolation);
+            read_and_compress_row(offset, file_size, buffer1, buffer2, output_row,																		\
+						interpolation, infoHeader->biWidth, &h_shift, horizontal_offset);
+        } else {
+            clear_row(output_row, LCD_W);
+        }
+
+        calculate_shift(infoHeader->biHeight, interpolation, LCD_H, vertical_offset, &v_shift, mem_vertical_offset);
+        GC9A01_show_picture(output_row, 0, column + v_shift, LCD_W, 1, LCD_W, 1);
+        memcpy(buffer1, buffer2, sizeof(unsigned short) * MAX_BUFFER_SIZE);
+    }
+}
+
+uint32_t calculate_offset(BITMAPFILEHEADER *fileHeader, BITMAPINFOHEADER *infoHeader, 																\
+													uint16_t column, 							uint16_t mem_horizontal_offset,																\
+													uint16_t mem_vertical_offset, uint16_t interpolation) {
+														
+    return fileHeader->bfOffBits		+ (((infoHeader->biWidth * 2) 	* (column + mem_vertical_offset))									\
+																		+ (mem_horizontal_offset * 2)) 	* interpolation;
+}
+
+void read_and_compress_row(	uint32_t offset, 						uint32_t file_size,																						\
+														unsigned short *buffer1,		unsigned short *buffer2,																			\
+														unsigned short *output_row, uint16_t interpolation, 																			\
+														uint16_t image_width, 			uint16_t *h_shift, 																						\
+														uint16_t *horizontal_offset) {
+															
+    f_lseek_with_error_message(offset, file_size);
+
+    f_read(&USBHFile, buffer2, image_width < LCD_W * interpolation ? image_width * 2 : LCD_W * interpolation * 2, &br);
+
+    calculate_shift(image_width, interpolation, LCD_W, horizontal_offset, h_shift, *horizontal_offset);
+    compress_row(buffer1, buffer2, output_row, interpolation, *h_shift, image_width);
+}
+
+
+FRESULT Read_File_and_print_BMP(char *name, 								uint16_t *horizontal_offset,															\
+																uint16_t *vertical_offset, 	uint16_t interpolation) {
+    uint32_t file_size;
+    uint16_t column = 0;
+    uint16_t mem_horizontal_offset = *horizontal_offset;
+    uint16_t mem_vertical_offset = *vertical_offset;
+    uint16_t h_shift = 0;
+    uint16_t v_shift = 0;
+    unsigned short buffer1[MAX_BUFFER_SIZE];
+    unsigned short buffer2[MAX_BUFFER_SIZE];
+    unsigned short output_row[LCD_W];
+    BITMAPFILEHEADER fileHeader;
+    BITMAPINFOHEADER infoHeader;
+    uint32_t offset;
+
+    if (check_if_file_exist(name) != FR_OK || check_if_file_opens(name) != FR_OK) {
+        return fresult;
+    }
+
+    file_size = f_size(&USBHFile);
+    read_BMP_header(&fileHeader, &infoHeader);
+
+    if (fileHeader.bfType != 0x4D42 || infoHeader.biBitCount != 16) {
+        GC9A01_Text("Unsupported BMP format. Only 16-bit colors are supported.", 1);
+        current_mode = error;
+        f_close(&USBHFile);
+        return FR_INVALID_OBJECT;
+    }
+
+    if (infoHeader.biHeight > 0) {
+        process_bottom_to_top(&fileHeader, 				&infoHeader,																												\
+															horizontal_offset, 	vertical_offset,																										\
+															interpolation, 			file_size,																													\
+															buffer1, 						buffer2, 																														\
+															output_row);
+    } else {
+        infoHeader.biHeight = -infoHeader.biHeight;
+        process_top_to_bottom(&fileHeader, 				&infoHeader, 																												\
+															horizontal_offset, 	vertical_offset,																										\
+															interpolation, 			file_size, 																													\
+															buffer1, 						buffer2,																														\
+															output_row);
+    }
+
+    f_close(&USBHFile);
     return fresult;
 }
+
 
 uint8_t get_depth_of_dir(char *path){
 	uint8_t result = 0;
