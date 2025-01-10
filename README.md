@@ -19,3 +19,8 @@ By pressing UP - DOWN buttons you can choose wished file or directory and by pre
 If you want close file - press LEFT button and you will be back to the menu.
 
 FILE VIEW MODE:
+
+You can open .bmp file with 16-bit colors. If image smaller, than 240x240,  you can move this image on the screen by using buttons and make it smaller by pressing UP and DOWN buttons at the same time. If you want to cancel change of size - press LEFT and RIGHT buttons at the same time. If image size equal to 240x240 - you need to change it's size, as written above, and then you can also move it and make it smaller or bigger (but not bigger, that it's original size). If size bigger, than 240x240 and image not compressed - you can scroll this image and chage it`s size, if it's compressed size smaller, than 240x240 - than you can move this image on the screen.
+Image resizing example:
+![tsitski](https://github.com/user-attachments/assets/0c357a6d-bbc3-4144-a177-3299e0fe5b91)
+
