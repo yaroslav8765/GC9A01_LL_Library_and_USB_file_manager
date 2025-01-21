@@ -3,7 +3,7 @@ This project uses GC9A01 TFT 1.28 display, which connected through SPI interface
 ![Структурна схема](https://github.com/user-attachments/assets/eebf99fe-2d5c-45fb-b687-529c37e6aa4d)
 MENU LIBRARY FUNCTIONS:
 
-You can find full rewiew of this lib in the following link:*NEED TO ADD LINK ON THE MENU LIB LATER*
+You can find full rewiew of this lib in the following link:https://github.com/yaroslav8765/GC9A01-LL-library-menu
 
 In this case, menu shows list of files from USB flash drive. If name of file is too long, you can turn on animation of running text. But it shows only english letters, arabic numbers and popular symbols like +-_=()~.<>?, and so on.
 
